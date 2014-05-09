@@ -32,7 +32,7 @@ public class FileIO {
      * Each line is a JSON string that is decoded.
      * @param entityMap is a map of entities to load into.
      */
-    protected void load(ObservableMap<String, Entity> entityMap) {
+    protected ObservableMap<String, Entity> load(ObservableMap<String, Entity> entityMap) {
         ArrayList<String> list = read();
         for (String string : list) {
             JSONObject object = (JSONObject) JSONValue.parse(string);
@@ -93,6 +93,8 @@ public class FileIO {
                         new Tv(title, genre, runtime, creator, network, numSeasons, numEpisodes, description));
             }
         }
+
+        return entityMap;
     }
 
     /**

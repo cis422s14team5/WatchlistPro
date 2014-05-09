@@ -15,12 +15,11 @@ public class Controller {
      * Constructor.
      */
     public Controller() {
-        entityMap = new ObservableMapWrapper<>(new HashMap<>());
-
+        //  = new ObservableMapWrapper<>(new HashMap<>());
         // testFilm();
 
         FileIO io = new FileIO();
-        io.load(entityMap);
+        entityMap = io.load(entityMap);
         io.save(entityMap);
     }
 
