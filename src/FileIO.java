@@ -87,7 +87,7 @@ public class FileIO {
                 numEpisodes.set(object.get("numEpisodes").toString());
 
                 StringProperty description = new SimpleStringProperty();
-                description.set(object.get("title").toString());
+                description.set(object.get("description").toString());
 
                 entityMap.put(title.get(),
                         new Tv(title, genre, runtime, creator, network, numSeasons, numEpisodes, description));
