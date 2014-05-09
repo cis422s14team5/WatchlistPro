@@ -96,8 +96,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48262548" vertical-offset="0" max-vertical-offset="1185">
-              <caret line="28" column="54" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.27027026" vertical-offset="0" max-vertical-offset="1185">
+              <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -494,12 +494,12 @@
       <workItem from="1399586217362" duration="2847000" />
       <workItem from="1399593528432" duration="4256000" />
       <workItem from="1399599364977" duration="5792000" />
-      <workItem from="1399605559203" duration="2806000" />
+      <workItem from="1399605559203" duration="2859000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15701000" />
+    <option name="totallyTimeSpent" value="15754000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="240" y="22" width="945" height="874" extended-state="0" />
@@ -758,8 +758,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48262548" vertical-offset="0" max-vertical-offset="1185">
-          <caret line="28" column="54" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.27027026" vertical-offset="0" max-vertical-offset="1185">
+          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
           <folding />
         </state>
       </provider>
