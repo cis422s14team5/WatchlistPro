@@ -115,7 +115,7 @@ public class FileIO {
     }
 
     /**
-     * Reads from the file "store.txt" into an array list
+     * Reads from the file "store.txt" into an array list.
      * @return a list where each element is a line of the file.
      */
     private ArrayList<String> read() {
