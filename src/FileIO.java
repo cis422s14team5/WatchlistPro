@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class FileIO {
 
     /**
-     * Encodes each Entity in the mediaMap into a JSON string and writes it to the file system using write.
+     * Encodes each Media object in the mediaMap into a JSON string and writes it to the file system using write.
      * @param mediaMap is a map of entities to save from.
      */
     protected void save(ObservableMap<String, Media> mediaMap) {
