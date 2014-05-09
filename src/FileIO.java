@@ -97,7 +97,7 @@ public class FileIO {
 
     /**
      * Writes the array list to the file "store.txt".
-     * @param list is the arrayList where each element will become a line in the file.
+     * @param list is the array list where each element will become a line in the file.
      */
     private void write(ArrayList<String> list) {
         BufferedWriter writer;
@@ -113,7 +113,7 @@ public class FileIO {
     }
 
     /**
-     * Reads from the file "store.txt" into an arrayList
+     * Reads from the file "store.txt" into an array list
      * @return a list where each element is a line of the file.
      */
     private ArrayList<String> read() {
