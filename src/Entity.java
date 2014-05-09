@@ -8,6 +8,10 @@ import java.util.HashMap;
 public class Entity {
 
     private HashMap<String, String> map;
+    private StringProperty title;
+    private StringProperty genre;
+    private StringProperty runtime;
+    private StringProperty description;
 
     /**
      * Constructor.
@@ -19,11 +23,6 @@ public class Entity {
         this.description = description;
         map = new HashMap<>();
     }
-
-    private StringProperty title;
-    private StringProperty genre;
-    private StringProperty runtime;
-    private StringProperty description;
 
     public HashMap<String, String> getMap() {
         return map;
