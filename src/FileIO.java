@@ -104,7 +104,7 @@ public class FileIO {
      */
     private void write(ArrayList<String> list) {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("store2.txt")));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("store.txt")));
             for (String string: list) {
                 writer.write(string);
             }
