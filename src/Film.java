@@ -1,6 +1,5 @@
 import javafx.beans.property.StringProperty;
 
-
 /**
  * Stores the fields of a film entity.
  */
