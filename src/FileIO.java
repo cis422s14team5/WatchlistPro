@@ -21,8 +21,8 @@ public class FileIO {
         ArrayList<String> list = new ArrayList<>();
         for (HashMap.Entry entry : entityMap.entrySet()) {
             Entity entity = (Entity) entry.getValue();
-            String jsonText = JSONValue.toJSONString(entity.getMap());
-            list.add(jsonText);
+            String jsonString = JSONValue.toJSONString(entity.getMap());
+            list.add(jsonString);
         }
         write(list);
     }
