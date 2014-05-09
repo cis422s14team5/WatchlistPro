@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class FileIO {
 
     /**
-     * Encodes each Entity in the entityMap into a JSON string and writes it to the file system.
+     * Encodes each Entity in the entityMap into a JSON string and writes it to the file system using write.
      * @param entityMap is a map of entities to save from.
      */
     protected void save(ObservableMap<String, Entity> entityMap) {
@@ -28,7 +28,7 @@ public class FileIO {
     }
 
     /**
-     * Reads the contents of file into an array list and creates an Entity from each line.
+     * Reads the contents of the file using read into an array list and creates an Entity from each line.
      * Each line is a JSON string that is decoded.
      * @param entityMap is a map of entities to load into.
      */
