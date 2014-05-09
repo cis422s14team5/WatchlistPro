@@ -91,7 +91,7 @@ public class FileIO {
                 description.set(object.get("description").toString());
 
                 entityMap.put(title.get(),
-                        new tvShow(title, genre, runtime, creator, network, numSeasons, numEpisodes, description));
+                        new TvShow(title, genre, runtime, creator, network, numSeasons, numEpisodes, description));
             }
         }
 

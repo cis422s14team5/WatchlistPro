@@ -3,7 +3,7 @@ import javafx.beans.property.StringProperty;
 /**
  * Stores the fields of a TV show entity.
  */
-public class tvShow extends Media {
+public class TvShow extends Media {
 
     private StringProperty creator;
     private StringProperty network;
@@ -13,7 +13,7 @@ public class tvShow extends Media {
     /**
      * Constructor.
      */
-    public tvShow(StringProperty title, StringProperty genre, StringProperty runtime, StringProperty description,
+    public TvShow(StringProperty title, StringProperty genre, StringProperty runtime, StringProperty description,
                   StringProperty creator, StringProperty network, StringProperty numSeasons, StringProperty numEpisodes) {
         super(title, genre, runtime, description);
         this.creator = creator;

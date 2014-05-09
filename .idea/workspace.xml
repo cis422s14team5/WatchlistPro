@@ -78,16 +78,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tvShow.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tvShow.java">
+      <file leaf-file-name="TvShow.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/TvShow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="960">
-              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.18404908" vertical-offset="0" max-vertical-offset="960">
+              <caret line="8" column="56" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
               <folding>
-                <element signature="method#setNumEpisodes#0;class#tvShow#0" expanded="false" />
-                <element signature="method#setNetwork#0;class#tvShow#0" expanded="false" />
-                <element signature="method#setNumSeasons#0;class#tvShow#0" expanded="false" />
-                <element signature="method#setCreator#0;class#tvShow#0" expanded="false" />
+                <element signature="method#setNumEpisodes#0;class#TvShow#0" expanded="false" />
+                <element signature="method#setNetwork#0;class#TvShow#0" expanded="false" />
+                <element signature="method#setNumSeasons#0;class#TvShow#0" expanded="false" />
+                <element signature="method#setCreator#0;class#TvShow#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -113,10 +113,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Film.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Film.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Film.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.23006135" vertical-offset="0" max-vertical-offset="975">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="975">
               <caret line="10" column="56" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
               <folding>
                 <element signature="method#setDirector#0;class#Film#0" expanded="false" />
@@ -147,6 +147,7 @@
         <option value="$PROJECT_DIR$/src/Media.java" />
         <option value="$PROJECT_DIR$/src/Tv.java" />
         <option value="$PROJECT_DIR$/src/tvShow.java" />
+        <option value="$PROJECT_DIR$/src/TvShow.java" />
       </list>
     </option>
   </component>
@@ -496,12 +497,12 @@
       <workItem from="1399586217362" duration="2847000" />
       <workItem from="1399593528432" duration="4256000" />
       <workItem from="1399599364977" duration="5792000" />
-      <workItem from="1399605559203" duration="4383000" />
+      <workItem from="1399605559203" duration="4420000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17278000" />
+    <option name="totallyTimeSpent" value="17315000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="258" y="22" width="945" height="874" extended-state="0" />
@@ -568,15 +569,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tvShow.java">
+    <entry file="file://$PROJECT_DIR$/src/TvShow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1380">
           <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
           <folding>
-            <element signature="method#setNumEpisodes#0;class#tvShow#0" expanded="false" />
-            <element signature="method#setNetwork#0;class#tvShow#0" expanded="false" />
-            <element signature="method#setNumSeasons#0;class#tvShow#0" expanded="false" />
-            <element signature="method#setCreator#0;class#tvShow#0" expanded="false" />
+            <element signature="method#setNumEpisodes#0;class#TvShow#0" expanded="false" />
+            <element signature="method#setNetwork#0;class#TvShow#0" expanded="false" />
+            <element signature="method#setNumSeasons#0;class#TvShow#0" expanded="false" />
+            <element signature="method#setCreator#0;class#TvShow#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -623,15 +624,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tvShow.java">
+    <entry file="file://$PROJECT_DIR$/src/TvShow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="1155">
           <caret line="28" column="49" selection-start-line="28" selection-start-column="42" selection-end-line="29" selection-end-column="49" />
           <folding>
-            <element signature="method#setNumEpisodes#0;class#tvShow#0" expanded="false" />
-            <element signature="method#setNetwork#0;class#tvShow#0" expanded="false" />
-            <element signature="method#setNumSeasons#0;class#tvShow#0" expanded="false" />
-            <element signature="method#setCreator#0;class#tvShow#0" expanded="false" />
+            <element signature="method#setNumEpisodes#0;class#TvShow#0" expanded="false" />
+            <element signature="method#setNetwork#0;class#TvShow#0" expanded="false" />
+            <element signature="method#setNumSeasons#0;class#TvShow#0" expanded="false" />
+            <element signature="method#setCreator#0;class#TvShow#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -670,15 +671,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tvShow.java">
+    <entry file="file://$PROJECT_DIR$/src/TvShow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="1095">
           <caret line="22" column="72" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
-            <element signature="method#setNumEpisodes#0;class#tvShow#0" expanded="false" />
-            <element signature="method#setNetwork#0;class#tvShow#0" expanded="false" />
-            <element signature="method#setNumSeasons#0;class#tvShow#0" expanded="false" />
-            <element signature="method#setCreator#0;class#tvShow#0" expanded="false" />
+            <element signature="method#setNumEpisodes#0;class#TvShow#0" expanded="false" />
+            <element signature="method#setNetwork#0;class#TvShow#0" expanded="false" />
+            <element signature="method#setNumSeasons#0;class#TvShow#0" expanded="false" />
+            <element signature="method#setCreator#0;class#TvShow#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -741,28 +742,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tvShow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="960">
-          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-          <folding>
-            <element signature="method#setNumEpisodes#0;class#tvShow#0" expanded="false" />
-            <element signature="method#setNetwork#0;class#tvShow#0" expanded="false" />
-            <element signature="method#setNumSeasons#0;class#tvShow#0" expanded="false" />
-            <element signature="method#setCreator#0;class#tvShow#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Film.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23006135" vertical-offset="0" max-vertical-offset="975">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="975">
           <caret line="10" column="56" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
           <folding>
             <element signature="method#setDirector#0;class#Film#0" expanded="false" />
             <element signature="method#setRating#0;class#Film#0" expanded="false" />
             <element signature="method#setProducer#0;class#Film#0" expanded="false" />
             <element signature="method#setWriter#0;class#Film#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TvShow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18404908" vertical-offset="0" max-vertical-offset="960">
+          <caret line="8" column="56" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+          <folding>
+            <element signature="method#setNumEpisodes#0;class#TvShow#0" expanded="false" />
+            <element signature="method#setNetwork#0;class#TvShow#0" expanded="false" />
+            <element signature="method#setNumSeasons#0;class#TvShow#0" expanded="false" />
+            <element signature="method#setCreator#0;class#TvShow#0" expanded="false" />
           </folding>
         </state>
       </provider>
