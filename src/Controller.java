@@ -5,22 +5,22 @@ import java.util.HashMap;
 
 /**
  * Controls the creation of the view, loading, and saving to the file system.
- * Holds the internal data structure entityMap for storing all TV show and film entities.
+ * Holds the internal data structure mediaMap for storing all TV show and film entities.
  */
 public class Controller {
 
-    private ObservableMap<String, Media> entityMap;
+    private ObservableMap<String, Media> mediaMap;
 
     /**
      * Constructor.
      */
     public Controller() {
-        // entityMap = new ObservableMapWrapper<>(new HashMap<>());
+        // mediaMap = new ObservableMapWrapper<>(new HashMap<>());
         // testFilm();
 
         FileIO io = new FileIO();
-        entityMap = io.load(new ObservableMapWrapper<>(new HashMap<>()));
-        io.save(entityMap);
+        mediaMap = io.load(new ObservableMapWrapper<>(new HashMap<>()));
+        io.save(mediaMap);
     }
 
 //    public void testFilm() {
@@ -63,11 +63,11 @@ public class Controller {
 //                "aesthetically significant\".");
 //
 //        Film bladeRunner = new Film(title, genre, runtime, description, director, rating, producer, writer);
-//        entityMap.put(bladeRunner.getTitle(), bladeRunner);
+//        mediaMap.put(bladeRunner.getTitle(), bladeRunner);
 //    }
 
-    public ObservableMap<String, Media> getEntityMap() {
-        return entityMap;
+    public ObservableMap<String, Media> getMediaMap() {
+        return mediaMap;
     }
 
     /**
