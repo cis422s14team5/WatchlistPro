@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Contains methods used to read and write to the file system. Used to read and write to the store.txt file.
+ * Reads and writes to the file system. Used to read and write to the store.txt file.
  */
 public class FileIO {
 
@@ -100,9 +100,8 @@ public class FileIO {
      * @param list is the array list where each element will become a line in the file.
      */
     private void write(ArrayList<String> list) {
-        BufferedWriter writer;
         try {
-            writer = new BufferedWriter(new FileWriter(new File("store.txt")));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("store.txt")));
             for (String string: list) {
                 writer.write(string);
             }
@@ -117,10 +116,9 @@ public class FileIO {
      * @return a list where each element is a line of the file.
      */
     private ArrayList<String> read() {
-        BufferedReader reader;
         ArrayList<String> list = new ArrayList<>();
         try {
-            reader = new BufferedReader(new FileReader("store.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("store.txt"));
             String line;
             while ((line = reader.readLine()) != null) {
                 list.add(line);

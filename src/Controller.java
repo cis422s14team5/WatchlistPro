@@ -17,10 +17,14 @@ public class Controller {
     public Controller() {
         entityMap = new ObservableMapWrapper<>(new HashMap<>());
 
+        // testFilm();
+
         FileIO io = new FileIO();
         io.load(entityMap);
         io.save(entityMap);
+    }
 
+//    public void testFilm() {
 //        StringProperty title = new SimpleStringProperty();
 //        StringProperty genre = new SimpleStringProperty();
 //        StringProperty runtime = new SimpleStringProperty();
@@ -61,7 +65,7 @@ public class Controller {
 //
 //        Film bladeRunner = new Film(title, genre, runtime, description, director, rating, producer, writer);
 //        entityMap.put(bladeRunner.getTitle(), bladeRunner);
-    }
+//    }
 
     public ObservableMap<String, Entity> getEntityMap() {
         return entityMap;
