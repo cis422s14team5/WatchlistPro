@@ -28,7 +28,7 @@ public class FileIO {
     }
 
     /**
-     * Reads the contents of the file using read into an array list and creates an Media object from a JSON string on
+     * Reads the contents of the file using read into an array list and creates a Media object from a JSON string on
      * each line. Fills and returns an mediaMap.
      * @param mediaMap is a map of entities to load into.
      * @return a filled mediaMap
