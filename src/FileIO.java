@@ -29,7 +29,7 @@ public class FileIO {
 
     /**
      * Reads the contents of the file using read into an array list and creates an Entity from a JSON string on
-     * each line, then fills and returns an entityMap.
+     * each line. Fills and returns an entityMap.
      * @param entityMap is a map of entities to load into.
      * @return a filled entityMap
      */
