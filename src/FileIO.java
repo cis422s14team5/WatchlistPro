@@ -8,8 +8,15 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Contains methods used to read and write to the file system. Used to read and write to the store.txt file.
+ */
 public class FileIO {
 
+    /**
+     * Encodes each Entity in the entityMap into a JSON string and writes it to the file system.
+     * @param entityMap is a map of entities to save from.
+     */
     protected void save(ObservableMap<String, Entity> entityMap) {
         ArrayList<String> list = new ArrayList<>();
         for (HashMap.Entry entry : entityMap.entrySet()) {
@@ -20,6 +27,11 @@ public class FileIO {
         write(list);
     }
 
+    /**
+     * Reads the contents of file into an array list and creates an Entity from each line.
+     * Each line is a JSON string that is decoded.
+     * @param entityMap is a map of entities to load into.
+     */
     protected void load(ObservableMap<String, Entity> entityMap) {
         ArrayList<String> list = read();
         for (String string : list) {
@@ -83,10 +95,14 @@ public class FileIO {
         }
     }
 
+    /**
+     * Writes the array list to the file "store.txt".
+     * @param list is the arrayList where each element will become a line in the file.
+     */
     private void write(ArrayList<String> list) {
         BufferedWriter writer;
         try {
-            writer = new BufferedWriter(new FileWriter(new File("output.txt")));
+            writer = new BufferedWriter(new FileWriter(new File("store.txt")));
             for (String string: list) {
                 writer.write(string);
             }
@@ -96,11 +112,15 @@ public class FileIO {
         }
     }
 
+    /**
+     * Reads from a from the specified path into an arrayList
+     * @return a list where each element is a line of the file.
+     */
     private ArrayList<String> read() {
         BufferedReader reader;
         ArrayList<String> list = new ArrayList<>();
         try {
-            reader = new BufferedReader(new FileReader("output.txt"));
+            reader = new BufferedReader(new FileReader("store.txt"));
             String line;
             while ((line = reader.readLine()) != null) {
                 list.add(line);

@@ -2,11 +2,16 @@ import javafx.beans.property.StringProperty;
 
 import java.util.HashMap;
 
-
+/**
+ * Stores the fields of an entity. The super class of Tv and Film.
+ */
 public class Entity {
 
     private HashMap<String, String> map;
 
+    /**
+     * Constructor.
+     */
     public Entity(StringProperty title, StringProperty genre, StringProperty runtime, StringProperty description) {
         this.title = title;
         this.genre = genre;

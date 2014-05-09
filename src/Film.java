@@ -1,6 +1,9 @@
 import javafx.beans.property.StringProperty;
 
 
+/**
+ * Stores the fields of a film entity.
+ */
 public class Film extends Entity {
 
     private StringProperty director;
@@ -8,6 +11,9 @@ public class Film extends Entity {
     private StringProperty producer;
     private StringProperty writer;
 
+    /**
+     * Constructor.
+     */
     public Film(StringProperty title, StringProperty genre, StringProperty runtime, StringProperty description,
                 StringProperty director, StringProperty rating, StringProperty producer, StringProperty writer) {
         super(title, genre, runtime, description);

@@ -3,10 +3,17 @@ import javafx.collections.ObservableMap;
 
 import java.util.HashMap;
 
+/**
+ * Controls the creation of the view, loading, and saving to the file system.
+ * Holds the internal data structure entityMap for storing all TV show and film entities.
+ */
 public class Controller {
 
     private ObservableMap<String, Entity> entityMap;
 
+    /**
+     * Constructor.
+     */
     public Controller() {
         entityMap = new ObservableMapWrapper<>(new HashMap<>());
 
@@ -22,6 +29,7 @@ public class Controller {
 //        StringProperty producer = new SimpleStringProperty();
 //        StringProperty writer = new SimpleStringProperty();
 //        StringProperty description = new SimpleStringProperty();
+//
 //        title.set("Blade Runner");
 //        genre.set("Science Fiction, Thriller, Film noir, Cyberpunk, Dystopia, Future noir, Cult film, " +
 //                "Existentialism, Neo-noir, Crime Thriller");
@@ -50,6 +58,7 @@ public class Controller {
 //                "complete and personal film. In 1993, the film was selected for preservation in the United States " +
 //                "National Film Registry by the Library of Congress as being \"culturally, historically, or " +
 //                "aesthetically significant\".");
+//
 //        Film bladeRunner = new Film(title, genre, runtime, description, director, rating, producer, writer);
 //        entityMap.put(bladeRunner.getTitle(), bladeRunner);
     }
@@ -58,6 +67,10 @@ public class Controller {
         return entityMap;
     }
 
+    /**
+     * Main method.
+     * @param args is the array of command line arguments.
+     */
     public static void main(String[] args) {
         new Controller();
     }
