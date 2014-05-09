@@ -17,11 +17,11 @@ public class FileIO {
      * Encodes each Entity in the entityMap into a JSON string and writes it to the file system using write.
      * @param entityMap is a map of entities to save from.
      */
-    protected void save(ObservableMap<String, Entity> entityMap) {
+    protected void save(ObservableMap<String, Media> entityMap) {
         ArrayList<String> list = new ArrayList<>();
         for (HashMap.Entry entry : entityMap.entrySet()) {
-            Entity entity = (Entity) entry.getValue();
-            String jsonString = JSONValue.toJSONString(entity.getMap());
+            Media media = (Media) entry.getValue();
+            String jsonString = JSONValue.toJSONString(media.getMap());
             list.add(jsonString);
         }
         write(list);
@@ -33,7 +33,7 @@ public class FileIO {
      * @param entityMap is a map of entities to load into.
      * @return a filled entityMap
      */
-    protected ObservableMap<String, Entity> load(ObservableMap<String, Entity> entityMap) {
+    protected ObservableMap<String, Media> load(ObservableMap<String, Media> entityMap) {
         ArrayList<String> list = read();
         for (String string : list) {
             JSONObject object = (JSONObject) JSONValue.parse(string);
@@ -91,7 +91,7 @@ public class FileIO {
                 description.set(object.get("description").toString());
 
                 entityMap.put(title.get(),
-                        new Tv(title, genre, runtime, creator, network, numSeasons, numEpisodes, description));
+                        new tvShow(title, genre, runtime, creator, network, numSeasons, numEpisodes, description));
             }
         }
 

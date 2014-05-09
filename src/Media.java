@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * Stores the fields of an entity. The super class of Tv and Film.
  */
-public class Entity {
+public class Media {
 
     private HashMap<String, String> map;
     private StringProperty title;
@@ -16,7 +16,7 @@ public class Entity {
     /**
      * Constructor.
      */
-    public Entity(StringProperty title, StringProperty genre, StringProperty runtime, StringProperty description) {
+    public Media(StringProperty title, StringProperty genre, StringProperty runtime, StringProperty description) {
         this.title = title;
         this.genre = genre;
         this.runtime = runtime;

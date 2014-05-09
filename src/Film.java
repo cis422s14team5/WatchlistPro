@@ -3,7 +3,7 @@ import javafx.beans.property.StringProperty;
 /**
  * Stores the fields of a film entity.
  */
-public class Film extends Entity {
+public class Film extends Media {
 
     private StringProperty director;
     private StringProperty rating;

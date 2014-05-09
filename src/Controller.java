@@ -9,7 +9,7 @@ import java.util.HashMap;
  */
 public class Controller {
 
-    private ObservableMap<String, Entity> entityMap;
+    private ObservableMap<String, Media> entityMap;
 
     /**
      * Constructor.
@@ -66,7 +66,7 @@ public class Controller {
 //        entityMap.put(bladeRunner.getTitle(), bladeRunner);
 //    }
 
-    public ObservableMap<String, Entity> getEntityMap() {
+    public ObservableMap<String, Media> getEntityMap() {
         return entityMap;
     }
 
