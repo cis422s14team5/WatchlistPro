@@ -14,12 +14,12 @@ import java.util.HashMap;
 public class FileIO {
 
     /**
-     * Encodes each Entity in the entityMap into a JSON string and writes it to the file system using write.
-     * @param entityMap is a map of entities to save from.
+     * Encodes each Entity in the mediaMap into a JSON string and writes it to the file system using write.
+     * @param mediaMap is a map of entities to save from.
      */
-    protected void save(ObservableMap<String, Media> entityMap) {
+    protected void save(ObservableMap<String, Media> mediaMap) {
         ArrayList<String> list = new ArrayList<>();
-        for (HashMap.Entry entry : entityMap.entrySet()) {
+        for (HashMap.Entry entry : mediaMap.entrySet()) {
             Media media = (Media) entry.getValue();
             String jsonString = JSONValue.toJSONString(media.getMap());
             list.add(jsonString);
@@ -29,11 +29,11 @@ public class FileIO {
 
     /**
      * Reads the contents of the file using read into an array list and creates an Entity from a JSON string on
-     * each line. Fills and returns an entityMap.
-     * @param entityMap is a map of entities to load into.
-     * @return a filled entityMap
+     * each line. Fills and returns an mediaMap.
+     * @param mediaMap is a map of entities to load into.
+     * @return a filled mediaMap
      */
-    protected ObservableMap<String, Media> load(ObservableMap<String, Media> entityMap) {
+    protected ObservableMap<String, Media> load(ObservableMap<String, Media> mediaMap) {
         ArrayList<String> list = read();
         for (String string : list) {
             JSONObject object = (JSONObject) JSONValue.parse(string);
@@ -63,7 +63,7 @@ public class FileIO {
                 StringProperty description = new SimpleStringProperty();
                 description.set(object.get("description").toString());
 
-                entityMap.put(title.get(),
+                mediaMap.put(title.get(),
                         new Film(title, genre, runtime, director, rating, producer, writer, description));
             } else if (object.get("type").equals("tv")) {
                 StringProperty title = new SimpleStringProperty();
@@ -90,12 +90,12 @@ public class FileIO {
                 StringProperty description = new SimpleStringProperty();
                 description.set(object.get("description").toString());
 
-                entityMap.put(title.get(),
+                mediaMap.put(title.get(),
                         new TvShow(title, genre, runtime, creator, network, numSeasons, numEpisodes, description));
             }
         }
 
-        return entityMap;
+        return mediaMap;
     }
 
     /**

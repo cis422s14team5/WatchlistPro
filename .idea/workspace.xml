@@ -103,21 +103,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileIO.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="FileIO.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FileIO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.13127413" vertical-offset="1218" max-vertical-offset="1995">
-              <caret line="96" column="55" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="843" max-vertical-offset="1995">
+              <caret line="35" column="85" selection-start-line="35" selection-start-column="85" selection-end-line="35" selection-end-column="85" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Film.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Film.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Film.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="975">
-              <caret line="10" column="56" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.38610038" vertical-offset="0" max-vertical-offset="975">
+              <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
               <folding>
                 <element signature="method#setDirector#0;class#Film#0" expanded="false" />
                 <element signature="method#setRating#0;class#Film#0" expanded="false" />
@@ -141,13 +141,13 @@
         <option value="$PROJECT_DIR$/src/ReadWrite.java" />
         <option value="$PROJECT_DIR$/src/LoadSave.java" />
         <option value="$PROJECT_DIR$/src/Film.java" />
-        <option value="$PROJECT_DIR$/src/FileIO.java" />
         <option value="$PROJECT_DIR$/src/Entity.java" />
         <option value="$PROJECT_DIR$/src/Tv.java" />
         <option value="$PROJECT_DIR$/src/tvShow.java" />
         <option value="$PROJECT_DIR$/src/TvShow.java" />
         <option value="$PROJECT_DIR$/src/Media.java" />
         <option value="$PROJECT_DIR$/src/Controller.java" />
+        <option value="$PROJECT_DIR$/src/FileIO.java" />
       </list>
     </option>
   </component>
@@ -497,12 +497,12 @@
       <workItem from="1399586217362" duration="2847000" />
       <workItem from="1399593528432" duration="4256000" />
       <workItem from="1399599364977" duration="5792000" />
-      <workItem from="1399605559203" duration="4510000" />
+      <workItem from="1399605559203" duration="4605000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17405000" />
+    <option name="totallyTimeSpent" value="17500000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="258" y="22" width="945" height="874" extended-state="0" />
@@ -714,19 +714,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Film.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="975">
-          <caret line="10" column="56" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-          <folding>
-            <element signature="method#setDirector#0;class#Film#0" expanded="false" />
-            <element signature="method#setRating#0;class#Film#0" expanded="false" />
-            <element signature="method#setProducer#0;class#Film#0" expanded="false" />
-            <element signature="method#setWriter#0;class#Film#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TvShow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="960">
@@ -763,9 +750,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FileIO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13127413" vertical-offset="1218" max-vertical-offset="1995">
-          <caret line="96" column="55" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="843" max-vertical-offset="1995">
+          <caret line="35" column="85" selection-start-line="35" selection-start-column="85" selection-end-line="35" selection-end-column="85" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Film.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38610038" vertical-offset="0" max-vertical-offset="975">
+          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+          <folding>
+            <element signature="method#setDirector#0;class#Film#0" expanded="false" />
+            <element signature="method#setRating#0;class#Film#0" expanded="false" />
+            <element signature="method#setProducer#0;class#Film#0" expanded="false" />
+            <element signature="method#setWriter#0;class#Film#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
