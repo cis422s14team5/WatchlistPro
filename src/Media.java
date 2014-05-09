@@ -3,7 +3,7 @@ import javafx.beans.property.StringProperty;
 import java.util.HashMap;
 
 /**
- * Stores the fields of an media object. The super class of TvShow and Film.
+ * Stores the fields of a media object. The super class of TvShow and Film.
  */
 public class Media {
 
