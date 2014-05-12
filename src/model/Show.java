@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package watchlistpro.model;
+package model;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

@@ -1,13 +1,11 @@
-package watchlistpro;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableMap;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
-import watchlistpro.model.Film;
-import watchlistpro.model.Media;
-import watchlistpro.model.TvShow;
+import model.Film;
+import model.Media;
+import model.TvShow;
 
 import java.io.*;
 import java.util.ArrayList;

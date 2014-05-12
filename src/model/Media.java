@@ -1,4 +1,4 @@
-package watchlistpro.model;
+package model;
 
 import javafx.beans.property.StringProperty;
 
