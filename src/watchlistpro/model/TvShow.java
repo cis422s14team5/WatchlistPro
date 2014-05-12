@@ -1,3 +1,5 @@
+package watchlistpro.model;
+
 import javafx.beans.property.StringProperty;
 
 /**
@@ -9,6 +11,7 @@ public class TvShow extends Media {
     private StringProperty network;
     private StringProperty numSeasons;
     private StringProperty numEpisodes;
+
 
     /**
      * Constructor.

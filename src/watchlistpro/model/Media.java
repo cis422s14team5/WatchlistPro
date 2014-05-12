@@ -1,9 +1,13 @@
+package watchlistpro.model;
+
 import javafx.beans.property.StringProperty;
 
 import java.util.HashMap;
 
+// TODO write field for watched
+
 /**
- * Stores the fields of a media object. The super class of TvShow and Film.
+ * Stores the fields of a media object. The super class of model.TvShow and model.Film.
  */
 public class Media {
 

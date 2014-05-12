@@ -1,3 +1,5 @@
+package watchlistpro.model;
+
 import javafx.beans.property.StringProperty;
 
 /**
@@ -9,6 +11,7 @@ public class Film extends Media {
     private StringProperty rating;
     private StringProperty producer;
     private StringProperty writer;
+
 
     /**
      * Constructor.

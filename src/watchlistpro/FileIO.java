@@ -1,8 +1,13 @@
+package watchlistpro;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableMap;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+import watchlistpro.model.Film;
+import watchlistpro.model.Media;
+import watchlistpro.model.TvShow;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -14,7 +19,7 @@ import java.util.HashMap;
 public class FileIO {
 
     /**
-     * Encodes each Media object in the mediaMap into a JSON string and writes it to the file system using write.
+     * Encodes each model.Media object in the mediaMap into a JSON string and writes it to the file system using write.
      * @param mediaMap is a map of entities to save from.
      */
     protected void save(ObservableMap<String, Media> mediaMap) {
@@ -28,7 +33,7 @@ public class FileIO {
     }
 
     /**
-     * Reads the contents of the file using read into an array list and creates a Media object from a JSON string on
+     * Reads the contents of the file using read into an array list and creates a model.Media object from a JSON string on
      * each line. Fills and returns a mediaMap.
      * @param mediaMap is a map of entities to load into.
      * @return a filled mediaMap
@@ -64,7 +69,7 @@ public class FileIO {
                 description.set(object.get("description").toString());
 
                 mediaMap.put(title.get(),
-                        new Film(title, genre, runtime, director, rating, producer, writer, description));
+                        new Film(title, genre, runtime, description, director, rating, producer, writer));
             } else if (object.get("type").equals("tv")) {
                 StringProperty title = new SimpleStringProperty();
                 title.set(object.get("title").toString());
@@ -91,7 +96,7 @@ public class FileIO {
                 description.set(object.get("description").toString());
 
                 mediaMap.put(title.get(),
-                        new TvShow(title, genre, runtime, creator, network, numSeasons, numEpisodes, description));
+                        new TvShow(title, genre, runtime, description, creator, network, numSeasons, numEpisodes));
             }
         }
 
