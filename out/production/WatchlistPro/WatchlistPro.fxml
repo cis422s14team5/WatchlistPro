@@ -6,8 +6,24 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="600.0" prefWidth="800.0" styleClass="theme" stylesheets="@WatchlistPro.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="WatchlistProController">
+<VBox id="root" fx:id="root" prefHeight="600.0" prefWidth="800.0" styleClass="theme" stylesheets="@WatchlistPro.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="WatchlistProController">
     <children>
+      <MenuBar fx:id="menuBar">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" onAction="#saveList" text="Save" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem fx:id="closeWindowMenu" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
         <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="18.0" prefHeight="0.0" prefWidth="800.0">
             <children>
                 <ImageView id="WatchListPro" layoutX="14.0" layoutY="20.0" HBox.hgrow="NEVER">
@@ -15,7 +31,7 @@
 <Image url="@WatchListPro.png" />
 </image>
                 </ImageView><HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="573.0" spacing="10.0" HBox.hgrow="ALWAYS">
-<children><ToggleButton fx:id="editToggleButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#toggleEdit" prefWidth="55.0" text="Edit" />
+<children><ToggleButton fx:id="editToggleButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#toggleEdit" prefHeight="28.0" prefWidth="70.0" text="Edit" />
 <Button id="button3" fx:id="fetchButton" disable="true" layoutX="473.0" layoutY="17.0" maxWidth="1.7976931348623157E308" onAction="#fetchMedia" prefHeight="24.0" prefWidth="80.0" styleClass="theme" text="Fetch" />
 </children>
 <padding>
@@ -71,40 +87,59 @@
                         <AnchorPane id="anchorPane4" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
 <children><VBox layoutX="90.0" layoutY="137.0" prefHeight="558.0" prefWidth="548.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 <children><StackPane prefHeight="579.0" prefWidth="548.0" VBox.vgrow="ALWAYS">
-<children><VBox fx:id="filmDisplayPane" prefHeight="200.0" prefWidth="100.0" spacing="3.0">
-<children><HBox prefHeight="25.0" prefWidth="80.0">
-<children><Label minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="Title: " /><Label fx:id="filmTitleLabel" prefHeight="25.0" />
-</children></HBox>
+<children>
+                              <VBox fx:id="filmDisplayPane" prefHeight="200.0" prefWidth="100.0" spacing="3.0">
+<children>
+                                    <HBox prefHeight="25.0" prefWidth="80.0">
+<children>
+                                          <Label minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="Title: " />
+                                          <Label fx:id="filmTitleLabel" prefHeight="25.0" />
+</children>
+                                    </HBox>
 <HBox layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="80.0">
 <children>
-<Label layoutX="20.0" layoutY="14.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="Genre: " GridPane.rowIndex="1" /><Label fx:id="filmGenreLabel" prefHeight="25.0" />
+<Label layoutX="20.0" layoutY="14.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="Genre: " GridPane.rowIndex="1" />
+                                          <Label fx:id="filmGenreLabel" prefHeight="25.0" />
 </children>
 </HBox>
 <HBox layoutX="10.0" layoutY="110.0" prefHeight="25.0" prefWidth="80.0">
-<children><Label minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="Director: " GridPane.rowIndex="2" /><Label fx:id="filmDirectorLabel" prefHeight="25.0" />
+<children>
+                                          <Label minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="Director: " GridPane.rowIndex="2" />
+                                          <Label fx:id="filmDirectorLabel" prefHeight="25.0" />
 </children>
 </HBox>
 <HBox layoutX="10.0" layoutY="210.0" prefHeight="25.0" prefWidth="80.0">
-<children><Label minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="Rating: " GridPane.rowIndex="3" /><Label fx:id="filmRatingLabel" prefHeight="25.0" />
+<children>
+                                          <Label minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="Rating: " GridPane.rowIndex="3" />
+                                          <Label fx:id="filmRatingLabel" prefHeight="25.0" />
 </children>
 </HBox>
 <HBox layoutX="10.0" layoutY="210.0" prefHeight="25.0" prefWidth="80.0">
-<children><Label minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="Runtime: " GridPane.rowIndex="4" /><Label fx:id="filmRuntimeLabel" prefHeight="25.0" />
+<children>
+                                          <Label minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="Runtime: " GridPane.rowIndex="4" />
+                                          <Label fx:id="filmRuntimeLabel" prefHeight="25.0" />
 </children>
 </HBox>
 <HBox layoutX="10.0" layoutY="310.0" prefHeight="25.0" prefWidth="80.0">
-<children><Label minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="Producer: " GridPane.rowIndex="5" /><Label fx:id="filmProducerLabel" prefHeight="25.0" />
+<children>
+                                          <Label minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="Producer: " GridPane.rowIndex="5" />
+                                          <Label fx:id="filmProducerLabel" prefHeight="25.0" />
 </children>
 </HBox>
 <HBox layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="80.0">
-<children><Label minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="Writer: " GridPane.rowIndex="6" /><Label fx:id="filmWriterLabel" prefHeight="25.0" />
+<children>
+                                          <Label minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="Writer: " GridPane.rowIndex="6" />
+                                          <Label fx:id="filmWriterLabel" prefHeight="25.0" />
 </children>
 </HBox>
 <HBox layoutX="10.0" layoutY="110.0" prefHeight="25.0" prefWidth="80.0" VBox.vgrow="ALWAYS">
-<children><Label minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="Description: " GridPane.rowIndex="7" /><Label fx:id="filmDescriptionLabel" alignment="TOP_LEFT" wrapText="true" HBox.hgrow="ALWAYS">
+<children>
+                                          <Label minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="Description: " GridPane.rowIndex="7" />
+                                          <Label fx:id="filmDescriptionLabel" alignment="TOP_LEFT" wrapText="true" HBox.hgrow="ALWAYS">
 <HBox.margin>
 <Insets top="5.0" />
-</HBox.margin></Label>
+</HBox.margin>
+                                          </Label>
 </children>
 </HBox>
 </children>
@@ -113,7 +148,8 @@
 </padding>
 <StackPane.margin>
 <Insets bottom="5.0" right="5.0" top="5.0" />
-</StackPane.margin></VBox>
+</StackPane.margin>
+                              </VBox>
 <VBox fx:id="filmEditPane" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="3.0" visible="false">
 <children>
 <HBox prefHeight="25.0" prefWidth="80.0">

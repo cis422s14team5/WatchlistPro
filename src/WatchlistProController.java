@@ -6,19 +6,14 @@ import java.util.ResourceBundle;
 
 import com.sun.javafx.collections.ObservableListWrapper;
 import com.sun.javafx.collections.ObservableMapWrapper;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
 import model.Film;
@@ -38,12 +33,13 @@ public class WatchlistProController implements Initializable {
 
     // Control variables
     private int mediaIndex = -1;
-    // private String mediaName = null;
+    private String mediaName = null;
     private String mediaType = "film";
     private String mediaEditType;
 
     // Other
     private MediaCreator mediaCreator;
+    private FileIO io;
 
     // View components
     @FXML
@@ -76,6 +72,16 @@ public class WatchlistProController implements Initializable {
     private Label filmWriterLabel;
     @FXML
     private Label filmDescriptionLabel;
+
+    @FXML
+    private MenuBar menuBar;
+
+    @FXML
+    private MenuItem closeWindowMenu;
+
+    @FXML
+    private MenuItem saveMenuItem;
+
     @FXML
     private VBox filmEditPane;
     @FXML
@@ -130,15 +136,21 @@ public class WatchlistProController implements Initializable {
     private TextField tvNumEpisodesTextField;
     @FXML
     private TextArea tvDescriptionTextField;
-    
+//    @FXML
+//    private VBox root;
+
+
     /**
      * Constructor.
      */
     public WatchlistProController() {
-        FileIO io = new FileIO();
+//        System.setProperty("apple.laf.useScreenMenuBar", "true");
+        io = new FileIO();
         mediaMap = io.load(new ObservableMapWrapper<>(new HashMap<>()));
         masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
         mediaCreator = new MediaCreator();
+
+
     }
 
     /**
@@ -225,26 +237,22 @@ public class WatchlistProController implements Initializable {
             switchView();
         }
         if (newMediaTextField.getCharacters() != null && newMediaTextField.getLength() > 0) {
-            String newMediaName = newMediaTextField.getCharacters().toString();
+            mediaName = newMediaTextField.getCharacters().toString();
 
             if (mediaType.equals("film")) {
-                Film film = mediaCreator.createFilm(newMediaName);
+                Film film = mediaCreator.createFilm(mediaName);
                 masterMediaList.add(film);
-                mediaMap.put(newMediaName, film);
+                mediaMap.put(mediaName, film);
             } else {
-                TvShow show = mediaCreator.createTvShow(newMediaName);
+                TvShow show = mediaCreator.createTvShow(mediaName);
                 masterMediaList.add(show);
-                mediaMap.put(newMediaName, show);
+                mediaMap.put(mediaName, show);
             }
             newMediaTextField.clear();
             filterField.clear();
             updateMediaList();
 
-            for (int i = 0; i < masterMediaList.size(); i++) {
-                if (masterMediaList.get(i).getTitle().equals(newMediaName)) {
-                    mediaList.getSelectionModel().select(i);
-                }
-            }
+            setListIndex();
             editToggleButton.setSelected(true);
             switchView();
         }
@@ -297,40 +305,91 @@ public class WatchlistProController implements Initializable {
     @FXML
     private void toggleEdit(ActionEvent event) {
         if (mediaList.getSelectionModel().getSelectedItem() != null) {
-            String media = mediaList.getSelectionModel().getSelectedItem().getTitle();
+            mediaName = mediaList.getSelectionModel().getSelectedItem().getTitle();
 
             if (!editToggleButton.isSelected()) {
                 if (mediaType.equals("film")) {
-                    ((Film) mediaMap.get(media)).setTitle(filmTitleTextField.getText());
-                    ((Film) mediaMap.get(media)).setGenre(filmGenreLabel.getText());
-                    ((Film) mediaMap.get(media)).setDirector(filmDirectorTextField.getText());
-                    ((Film) mediaMap.get(media)).setRating(filmRatingTextField.getText());
-                    ((Film) mediaMap.get(media)).setRuntime(filmRuntimeTextField.getText());
-                    ((Film) mediaMap.get(media)).setProducer(filmProducerTextField.getText());
-                    ((Film) mediaMap.get(media)).setWriter(filmWriterTextField.getText());
-                    ((Film) mediaMap.get(media)).setDescription(filmDescriptionTextField.getText());
-                } else {
-                    ((TvShow) mediaMap.get(media)).setTitle(tvTitleTextField.getText());
-                    ((TvShow) mediaMap.get(media)).setGenre(tvGenreTextField.getText());
-                    ((TvShow) mediaMap.get(media)).setCreator(tvCreatorTextField.getText());
-                    ((TvShow) mediaMap.get(media)).setNetwork(tvNetworkTextField.getText());
-                    ((TvShow) mediaMap.get(media)).setRuntime(tvRuntimeTextField.getText());
-                    ((TvShow) mediaMap.get(media)).setNumSeasons(tvNumSeasonsTextField.getText());
-                    ((TvShow) mediaMap.get(media)).setNumEpisodes(tvNumEpisodesTextField.getText());
-                    ((TvShow) mediaMap.get(media)).setDescription(tvDescriptionTextField.getText());
-                }
+                    if (mediaName.equals(filmTitleTextField.getText())) {
+                        ((Film) mediaMap.get(mediaName)).setTitle(filmTitleTextField.getText());
+                        ((Film) mediaMap.get(mediaName)).setGenre(filmGenreTextField.getText());
+                        ((Film) mediaMap.get(mediaName)).setDirector(filmDirectorTextField.getText());
+                        ((Film) mediaMap.get(mediaName)).setRating(filmRatingTextField.getText());
+                        ((Film) mediaMap.get(mediaName)).setRuntime(filmRuntimeTextField.getText());
+                        ((Film) mediaMap.get(mediaName)).setProducer(filmProducerTextField.getText());
+                        ((Film) mediaMap.get(mediaName)).setWriter(filmWriterTextField.getText());
+                        ((Film) mediaMap.get(mediaName)).setDescription(filmDescriptionTextField.getText());
+                    } else {
+                        Film film = mediaCreator.createFilm(filmTitleTextField.getText());
+                        film.setGenre(filmGenreTextField.getText());
+                        film.setDirector(filmDirectorTextField.getText());
+                        film.setRating(filmRatingTextField.getText());
+                        film.setRuntime(filmRuntimeTextField.getText());
+                        film.setProducer(filmProducerTextField.getText());
+                        film.setWriter(filmWriterTextField.getText());
+                        film.setDescription(filmDescriptionTextField.getText());
 
-                masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
-                updateMediaList();
-
-                for (int i = 0; i < masterMediaList.size(); i++) {
-                    if (masterMediaList.get(i).getTitle().equals(media)) {
-                        mediaList.getSelectionModel().select(i);
+                        mediaMap.remove(mediaName);
+                        mediaMap.put(filmTitleTextField.getText(), film);
                     }
+                    mediaName = filmTitleTextField.getText();
+                    masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
+                    updateMediaList();
+                } else {
+                    if (mediaName.equals(tvTitleTextField.getText())) {
+                        ((TvShow) mediaMap.get(mediaName)).setTitle(tvTitleTextField.getText());
+                        ((TvShow) mediaMap.get(mediaName)).setGenre(tvGenreTextField.getText());
+                        ((TvShow) mediaMap.get(mediaName)).setCreator(tvCreatorTextField.getText());
+                        ((TvShow) mediaMap.get(mediaName)).setNetwork(tvNetworkTextField.getText());
+                        ((TvShow) mediaMap.get(mediaName)).setRuntime(tvRuntimeTextField.getText());
+                        ((TvShow) mediaMap.get(mediaName)).setNumSeasons(tvNumSeasonsTextField.getText());
+                        ((TvShow) mediaMap.get(mediaName)).setNumEpisodes(tvNumEpisodesTextField.getText());
+                        ((TvShow) mediaMap.get(mediaName)).setDescription(tvDescriptionTextField.getText());                        
+                    } else {
+                        TvShow show = mediaCreator.createTvShow(tvTitleTextField.getText());
+                        show.setGenre(tvGenreTextField.getText());
+                        show.setCreator(tvCreatorTextField.getText());
+                        show.setNetwork(tvNetworkTextField.getText());
+                        show.setRuntime(tvRuntimeTextField.getText());
+                        show.setNumSeasons(tvNumSeasonsTextField.getText());
+                        show.setNumEpisodes(tvNumEpisodesTextField.getText());
+                        show.setDescription(tvDescriptionTextField.getText());
+
+                        mediaMap.remove(mediaName);
+                        mediaMap.put(tvTitleTextField.getText(), show);
+                        
+                    }
+                    mediaName = tvTitleTextField.getText();
+                    masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
+                    updateMediaList();
                 }
+                setListIndex();
             }
             switchView();
         }
+    }
+
+    private void setListIndex() {
+        for (int i = 0; i < masterMediaList.size(); i++) {
+            if (masterMediaList.get(i).getTitle().equals(mediaName)) {
+                mediaList.getSelectionModel().select(i);
+            }
+        }
+    }
+
+
+    @FXML
+    void saveList(ActionEvent event) {
+        io.save(mediaMap);
+    }
+
+    @FXML
+    private void closeWindow(ActionEvent event) {
+        close();
+    }
+
+    private void close() {
+        io.save(mediaMap);
+        Platform.exit();
     }
 
     /**

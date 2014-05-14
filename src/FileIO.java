@@ -109,7 +109,7 @@ public class FileIO {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(new File("store.txt")));
             for (String string: list) {
-                writer.write(string);
+                writer.write(string + "\n");
             }
             writer.close();
         } catch (IOException e) {

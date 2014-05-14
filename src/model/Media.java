@@ -83,6 +83,4 @@ public class Media {
         this.description.set(description);
         map.put("description", description);
     }
-
-
 }
