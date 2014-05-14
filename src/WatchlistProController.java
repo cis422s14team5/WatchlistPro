@@ -368,6 +368,9 @@ public class WatchlistProController implements Initializable {
         }
     }
 
+    /**
+     * Sets the index of the ListView to the last created or edited item.
+     */
     private void setListIndex() {
         for (int i = 0; i < masterMediaList.size(); i++) {
             if (masterMediaList.get(i).getTitle().equals(mediaName)) {
@@ -376,17 +379,27 @@ public class WatchlistProController implements Initializable {
         }
     }
 
-
+    /**
+     * Saves the contents of the mediaMap to the file system when the menu item is selected.
+     * @param event is the action event.
+     */
     @FXML
     void saveList(ActionEvent event) {
         io.save(mediaMap);
     }
 
+    /**
+     * Closes the window when the menu item is selected.
+     * @param event is the action event.
+     */
     @FXML
     private void closeWindow(ActionEvent event) {
         close();
     }
 
+    /**
+     * Closes the window.
+     */
     private void close() {
         io.save(mediaMap);
         Platform.exit();
