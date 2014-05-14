@@ -33,32 +33,47 @@ package freebase;
 
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 
 public class Client {
 
-    public void start() throws IOException {
+    private PrintWriter out;
+    private BufferedReader in;
+    private ClientProcessor processor;
+
+    private ArrayList<String> outputList;
+
+    public Client() throws IOException  {
         String hostName = "hkhamm.com";
         int portNumber = 1981;
 
         Socket socket = new Socket(hostName, portNumber);
-        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
-        ClientProcessor processor= new ClientProcessor();
+        out = new PrintWriter(socket.getOutputStream(), true);
+        in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//        BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+        processor = new ClientProcessor();
 
+    }
+
+    public void send(String command) throws IOException {
         String serverInput;
         while ((serverInput = in.readLine()) != null) {
             if (!serverInput.equals("Bye.")) {
                 processor.processServer(serverInput);
                 System.out.print(">>> ");
 
-                String userInput = stdIn.readLine();
-                if (userInput != null) {
-                    out.println(processor.processUser(userInput));
+                if (command.equals("quit")) {
+                    outputList = processor.getOutputList();
                 }
+
+                out.println(processor.processUser(command));
             } else {
                 break;
             }
         }
+    }
+
+    public ArrayList<String> getOutputList() {
+        return outputList;
     }
 }

@@ -12,6 +12,8 @@ public class ClientProcessor {
 
     private int state = FILM;
 
+    private ArrayList<String> outputList;
+
     TopicProcessor processor = new TopicProcessor();
 
     public void processServer(String input) {
@@ -20,7 +22,7 @@ public class ClientProcessor {
         if (output[0].equals("{")) {
             JSONObject topic = (JSONObject) JSONValue.parse(input);
 
-            ArrayList<String> outputList = new ArrayList<>();
+            outputList = new ArrayList<>();
             switch (state) {
                 case FILM:
                     outputList = processor.filmOutput(topic);
@@ -50,5 +52,7 @@ public class ClientProcessor {
         return input;
     }
 
-
+    public ArrayList<String> getOutputList() {
+        return outputList;
+    }
 }

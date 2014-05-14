@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,6 +7,7 @@ import java.util.ResourceBundle;
 
 import com.sun.javafx.collections.ObservableListWrapper;
 import com.sun.javafx.collections.ObservableMapWrapper;
+import freebase.Client;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
@@ -488,16 +490,18 @@ public class WatchlistProController implements Initializable {
      */
     @FXML
     private void fetchMedia(ActionEvent event) {
-        switch (mediaEditType) {
-            case "tv":
-                // fetch data and populate tv edit pane with it
-                //setTvEditPane("title", "genre", "creator", "network", "runtime", "numSeasons", "numEpisodes", "description");
-                break;
-            case "film":
-                // fetch data and populate film edit pane with it
-                //setFilmEditPane("title", "genre", "director", "rating", "runtime", "producer", "writer", "description");
-                break;
-        }        
+        try {
+            Client client = new Client();
+            String command = mediaList.getSelectionModel().getSelectedItem().getTitle();
+            client.send(mediaEditType);
+            client.send(command);
+            ArrayList<String> outputList = client.getOutputList();
+            client.send("quit");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // TODO put contents of outputList in the correct fields
     }
 
     /**

@@ -66,31 +66,36 @@
       <file leaf-file-name="WatchlistProController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/WatchlistProController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4710" max-vertical-offset="8130">
-              <caret line="472" column="25" selection-start-line="472" selection-start-column="25" selection-end-line="472" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="6630" max-vertical-offset="8160">
+              <caret line="503" column="64" selection-start-line="503" selection-start-column="64" selection-end-line="503" selection-end-column="64" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Client.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Client.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/freebase/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1050">
-              <caret line="31" column="30" selection-start-line="31" selection-start-column="3" selection-end-line="31" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.09404389" vertical-offset="0" max-vertical-offset="1275">
+              <caret line="6" column="60" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2899#2900#0" expanded="true" />
+                <element signature="e#2932#2933#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientProcessor.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ClientProcessor.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/freebase/ClientProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.06269593" vertical-offset="0" max-vertical-offset="957">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
+              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="41" />
+              <folding>
+                <element signature="e#1413#1414#0" expanded="true" />
+                <element signature="e#1446#1447#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,7 +103,7 @@
       <file leaf-file-name="TopicProcessor.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/freebase/TopicProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2610">
+            <state vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="2610">
               <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding />
             </state>
@@ -131,6 +136,7 @@
         <option value="$PROJECT_DIR$/src/model/Media.java" />
         <option value="$PROJECT_DIR$/src/WatchlistPro.java" />
         <option value="$PROJECT_DIR$/src/WatchlistPro.fxml" />
+        <option value="$PROJECT_DIR$/src/freebase/ClientProcessor.java" />
         <option value="$PROJECT_DIR$/src/WatchlistProController.java" />
         <option value="$PROJECT_DIR$/src/freebase/Client.java" />
       </list>
@@ -641,14 +647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/WatchlistProController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="7080" max-vertical-offset="8565">
-          <caret line="472" column="25" selection-start-line="472" selection-start-column="25" selection-end-line="472" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/freebase/TopicProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2610">
@@ -657,21 +655,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/freebase/Client.java">
+    <entry file="file://$PROJECT_DIR$/src/freebase/ClientProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="93" max-vertical-offset="1050">
-          <caret line="31" column="30" selection-start-line="31" selection-start-column="3" selection-end-line="31" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="41" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1413#1414#0" expanded="true" />
+            <element signature="e#1446#1447#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/freebase/ClientProcessor.java">
+    <entry file="file://$PROJECT_DIR$/src/WatchlistProController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06269593" vertical-offset="0" max-vertical-offset="957">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="6630" max-vertical-offset="8160">
+          <caret line="503" column="64" selection-start-line="503" selection-start-column="64" selection-end-line="503" selection-end-column="64" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/freebase/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09404389" vertical-offset="0" max-vertical-offset="1275">
+          <caret line="6" column="60" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2899#2900#0" expanded="true" />
+            <element signature="e#2932#2933#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
