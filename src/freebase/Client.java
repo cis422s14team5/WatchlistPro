@@ -32,48 +32,33 @@ package freebase;
  */
 
 import java.io.*;
-import java.net.*;
+import java.net.Socket;
 import java.util.ArrayList;
 
 public class Client {
 
-    private PrintWriter out;
-    private BufferedReader in;
-    private ClientProcessor processor;
-
     private ArrayList<String> outputList;
+    private Socket socket;
 
-    public Client() throws IOException  {
+    public Client() {
         String hostName = "hkhamm.com";
         int portNumber = 1981;
-
-        Socket socket = new Socket(hostName, portNumber);
-        out = new PrintWriter(socket.getOutputStream(), true);
-        in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-//        BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
-        processor = new ClientProcessor();
-
+        try {
+            socket = new Socket(hostName, portNumber);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void send(String command) throws IOException {
-        String serverInput;
-        while ((serverInput = in.readLine()) != null) {
-            if (!serverInput.equals("Bye.")) {
-                processor.processServer(serverInput);
-                System.out.print(">>> ");
-
-                if (command.equals("quit")) {
-                    outputList = processor.getOutputList();
-                }
-
-                out.println(processor.processUser(command));
-            } else {
-                break;
-            }
-        }
+    public Thread send(String command) throws IOException, InterruptedException {
+        return new Thread(new ClientThread(this, socket, command), "thread");
     }
 
     public ArrayList<String> getOutputList() {
         return outputList;
+    }
+
+    public void setOutputList(ArrayList<String> outputList) {
+        this.outputList = outputList;
     }
 }

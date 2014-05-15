@@ -46,7 +46,7 @@
 <VBox prefHeight="538.0" prefWidth="315.0" VBox.vgrow="ALWAYS">
 <children>
 <HBox layoutX="10.0" layoutY="514.0" prefHeight="30.0" prefWidth="197.0" spacing="5.0">
-<children><ToggleButton fx:id="mediaToggleButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#toggleMedia" prefWidth="49.0" text="Film" />
+<children><ToggleButton fx:id="mediaToggleButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#toggleMedia" prefHeight="28.0" prefWidth="60.0" text="Film" />
 <TextField fx:id="newMediaTextField" onAction="#addMedia" prefHeight="24.0" prefWidth="135.0" promptText="Enter Title to Add" HBox.hgrow="ALWAYS">
 <padding>
 <Insets right="5.0" />
@@ -62,7 +62,7 @@
 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 </padding>
 <children>
-                        <Button id="button3" maxWidth="1.7976931348623157E308" onAction="#deleteMedia" prefHeight="24.0" prefWidth="273.0" text="Delete Selected" HBox.hgrow="ALWAYS" />
+                        <Button id="button3" fx:id="deleteButton" maxWidth="1.7976931348623157E308" onAction="#deleteMedia" prefHeight="24.0" prefWidth="273.0" text="Delete Selected" HBox.hgrow="ALWAYS" />
 </children>
 </HBox>
                 <ListView fx:id="mediaList" styleClass="darkList" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS" /><HBox layoutX="161.0" layoutY="269.0" prefHeight="30.0" prefWidth="197.0" spacing="5.0">

@@ -11,13 +11,16 @@ public class ClientProcessor {
     private static final int TV = 1;
 
     private int state = FILM;
+    private boolean finished = false;
 
     private ArrayList<String> outputList;
 
     TopicProcessor processor = new TopicProcessor();
 
     public void processServer(String input) {
+        System.out.println("Processing: " + input);
         String[] output = input.split("");
+        finished = false;
 
         if (output[0].equals("{")) {
             JSONObject topic = (JSONObject) JSONValue.parse(input);
@@ -32,13 +35,15 @@ public class ClientProcessor {
                 default:
                     break;
             }
+            finished = true;
             outputList.forEach(System.out::println);
 
-            System.out.println(
-                    "Search with <title>, \"film\" or \"tv\" to switch filters, or \"quit\" to quit.");
-        } else {
-            System.out.println(input);
+//            System.out.println(
+//                    "Search with <title>, \"film\" or \"tv\" to switch filters, or \"quit\" to quit.");
         }
+//        else {
+//            System.out.println(input);
+//        }
     }
 
     public String processUser(String input) {
@@ -54,5 +59,9 @@ public class ClientProcessor {
 
     public ArrayList<String> getOutputList() {
         return outputList;
+    }
+
+    public boolean isFinished() {
+        return finished;
     }
 }

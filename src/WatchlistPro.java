@@ -17,9 +17,7 @@ public class WatchlistPro extends Application {
 
         Scene scene = new Scene(root);
 
-        stage.setOnCloseRequest((final WindowEvent windowEvent) -> {
-            Platform.exit();
-        });
+        stage.setOnCloseRequest((final WindowEvent windowEvent) -> Platform.exit());
 
         stage.setScene(scene);
         stage.setTitle("Watchlist Pro");

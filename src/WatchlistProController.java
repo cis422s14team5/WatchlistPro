@@ -1,13 +1,8 @@
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.ResourceBundle;
-
+import com.aquafx_project.AquaFx;
+import com.aquafx_project.controls.skin.styles.ButtonType;
 import com.sun.javafx.collections.ObservableListWrapper;
 import com.sun.javafx.collections.ObservableMapWrapper;
-import freebase.Client;
+
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
@@ -16,11 +11,30 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.VBox;
+
+
 
 import model.Film;
 import model.Media;
 import model.TvShow;
+import freebase.Client;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.ResourceBundle;
 
 // TODO don't allow edit button to be pressed if there is no index selected
 
@@ -47,7 +61,7 @@ public class WatchlistProController implements Initializable {
     @FXML
     private ListView<Media> mediaList;
     @FXML
-    private TextField filterField;    
+    private TextField filterField;
     @FXML
     private ToggleButton mediaToggleButton;
     @FXML
@@ -56,6 +70,8 @@ public class WatchlistProController implements Initializable {
     private ToggleButton editToggleButton;
     @FXML
     private Button fetchButton;
+    @FXML
+    private Button deleteButton;
     @FXML
     private VBox filmDisplayPane;
     @FXML
@@ -151,8 +167,6 @@ public class WatchlistProController implements Initializable {
         mediaMap = io.load(new ObservableMapWrapper<>(new HashMap<>()));
         masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
         mediaCreator = new MediaCreator();
-
-
     }
 
     /**
@@ -164,6 +178,12 @@ public class WatchlistProController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         updateMediaList();
         mediaList.getSelectionModel().select(0);
+
+        AquaFx.style(); // Throws CoreText performance errors
+
+        // Menu
+        closeWindowMenu.setAccelerator(new KeyCodeCombination(KeyCode.W, KeyCombination.SHORTCUT_DOWN));
+        saveMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.SHORTCUT_DOWN));
     }
 
     private void updateMediaList() {
@@ -218,7 +238,17 @@ public class WatchlistProController implements Initializable {
         }));
 
         mediaList.setItems(filteredData);
+
         sort();
+        if (!mediaList.equals(masterMediaList)) {
+            //setFilteredListIndex();
+            for (int i = 0; i < mediaList.getItems().size(); i++) {
+                if (mediaList.getItems().get(i) != null){
+                    mediaList.getSelectionModel().select(i);
+                }
+            }
+
+        }
     }
 
     /**
@@ -264,7 +294,7 @@ public class WatchlistProController implements Initializable {
      * Deletes the selected media item.
      * @param event is the action event.
      */
-    @FXML 
+    @FXML
     private void deleteMedia(ActionEvent event) {
         if (masterMediaList.size() > 0 && mediaIndex >= 0 && mediaIndex < masterMediaList.size()) {
 
@@ -282,7 +312,7 @@ public class WatchlistProController implements Initializable {
                 filterField.clear();
                 mediaList.getSelectionModel().select(0);
             }
-        }  
+        }
     }
 
     /**
@@ -308,9 +338,12 @@ public class WatchlistProController implements Initializable {
     private void toggleEdit(ActionEvent event) {
         if (mediaList.getSelectionModel().getSelectedItem() != null) {
             mediaName = mediaList.getSelectionModel().getSelectedItem().getTitle();
-
             if (!editToggleButton.isSelected()) {
+
+                filterField.clear();
+                filterField.setDisable(false);
                 if (mediaType.equals("film")) {
+
                     if (mediaName.equals(filmTitleTextField.getText())) {
                         ((Film) mediaMap.get(mediaName)).setTitle(filmTitleTextField.getText());
                         ((Film) mediaMap.get(mediaName)).setGenre(filmGenreTextField.getText());
@@ -334,6 +367,7 @@ public class WatchlistProController implements Initializable {
                         mediaMap.put(filmTitleTextField.getText(), film);
                     }
                     mediaName = filmTitleTextField.getText();
+
                     masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
                     updateMediaList();
                 } else {
@@ -345,7 +379,7 @@ public class WatchlistProController implements Initializable {
                         ((TvShow) mediaMap.get(mediaName)).setRuntime(tvRuntimeTextField.getText());
                         ((TvShow) mediaMap.get(mediaName)).setNumSeasons(tvNumSeasonsTextField.getText());
                         ((TvShow) mediaMap.get(mediaName)).setNumEpisodes(tvNumEpisodesTextField.getText());
-                        ((TvShow) mediaMap.get(mediaName)).setDescription(tvDescriptionTextField.getText());                        
+                        ((TvShow) mediaMap.get(mediaName)).setDescription(tvDescriptionTextField.getText());
                     } else {
                         TvShow show = mediaCreator.createTvShow(tvTitleTextField.getText());
                         show.setGenre(tvGenreTextField.getText());
@@ -358,26 +392,20 @@ public class WatchlistProController implements Initializable {
 
                         mediaMap.remove(mediaName);
                         mediaMap.put(tvTitleTextField.getText(), show);
-                        
+
                     }
                     mediaName = tvTitleTextField.getText();
                     masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
                     updateMediaList();
                 }
                 setListIndex();
+            } else {
+                filterField.setDisable(true);
             }
             switchView();
-        }
-    }
 
-    /**
-     * Sets the index of the ListView to the last created or edited item.
-     */
-    private void setListIndex() {
-        for (int i = 0; i < masterMediaList.size(); i++) {
-            if (masterMediaList.get(i).getTitle().equals(mediaName)) {
-                mediaList.getSelectionModel().select(i);
-            }
+        } else {
+            editToggleButton.setSelected(false);
         }
     }
 
@@ -408,13 +436,27 @@ public class WatchlistProController implements Initializable {
     }
 
     /**
+     * Sets the index of the ListView to the last created or edited item.
+     */
+    private void setListIndex() {
+        for (int i = 0; i < masterMediaList.size(); i++) {
+            if (masterMediaList.get(i).getTitle().equals(mediaName)) {
+                mediaList.getSelectionModel().select(i);
+            }
+        }
+    }
+
+    /**
      * Switches between the display view to the edit view.
      */
     private void switchView() {
+
         if (mediaList.getSelectionModel().getSelectedItem() instanceof Film) {
             setFilmEditPane();
-        } else {
+        } else if (mediaList.getSelectionModel().getSelectedItem() instanceof TvShow) {
             setTvEditPane();
+        } else {
+            mediaList.getSelectionModel().select(0);
         }
 
         // edit pane is enabled
@@ -493,15 +535,32 @@ public class WatchlistProController implements Initializable {
         try {
             Client client = new Client();
             String command = mediaList.getSelectionModel().getSelectedItem().getTitle();
-            client.send(mediaEditType);
-            client.send(command);
+
+            Thread type = client.send(mediaEditType);
+            Thread search = client.send(command);
+            Thread quit = client.send("quit");
+
+            type.start();
+            type.join();
+
+            search.start();
+            search.join();
+
+            quit.start();
+            quit.join();
+
             ArrayList<String> outputList = client.getOutputList();
-            client.send("quit");
+            if (mediaEditType.equals("film")) {
+                setFilmEditPane(outputList);
+            } else {
+                setTvEditPane(outputList);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-
-        // TODO put contents of outputList in the correct fields
     }
 
     /**
@@ -518,6 +577,21 @@ public class WatchlistProController implements Initializable {
         filmProducerLabel.setText(film.getProducer());
         filmWriterLabel.setText(film.getWriter());
         filmDescriptionLabel.setText(film.getDescription());
+    }
+
+    /**
+     * Populates the film edit pane based on passed in arguments.
+     */
+    private void setFilmEditPane(ArrayList<String> outputList) {
+        System.out.println(outputList);
+        filmTitleTextField.setText(outputList.get(0));
+        filmGenreTextField.setText(outputList.get(1));
+        filmDirectorTextField.setText(outputList.get(2));
+        filmRatingTextField.setText(outputList.get(3));
+        filmRuntimeTextField.setText(outputList.get(4));
+        filmProducerTextField.setText(outputList.get(5));
+        filmWriterTextField.setText(outputList.get(6));
+        filmDescriptionTextField.setText(outputList.get(7));
     }
 
     /**
@@ -566,5 +640,20 @@ public class WatchlistProController implements Initializable {
         tvNumSeasonsTextField.setText(show.getNumSeasons());
         tvNumEpisodesTextField.setText(show.getNumEpisodes());
         tvDescriptionTextField.setText(show.getDescription());
-    }  
+    }
+
+    /**
+     * Populates the tv edit pane based on passed in arguments.
+     */
+    private void setTvEditPane(ArrayList<String> outputList) {
+
+        tvTitleTextField.setText(outputList.get(0));
+        tvGenreTextField.setText(outputList.get(1));
+        tvCreatorTextField.setText(outputList.get(2));
+        tvNetworkTextField.setText(outputList.get(3));
+        tvRuntimeTextField.setText(outputList.get(4));
+        tvNumSeasonsTextField.setText(outputList.get(5));
+        tvNumEpisodesTextField.setText(outputList.get(6));
+        tvDescriptionTextField.setText(outputList.get(7));
+    }
 }

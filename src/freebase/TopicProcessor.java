@@ -44,8 +44,11 @@ public class TopicProcessor {
         output.clear();
         output.add("");
         output.add(title);
+        output.add(""); // genre
         output.add(String.format("Directed by: %s", director));
         output.add(String.format("Rated: %s", rating));
+
+        output.add(""); // runtime
 
         String producersTemp = "Produced by: ";
         for (int i = 0; i < producersList.size(); i++) {
@@ -65,7 +68,7 @@ public class TopicProcessor {
         }
         output.add(writersTemp);
 
-        output.add(String.format("Website: %s", website));
+        //output.add(String.format("Website: %s", website));
         output.add("Description:");
         output.add(description);
         output.add("");
@@ -155,7 +158,7 @@ public class TopicProcessor {
         output.add(creatorsTemp);
 
         output.add(String.format("Network: %s", network));
-        output.add(String.format("Website: %s", website));
+        output.add(""); // runtime
         output.add(String.format("Number of seasons: %s", numSeasons));
         if (!numEpisodes.equals("[]")) {
             int num = (int) Float.parseFloat(numEpisodes);
