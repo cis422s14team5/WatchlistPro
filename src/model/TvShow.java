@@ -28,10 +28,10 @@ public class TvShow extends Media {
         getMap().put("title", title.get());
         getMap().put("genre", genre.get());
         getMap().put("runtime", runtime.get());
-        getMap().put("director", creator.get());
-        getMap().put("rating", network.get());
-        getMap().put("producer", numSeasons.get());
-        getMap().put("writer", numEpisodes.get());
+        getMap().put("creator", creator.get());
+        getMap().put("network", network.get());
+        getMap().put("numSeasons", numSeasons.get());
+        getMap().put("numEpisodes", numEpisodes.get());
         getMap().put("description", description.get());
     }
 

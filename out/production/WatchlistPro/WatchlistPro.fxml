@@ -14,7 +14,7 @@
             <items>
                   <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" onAction="#saveList" text="Save" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-              <MenuItem fx:id="closeWindowMenu" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
+                  <MenuItem fx:id="closeWindowMenu" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

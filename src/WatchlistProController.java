@@ -1,5 +1,5 @@
 import com.aquafx_project.AquaFx;
-import com.aquafx_project.controls.skin.styles.ButtonType;
+
 import com.sun.javafx.collections.ObservableListWrapper;
 import com.sun.javafx.collections.ObservableMapWrapper;
 
@@ -7,13 +7,11 @@ import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.collections.transformation.FilteredList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -21,8 +19,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.VBox;
-
-
 
 import model.Film;
 import model.Media;
@@ -35,8 +31,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-
-// TODO don't allow edit button to be pressed if there is no index selected
 
 /**
  * Controls the WatchlistPro view.
@@ -71,8 +65,6 @@ public class WatchlistProController implements Initializable {
     @FXML
     private Button fetchButton;
     @FXML
-    private Button deleteButton;
-    @FXML
     private VBox filmDisplayPane;
     @FXML
     private Label filmTitleLabel;
@@ -90,16 +82,10 @@ public class WatchlistProController implements Initializable {
     private Label filmWriterLabel;
     @FXML
     private Label filmDescriptionLabel;
-
-    @FXML
-    private MenuBar menuBar;
-
     @FXML
     private MenuItem closeWindowMenu;
-
     @FXML
     private MenuItem saveMenuItem;
-
     @FXML
     private VBox filmEditPane;
     @FXML
@@ -154,15 +140,11 @@ public class WatchlistProController implements Initializable {
     private TextField tvNumEpisodesTextField;
     @FXML
     private TextArea tvDescriptionTextField;
-//    @FXML
-//    private VBox root;
-
 
     /**
      * Constructor.
      */
     public WatchlistProController() {
-//        System.setProperty("apple.laf.useScreenMenuBar", "true");
         io = new FileIO();
         mediaMap = io.load(new ObservableMapWrapper<>(new HashMap<>()));
         masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
@@ -184,6 +166,208 @@ public class WatchlistProController implements Initializable {
         // Menu
         closeWindowMenu.setAccelerator(new KeyCodeCombination(KeyCode.W, KeyCombination.SHORTCUT_DOWN));
         saveMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.SHORTCUT_DOWN));
+    }
+
+    /**
+     * Adds new media item to list.
+     */
+    @FXML
+    public void addMedia() {
+        if (editToggleButton.isSelected()) {
+            editToggleButton.setSelected(false);
+            switchView();
+        }
+        if (newMediaTextField.getCharacters() != null && newMediaTextField.getLength() > 0) {
+            mediaName = newMediaTextField.getCharacters().toString();
+
+            if (mediaType.equals("film")) {
+                Film film = mediaCreator.createFilm(mediaName);
+                masterMediaList.add(film);
+                mediaMap.put(mediaName, film);
+            } else {
+                TvShow show = mediaCreator.createTvShow(mediaName);
+                masterMediaList.add(show);
+                mediaMap.put(mediaName, show);
+            }
+            newMediaTextField.clear();
+            filterField.clear();
+            updateMediaList();
+
+            setListIndex();
+            editToggleButton.setSelected(true);
+            switchView();
+        }
+    }
+
+    /**
+     * Deletes the selected media item.
+     */
+    @FXML
+    public void deleteMedia() {
+        if (masterMediaList.size() > 0 && mediaIndex >= 0 && mediaIndex < masterMediaList.size()) {
+
+            if (editToggleButton.isSelected()) {
+                editToggleButton.setSelected(false);
+                switchView();
+            }
+
+            // Handle ListView selection changes.
+            if (mediaList.getSelectionModel().getSelectedItem() != null) {
+                String title = mediaList.getSelectionModel().getSelectedItem().getTitle();
+                mediaMap.remove(title);
+                masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
+                updateMediaList();
+                filterField.clear();
+                mediaList.getSelectionModel().select(0);
+            }
+        }
+    }
+
+    /**
+     * Toggles the type of media to be added.
+     */
+    @FXML
+    public void toggleMedia() {
+        if (mediaToggleButton.isSelected()){
+            mediaToggleButton.setText("TV");
+            mediaType = "tv";
+        } else {
+            mediaToggleButton.setText("Film");
+            mediaType = "film";
+        }
+    }
+
+    /**
+     * Toggles between film/tv edit and display panes.
+     */
+    @FXML
+    public void toggleEdit() {
+        if (mediaList.getSelectionModel().getSelectedItem() != null) {
+            mediaName = mediaList.getSelectionModel().getSelectedItem().getTitle();
+            if (!editToggleButton.isSelected()) {
+
+                filterField.clear();
+                filterField.setDisable(false);
+                if (mediaList.getSelectionModel().getSelectedItem() instanceof Film) {
+
+                    if (mediaName.equals(filmTitleTextField.getText())) {
+                        mediaMap.get(mediaName).setTitle(filmTitleTextField.getText());
+                        mediaMap.get(mediaName).setGenre(filmGenreTextField.getText());
+                        ((Film) mediaMap.get(mediaName)).setDirector(filmDirectorTextField.getText());
+                        ((Film) mediaMap.get(mediaName)).setRating(filmRatingTextField.getText());
+                        mediaMap.get(mediaName).setRuntime(filmRuntimeTextField.getText());
+                        ((Film) mediaMap.get(mediaName)).setProducer(filmProducerTextField.getText());
+                        ((Film) mediaMap.get(mediaName)).setWriter(filmWriterTextField.getText());
+                        mediaMap.get(mediaName).setDescription(filmDescriptionTextField.getText());
+                    } else {
+                        Film film = mediaCreator.createFilm(filmTitleTextField.getText());
+                        film.setGenre(filmGenreTextField.getText());
+                        film.setDirector(filmDirectorTextField.getText());
+                        film.setRating(filmRatingTextField.getText());
+                        film.setRuntime(filmRuntimeTextField.getText());
+                        film.setProducer(filmProducerTextField.getText());
+                        film.setWriter(filmWriterTextField.getText());
+                        film.setDescription(filmDescriptionTextField.getText());
+
+                        mediaMap.remove(mediaName);
+                        mediaMap.put(filmTitleTextField.getText(), film);
+                    }
+                    mediaName = filmTitleTextField.getText();
+
+                    masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
+                    updateMediaList();
+                } else {
+                    if (mediaName.equals(tvTitleTextField.getText())) {
+                        mediaMap.get(mediaName).setTitle(tvTitleTextField.getText());
+                        mediaMap.get(mediaName).setGenre(tvGenreTextField.getText());
+                        ((TvShow) mediaMap.get(mediaName)).setCreator(tvCreatorTextField.getText());
+                        ((TvShow) mediaMap.get(mediaName)).setNetwork(tvNetworkTextField.getText());
+                        mediaMap.get(mediaName).setRuntime(tvRuntimeTextField.getText());
+                        ((TvShow) mediaMap.get(mediaName)).setNumSeasons(tvNumSeasonsTextField.getText());
+                        ((TvShow) mediaMap.get(mediaName)).setNumEpisodes(tvNumEpisodesTextField.getText());
+                        mediaMap.get(mediaName).setDescription(tvDescriptionTextField.getText());
+                    } else {
+                        TvShow show = mediaCreator.createTvShow(tvTitleTextField.getText());
+                        show.setGenre(tvGenreTextField.getText());
+                        show.setCreator(tvCreatorTextField.getText());
+                        show.setNetwork(tvNetworkTextField.getText());
+                        show.setRuntime(tvRuntimeTextField.getText());
+                        show.setNumSeasons(tvNumSeasonsTextField.getText());
+                        show.setNumEpisodes(tvNumEpisodesTextField.getText());
+                        show.setDescription(tvDescriptionTextField.getText());
+
+                        mediaMap.remove(mediaName);
+                        mediaMap.put(tvTitleTextField.getText(), show);
+
+                    }
+                    mediaName = tvTitleTextField.getText();
+                    masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
+                    updateMediaList();
+                }
+                setListIndex();
+            } else {
+                filterField.setDisable(true);
+            }
+            switchView();
+
+        } else {
+            editToggleButton.setSelected(false);
+        }
+    }
+
+    /**
+     * Saves the contents of the mediaMap to the file system when the menu item is selected.
+     */
+    @FXML
+    public void saveList() {
+        io.save(mediaMap);
+    }
+
+    /**
+     * Closes the window when the menu item is selected.
+     */
+    @FXML
+    public void closeWindow() {
+        io.save(mediaMap);
+        Platform.exit();
+    }
+
+    /**
+     * Fetches the media data from Freebase.
+     */
+    @FXML
+    public void fetchMedia() {
+        try {
+            Client client = new Client();
+            String command = mediaList.getSelectionModel().getSelectedItem().getTitle();
+
+            Thread type = client.send(mediaEditType);
+            Thread search = client.send(command);
+            Thread quit = client.send("quit");
+
+            type.start();
+            type.join();
+
+            search.start();
+            search.join();
+
+            quit.start();
+            quit.join();
+
+            ArrayList<String> outputList = client.getOutputList();
+            if (mediaEditType.equals("film")) {
+                setFilmEditPane(outputList);
+            } else {
+                setTvEditPane(outputList);
+            }
+
+        } catch (IOException e) {
+            System.err.println("IOException");
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            System.err.println("Interrupted Exception");
+            e.printStackTrace();
+        }
     }
 
     private void updateMediaList() {
@@ -223,12 +407,11 @@ public class WatchlistProController implements Initializable {
 
         // Set the filter Predicate whenever the filter changes.
         filterField.textProperty().addListener((observable, oldValue, newValue) -> filteredData.setPredicate(Media -> {
-            // If filter text is empty, display all persons.
+            // If filter text is empty, display all entries.
             if (newValue == null || newValue.isEmpty()) {
                 return true;
             }
 
-            // Compare first name and last name of every person with filter text.
             String lowerCaseFilter = newValue.toLowerCase();
 
             return Media.getTitle().toLowerCase().contains(lowerCaseFilter);
@@ -253,183 +436,6 @@ public class WatchlistProController implements Initializable {
      */
     private void sort() {
         Collections.sort(masterMediaList, (m1, m2) -> (m1.getTitle()).compareTo(m2.getTitle()));
-    }
-
-    /**
-     * Adds new media item to list.
-     * @param event is the action event.
-     */
-    @FXML
-    private void addMedia(ActionEvent event) {
-        if (editToggleButton.isSelected()) {
-            editToggleButton.setSelected(false);
-            switchView();
-        }
-        if (newMediaTextField.getCharacters() != null && newMediaTextField.getLength() > 0) {
-            mediaName = newMediaTextField.getCharacters().toString();
-
-            if (mediaType.equals("film")) {
-                Film film = mediaCreator.createFilm(mediaName);
-                masterMediaList.add(film);
-                mediaMap.put(mediaName, film);
-            } else {
-                TvShow show = mediaCreator.createTvShow(mediaName);
-                masterMediaList.add(show);
-                mediaMap.put(mediaName, show);
-            }
-            newMediaTextField.clear();
-            filterField.clear();
-            updateMediaList();
-
-            setListIndex();
-            editToggleButton.setSelected(true);
-            switchView();
-        }
-    }
-
-    /**
-     * Deletes the selected media item.
-     * @param event is the action event.
-     */
-    @FXML
-    private void deleteMedia(ActionEvent event) {
-        if (masterMediaList.size() > 0 && mediaIndex >= 0 && mediaIndex < masterMediaList.size()) {
-
-            if (editToggleButton.isSelected()) {
-                editToggleButton.setSelected(false);
-                switchView();
-            }
-
-            // Handle ListView selection changes.
-            if (mediaList.getSelectionModel().getSelectedItem() != null) {
-                String title = mediaList.getSelectionModel().getSelectedItem().getTitle();
-                mediaMap.remove(title);
-                masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
-                updateMediaList();
-                filterField.clear();
-                mediaList.getSelectionModel().select(0);
-            }
-        }
-    }
-
-    /**
-     * Toggles the type of media to be added.
-     * @param event is the action event.
-     */
-    @FXML
-    private void toggleMedia(ActionEvent event) {
-        if (mediaToggleButton.isSelected()){
-            mediaToggleButton.setText("TV");
-            mediaType = "tv";
-        } else {
-            mediaToggleButton.setText("Film");
-            mediaType = "film";
-        }
-    }
-
-    /**
-     * Toggles between film/tv edit and display panes.
-     * @param event is the action event.
-     */
-    @FXML
-    private void toggleEdit(ActionEvent event) {
-        if (mediaList.getSelectionModel().getSelectedItem() != null) {
-            mediaName = mediaList.getSelectionModel().getSelectedItem().getTitle();
-            if (!editToggleButton.isSelected()) {
-
-                filterField.clear();
-                filterField.setDisable(false);
-                if (mediaList.getSelectionModel().getSelectedItem() instanceof Film) {
-
-                    if (mediaName.equals(filmTitleTextField.getText())) {
-                        ((Film) mediaMap.get(mediaName)).setTitle(filmTitleTextField.getText());
-                        ((Film) mediaMap.get(mediaName)).setGenre(filmGenreTextField.getText());
-                        ((Film) mediaMap.get(mediaName)).setDirector(filmDirectorTextField.getText());
-                        ((Film) mediaMap.get(mediaName)).setRating(filmRatingTextField.getText());
-                        ((Film) mediaMap.get(mediaName)).setRuntime(filmRuntimeTextField.getText());
-                        ((Film) mediaMap.get(mediaName)).setProducer(filmProducerTextField.getText());
-                        ((Film) mediaMap.get(mediaName)).setWriter(filmWriterTextField.getText());
-                        ((Film) mediaMap.get(mediaName)).setDescription(filmDescriptionTextField.getText());
-                    } else {
-                        Film film = mediaCreator.createFilm(filmTitleTextField.getText());
-                        film.setGenre(filmGenreTextField.getText());
-                        film.setDirector(filmDirectorTextField.getText());
-                        film.setRating(filmRatingTextField.getText());
-                        film.setRuntime(filmRuntimeTextField.getText());
-                        film.setProducer(filmProducerTextField.getText());
-                        film.setWriter(filmWriterTextField.getText());
-                        film.setDescription(filmDescriptionTextField.getText());
-
-                        mediaMap.remove(mediaName);
-                        mediaMap.put(filmTitleTextField.getText(), film);
-                    }
-                    mediaName = filmTitleTextField.getText();
-
-                    masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
-                    updateMediaList();
-                } else {
-                    if (mediaName.equals(tvTitleTextField.getText())) {
-                        ((TvShow) mediaMap.get(mediaName)).setTitle(tvTitleTextField.getText());
-                        ((TvShow) mediaMap.get(mediaName)).setGenre(tvGenreTextField.getText());
-                        ((TvShow) mediaMap.get(mediaName)).setCreator(tvCreatorTextField.getText());
-                        ((TvShow) mediaMap.get(mediaName)).setNetwork(tvNetworkTextField.getText());
-                        ((TvShow) mediaMap.get(mediaName)).setRuntime(tvRuntimeTextField.getText());
-                        ((TvShow) mediaMap.get(mediaName)).setNumSeasons(tvNumSeasonsTextField.getText());
-                        ((TvShow) mediaMap.get(mediaName)).setNumEpisodes(tvNumEpisodesTextField.getText());
-                        ((TvShow) mediaMap.get(mediaName)).setDescription(tvDescriptionTextField.getText());
-                    } else {
-                        TvShow show = mediaCreator.createTvShow(tvTitleTextField.getText());
-                        show.setGenre(tvGenreTextField.getText());
-                        show.setCreator(tvCreatorTextField.getText());
-                        show.setNetwork(tvNetworkTextField.getText());
-                        show.setRuntime(tvRuntimeTextField.getText());
-                        show.setNumSeasons(tvNumSeasonsTextField.getText());
-                        show.setNumEpisodes(tvNumEpisodesTextField.getText());
-                        show.setDescription(tvDescriptionTextField.getText());
-
-                        mediaMap.remove(mediaName);
-                        mediaMap.put(tvTitleTextField.getText(), show);
-
-                    }
-                    mediaName = tvTitleTextField.getText();
-                    masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
-                    updateMediaList();
-                }
-                setListIndex();
-            } else {
-                filterField.setDisable(true);
-            }
-            switchView();
-
-        } else {
-            editToggleButton.setSelected(false);
-        }
-    }
-
-    /**
-     * Saves the contents of the mediaMap to the file system when the menu item is selected.
-     * @param event is the action event.
-     */
-    @FXML
-    void saveList(ActionEvent event) {
-        io.save(mediaMap);
-    }
-
-    /**
-     * Closes the window when the menu item is selected.
-     * @param event is the action event.
-     */
-    @FXML
-    private void closeWindow(ActionEvent event) {
-        close();
-    }
-
-    /**
-     * Closes the window.
-     */
-    private void close() {
-        io.save(mediaMap);
-        Platform.exit();
     }
 
     /**
@@ -522,43 +528,6 @@ public class WatchlistProController implements Initializable {
             }
         }
 
-    }
-
-    /**
-     * Fetches the media data from Freebase.
-     * @param event is the action event.
-     */
-    @FXML
-    private void fetchMedia(ActionEvent event) {
-        try {
-            Client client = new Client();
-            String command = mediaList.getSelectionModel().getSelectedItem().getTitle();
-
-            Thread type = client.send(mediaEditType);
-            Thread search = client.send(command);
-            Thread quit = client.send("quit");
-
-            type.start();
-            type.join();
-
-            search.start();
-            search.join();
-
-            quit.start();
-            quit.join();
-
-            ArrayList<String> outputList = client.getOutputList();
-            if (mediaEditType.equals("film")) {
-                setFilmEditPane(outputList);
-            } else {
-                setTvEditPane(outputList);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
