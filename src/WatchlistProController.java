@@ -580,18 +580,19 @@ public class WatchlistProController implements Initializable {
     }
 
     /**
-     * Populates the film edit pane based on passed in arguments.
+     * Populates the tv display pane based on values from the film edit pane.
      */
-    private void setFilmEditPane(ArrayList<String> outputList) {
-        System.out.println(outputList);
-        filmTitleTextField.setText(outputList.get(0));
-        filmGenreTextField.setText(outputList.get(1));
-        filmDirectorTextField.setText(outputList.get(2));
-        filmRatingTextField.setText(outputList.get(3));
-        filmRuntimeTextField.setText(outputList.get(4));
-        filmProducerTextField.setText(outputList.get(5));
-        filmWriterTextField.setText(outputList.get(6));
-        filmDescriptionTextField.setText(outputList.get(7));
+    private void setTvDisplayPane() {
+        TvShow show = (TvShow) mediaList.getSelectionModel().getSelectedItem();
+
+        tvTitleLabel.setText(show.getTitle());
+        tvGenreLabel.setText(show.getGenre());
+        tvCreatorLabel.setText(show.getCreator());
+        tvNetworkLabel.setText(show.getNetwork());
+        tvRuntimeLabel.setText(show.getRuntime());
+        tvNumSeasonsLabel.setText(show.getNumSeasons());
+        tvNumEpisodesLabel.setText(show.getNumEpisodes());
+        tvDescriptionLabel.setText(show.getDescription());
     }
 
     /**
@@ -611,22 +612,6 @@ public class WatchlistProController implements Initializable {
     }
 
     /**
-     * Populates the tv display pane based on values from the film edit pane.
-     */
-    private void setTvDisplayPane() {
-        TvShow show = (TvShow) mediaList.getSelectionModel().getSelectedItem();
-
-        tvTitleLabel.setText(show.getTitle());
-        tvGenreLabel.setText(show.getGenre());
-        tvCreatorLabel.setText(show.getCreator());
-        tvNetworkLabel.setText(show.getNetwork());
-        tvRuntimeLabel.setText(show.getRuntime());
-        tvNumSeasonsLabel.setText(show.getNumSeasons());
-        tvNumEpisodesLabel.setText(show.getNumEpisodes());
-        tvDescriptionLabel.setText(show.getDescription());
-    }
-
-    /**
      * Populates the tv edit pane based on passed in arguments.
      */
     private void setTvEditPane() {
@@ -643,10 +628,23 @@ public class WatchlistProController implements Initializable {
     }
 
     /**
+     * Populates the film edit pane based on passed in arguments.
+     */
+    private void setFilmEditPane(ArrayList<String> outputList) {
+        filmTitleTextField.setText(outputList.get(0));
+        filmGenreTextField.setText(outputList.get(1));
+        filmDirectorTextField.setText(outputList.get(2));
+        filmRatingTextField.setText(outputList.get(3));
+        filmRuntimeTextField.setText(outputList.get(4));
+        filmProducerTextField.setText(outputList.get(5));
+        filmWriterTextField.setText(outputList.get(6));
+        filmDescriptionTextField.setText(outputList.get(7));
+    }
+
+    /**
      * Populates the tv edit pane based on passed in arguments.
      */
     private void setTvEditPane(ArrayList<String> outputList) {
-
         tvTitleTextField.setText(outputList.get(0));
         tvGenreTextField.setText(outputList.get(1));
         tvCreatorTextField.setText(outputList.get(2));
