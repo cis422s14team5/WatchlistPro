@@ -16,12 +16,18 @@ public class ClientThread implements Runnable {
     private Client client;
 
     public ClientThread(Client client, Socket socket, String command) throws IOException {
-        this.command = command;
         this.client = client;
+        this.command = command;
 
         out = new PrintWriter(socket.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         processor = new ClientProcessor();
+
+        if (command.equals("film")) {
+            processor.setFilmState();
+        } else {
+            processor.setTvState();
+        }
     }
 
     @Override

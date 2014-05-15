@@ -13,6 +13,14 @@ public class TopicProcessor {
         ArrayList<String> output = new ArrayList<>();
 
         String title = JsonPath.read(topic, "$.property['/type/object/name'].values[0].value").toString();
+
+        JSONArray genres = JsonPath.read(topic,  "$.property['/film/film/genre'].values");
+        ArrayList<String> genreList = new ArrayList<>();
+        for (Object obj : genres) {
+            JSONObject genre = (JSONObject) obj;
+            genreList.add(genre.get("text").toString());
+        }
+
         String rating = JsonPath.read(topic, "$property['/film/film/rating'].values[0].text").toString();
         String director = JsonPath.read(topic, "$.property['/film/film/directed_by'].values[0].text").toString();
 
@@ -33,24 +41,32 @@ public class TopicProcessor {
         String description =  JsonPath.read(topic,
                 "$.property['/common/topic/description'].values[0].value").toString();
 
-        String website;
-        try {
-            website = JsonPath.read(topic,
-                    "$.property['/common/topic/official_website'].values[0].value").toString();
-        } catch (com.jayway.jsonpath.InvalidPathException e) {
-            website = "No website listed.";
-        }
+//        String website;
+//        try {
+//            website = JsonPath.read(topic,
+//                    "$.property['/common/topic/official_website'].values[0].value").toString();
+//        } catch (com.jayway.jsonpath.InvalidPathException e) {
+//            website = "No website listed.";
+//        }
 
         output.clear();
-        output.add("");
         output.add(title);
-        output.add(""); // genre
-        output.add(String.format("Directed by: %s", director));
-        output.add(String.format("Rated: %s", rating));
+
+        String genreTemp = "";
+        for (int i = 0; i < genreList.size(); i++) {
+            genreTemp += genreList.get(i);
+            if (i != genreList.size() - 1) {
+                genreTemp += ", ";
+            }
+        }
+        output.add(genreTemp);
+
+        output.add(String.format(director));
+        output.add(String.format(rating));
 
         output.add(""); // runtime
 
-        String producersTemp = "Produced by: ";
+        String producersTemp = "";
         for (int i = 0; i < producersList.size(); i++) {
             producersTemp += producersList.get(i);
             if (i != producersList.size() - 1) {
@@ -59,7 +75,7 @@ public class TopicProcessor {
         }
         output.add(producersTemp);
 
-        String writersTemp = "Written by: ";
+        String writersTemp = "";
         for (int i = 0; i < writersList.size(); i++) {
             writersTemp += writersList.get(i);
             if (i != writersList.size() - 1) {
@@ -68,10 +84,7 @@ public class TopicProcessor {
         }
         output.add(writersTemp);
 
-        //output.add(String.format("Website: %s", website));
-        output.add("Description:");
         output.add(description);
-        output.add("");
 
         return output;
     }
@@ -126,20 +139,19 @@ public class TopicProcessor {
 //            episodeList.add(episode.get("text").toString());
 //        }
 
-        String website;
-        try {
-            website =
-                    JsonPath.read(topic,
-                            "$.property['/common/topic/official_website'].values[0].value").toString();
-        } catch (com.jayway.jsonpath.InvalidPathException e) {
-            website = "No website listed.";
-        }
+//        String website;
+//        try {
+//            website =
+//                    JsonPath.read(topic,
+//                            "$.property['/common/topic/official_website'].values[0].value").toString();
+//        } catch (com.jayway.jsonpath.InvalidPathException e) {
+//            website = "No website listed.";
+//        }
 
         output.clear();
-        output.add("");
         output.add(title);
 
-        String genreTemp = "Genre: ";
+        String genreTemp = "";
         for (int i = 0; i < genreList.size(); i++) {
             genreTemp += genreList.get(i);
             if (i != genreList.size() - 1) {
@@ -148,7 +160,7 @@ public class TopicProcessor {
         }
         output.add(genreTemp);
 
-        String creatorsTemp = "Program creator: ";
+        String creatorsTemp = "";
         for (int i = 0; i < creatorList.size(); i++) {
             creatorsTemp += creatorList.get(i);
             if (i != creatorList.size() - 1) {
@@ -157,19 +169,25 @@ public class TopicProcessor {
         }
         output.add(creatorsTemp);
 
-        output.add(String.format("Network: %s", network));
+        output.add(String.format(network));
         output.add(""); // runtime
-        output.add(String.format("Number of seasons: %s", numSeasons));
+
+        output.add(String.format(numSeasons));
         if (!numEpisodes.equals("[]")) {
             int num = (int) Float.parseFloat(numEpisodes);
-            output.add(String.format("Number of episodes: %s", num));
+            output.add(Integer.toString(num));
         } else {
-            output.add("Number of episodes:");
+            output.add("");
         }
-        output.add("Description:");
-        descriptionList.forEach(output::add);
-        //episodeList.forEach(output::add);
-        output.add("");
+
+        String descriptionTemp = "";
+        for (int i = 0; i < descriptionList.size(); i++) {
+            descriptionTemp += descriptionList.get(i);
+            if (i != descriptionList.size() - 1) {
+                descriptionTemp += ", ";
+            }
+        }
+        output.add(descriptionTemp);
 
         return output;
     }

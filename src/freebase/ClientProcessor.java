@@ -18,7 +18,6 @@ public class ClientProcessor {
     TopicProcessor processor = new TopicProcessor();
 
     public void processServer(String input) {
-        System.out.println("Processing: " + input);
         String[] output = input.split("");
         finished = false;
 
@@ -36,14 +35,7 @@ public class ClientProcessor {
                     break;
             }
             finished = true;
-            outputList.forEach(System.out::println);
-
-//            System.out.println(
-//                    "Search with <title>, \"film\" or \"tv\" to switch filters, or \"quit\" to quit.");
         }
-//        else {
-//            System.out.println(input);
-//        }
     }
 
     public String processUser(String input) {
@@ -63,5 +55,13 @@ public class ClientProcessor {
 
     public boolean isFinished() {
         return finished;
+    }
+
+    public void setFilmState() {
+        this.state = FILM;
+    }
+
+    public void setTvState() {
+        this.state = TV;
     }
 }

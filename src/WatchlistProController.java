@@ -204,10 +204,7 @@ public class WatchlistProController implements Initializable {
         // Handle ListView selection changes.
         mediaList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 
-            if (editToggleButton.isSelected()) {
-
-                switchView();
-            }
+            switchView();
 
             if (newValue != null) {
 
@@ -342,7 +339,7 @@ public class WatchlistProController implements Initializable {
 
                 filterField.clear();
                 filterField.setDisable(false);
-                if (mediaType.equals("film")) {
+                if (mediaList.getSelectionModel().getSelectedItem() instanceof Film) {
 
                     if (mediaName.equals(filmTitleTextField.getText())) {
                         ((Film) mediaMap.get(mediaName)).setTitle(filmTitleTextField.getText());
@@ -453,8 +450,10 @@ public class WatchlistProController implements Initializable {
 
         if (mediaList.getSelectionModel().getSelectedItem() instanceof Film) {
             setFilmEditPane();
+            mediaEditType = "film";
         } else if (mediaList.getSelectionModel().getSelectedItem() instanceof TvShow) {
             setTvEditPane();
+            mediaEditType = "tv";
         } else {
             mediaList.getSelectionModel().select(0);
         }
@@ -463,7 +462,6 @@ public class WatchlistProController implements Initializable {
         if (editToggleButton.isSelected()) {
             editToggleButton.setText("Done");
             fetchButton.setDisable(false);
-            mediaEditType = mediaType;
 
             // select tv or film edit panel
             switch (mediaEditType) {
