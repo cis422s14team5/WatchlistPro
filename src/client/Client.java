@@ -14,6 +14,7 @@ public class Client {
 
     private ArrayList<String> outputList;
     private Socket socket;
+    private File file;
 
     public Client() {
         String hostName = "hkhamm.com";
@@ -47,4 +48,13 @@ public class Client {
     public void setOutputList(ArrayList<String> outputList) {
         this.outputList = outputList;
     }
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
+    }
+
 }

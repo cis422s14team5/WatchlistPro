@@ -54,7 +54,7 @@ public class ClientThread implements Runnable {
                             break;
                         case LOADING:
                             FileIO io = new FileIO();
-                            io.save(io.load(new ArrayList<>(Arrays.asList(input.split("<('_')>")))));
+                            io.save(io.load(new ArrayList<>(Arrays.asList(input.split("<('_')>")))), client.getFile());
                             break;
                         default:
                             break;

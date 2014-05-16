@@ -21,16 +21,17 @@ public class FileIO {
 
     /**
      * Encodes each Media object in the mediaMap into a JSON string and writes it to the file system using write.
+     * @param file the file to save to.
      * @param mediaMap is a map of entities to save from.
      */
-    public void save(ObservableMap<String, Media> mediaMap) {
+    public void save(ObservableMap<String, Media> mediaMap, File file) {
         ArrayList<String> list = new ArrayList<>();
         for (HashMap.Entry entry : mediaMap.entrySet()) {
             Media media = (Media) entry.getValue();
             String jsonString = JSONValue.toJSONString(media.getMap());
             list.add(jsonString);
         }
-        write(list);
+        write(list, file);
     }
 
     /**
@@ -107,10 +108,11 @@ public class FileIO {
      * Reads the contents of the file using read into an array list and creates a Media object from a JSON string on
      * each line. Fills and returns a mediaMap.
      * @param mediaMap is a map of entities to load into.
+     * @param file the file to load from.
      * @return a filled mediaMap
      */
-    protected ObservableMap<String, Media> load(ObservableMap<String, Media> mediaMap) {
-        ArrayList<String> list = read();
+    protected ObservableMap<String, Media> load(ObservableMap<String, Media> mediaMap, File file) {
+        ArrayList<String> list = read(file);
         for (String string : list) {
             JSONObject object = (JSONObject) JSONValue.parse(string);
 
@@ -177,10 +179,11 @@ public class FileIO {
     /**
      * Writes the array list to the file "store.txt".
      * @param list is the array list where each element will become a line in the file.
+     * @param file the file to write to.
      */
-    private void write(ArrayList<String> list) {
+    private void write(ArrayList<String> list, File file) {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("store.txt")));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
             for (String string: list) {
                 writer.write(string + "\n");
             }
@@ -191,13 +194,14 @@ public class FileIO {
     }
 
     /**
-     * Reads from the file "store.txt" into an array list.
+     * Reads from the file into an array list.
+     * @param file the file to read from.
      * @return a list where each element is a line of the file.
      */
-    private ArrayList<String> read() {
+    private ArrayList<String> read(File file) {
         ArrayList<String> list = new ArrayList<>();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("store.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader(file));
             String line;
             while ((line = reader.readLine()) != null) {
                 list.add(line);

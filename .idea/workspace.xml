@@ -66,12 +66,22 @@
       <file leaf-file-name="WatchlistProController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/watchlistpro/WatchlistProController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.16055046" vertical-offset="1545" max-vertical-offset="10335">
-              <caret line="145" column="92" selection-start-line="145" selection-start-column="9" selection-end-line="145" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.19724771" vertical-offset="2046" max-vertical-offset="10605">
+              <caret line="180" column="66" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
               <folding>
-                <element signature="e#25185#25186#0" expanded="true" />
-                <element signature="e#25219#25220#0" expanded="true" />
+                <element signature="e#26237#26238#0" expanded="true" />
+                <element signature="e#26271#26272#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileIO.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/watchlistpro/FileIO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="3135">
+              <caret line="188" column="55" selection-start-line="188" selection-start-column="13" selection-end-line="188" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -79,8 +89,8 @@
       <file leaf-file-name="WatchlistPro.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/watchlistpro/WatchlistPro.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
-              <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -99,8 +109,8 @@
       <file leaf-file-name="ClientThread.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/ClientThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="1035">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1035">
+              <caret line="65" column="78" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -109,9 +119,14 @@
       <file leaf-file-name="Client.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="96" max-vertical-offset="750">
-              <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="156" max-vertical-offset="900">
+              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+              <folding>
+                <element signature="e#1251#1252#0" expanded="true" />
+                <element signature="e#1278#1279#0" expanded="true" />
+                <element signature="e#1316#1317#0" expanded="true" />
+                <element signature="e#1348#1349#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -145,14 +160,15 @@
         <option value="$PROJECT_DIR$/src/freebase/TopicProcessor.java" />
         <option value="$PROJECT_DIR$/src/WatchlistProController.java" />
         <option value="$PROJECT_DIR$/src/FileIO.java" />
-        <option value="$PROJECT_DIR$/src/watchlistpro/FileIO.java" />
         <option value="$PROJECT_DIR$/src/freebase/ClientProcessor.java" />
         <option value="$PROJECT_DIR$/src/freebase/ClientThread.java" />
         <option value="$PROJECT_DIR$/src/freebase/Client.java" />
         <option value="$PROJECT_DIR$/src/freebase/TopicHandler.java" />
         <option value="$PROJECT_DIR$/src/client/TopicHandler.java" />
-        <option value="$PROJECT_DIR$/src/client/Client.java" />
         <option value="$PROJECT_DIR$/src/watchlistpro/WatchlistPro.java" />
+        <option value="$PROJECT_DIR$/src/watchlistpro/FileIO.java" />
+        <option value="$PROJECT_DIR$/src/client/Client.java" />
+        <option value="$PROJECT_DIR$/src/client/ClientThread.java" />
         <option value="$PROJECT_DIR$/src/watchlistpro/WatchlistProController.java" />
       </list>
     </option>
@@ -512,7 +528,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21357615" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3076142" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3076142" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -638,37 +654,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/ClientThread.java">
+    <entry file="file://$PROJECT_DIR$/src/watchlistpro/WatchlistPro.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="381" max-vertical-offset="1035">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="750">
-          <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="156" max-vertical-offset="900">
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding>
+            <element signature="e#1251#1252#0" expanded="true" />
+            <element signature="e#1278#1279#0" expanded="true" />
+            <element signature="e#1316#1317#0" expanded="true" />
+            <element signature="e#1348#1349#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/watchlistpro/FileIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="3135">
+          <caret line="188" column="55" selection-start-line="188" selection-start-column="13" selection-end-line="188" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/watchlistpro/WatchlistPro.java">
+    <entry file="file://$PROJECT_DIR$/src/client/ClientThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1035">
+          <caret line="65" column="78" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/watchlistpro/WatchlistProController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16055046" vertical-offset="1545" max-vertical-offset="10335">
-          <caret line="145" column="92" selection-start-line="145" selection-start-column="9" selection-end-line="145" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.19724771" vertical-offset="2046" max-vertical-offset="10605">
+          <caret line="180" column="66" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
           <folding>
-            <element signature="e#25185#25186#0" expanded="true" />
-            <element signature="e#25219#25220#0" expanded="true" />
+            <element signature="e#26237#26238#0" expanded="true" />
+            <element signature="e#26271#26272#0" expanded="true" />
           </folding>
         </state>
       </provider>

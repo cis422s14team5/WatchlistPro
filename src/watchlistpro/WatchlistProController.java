@@ -55,8 +55,8 @@ public class WatchlistProController implements Initializable {
     // Other
     private MediaCreator mediaCreator;
     private FileIO io;
-
     private Stage stage;
+    private File saveFile;
 
     // View components
     @FXML
@@ -156,8 +156,10 @@ public class WatchlistProController implements Initializable {
      * Constructor.
      */
     public WatchlistProController() {
+        // TODO Need to get the last open file from Preferences, see clearRecents
+        saveFile = new File("store.txt");
         io = new FileIO();
-        mediaMap = io.load(new ObservableMapWrapper<>(new HashMap<>()));
+        mediaMap = io.load(new ObservableMapWrapper<>(new HashMap<>()), saveFile);
         masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
         mediaCreator = new MediaCreator();
     }
@@ -171,25 +173,39 @@ public class WatchlistProController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         AquaFx.style(); // Throws CoreText performance errors
 
-        stage.setOnCloseRequest((final WindowEvent windowEvent) -> closeWindow());
-
         updateMediaList();
         mediaList.getSelectionModel().select(0);
+
+        //stage.setOnCloseRequest((final WindowEvent windowEvent) -> closeWindow());
     }
 
     @FXML
     public void createNew() {
         // TODO create new media map, rebuild master media list and update media list
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Create New Media File");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT Files (*.txt)", "*.txt"));
+        File selectedFile = fileChooser.showSaveDialog(stage);
+        if (selectedFile != null) {
+            saveFile = selectedFile;
+            mediaMap.clear();
+            io.save(mediaMap, saveFile);
+            masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
+            updateMediaList();
+        }
     }
 
     @FXML
     public void openLibrary() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Media File");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files (*.txt)", "*.txt"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT Files (*.txt)", "*.txt"));
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile != null) {
-            System.out.println("Valid file selected.");
+            saveFile = selectedFile;
+            io.load(mediaMap, saveFile);
+            masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
+            updateMediaList();
         }
     }
 
@@ -197,6 +213,7 @@ public class WatchlistProController implements Initializable {
     public void clearRecents() {
         // TODO clear recently opened media libraries
         // TODO save recently opened media libraries as entries on this list
+        // http://stackoverflow.com/questions/3062630/showing-the-most-recent-opened-items-in-a-menu-bar
 
     }
 
@@ -352,7 +369,7 @@ public class WatchlistProController implements Initializable {
      */
     @FXML
     public void saveList() {
-        io.save(mediaMap);
+        io.save(mediaMap, saveFile);
     }
 
     /**
@@ -360,7 +377,7 @@ public class WatchlistProController implements Initializable {
      */
     @FXML
     public void closeWindow() {
-        io.save(mediaMap);
+        io.save(mediaMap, saveFile);
         Platform.exit();
     }
 
@@ -403,6 +420,7 @@ public class WatchlistProController implements Initializable {
     @FXML
     public void loadFromServer() {
         Client client = new Client();
+        client.setFile(saveFile);
         try {
             Thread load = client.send("load");
             Thread quit = client.send("quit");
@@ -413,7 +431,7 @@ public class WatchlistProController implements Initializable {
             quit.start();
             quit.join();
 
-            io.load(mediaMap);
+            io.load(mediaMap, saveFile);
             masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
             updateMediaList();
         } catch (IOException e) {
