@@ -37,11 +37,17 @@ import java.util.ArrayList;
 
 public class Client {
 
+    private static final int FILM = 0;
+    private static final int TV = 1;
+    private static final int LOADING = 2;
+
+    private int state;
+
     private ArrayList<String> outputList;
     private Socket socket;
 
     public Client() {
-        String hostName = "hkhamm.com";
+        String hostName = "localhost";
         int portNumber = 1981;
         try {
             socket = new Socket(hostName, portNumber);
@@ -51,7 +57,18 @@ public class Client {
     }
 
     public Thread send(String command) throws IOException, InterruptedException {
-        return new Thread(new ClientThread(this, socket, command), "thread");
+        switch (command) {
+            case "film":
+                state = FILM;
+                break;
+            case "tv":
+                state = TV;
+                break;
+            case "load":
+                state = LOADING;
+                break;
+        }
+        return new Thread(new ClientThread(this, state, socket, command), "thread");
     }
 
     public ArrayList<String> getOutputList() {

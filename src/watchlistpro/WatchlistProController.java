@@ -1,3 +1,5 @@
+package watchlistpro;
+
 import com.aquafx_project.AquaFx;
 
 import com.sun.javafx.collections.ObservableListWrapper;
@@ -24,6 +26,7 @@ import model.Film;
 import model.Media;
 import model.TvShow;
 import freebase.Client;
+import org.json.simple.JSONValue;
 
 import java.io.IOException;
 import java.net.URL;
@@ -86,6 +89,10 @@ public class WatchlistProController implements Initializable {
     private MenuItem closeWindowMenu;
     @FXML
     private MenuItem saveMenuItem;
+    @FXML
+    private MenuItem serverSave;
+    @FXML
+    private MenuItem serverLoad;
     @FXML
     private VBox filmEditPane;
     @FXML
@@ -166,6 +173,7 @@ public class WatchlistProController implements Initializable {
         // Menu
         closeWindowMenu.setAccelerator(new KeyCodeCombination(KeyCode.W, KeyCombination.SHORTCUT_DOWN));
         saveMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.SHORTCUT_DOWN));
+
     }
 
     /**
@@ -333,6 +341,68 @@ public class WatchlistProController implements Initializable {
     }
 
     /**
+     * Save the contents of the media map to the server.
+     */
+    @FXML
+    public void saveToServer() {
+        String output = "";
+        for (HashMap.Entry entry : mediaMap.entrySet()) {
+            Media media = (Media) entry.getValue();
+            String jsonString = JSONValue.toJSONString(media.getMap());
+            output += jsonString + "<('_')>";
+        }
+        Client client = new Client();
+        try {
+            Thread save = client.send("save");
+            Thread outputThread = client.send(output);
+            Thread quit = client.send("quit");
+
+            save.start();
+            save.join();
+
+            outputThread.start();
+            outputThread.join();
+
+            quit.start();
+        } catch (IOException e) {
+            System.err.println("IOException");
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            System.err.println("Interrupted Exception");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Load the a library from the server into the media map.
+     */
+    @FXML
+    public void loadFromServer() {
+        Client client = new Client();
+        try {
+            Thread load = client.send("load");
+            Thread quit = client.send("quit");
+
+            load.start();
+            load.join();
+
+            quit.start();
+            quit.join();
+
+            io.load(mediaMap);
+            masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
+            updateMediaList();
+        } catch (IOException e) {
+            System.err.println("IOException");
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            System.err.println("Interrupted Exception");
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
      * Fetches the media data from Freebase.
      */
     @FXML
@@ -387,7 +457,6 @@ public class WatchlistProController implements Initializable {
 
         // Handle ListView selection changes.
         mediaList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-
             switchView();
 
             if (newValue != null) {
@@ -453,81 +522,82 @@ public class WatchlistProController implements Initializable {
      * Switches between the display view to the edit view.
      */
     private void switchView() {
-
-        if (mediaList.getSelectionModel().getSelectedItem() instanceof Film) {
-            setFilmEditPane();
-            mediaEditType = "film";
-        } else if (mediaList.getSelectionModel().getSelectedItem() instanceof TvShow) {
-            setTvEditPane();
-            mediaEditType = "tv";
-        } else {
-            mediaList.getSelectionModel().select(0);
-        }
-
-        // edit pane is enabled
-        if (editToggleButton.isSelected()) {
-            editToggleButton.setText("Done");
-            fetchButton.setDisable(false);
-
-            // select tv or film edit panel
-            switch (mediaEditType) {
-                case "tv":
-                    // set tv edit pane visible
-                    tvEditPane.setVisible(true);
-                    tvEditPane.setDisable(false);
-                    // set all other panes invisible
-                    filmDisplayPane.setVisible(false);
-                    tvDisplayPane.setVisible(false);
-                    filmEditPane.setVisible(false);
-                    filmEditPane.setDisable(true);
-                    break;
-                case "film":
-
-                    // set film edit pane visible
-                    filmEditPane.setVisible(true);
-                    filmEditPane.setDisable(false);
-                    // set all other panes invisible
-                    filmDisplayPane.setVisible(false);
-                    tvDisplayPane.setVisible(false);
-                    tvEditPane.setVisible(false);
-                    tvEditPane.setDisable(true);
-                    break;
+        if (mediaList.getSelectionModel().getSelectedItem() != null) {
+            if (mediaList.getSelectionModel().getSelectedItem() instanceof Film) {
+                mediaEditType = "film";
+            } else if (mediaList.getSelectionModel().getSelectedItem() instanceof TvShow) {
+                mediaEditType = "tv";
+            } else {
+                mediaList.getSelectionModel().select(0);
             }
-        } else {
-            // display pane is enabled
-            editToggleButton.setText("Edit");
-            fetchButton.setDisable(true);
 
-            // select tv or film display panel
-            switch (mediaEditType) {
-                case "tv":
-                    // set tv display pane to display contents of tv edit pane
-                    setTvDisplayPane();
-                    // set tv display pane visible
-                    tvDisplayPane.setVisible(true);
-                    // set all other panes invisible
-                    filmEditPane.setVisible(false);
-                    filmEditPane.setDisable(true);
-                    filmDisplayPane.setVisible(false);
-                    tvEditPane.setVisible(false);
-                    tvEditPane.setDisable(true);
-                    break;
+            // edit pane is enabled
+            if (editToggleButton.isSelected()) {
+                editToggleButton.setText("Done");
+                fetchButton.setDisable(false);
 
-                case "film":
-                    // set film display pane to display contents of film edit pane
-                    setFilmDisplayPane();
-                    // set film display pane visible
-                    filmDisplayPane.setVisible(true);
-                    // set all other panes invisible
-                    filmEditPane.setVisible(false);
-                    filmEditPane.setDisable(true);
-                    tvDisplayPane.setVisible(false);
-                    tvEditPane.setVisible(false);
-                    tvEditPane.setDisable(true);
-                    break;
+                // select tv or film edit panel
+                switch (mediaEditType) {
+                    case "tv":
+                        setTvEditPane();
+                        // set tv edit pane visible
+                        tvEditPane.setVisible(true);
+                        tvEditPane.setDisable(false);
+                        // set all other panes invisible
+                        filmDisplayPane.setVisible(false);
+                        tvDisplayPane.setVisible(false);
+                        filmEditPane.setVisible(false);
+                        filmEditPane.setDisable(true);
+                        break;
+                    case "film":
+                        setFilmEditPane();
+
+                        // set film edit pane visible
+                        filmEditPane.setVisible(true);
+                        filmEditPane.setDisable(false);
+                        // set all other panes invisible
+                        filmDisplayPane.setVisible(false);
+                        tvDisplayPane.setVisible(false);
+                        tvEditPane.setVisible(false);
+                        tvEditPane.setDisable(true);
+                        break;
+                }
+            } else {
+                // display pane is enabled
+                editToggleButton.setText("Edit");
+                fetchButton.setDisable(true);
+
+                // select tv or film display panel
+                switch (mediaEditType) {
+                    case "tv":
+                        // set tv display pane to display contents of tv edit pane
+                        setTvDisplayPane();
+                        // set tv display pane visible
+                        tvDisplayPane.setVisible(true);
+                        // set all other panes invisible
+                        filmEditPane.setVisible(false);
+                        filmEditPane.setDisable(true);
+                        filmDisplayPane.setVisible(false);
+                        tvEditPane.setVisible(false);
+                        tvEditPane.setDisable(true);
+                        break;
+
+                    case "film":
+                        // set film display pane to display contents of film edit pane
+                        setFilmDisplayPane();
+                        // set film display pane visible
+                        filmDisplayPane.setVisible(true);
+                        // set all other panes invisible
+                        filmEditPane.setVisible(false);
+                        filmEditPane.setDisable(true);
+                        tvDisplayPane.setVisible(false);
+                        tvEditPane.setVisible(false);
+                        tvEditPane.setDisable(true);
+                        break;
+                }
             }
-        }
 
+        }
     }
 
     /**
