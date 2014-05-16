@@ -13,7 +13,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem fx:id="newMenuItem" mnemonicParsing="false" onAction="#createNew" text="New">
+                  <MenuItem id="newMenuItem" fx:id="newMenuItem" mnemonicParsing="false" onAction="#createNew" text="New">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="N" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                      </accelerator>

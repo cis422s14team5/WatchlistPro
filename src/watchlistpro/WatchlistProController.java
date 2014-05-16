@@ -384,7 +384,7 @@ public class WatchlistProController implements Initializable {
     }
 
     /**
-     * Load the a library from the server into the media map.
+     * Load the library from the server into the media map.
      */
     @FXML
     public void loadFromServer() {

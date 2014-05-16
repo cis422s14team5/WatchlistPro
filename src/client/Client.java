@@ -49,7 +49,7 @@ public class Client {
     private Socket socket;
 
     public Client() {
-        String hostName = "localhost";
+        String hostName = "hkhamm.com";
         int portNumber = 1981;
         try {
             socket = new Socket(hostName, portNumber);
