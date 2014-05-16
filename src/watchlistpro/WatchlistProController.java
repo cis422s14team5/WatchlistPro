@@ -1,3 +1,5 @@
+package watchlistpro;
+
 import com.aquafx_project.AquaFx;
 
 import com.sun.javafx.collections.ObservableListWrapper;
@@ -24,6 +26,7 @@ import model.Film;
 import model.Media;
 import model.TvShow;
 import freebase.Client;
+import org.json.simple.JSONValue;
 
 import java.io.IOException;
 import java.net.URL;
@@ -86,6 +89,10 @@ public class WatchlistProController implements Initializable {
     private MenuItem closeWindowMenu;
     @FXML
     private MenuItem saveMenuItem;
+    @FXML
+    private MenuItem serverSave;
+    @FXML
+    private MenuItem serverLoad;
     @FXML
     private VBox filmEditPane;
     @FXML
@@ -334,6 +341,68 @@ public class WatchlistProController implements Initializable {
     }
 
     /**
+     * Save the contents of the media map to the server.
+     */
+    @FXML
+    public void saveToServer() {
+        String output = "";
+        for (HashMap.Entry entry : mediaMap.entrySet()) {
+            Media media = (Media) entry.getValue();
+            String jsonString = JSONValue.toJSONString(media.getMap());
+            output += jsonString + "<('_')>";
+        }
+        Client client = new Client();
+        try {
+            Thread save = client.send("save");
+            Thread outputThread = client.send(output);
+            Thread quit = client.send("quit");
+
+            save.start();
+            save.join();
+
+            outputThread.start();
+            outputThread.join();
+
+            quit.start();
+        } catch (IOException e) {
+            System.err.println("IOException");
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            System.err.println("Interrupted Exception");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Load the a library from the server into the media map.
+     */
+    @FXML
+    public void loadFromServer() {
+        Client client = new Client();
+        try {
+            Thread load = client.send("load");
+            Thread quit = client.send("quit");
+
+            load.start();
+            load.join();
+
+            quit.start();
+            quit.join();
+
+            io.load(mediaMap);
+            masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
+            updateMediaList();
+        } catch (IOException e) {
+            System.err.println("IOException");
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            System.err.println("Interrupted Exception");
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
      * Fetches the media data from Freebase.
      */
     @FXML
@@ -529,8 +598,6 @@ public class WatchlistProController implements Initializable {
             }
 
         }
-
-
     }
 
     /**
@@ -601,7 +668,6 @@ public class WatchlistProController implements Initializable {
      * Populates the film edit pane based on passed in arguments.
      */
     private void setFilmEditPane(ArrayList<String> outputList) {
-        System.out.println(outputList);
         filmTitleTextField.setText(outputList.get(0));
         filmGenreTextField.setText(outputList.get(1));
         filmDirectorTextField.setText(outputList.get(2));

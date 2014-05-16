@@ -1,3 +1,5 @@
+package watchlistpro;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +15,7 @@ public class WatchlistPro extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("WatchlistPro.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../WatchlistPro.fxml"));
 
         Scene scene = new Scene(root);
 

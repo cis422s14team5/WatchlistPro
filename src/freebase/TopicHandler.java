@@ -7,7 +7,7 @@ import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
 
-public class TopicProcessor {
+public class TopicHandler {
 
     public ArrayList<String> filmOutput(JSONObject topic) {
         ArrayList<String> output = new ArrayList<>();
@@ -24,6 +24,8 @@ public class TopicProcessor {
         String rating = JsonPath.read(topic, "$property['/film/film/rating'].values[0].text").toString();
         String director = JsonPath.read(topic, "$.property['/film/film/directed_by'].values[0].text").toString();
 
+        //String runtime = JsonPath.read(topic, "$.property['/film/film/runtime'].values[0].text").toString();
+
         JSONArray producers = JsonPath.read(topic, "$.property['/film/film/produced_by'].values");
         ArrayList<String> producersList = new ArrayList<>();
         for (Object obj : producers) {
@@ -31,15 +33,20 @@ public class TopicProcessor {
             producersList.add(producer.get("text").toString());
         }
 
-        JSONArray writers = JsonPath.read(topic,  "$.property['/film/film/written_by'].values");
+        JSONArray writers = JsonPath.read(topic, "$.property['/film/film/written_by'].values");
         ArrayList<String> writersList = new ArrayList<>();
         for (Object obj : writers) {
             JSONObject writer = (JSONObject) obj;
             writersList.add(writer.get("text").toString());
         }
 
-        String description =  JsonPath.read(topic,
-                "$.property['/common/topic/description'].values[0].value").toString();
+        JSONArray descriptions =
+                JsonPath.read(topic, "$.property['/common/topic/description'].values");
+        ArrayList<String> descriptionList = new ArrayList<>();
+        for (Object obj : descriptions) {
+            JSONObject description = (JSONObject) obj;
+            descriptionList.add(description.get("value").toString());
+        }
 
 //        String website;
 //        try {
@@ -84,7 +91,14 @@ public class TopicProcessor {
         }
         output.add(writersTemp);
 
-        output.add(description);
+        String descriptionTemp = "";
+        for (int i = 0; i < descriptionList.size(); i++) {
+            descriptionTemp += descriptionList.get(i);
+            if (i != descriptionList.size() - 1) {
+                descriptionTemp += ", ";
+            }
+        }
+        output.add(descriptionTemp);
 
         return output;
     }
@@ -117,6 +131,8 @@ public class TopicProcessor {
         } catch (InvalidPathException e) {
             network = "";
         }
+
+        //String runtime = JsonPath.read(topic, "$.property['/tv/tv_program/runtime'].values[0].text").toString();
 
         JSONArray descriptions =
                 JsonPath.read(topic, "$.property['/common/topic/description'].values");
@@ -170,6 +186,7 @@ public class TopicProcessor {
         output.add(creatorsTemp);
 
         output.add(String.format(network));
+
         output.add(""); // runtime
 
         output.add(String.format(numSeasons));

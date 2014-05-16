@@ -1,3 +1,6 @@
+package watchlistpro;
+
+import com.sun.javafx.collections.ObservableMapWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableMap;
@@ -20,7 +23,7 @@ public class FileIO {
      * Encodes each Media object in the mediaMap into a JSON string and writes it to the file system using write.
      * @param mediaMap is a map of entities to save from.
      */
-    protected void save(ObservableMap<String, Media> mediaMap) {
+    public void save(ObservableMap<String, Media> mediaMap) {
         ArrayList<String> list = new ArrayList<>();
         for (HashMap.Entry entry : mediaMap.entrySet()) {
             Media media = (Media) entry.getValue();
@@ -28,6 +31,76 @@ public class FileIO {
             list.add(jsonString);
         }
         write(list);
+    }
+
+    /**
+     * Reads the contents of the file using read into an array list and creates a Media object from a JSON string on
+     * each line. Fills and returns a mediaMap.
+     * @return a filled mediaMap
+     */
+    public ObservableMap<String, Media> load(ArrayList<String> list) {
+        ObservableMap<String, Media> mediaMap = new ObservableMapWrapper<>(new HashMap<>());
+        for (String string : list) {
+            JSONObject object = (JSONObject) JSONValue.parse(string);
+
+            if (object.get("type").equals("film")) {
+                StringProperty title = new SimpleStringProperty();
+                title.set(object.get("title").toString());
+
+                StringProperty genre = new SimpleStringProperty();
+                genre.set(object.get("genre").toString());
+
+                StringProperty runtime = new SimpleStringProperty();
+                runtime.set(object.get("runtime").toString());
+
+                StringProperty director = new SimpleStringProperty();
+                director.set(object.get("director").toString());
+
+                StringProperty rating = new SimpleStringProperty();
+                rating.set(object.get("rating").toString());
+
+                StringProperty producer = new SimpleStringProperty();
+                producer.set(object.get("producer").toString());
+
+                StringProperty writer = new SimpleStringProperty();
+                writer.set(object.get("writer").toString());
+
+                StringProperty description = new SimpleStringProperty();
+                description.set(object.get("description").toString());
+
+                mediaMap.put(title.get(),
+                        new Film(title, genre, runtime, description, director, rating, producer, writer));
+            } else if (object.get("type").equals("tv")) {
+                StringProperty title = new SimpleStringProperty();
+                title.set(object.get("title").toString());
+
+                StringProperty genre = new SimpleStringProperty();
+                genre.set(object.get("genre").toString());
+
+                StringProperty runtime = new SimpleStringProperty();
+                runtime.set(object.get("runtime").toString());
+
+                StringProperty creator = new SimpleStringProperty();
+                creator.set(object.get("creator").toString());
+
+                StringProperty network = new SimpleStringProperty();
+                network.set(object.get("network").toString());
+
+                StringProperty numSeasons = new SimpleStringProperty();
+                numSeasons.set(object.get("numSeasons").toString());
+
+                StringProperty numEpisodes = new SimpleStringProperty();
+                numEpisodes.set(object.get("numEpisodes").toString());
+
+                StringProperty description = new SimpleStringProperty();
+                description.set(object.get("description").toString());
+
+                mediaMap.put(title.get(),
+                        new TvShow(title, genre, runtime, description, creator, network, numSeasons, numEpisodes));
+            }
+        }
+
+        return mediaMap;
     }
 
     /**
