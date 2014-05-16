@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.input.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -12,11 +13,43 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" onAction="#saveList" text="Save" />
-                  <MenuItem fx:id="serverSave" mnemonicParsing="false" onAction="#saveToServer" text="Server Save" />
-                  <MenuItem fx:id="serverLoad" mnemonicParsing="false" onAction="#loadFromServer" text="Server Load" />
+                  <MenuItem fx:id="newMenuItem" mnemonicParsing="false" onAction="#createNew" text="New">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="N" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+                     </accelerator>
+                  </MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="closeWindowMenu" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
+                  <MenuItem fx:id="openMenuItem" mnemonicParsing="false" onAction="#openLibrary" text="Open...">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+                     </accelerator>
+                  </MenuItem>
+                  <Menu mnemonicParsing="false" text="Open Recent">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="&lt;recents&gt;" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                      <MenuItem fx:id="clearMenuItem" mnemonicParsing="false" onAction="#clearRecents" text="Clear Menu" />
+                    </items>
+                  </Menu>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" onAction="#saveList" text="Save">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+                     </accelerator></MenuItem>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="serverSave" mnemonicParsing="false" onAction="#saveToServer" text="Server Save">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="DOWN" shortcut="DOWN" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="serverLoad" mnemonicParsing="false" onAction="#loadFromServer" text="Server Load">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="L" control="UP" meta="UP" shift="DOWN" shortcut="DOWN" />
+                     </accelerator></MenuItem>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="closeWMenuItem" mnemonicParsing="false" onAction="#closeWindow" text="Close">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="W" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+                     </accelerator></MenuItem>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

@@ -1,4 +1,4 @@
-package freebase;
+package client;
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;

@@ -1,4 +1,4 @@
-package freebase;
+package client;
 
 import com.jayway.jsonpath.InvalidPathException;
 import com.jayway.jsonpath.JsonPath;

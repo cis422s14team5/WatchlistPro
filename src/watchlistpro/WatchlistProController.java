@@ -17,15 +17,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyCodeCombination;
-import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.VBox;
 
 import model.Film;
 import model.Media;
 import model.TvShow;
-import freebase.Client;
+import client.Client;
 import org.json.simple.JSONValue;
 
 import java.io.IOException;
@@ -165,14 +162,26 @@ public class WatchlistProController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        AquaFx.style(); // Throws CoreText performance errors
         updateMediaList();
         mediaList.getSelectionModel().select(0);
+    }
 
-        AquaFx.style(); // Throws CoreText performance errors
+    @FXML
+    public void createNew() {
+        // TODO create new media map, rebuild master media list and update media list
+    }
 
-        // Menu
-        closeWindowMenu.setAccelerator(new KeyCodeCombination(KeyCode.W, KeyCombination.SHORTCUT_DOWN));
-        saveMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.SHORTCUT_DOWN));
+    @FXML
+    public void openLibrary() {
+        // TODO open media library from the file system
+
+    }
+
+    @FXML
+    public void clearRecents() {
+        // TODO clear recently opened media libraries
+        // TODO save recently opened media libraries as entries on this list
 
     }
 
