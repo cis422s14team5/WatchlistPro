@@ -181,7 +181,6 @@ public class WatchlistProController implements Initializable {
 
     @FXML
     public void createNew() {
-        // TODO create new media map, rebuild master media list and update media list
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Create New Media File");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT Files (*.txt)", "*.txt"));
