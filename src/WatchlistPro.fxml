@@ -24,11 +24,15 @@
                         <KeyCodeCombination alt="UP" code="O" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                      </accelerator>
                   </MenuItem>
+                  <MenuItem fx:id="serverLoad" mnemonicParsing="false" onAction="#loadFromServer" text="Open from Server">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="UP" meta="UP" shift="DOWN" shortcut="DOWN" />
+                     </accelerator></MenuItem>
                   <Menu mnemonicParsing="false" text="Open Recent">
                     <items>
                         <MenuItem mnemonicParsing="false" text="&lt;recents&gt;" />
                         <SeparatorMenuItem mnemonicParsing="false" />
-                      <MenuItem fx:id="clearMenuItem" mnemonicParsing="false" onAction="#clearRecents" text="Clear Menu" />
+                      <MenuItem fx:id="clearMenuItem" mnemonicParsing="false" onAction="#clearRecentList" text="Clear List" />
                     </items>
                   </Menu>
                   <SeparatorMenuItem mnemonicParsing="false" />
@@ -36,14 +40,9 @@
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                      </accelerator></MenuItem>
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="serverSave" mnemonicParsing="false" onAction="#saveToServer" text="Server Save">
+                  <MenuItem fx:id="serverSave" mnemonicParsing="false" onAction="#saveToServer" text="Save to Server">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="DOWN" shortcut="DOWN" />
-                     </accelerator></MenuItem>
-                  <MenuItem fx:id="serverLoad" mnemonicParsing="false" onAction="#loadFromServer" text="Server Load">
-                     <accelerator>
-                        <KeyCodeCombination alt="UP" code="L" control="UP" meta="UP" shift="DOWN" shortcut="DOWN" />
                      </accelerator></MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="closeWMenuItem" mnemonicParsing="false" onAction="#closeWindow" text="Close">

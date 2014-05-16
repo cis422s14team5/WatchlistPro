@@ -156,7 +156,7 @@ public class WatchlistProController implements Initializable {
      * Constructor.
      */
     public WatchlistProController() {
-        // TODO Need to get the last open file from Preferences, see clearRecents
+        // TODO Need to get the last opened file from Preferences, see clearRecentList
         saveFile = new File("store.txt");
         io = new FileIO();
         mediaMap = io.load(new ObservableMapWrapper<>(new HashMap<>()), saveFile);
@@ -194,6 +194,7 @@ public class WatchlistProController implements Initializable {
 
     @FXML
     public void openLibrary() {
+        // TODO save recently opened media libraries as entries on this Open List
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Media File");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT Files (*.txt)", "*.txt"));
@@ -207,9 +208,8 @@ public class WatchlistProController implements Initializable {
     }
 
     @FXML
-    public void clearRecents() {
+    public void clearRecentList() {
         // TODO clear recently opened media libraries
-        // TODO save recently opened media libraries as entries on this list
         // http://stackoverflow.com/questions/3062630/showing-the-most-recent-opened-items-in-a-menu-bar
 
     }
