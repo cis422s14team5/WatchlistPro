@@ -16,12 +16,14 @@ public class WatchlistPro extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../WatchlistPro.fxml"));
+
         Parent root = loader.load();
+
         WatchlistProController controller = loader.getController();
+        controller.setStage(stage);
+        stage.setOnCloseRequest((final WindowEvent windowEvent) -> controller.closeWindow());
 
         Scene scene = new Scene(root);
-
-        controller.setStage(stage);
 
         stage.setScene(scene);
         stage.setTitle("WatchlistPro");

@@ -175,8 +175,6 @@ public class WatchlistProController implements Initializable {
 
         updateMediaList();
         mediaList.getSelectionModel().select(0);
-
-        //stage.setOnCloseRequest((final WindowEvent windowEvent) -> closeWindow());
     }
 
     @FXML
