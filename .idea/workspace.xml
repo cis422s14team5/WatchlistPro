@@ -66,11 +66,13 @@
       <file leaf-file-name="WatchlistProController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/watchlistpro/WatchlistProController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5275229" vertical-offset="2190" max-vertical-offset="10560">
-              <caret line="204" column="72" selection-start-line="204" selection-start-column="72" selection-end-line="204" selection-end-column="72" />
+            <state vertical-scroll-proportion="0.6116208" vertical-offset="5015" max-vertical-offset="11220">
+              <caret line="396" column="34" selection-start-line="396" selection-start-column="9" selection-end-line="396" selection-end-column="9" />
               <folding>
-                <element signature="e#26078#26079#0" expanded="true" />
-                <element signature="e#26112#26113#0" expanded="true" />
+                <element signature="e#13090#13091#0" expanded="true" />
+                <element signature="e#13133#13134#0" expanded="true" />
+                <element signature="e#27550#27551#0" expanded="true" />
+                <element signature="e#27584#27585#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -164,6 +166,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="-1" />
     <option name="y" value="22" />
     <option name="width" value="1208" />
     <option name="height" value="1054" />
@@ -498,7 +501,7 @@
     <option name="totallyTimeSpent" value="53303000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1208" height="1054" extended-state="0" />
+    <frame x="-1" y="22" width="1208" height="1054" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -683,11 +686,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/watchlistpro/WatchlistProController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5275229" vertical-offset="2190" max-vertical-offset="10560">
-          <caret line="204" column="72" selection-start-line="204" selection-start-column="72" selection-end-line="204" selection-end-column="72" />
+        <state vertical-scroll-proportion="0.6116208" vertical-offset="5015" max-vertical-offset="11220">
+          <caret line="396" column="34" selection-start-line="396" selection-start-column="9" selection-end-line="396" selection-end-column="9" />
           <folding>
-            <element signature="e#26078#26079#0" expanded="true" />
-            <element signature="e#26112#26113#0" expanded="true" />
+            <element signature="e#13090#13091#0" expanded="true" />
+            <element signature="e#13133#13134#0" expanded="true" />
+            <element signature="e#27550#27551#0" expanded="true" />
+            <element signature="e#27584#27585#0" expanded="true" />
           </folding>
         </state>
       </provider>

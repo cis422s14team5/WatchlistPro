@@ -189,6 +189,7 @@ public class WatchlistProController implements Initializable {
             io.save(mediaMap, saveFile);
             masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
             updateMediaList();
+            clearDisplayPane();
         }
     }
 
@@ -362,6 +363,15 @@ public class WatchlistProController implements Initializable {
     }
 
     /**
+     * Closes the window when the menu item is selected.
+     */
+    @FXML
+    public void closeWindow() {
+        io.save(mediaMap, saveFile);
+        Platform.exit();
+    }
+
+    /**
      * Saves the contents of the mediaMap to the file system when the menu item is selected.
      */
     @FXML
@@ -370,12 +380,21 @@ public class WatchlistProController implements Initializable {
     }
 
     /**
-     * Closes the window when the menu item is selected.
+     * Saves the contents of the mediaMap to the file system when the menu item is selected.
      */
     @FXML
-    public void closeWindow() {
-        io.save(mediaMap, saveFile);
-        Platform.exit();
+    public void saveAs() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save As...");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT Files (*.txt)", "*.txt"));
+        File selectedFile = fileChooser.showSaveDialog(stage);
+        if (selectedFile != null) {
+            saveFile = selectedFile;
+            mediaMap.clear();
+            io.save(mediaMap, saveFile);
+            masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
+            updateMediaList();
+        }
     }
 
     /**
@@ -637,6 +656,29 @@ public class WatchlistProController implements Initializable {
             }
 
         }
+    }
+
+    /**
+     * Clears all the fields in both the film and tv display panes.
+     */
+    private void clearDisplayPane() {
+        filmTitleLabel.setText("");
+        filmGenreLabel.setText("");
+        filmDirectorLabel.setText("");
+        filmRatingLabel.setText("");
+        filmRuntimeLabel.setText("");
+        filmProducerLabel.setText("");
+        filmWriterLabel.setText("");
+        filmDescriptionLabel.setText("");
+
+        tvTitleLabel.setText("");
+        tvGenreLabel.setText("");
+        tvCreatorLabel.setText("");
+        tvNetworkLabel.setText("");
+        tvRuntimeLabel.setText("");
+        tvNumSeasonsLabel.setText("");
+        tvNumEpisodesLabel.setText("");
+        tvDescriptionLabel.setText("");
     }
 
     /**

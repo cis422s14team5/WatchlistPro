@@ -26,7 +26,7 @@
                   </MenuItem>
                   <MenuItem fx:id="serverLoad" mnemonicParsing="false" onAction="#loadFromServer" text="Open from Server">
                      <accelerator>
-                        <KeyCodeCombination alt="UP" code="O" control="UP" meta="UP" shift="DOWN" shortcut="DOWN" />
+                        <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                      </accelerator></MenuItem>
                   <Menu mnemonicParsing="false" text="Open Recent">
                     <items>
@@ -40,9 +40,14 @@
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                      </accelerator></MenuItem>
-                  <MenuItem fx:id="serverSave" mnemonicParsing="false" onAction="#saveToServer" text="Save to Server">
+                  <MenuItem fx:id="saveAsMenuItem" mnemonicParsing="false" onAction="#saveAs" text="Save As...">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="DOWN" shortcut="DOWN" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="serverSave" mnemonicParsing="false" onAction="#saveToServer" text="Save to Server">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="S" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                      </accelerator></MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="closeWMenuItem" mnemonicParsing="false" onAction="#closeWindow" text="Close">
