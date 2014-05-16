@@ -7,8 +7,6 @@ import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
 
-// TODO Handle null pointer errors from reading topics
-
 public class TopicHandler {
 
     public ArrayList<String> filmOutput(JSONObject topic) {
@@ -16,38 +14,84 @@ public class TopicHandler {
 
         String title = JsonPath.read(topic, "$.property['/type/object/name'].values[0].value").toString();
 
-        JSONArray genres = JsonPath.read(topic,  "$.property['/film/film/genre'].values");
+        JSONArray genres;
+        try {
+            genres = JsonPath.read(topic, "$.property['/film/film/genre'].values");
+        } catch (InvalidPathException e) {
+            genres = new JSONArray();
+        }
         ArrayList<String> genreList = new ArrayList<>();
-        for (Object obj : genres) {
-            JSONObject genre = (JSONObject) obj;
-            genreList.add(genre.get("text").toString());
+        if (genres.size() > 0) {
+            for (Object obj : genres) {
+                JSONObject genre = (JSONObject) obj;
+                genreList.add(genre.get("text").toString());
+            }
+        } else {
+            genreList.add("");
         }
 
-        String rating = JsonPath.read(topic, "$property['/film/film/rating'].values[0].text").toString();
-        String director = JsonPath.read(topic, "$.property['/film/film/directed_by'].values[0].text").toString();
+        String rating;
+        try {
+            rating = JsonPath.read(topic, "$property['/film/film/rating'].values[0].text").toString();
+        } catch (Exception e) {
+            rating = "";
+        }
+
+        String director;
+        try {
+            director = JsonPath.read(topic, "$.property['/film/film/directed_by'].values[0].text").toString();
+        } catch (Exception e) {
+            director = "";
+        }
 
         //String runtime = JsonPath.read(topic, "$.property['/film/film/runtime'].values[0].text").toString();
 
-        JSONArray producers = JsonPath.read(topic, "$.property['/film/film/produced_by'].values");
+        JSONArray producers;
+        try {
+            producers = JsonPath.read(topic, "$.property['/film/film/produced_by'].values");
+        } catch (Exception e) {
+            producers = new JSONArray();
+        }
         ArrayList<String> producersList = new ArrayList<>();
-        for (Object obj : producers) {
-            JSONObject producer = (JSONObject) obj;
-            producersList.add(producer.get("text").toString());
+        if (producers.size() > 0) {
+            for (Object obj : producers) {
+                JSONObject producer = (JSONObject) obj;
+                producersList.add(producer.get("text").toString());
+            }
+        } else {
+            producersList.add("");
         }
 
-        JSONArray writers = JsonPath.read(topic, "$.property['/film/film/written_by'].values");
+        JSONArray writers;
+        try {
+            writers = JsonPath.read(topic, "$.property['/film/film/written_by'].values");
+        } catch (Exception e) {
+            writers = new JSONArray();
+        }
         ArrayList<String> writersList = new ArrayList<>();
-        for (Object obj : writers) {
-            JSONObject writer = (JSONObject) obj;
-            writersList.add(writer.get("text").toString());
+        if (writers.size() > 0) {
+            for (Object obj : writers) {
+                JSONObject writer = (JSONObject) obj;
+                writersList.add(writer.get("text").toString());
+            }
+        } else {
+            writersList.add("");
         }
 
-        JSONArray descriptions =
-                JsonPath.read(topic, "$.property['/common/topic/description'].values");
+        JSONArray descriptions;
+        try {
+            descriptions = JsonPath.read(topic, "$.property['/common/topic/description'].values");
+        } catch (Exception e) {
+            descriptions = new JSONArray();
+        }
         ArrayList<String> descriptionList = new ArrayList<>();
-        for (Object obj : descriptions) {
-            JSONObject description = (JSONObject) obj;
-            descriptionList.add(description.get("value").toString());
+        if (descriptions.size() > 0) {
+            for (Object obj : descriptions) {
+                JSONObject description = (JSONObject) obj;
+                descriptionList.add(description.get("value").toString());
+            }
+        } else {
+            descriptionList.add("");
         }
 
 //        String website;
@@ -110,18 +154,36 @@ public class TopicHandler {
 
         String title = JsonPath.read(topic,"$.property['/type/object/name'].values[0].value").toString();
 
-        JSONArray genres = JsonPath.read(topic,  "$.property['/tv/tv_program/genre'].values");
+        JSONArray genres;
+        try {
+            genres = JsonPath.read(topic, "$.property['/tv/tv_program/genre'].values");
+        } catch (Exception e) {
+            genres = new JSONArray();
+        }
         ArrayList<String> genreList = new ArrayList<>();
-        for (Object obj : genres) {
-            JSONObject genre = (JSONObject) obj;
-            genreList.add(genre.get("text").toString());
+        if (genres.size() > 0) {
+            for (Object obj : genres) {
+                JSONObject genre = (JSONObject) obj;
+                genreList.add(genre.get("text").toString());
+            }
+        } else {
+            genreList.add("");
         }
 
-        JSONArray creators = JsonPath.read(topic,  "$.property['/tv/tv_program/program_creator'].values");
+        JSONArray creators;
+        try {
+            creators = JsonPath.read(topic, "$.property['/tv/tv_program/program_creator'].values");
+        } catch (Exception e) {
+            creators = new JSONArray();
+        }
         ArrayList<String> creatorList = new ArrayList<>();
-        for (Object obj : creators) {
-            JSONObject creator = (JSONObject) obj;
-            creatorList.add(creator.get("text").toString());
+        if (creators.size() > 0) {
+            for (Object obj : creators) {
+                JSONObject creator = (JSONObject) obj;
+                creatorList.add(creator.get("text").toString());
+            }
+        } else {
+            creatorList.add("");
         }
 
         String network;
@@ -136,18 +198,37 @@ public class TopicHandler {
 
         //String runtime = JsonPath.read(topic, "$.property['/tv/tv_program/runtime'].values[0].text").toString();
 
-        JSONArray descriptions =
-                JsonPath.read(topic, "$.property['/common/topic/description'].values");
+        JSONArray descriptions;
+        try {
+            descriptions = JsonPath.read(topic, "$.property['/common/topic/description'].values");
+        } catch (Exception e) {
+            descriptions = new JSONArray();
+        }
         ArrayList<String> descriptionList = new ArrayList<>();
-        for (Object obj : descriptions) {
-            JSONObject description = (JSONObject) obj;
-            descriptionList.add(description.get("value").toString());
+        if (descriptions.size() > 0) {
+            for (Object obj : descriptions) {
+                JSONObject description = (JSONObject) obj;
+                descriptionList.add(description.get("value").toString());
+            }
+        } else {
+            descriptionList.add("");
         }
 
-        String numSeasons = String.format("%s", (int) Float.parseFloat(JsonPath.read(topic,
-                "$.property['/tv/tv_program/number_of_seasons'].values[0].value").toString()));
-        String numEpisodes = JsonPath.read(topic,
-                "$.property['/tv/tv_program/number_of_episodes'].values[0].value").toString();
+        String numSeasons;
+        try {
+            numSeasons = String.format("%s", (int) Float.parseFloat(JsonPath.read(topic,
+                    "$.property['/tv/tv_program/number_of_seasons'].values[0].value").toString()));
+        } catch (NumberFormatException e) {
+            numSeasons = "";
+        }
+
+        String numEpisodes;
+        try {
+            numEpisodes = JsonPath.read(topic,
+                    "$.property['/tv/tv_program/number_of_episodes'].values[0].value").toString();
+        } catch (Exception e) {
+            numEpisodes = "";
+        }
 
 //        JSONArray episodes =
 //                JsonPath.read(topic,"$.property['/tv/tv_program/episodes'].values");
