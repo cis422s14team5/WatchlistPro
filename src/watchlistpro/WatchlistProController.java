@@ -19,6 +19,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import model.Film;
 import model.Media;
 import model.TvShow;
@@ -26,6 +29,7 @@ import client.Client;
 
 import org.json.simple.JSONValue;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -51,6 +55,8 @@ public class WatchlistProController implements Initializable {
     // Other
     private MediaCreator mediaCreator;
     private FileIO io;
+
+    private Stage stage;
 
     // View components
     @FXML
@@ -152,7 +158,7 @@ public class WatchlistProController implements Initializable {
     public WatchlistProController() {
         io = new FileIO();
         mediaMap = io.load(new ObservableMapWrapper<>(new HashMap<>()));
-        masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
+        masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
         mediaCreator = new MediaCreator();
     }
 
@@ -164,6 +170,9 @@ public class WatchlistProController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         AquaFx.style(); // Throws CoreText performance errors
+
+        stage.setOnCloseRequest((final WindowEvent windowEvent) -> closeWindow());
+
         updateMediaList();
         mediaList.getSelectionModel().select(0);
     }
@@ -175,8 +184,13 @@ public class WatchlistProController implements Initializable {
 
     @FXML
     public void openLibrary() {
-        // TODO open media library from the file system
-
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Media File");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files (*.txt)", "*.txt"));
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        if (selectedFile != null) {
+            System.out.println("Valid file selected.");
+        }
     }
 
     @FXML
@@ -700,5 +714,13 @@ public class WatchlistProController implements Initializable {
         tvNumSeasonsTextField.setText(outputList.get(5));
         tvNumEpisodesTextField.setText(outputList.get(6));
         tvDescriptionTextField.setText(outputList.get(7));
+    }
+
+    /**
+     * Sets the stage.
+     * @param stage the stage to set.
+     */
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }

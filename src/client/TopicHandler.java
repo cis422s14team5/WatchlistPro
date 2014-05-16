@@ -12,7 +12,12 @@ public class TopicHandler {
     public ArrayList<String> filmOutput(JSONObject topic) {
         ArrayList<String> output = new ArrayList<>();
 
-        String title = JsonPath.read(topic, "$.property['/type/object/name'].values[0].value").toString();
+        String title;
+        try {
+            title = JsonPath.read(topic, "$.property['/type/object/name'].values[0].value").toString();
+        } catch (Exception e) {
+            title = "";
+        }
 
         JSONArray genres;
         try {
@@ -152,7 +157,12 @@ public class TopicHandler {
     public ArrayList<String> tvOutput(JSONObject topic) {
         ArrayList<String> output = new ArrayList<>();
 
-        String title = JsonPath.read(topic,"$.property['/type/object/name'].values[0].value").toString();
+        String title;
+        try {
+            title = JsonPath.read(topic, "$.property['/type/object/name'].values[0].value").toString();
+        } catch (Exception e) {
+            title = "";
+        }
 
         JSONArray genres;
         try {
