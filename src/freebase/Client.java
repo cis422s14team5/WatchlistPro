@@ -35,6 +35,8 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
+// TODO Handle null pointer errors with searching
+
 public class Client {
 
     private static final int FILM = 0;

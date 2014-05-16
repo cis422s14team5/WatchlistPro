@@ -7,6 +7,8 @@ import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
 
+// TODO Handle null pointer errors from reading topics
+
 public class TopicHandler {
 
     public ArrayList<String> filmOutput(JSONObject topic) {

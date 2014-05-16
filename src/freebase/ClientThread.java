@@ -1,10 +1,16 @@
 package freebase;
 
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+import watchlistpro.FileIO;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ClientThread implements Runnable {
 
@@ -12,49 +18,52 @@ public class ClientThread implements Runnable {
     private static final int TV = 1;
     private static final int LOADING = 2;
 
+    private int state;
+    private Client client;
+    private String command;
+
     private PrintWriter out;
     private BufferedReader in;
-    private ClientProcessor processor;
-
-    private String command;
-    private Client client;
-    private int state;
+    private ArrayList<String> outputList;
 
     public ClientThread(Client client, int state, Socket socket, String command) throws IOException {
-        this.client = client;
         this.state = state;
+        this.client = client;
         this.command = command;
 
         out = new PrintWriter(socket.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        processor = new ClientProcessor();
+        outputList = new ArrayList<>();
     }
 
     @Override
     public void run() {
-        String serverInput;
+        String input;
         try {
-            if ((serverInput = in.readLine()) != null && !serverInput.equals("Bye.")) {
-                switch (state) {
-                    case FILM:
-                        processor.setFilmState();
-                        break;
-                    case TV:
-                        processor.setTvState();
-                        break;
-                    case LOADING:
-                        processor.setLoadingState();
-                        break;
-                    default:
-                        break;
+            if ((input = in.readLine()) != null && !input.equals("Bye.")) {
+                String[] output = input.split("");
+
+                TopicHandler handler = new TopicHandler();
+                if (output[0].equals("{")) {
+                    switch (state) {
+                        case FILM:
+                            outputList = handler.filmOutput((JSONObject) JSONValue.parse(input));
+                            break;
+                        case TV:
+                            outputList = handler.tvOutput((JSONObject) JSONValue.parse(input));
+                            break;
+                        case LOADING:
+                            FileIO io = new FileIO();
+                            io.save(io.load(new ArrayList<>(Arrays.asList(input.split("<('_')>")))));
+                            break;
+                        default:
+                            break;
+                    }
                 }
 
-                processor.processServer(serverInput);
-
-                if (command.equals("quit") && processor.isFinished()) {
-                    client.setOutputList(processor.getOutputList());
+                if (command.equals("quit")) {
+                    client.setOutputList(outputList);
                 }
-
                 out.println(command);
             }
         } catch (IOException e) {
