@@ -170,6 +170,34 @@ public class WatchlistProController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         AquaFx.style(); // Throws CoreText performance errors
 
+        mediaList.setCellFactory((list) -> new ListCell<Media>() {
+            @Override
+            protected void updateItem(Media Media, boolean empty) {
+                super.updateItem(Media, empty);
+
+                if (Media == null || empty) {
+                    setText(null);
+                } else {
+                    setText(Media.getTitle());
+                }
+            }
+        });
+
+        // Handle ListView selection changes.
+        mediaList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            switchView();
+
+            if (newValue != null) {
+
+                if (mediaList.getSelectionModel().getSelectedItem() instanceof Film) {
+                    setFilmDisplayPane();
+                } else {
+                    setTvDisplayPane();
+                }
+                //mediaName = newValue.getTitle();
+                mediaIndex = mediaList.getSelectionModel().getSelectedIndex();
+            }
+        });
         updateMediaList();
         mediaList.getSelectionModel().select(0);
     }
@@ -525,34 +553,6 @@ public class WatchlistProController implements Initializable {
 
     private void updateMediaList() {
         mediaList.setItems(masterMediaList);
-        mediaList.setCellFactory((list) -> new ListCell<Media>() {
-            @Override
-            protected void updateItem(Media Media, boolean empty) {
-                super.updateItem(Media, empty);
-
-                if (Media == null || empty) {
-                    setText(null);
-                } else {
-                    setText(Media.getTitle());
-                }
-            }
-        });
-
-        // Handle ListView selection changes.
-        mediaList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            switchView();
-
-            if (newValue != null) {
-
-                if (mediaList.getSelectionModel().getSelectedItem() instanceof Film) {
-                    setFilmDisplayPane();
-                } else {
-                    setTvDisplayPane();
-                }
-                //mediaName = newValue.getTitle();
-                mediaIndex = mediaList.getSelectionModel().getSelectedIndex();
-            }
-        });
 
         // Wrap the ObservableList in a FilteredList (initially display all data).
         FilteredList<Media> filteredData = new FilteredList<>(masterMediaList, p -> true);
@@ -572,8 +572,9 @@ public class WatchlistProController implements Initializable {
         mediaList.setItems(filteredData);
 
         sort();
+
+        // Reselect the correct media object in the media list.
         if (!mediaList.equals(masterMediaList)) {
-            //setFilteredListIndex();
             for (int i = 0; i < mediaList.getItems().size(); i++) {
                 if (mediaList.getItems().get(i) != null){
                     mediaList.getSelectionModel().select(i);
