@@ -66,8 +66,8 @@
       <file leaf-file-name="WatchlistProController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/watchlistpro/WatchlistProController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="4.1190925" vertical-offset="4016" max-vertical-offset="11640">
-              <caret line="443" column="5" selection-start-line="443" selection-start-column="5" selection-end-line="443" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.06427221" vertical-offset="4016" max-vertical-offset="11640">
+              <caret line="300" column="19" selection-start-line="300" selection-start-column="19" selection-end-line="300" selection-end-column="19" />
               <folding>
                 <element signature="e#15103#15104#0" expanded="true" />
                 <element signature="e#15146#15147#0" expanded="true" />
@@ -553,12 +553,12 @@
       <workItem from="1400195983131" duration="61000" />
       <workItem from="1400196599098" duration="11553000" />
       <workItem from="1400274486903" duration="78000" />
-      <workItem from="1400290605981" duration="1277000" />
+      <workItem from="1400290605981" duration="1436000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51644000" />
+    <option name="totallyTimeSpent" value="51803000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="874" extended-state="0" />
@@ -876,8 +876,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/watchlistpro/WatchlistProController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.1190925" vertical-offset="4016" max-vertical-offset="11640">
-          <caret line="443" column="5" selection-start-line="443" selection-start-column="5" selection-end-line="443" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.06427221" vertical-offset="4016" max-vertical-offset="11640">
+          <caret line="300" column="19" selection-start-line="300" selection-start-column="19" selection-end-line="300" selection-end-column="19" />
           <folding>
             <element signature="e#15103#15104#0" expanded="true" />
             <element signature="e#15146#15147#0" expanded="true" />
