@@ -174,6 +174,9 @@ public class WatchlistProController implements Initializable {
         mediaList.getSelectionModel().select(0);
     }
 
+    /**
+     * Opens the About pane.
+     */
     @FXML
     public void aboutPane() {
         System.out.println("about");
@@ -184,6 +187,9 @@ public class WatchlistProController implements Initializable {
         about.show(stage);
     }
 
+    /**
+     * Creates a new library text file using a file selected by the user.
+     */
     @FXML
     public void createNew() {
         FileChooser fileChooser = new FileChooser();
@@ -200,6 +206,9 @@ public class WatchlistProController implements Initializable {
         }
     }
 
+    /**
+     * Opens a media library text file selected by the user from the file system .
+     */
     @FXML
     public void openLibrary() {
         // TODO save recently opened media libraries as entries on this Open List
@@ -217,6 +226,9 @@ public class WatchlistProController implements Initializable {
         }
     }
 
+    /**
+     * Clears the recent list in the menu.
+     */
     @FXML
     public void clearRecentList() {
         // TODO clear recently opened media libraries
