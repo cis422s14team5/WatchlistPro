@@ -85,16 +85,6 @@ public class WatchlistProController implements Initializable {
     @FXML
     private Label filmDescriptionLabel;
     @FXML
-    private MenuItem closeWindowMenu;
-    @FXML
-    private MenuItem saveMenuItem;
-    @FXML
-    private MenuItem serverSave;
-    @FXML
-    private MenuItem serverLoad;
-    @FXML
-    private MenuItem aboutMenuItem;
-    @FXML
     private VBox filmEditPane;
     @FXML
     private TextField filmTitleTextField;
@@ -337,7 +327,7 @@ public class WatchlistProController implements Initializable {
 
                     }
                     mediaName = tvTitleTextField.getText();
-                    masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
+                    masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
                     updateMediaList();
                 }
                 setListIndex();
@@ -449,7 +439,7 @@ public class WatchlistProController implements Initializable {
             quit.join();
 
             io.load(mediaMap, saveFile);
-            masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
+            masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
             updateMediaList();
         } catch (IOException e) {
             System.err.println("IOException");
