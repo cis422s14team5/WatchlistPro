@@ -174,67 +174,7 @@ public class WatchlistProController implements Initializable {
         mediaList.getSelectionModel().select(0);
     }
 
-    /**
-     * Opens the About pane.
-     */
-    @FXML
-    public void aboutPane() {
-        System.out.println("about");
-        PopupWindow about = new Popup();
-        about.setAutoFix(false);
-        about.setHideOnEscape(true);
-        about.centerOnScreen();
-        about.show(stage);
-    }
-
-    /**
-     * Creates a new library text file using a file selected by the user.
-     */
-    @FXML
-    public void createNew() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Create New Media File");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT Files (*.txt)", "*.txt"));
-        File selectedFile = fileChooser.showSaveDialog(stage);
-        if (selectedFile != null) {
-            saveFile = selectedFile;
-            mediaMap.clear();
-            io.save(mediaMap, saveFile);
-            masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
-            updateMediaList();
-            clearDisplayPane();
-        }
-    }
-
-    /**
-     * Opens a media library text file selected by the user from the file system .
-     */
-    @FXML
-    public void openLibrary() {
-        // TODO save recently opened media libraries as entries on this Open List
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Media File");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT Files (*.txt)", "*.txt"));
-        File selectedFile = fileChooser.showOpenDialog(stage);
-        if (selectedFile != null) {
-            saveFile = selectedFile;
-            mediaMap.clear();
-            clearDisplayPane();
-            io.load(mediaMap, saveFile);
-            masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
-            updateMediaList();
-        }
-    }
-
-    /**
-     * Clears the recent list in the menu.
-     */
-    @FXML
-    public void clearRecentList() {
-        // TODO clear recently opened media libraries
-        // http://stackoverflow.com/questions/3062630/showing-the-most-recent-opened-items-in-a-menu-bar
-
-    }
+    // Button and Field Methods
 
     /**
      * Adds new media item to list.
@@ -384,101 +324,6 @@ public class WatchlistProController implements Initializable {
     }
 
     /**
-     * Closes the window when the menu item is selected.
-     */
-    @FXML
-    public void closeWindow() {
-        io.save(mediaMap, saveFile);
-        Platform.exit();
-    }
-
-    /**
-     * Saves the contents of the mediaMap to the file system when the menu item is selected.
-     */
-    @FXML
-    public void saveList() {
-        io.save(mediaMap, saveFile);
-    }
-
-    /**
-     * Saves the contents of the mediaMap to the file system when the menu item is selected.
-     */
-    @FXML
-    public void saveAs() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save As...");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT Files (*.txt)", "*.txt"));
-        File selectedFile = fileChooser.showSaveDialog(stage);
-        if (selectedFile != null) {
-            saveFile = selectedFile;
-            mediaMap.clear();
-            io.save(mediaMap, saveFile);
-            masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
-            updateMediaList();
-        }
-    }
-
-    /**
-     * Save the contents of the media map to the server.
-     */
-    @FXML
-    public void saveToServer() {
-        String output = "";
-        for (Map.Entry<String, Media> entry : mediaMap.entrySet()) {
-            Media media = (Media) entry.getValue();
-            String jsonString = JSONValue.toJSONString(media.getMap());
-            output += jsonString + "//";
-        }
-
-        Client client = new Client();
-        try {
-            Thread save = client.send("save");
-            Thread outputThread = client.send(output);
-
-            save.start();
-            save.join();
-
-            outputThread.start();
-        } catch (IOException e) {
-            System.err.println("IOException");
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            System.err.println("Interrupted Exception");
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Load the library from the server into the media map.
-     */
-    @FXML
-    public void loadFromServer() {
-        Client client = new Client();
-        client.setFile(saveFile);
-        try {
-            Thread load = client.send("load");
-            Thread quit = client.send("quit");
-
-            load.start();
-            load.join();
-
-            quit.start();
-            quit.join();
-
-            io.load(mediaMap, saveFile);
-            masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
-            updateMediaList();
-        } catch (IOException e) {
-            System.err.println("IOException");
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            System.err.println("Interrupted Exception");
-            e.printStackTrace();
-        }
-
-    }
-
-    /**
      * Fetches the media data from Freebase.
      */
     @FXML
@@ -515,6 +360,168 @@ public class WatchlistProController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    // Menu Item Methods
+
+    /**
+     * Creates a new library text file using a file selected by the user.
+     */
+    @FXML
+    public void createNew() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Create New Media File");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT Files (*.txt)", "*.txt"));
+        File selectedFile = fileChooser.showSaveDialog(stage);
+        if (selectedFile != null) {
+            saveFile = selectedFile;
+            mediaMap.clear();
+            io.save(mediaMap, saveFile);
+            masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
+            updateMediaList();
+            clearDisplayPane();
+        }
+    }
+
+    /**
+     * Opens a media library text file selected by the user from the file system .
+     */
+    @FXML
+    public void openLibrary() {
+        // TODO save recently opened media libraries as entries on this Open List
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Media File");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT Files (*.txt)", "*.txt"));
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        if (selectedFile != null) {
+            saveFile = selectedFile;
+            mediaMap.clear();
+            clearDisplayPane();
+            io.load(mediaMap, saveFile);
+            masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
+            updateMediaList();
+            mediaList.getSelectionModel().select(0);
+        }
+    }
+
+    /**
+     * Load the library from the server into the media map.
+     */
+    @FXML
+    public void loadFromServer() {
+        Client client = new Client();
+        client.setFile(saveFile);
+        try {
+            Thread load = client.send("load");
+            Thread quit = client.send("quit");
+
+            load.start();
+            load.join();
+
+            quit.start();
+            quit.join();
+
+            io.load(mediaMap, saveFile);
+            masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
+            updateMediaList();
+        } catch (IOException e) {
+            System.err.println("IOException");
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            System.err.println("Interrupted Exception");
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
+     * Clears the recent list in the menu.
+     */
+    @FXML
+    public void clearRecentList() {
+        // TODO clear recently opened media libraries
+        // http://stackoverflow.com/questions/3062630/showing-the-most-recent-opened-items-in-a-menu-bar
+
+    }
+
+    /**
+     * Saves the contents of the mediaMap to the file system when the menu item is selected.
+     */
+    @FXML
+    public void saveList() {
+        io.save(mediaMap, saveFile);
+    }
+
+    /**
+     * Saves the contents of the mediaMap to the file system when the menu item is selected.
+     */
+    @FXML
+    public void saveAs() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save As...");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT Files (*.txt)", "*.txt"));
+        File selectedFile = fileChooser.showSaveDialog(stage);
+        if (selectedFile != null) {
+            saveFile = selectedFile;
+            io.save(mediaMap, saveFile);
+            masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
+            updateMediaList();
+            mediaList.getSelectionModel().select(0);
+        }
+    }
+
+    /**
+     * Save the contents of the media map to the server.
+     */
+    @FXML
+    public void saveToServer() {
+        String output = "";
+        for (Map.Entry<String, Media> entry : mediaMap.entrySet()) {
+            Media media = entry.getValue();
+            String jsonString = JSONValue.toJSONString(media.getMap());
+            output += jsonString + "//";
+        }
+
+        Client client = new Client();
+        try {
+            Thread save = client.send("save");
+            Thread outputThread = client.send(output);
+
+            save.start();
+            save.join();
+
+            outputThread.start();
+        } catch (IOException e) {
+            System.err.println("IOException");
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            System.err.println("Interrupted Exception");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Closes the window when the menu item is selected.
+     */
+    @FXML
+    public void closeWindow() {
+        io.save(mediaMap, saveFile);
+        Platform.exit();
+    }
+
+    /**
+     * Opens the About pane.
+     */
+    @FXML
+    public void aboutPane() {
+        System.out.println("about");
+        PopupWindow about = new Popup();
+        about.setAutoFix(false);
+        about.setHideOnEscape(true);
+        about.centerOnScreen();
+        about.show(stage);
+    }
+
+    // Helper Methods
 
     private void updateMediaList() {
         mediaList.setItems(masterMediaList);
