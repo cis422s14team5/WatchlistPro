@@ -13,6 +13,7 @@ import model.TvShow;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Reads and writes to the file system. Used to read and write to the store.txt file.
@@ -39,7 +40,7 @@ public class FileIO {
      * each line. Fills and returns a mediaMap.
      * @return a filled mediaMap
      */
-    public ObservableMap<String, Media> load(ArrayList<String> list) {
+    public ObservableMap<String, Media> load(List<String> list) {
         ObservableMap<String, Media> mediaMap = new ObservableMapWrapper<>(new HashMap<>());
         for (String string : list) {
             JSONObject object = (JSONObject) JSONValue.parse(string);
@@ -112,7 +113,7 @@ public class FileIO {
      * @return a filled mediaMap
      */
     protected ObservableMap<String, Media> load(ObservableMap<String, Media> mediaMap, File file) {
-        ArrayList<String> list = read(file);
+        List<String> list = read(file);
         for (String string : list) {
             JSONObject object = (JSONObject) JSONValue.parse(string);
 
@@ -181,7 +182,7 @@ public class FileIO {
      * @param list is the array list where each element will become a line in the file.
      * @param file the file to write to.
      */
-    private void write(ArrayList<String> list, File file) {
+    private void write(List<String> list, File file) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
             for (String string: list) {
@@ -198,7 +199,7 @@ public class FileIO {
      * @param file the file to read from.
      * @return a list where each element is a line of the file.
      */
-    private ArrayList<String> read(File file) {
+    private List<String> read(File file) {
         ArrayList<String> list = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));

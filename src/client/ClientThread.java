@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class ClientThread implements Runnable {
 
@@ -24,7 +25,7 @@ public class ClientThread implements Runnable {
 
     private PrintWriter out;
     private BufferedReader in;
-    private ArrayList<String> outputList;
+    private List<String> outputList;
 
     public ClientThread(Client client, int state, Socket socket, String command) throws IOException {
         this.state = state;
@@ -54,7 +55,9 @@ public class ClientThread implements Runnable {
                             break;
                         case LOADING:
                             FileIO io = new FileIO();
-                            io.save(io.load(new ArrayList<>(Arrays.asList(input.split("<('_')>")))), client.getFile());
+                            String[] splitInput = input.split("//");
+                            List<String> inputList = Arrays.asList(splitInput);
+                            io.save(io.load(inputList), client.getFile());
                             break;
                         default:
                             break;

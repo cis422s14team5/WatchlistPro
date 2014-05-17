@@ -19,9 +19,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
+import javafx.stage.*;
 import model.Film;
 import model.Media;
 import model.TvShow;
@@ -32,10 +30,7 @@ import org.json.simple.JSONValue;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Controls the WatchlistPro view.
@@ -97,6 +92,8 @@ public class WatchlistProController implements Initializable {
     private MenuItem serverSave;
     @FXML
     private MenuItem serverLoad;
+    @FXML
+    private MenuItem aboutMenuItem;
     @FXML
     private VBox filmEditPane;
     @FXML
@@ -178,6 +175,16 @@ public class WatchlistProController implements Initializable {
     }
 
     @FXML
+    public void aboutPane() {
+        System.out.println("about");
+        PopupWindow about = new Popup();
+        about.setAutoFix(false);
+        about.setHideOnEscape(true);
+        about.centerOnScreen();
+        about.show(stage);
+    }
+
+    @FXML
     public void createNew() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Create New Media File");
@@ -202,6 +209,8 @@ public class WatchlistProController implements Initializable {
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile != null) {
             saveFile = selectedFile;
+            mediaMap.clear();
+            clearDisplayPane();
             io.load(mediaMap, saveFile);
             masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
             updateMediaList();
@@ -403,24 +412,21 @@ public class WatchlistProController implements Initializable {
     @FXML
     public void saveToServer() {
         String output = "";
-        for (HashMap.Entry entry : mediaMap.entrySet()) {
+        for (Map.Entry<String, Media> entry : mediaMap.entrySet()) {
             Media media = (Media) entry.getValue();
             String jsonString = JSONValue.toJSONString(media.getMap());
-            output += jsonString + "<('_')>";
+            output += jsonString + "//";
         }
+
         Client client = new Client();
         try {
             Thread save = client.send("save");
             Thread outputThread = client.send(output);
-            Thread quit = client.send("quit");
 
             save.start();
             save.join();
 
             outputThread.start();
-            outputThread.join();
-
-            quit.start();
         } catch (IOException e) {
             System.err.println("IOException");
             e.printStackTrace();
@@ -482,7 +488,7 @@ public class WatchlistProController implements Initializable {
             quit.start();
             quit.join();
 
-            ArrayList<String> outputList = client.getOutputList();
+            List<String> outputList = client.getOutputList();
             if (mediaEditType.equals("film")) {
                 setFilmEditPane(outputList);
             } else {
@@ -748,7 +754,7 @@ public class WatchlistProController implements Initializable {
     /**
      * Populates the film edit pane based on passed in arguments.
      */
-    private void setFilmEditPane(ArrayList<String> outputList) {
+    private void setFilmEditPane(List<String> outputList) {
         filmTitleTextField.setText(outputList.get(0));
         filmGenreTextField.setText(outputList.get(1));
         filmDirectorTextField.setText(outputList.get(2));
@@ -762,7 +768,7 @@ public class WatchlistProController implements Initializable {
     /**
      * Populates the tv edit pane based on passed in arguments.
      */
-    private void setTvEditPane(ArrayList<String> outputList) {
+    private void setTvEditPane(List<String> outputList) {
         tvTitleTextField.setText(outputList.get(0));
         tvGenreTextField.setText(outputList.get(1));
         tvCreatorTextField.setText(outputList.get(2));

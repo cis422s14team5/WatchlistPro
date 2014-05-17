@@ -2,7 +2,7 @@ package client;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Client {
 
@@ -12,7 +12,7 @@ public class Client {
 
     private int state;
 
-    private ArrayList<String> outputList;
+    private List<String> outputList;
     private Socket socket;
     private File file;
 
@@ -41,11 +41,11 @@ public class Client {
         return new Thread(new ClientThread(this, state, socket, command), "thread");
     }
 
-    public ArrayList<String> getOutputList() {
+    public List<String> getOutputList() {
         return outputList;
     }
 
-    public void setOutputList(ArrayList<String> outputList) {
+    public void setOutputList(List<String> outputList) {
         this.outputList = outputList;
     }
 

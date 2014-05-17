@@ -6,11 +6,12 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TopicHandler {
 
-    public ArrayList<String> filmOutput(JSONObject topic) {
-        ArrayList<String> output = new ArrayList<>();
+    public List<String> filmOutput(JSONObject topic) {
+        List<String> output = new ArrayList<>();
 
         String title;
         try {
@@ -154,8 +155,8 @@ public class TopicHandler {
         return output;
     }
 
-    public ArrayList<String> tvOutput(JSONObject topic) {
-        ArrayList<String> output = new ArrayList<>();
+    public List<String> tvOutput(JSONObject topic) {
+        List<String> output = new ArrayList<>();
 
         String title;
         try {
