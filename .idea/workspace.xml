@@ -66,13 +66,13 @@
       <file leaf-file-name="WatchlistProController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/watchlistpro/WatchlistProController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.007561437" vertical-offset="3349" max-vertical-offset="11550">
-              <caret line="253" column="68" selection-start-line="253" selection-start-column="7" selection-end-line="253" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.705104" vertical-offset="2942" max-vertical-offset="11610">
+              <caret line="251" column="31" selection-start-line="251" selection-start-column="31" selection-end-line="251" selection-end-column="31" />
               <folding>
                 <element signature="e#4223#4580#0" expanded="true" />
                 <element signature="e#4569#4570#0" expanded="true" />
-                <element signature="e#15881#15882#0" expanded="true" />
-                <element signature="e#15924#15925#0" expanded="true" />
+                <element signature="e#15972#15973#0" expanded="true" />
+                <element signature="e#16015#16016#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -555,12 +555,12 @@
       <workItem from="1400195983131" duration="61000" />
       <workItem from="1400196599098" duration="11553000" />
       <workItem from="1400274486903" duration="78000" />
-      <workItem from="1400290605981" duration="2940000" />
+      <workItem from="1400290605981" duration="3177000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53307000" />
+    <option name="totallyTimeSpent" value="53544000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="874" extended-state="0" />
@@ -624,8 +624,8 @@
           <folding>
             <element signature="e#4223#4580#0" expanded="true" />
             <element signature="e#4569#4570#0" expanded="true" />
-            <element signature="e#15881#15882#0" expanded="true" />
-            <element signature="e#15924#15925#0" expanded="true" />
+            <element signature="e#15972#15973#0" expanded="true" />
+            <element signature="e#16015#16016#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -653,8 +653,8 @@
           <folding>
             <element signature="e#4223#4580#0" expanded="true" />
             <element signature="e#4569#4570#0" expanded="true" />
-            <element signature="e#15881#15882#0" expanded="true" />
-            <element signature="e#15924#15925#0" expanded="true" />
+            <element signature="e#15972#15973#0" expanded="true" />
+            <element signature="e#16015#16016#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -682,8 +682,8 @@
           <folding>
             <element signature="e#4223#4580#0" expanded="true" />
             <element signature="e#4569#4570#0" expanded="true" />
-            <element signature="e#15881#15882#0" expanded="true" />
-            <element signature="e#15924#15925#0" expanded="true" />
+            <element signature="e#15972#15973#0" expanded="true" />
+            <element signature="e#16015#16016#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -695,8 +695,8 @@
           <folding>
             <element signature="e#4223#4580#0" expanded="true" />
             <element signature="e#4569#4570#0" expanded="true" />
-            <element signature="e#15881#15882#0" expanded="true" />
-            <element signature="e#15924#15925#0" expanded="true" />
+            <element signature="e#15972#15973#0" expanded="true" />
+            <element signature="e#16015#16016#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -708,8 +708,8 @@
           <folding>
             <element signature="e#4223#4580#0" expanded="true" />
             <element signature="e#4569#4570#0" expanded="true" />
-            <element signature="e#15881#15882#0" expanded="true" />
-            <element signature="e#15924#15925#0" expanded="true" />
+            <element signature="e#15972#15973#0" expanded="true" />
+            <element signature="e#16015#16016#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -736,8 +736,8 @@
           <folding>
             <element signature="e#4223#4580#0" expanded="true" />
             <element signature="e#4569#4570#0" expanded="true" />
-            <element signature="e#15881#15882#0" expanded="true" />
-            <element signature="e#15924#15925#0" expanded="true" />
+            <element signature="e#15972#15973#0" expanded="true" />
+            <element signature="e#16015#16016#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -794,8 +794,8 @@
           <folding>
             <element signature="e#4223#4580#0" expanded="true" />
             <element signature="e#4569#4570#0" expanded="true" />
-            <element signature="e#15881#15882#0" expanded="true" />
-            <element signature="e#15924#15925#0" expanded="true" />
+            <element signature="e#15972#15973#0" expanded="true" />
+            <element signature="e#16015#16016#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -892,13 +892,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/watchlistpro/WatchlistProController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.007561437" vertical-offset="3349" max-vertical-offset="11550">
-          <caret line="253" column="68" selection-start-line="253" selection-start-column="7" selection-end-line="253" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.705104" vertical-offset="2942" max-vertical-offset="11610">
+          <caret line="251" column="31" selection-start-line="251" selection-start-column="31" selection-end-line="251" selection-end-column="31" />
           <folding>
             <element signature="e#4223#4580#0" expanded="true" />
             <element signature="e#4569#4570#0" expanded="true" />
-            <element signature="e#15881#15882#0" expanded="true" />
-            <element signature="e#15924#15925#0" expanded="true" />
+            <element signature="e#15972#15973#0" expanded="true" />
+            <element signature="e#16015#16016#0" expanded="true" />
           </folding>
         </state>
       </provider>

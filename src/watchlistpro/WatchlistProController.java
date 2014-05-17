@@ -247,6 +247,10 @@ public class WatchlistProController implements Initializable {
                 mediaList.getSelectionModel().select(0);
             }
         }
+
+        if (mediaList.getItems().size() <= 0) {
+            clearDisplayPane();
+        }
     }
 
     /**
