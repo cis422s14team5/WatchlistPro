@@ -167,9 +167,11 @@ public class WatchlistProController implements Initializable {
 
         // Setup Open Recent List
         File defaultFile = new File("store.txt");
-        File recentFile;
+        File recentFile = new File(recentList.get(recentList.size() - 1));
         if (!recentList.isEmpty()) {
-            recentFile = new File(recentList.get(recentList.size() - 1));
+            if (!recentFile.exists()) {
+                io.save(new ObservableMapWrapper<>(new HashMap<>()), recentFile);
+            }
             saveFile = recentFile;
         } else if (!defaultFile.exists()){
             io.save(new ObservableMapWrapper<>(new HashMap<>()), defaultFile);
@@ -424,9 +426,9 @@ public class WatchlistProController implements Initializable {
     public void setWatched() {
         Media media = mediaList.getSelectionModel().getSelectedItem();
         if (filmWatchedCheckBox.isSelected() || tvWatchedCheckBox.isSelected()) {
-            media.setWatched("yes");
+            media.setWatched("Yes");
         } else {
-            media.setWatched("no");
+            media.setWatched("No");
         }
     }
 
@@ -456,7 +458,6 @@ public class WatchlistProController implements Initializable {
      */
     @FXML
     public void openLibrary() {
-        // TODO save recently opened media libraries as entries on this Open List
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Media File");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT Files (*.txt)", "*.txt"));
@@ -534,9 +535,9 @@ public class WatchlistProController implements Initializable {
         if (selectedFile != null) {
             saveFile = selectedFile;
             io.save(mediaMap, saveFile);
-            
             updateMediaList();
             mediaList.getSelectionModel().select(0);
+            updateRecentMenu(saveFile.getName());
         }
     }
 
@@ -907,7 +908,7 @@ public class WatchlistProController implements Initializable {
         Film film = (Film) mediaList.getSelectionModel().getSelectedItem();
 
         filmTitleTextField.setText(film.getTitle());
-        if (film.getWatched().equals("yes")) {
+        if (film.getWatched().equals("Yes")) {
             filmWatchedCheckBox.isSelected();
         }
         filmGenreTextField.setText(film.getGenre());
@@ -926,7 +927,7 @@ public class WatchlistProController implements Initializable {
         TvShow show = (TvShow) mediaList.getSelectionModel().getSelectedItem();
 
         tvTitleTextField.setText(show.getTitle());
-        if (show.getWatched().equals("yes")) {
+        if (show.getWatched().equals("Yes")) {
             tvWatchedCheckBox.isSelected();
         }
         tvGenreTextField.setText(show.getGenre());
@@ -943,7 +944,7 @@ public class WatchlistProController implements Initializable {
      */
     private void setFilmEditPane(List<String> outputList) {
         filmTitleTextField.setText(outputList.get(0));
-        if (outputList.get(1).equals("yes")) {
+        if (outputList.get(1).equals("Yes")) {
             filmWatchedCheckBox.isSelected();
         }
         filmGenreTextField.setText(outputList.get(2));
@@ -960,7 +961,7 @@ public class WatchlistProController implements Initializable {
      */
     private void setTvEditPane(List<String> outputList) {
         tvTitleTextField.setText(outputList.get(0));
-        if (outputList.get(1).equals("yes")) {
+        if (outputList.get(1).equals("Yes")) {
             tvWatchedCheckBox.isSelected();
         }
         tvGenreTextField.setText(outputList.get(2));

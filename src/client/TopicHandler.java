@@ -110,7 +110,7 @@ public class TopicHandler {
 
         output.clear();
         output.add(title);
-        output.add("no"); // Watched.
+        output.add("No"); // Watched.
 
         String genreTemp = "";
         for (int i = 0; i < genreList.size(); i++) {
@@ -261,7 +261,7 @@ public class TopicHandler {
 
         output.clear();
         output.add(title);
-        output.add("no"); // Watched.
+        output.add("No"); // Watched.
 
         String genreTemp = "";
         for (int i = 0; i < genreList.size(); i++) {

@@ -26,6 +26,7 @@ public class TvShow extends Media {
 
         getMap().put("type", "tv");
         getMap().put("title", title.get());
+        getMap().put("watched", watched.get());
         getMap().put("genre", genre.get());
         getMap().put("runtime", runtime.get());
         getMap().put("creator", creator.get());

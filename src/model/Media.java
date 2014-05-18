@@ -27,7 +27,7 @@ public class Media {
         this.runtime = runtime;
         this.description = description;
         watched = new SimpleStringProperty();
-        watched.set("no");
+        watched.set("No");
         map = new HashMap<>();
     }
 

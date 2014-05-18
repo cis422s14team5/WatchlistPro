@@ -26,6 +26,7 @@ public class Film extends Media {
 
         getMap().put("type", "film");
         getMap().put("title", title.get());
+        getMap().put("watched", watched.get());
         getMap().put("genre", genre.get());
         getMap().put("runtime", runtime.get());
         getMap().put("director", director.get());
