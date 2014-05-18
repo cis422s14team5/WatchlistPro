@@ -1,11 +1,10 @@
-package watchlistpro;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import watchlistpro.WatchlistProController;
 
 /**
  * Launches the WatchlistPro view.
@@ -14,7 +13,7 @@ public class WatchlistPro extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../WatchlistPro.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("WatchlistPro.fxml"));
         Parent root = loader.load();
         WatchlistProController controller = loader.getController();
         controller.setStage(stage);

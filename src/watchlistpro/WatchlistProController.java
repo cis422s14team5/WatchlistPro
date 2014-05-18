@@ -27,11 +27,18 @@ import client.Client;
 
 import org.json.simple.JSONValue;
 
+import javax.swing.*;
 import java.io.*;
 import java.lang.String;
 import java.net.URL;
 import java.util.*;
 import java.util.prefs.Preferences;
+
+// TODO warn user that it will not save if they dont press done after editing
+// TODO delete key should call delete button
+// TODO put fetching in its own thread
+// TODO open from server should create a new library and open the save dialog
+// TODO change title of window to WatchlistPro - <currently opened file>
 
 /**
  * Controls the WatchlistPro view.
@@ -584,13 +591,12 @@ public class WatchlistProController implements Initializable {
      * Opens the About pane.
      */
     @FXML
-    public void aboutPane() {
-        System.out.println("about");
-        PopupWindow about = new Popup();
-        about.setAutoFix(false);
-        about.setHideOnEscape(true);
-        about.centerOnScreen();
-        about.show(stage);
+    public void openAbout() {
+        AboutDialog about = new AboutDialog();
+//        System.out.println("about");
+//        PopupWindow about = new Popup();
+//        about.centerOnScreen();
+//        about.show(stage);
     }
 
     // Helper Methods
@@ -765,7 +771,7 @@ public class WatchlistProController implements Initializable {
     /**
      * Creates the Open Recent menu.
      */
-    protected void createRecentMenu() {
+    public void createRecentMenu() {
         if (!recentList.isEmpty()) {
             recentList.forEach(this::addRecent);
         } else {
@@ -909,7 +915,7 @@ public class WatchlistProController implements Initializable {
 
         filmTitleTextField.setText(film.getTitle());
         if (film.getWatched().equals("Yes")) {
-            filmWatchedCheckBox.isSelected();
+            filmWatchedCheckBox.setSelected(true);
         }
         filmGenreTextField.setText(film.getGenre());
         filmDirectorTextField.setText(film.getDirector());
@@ -928,7 +934,7 @@ public class WatchlistProController implements Initializable {
 
         tvTitleTextField.setText(show.getTitle());
         if (show.getWatched().equals("Yes")) {
-            tvWatchedCheckBox.isSelected();
+            tvWatchedCheckBox.setSelected(true);
         }
         tvGenreTextField.setText(show.getGenre());
         tvCreatorTextField.setText(show.getCreator());
@@ -945,7 +951,7 @@ public class WatchlistProController implements Initializable {
     private void setFilmEditPane(List<String> outputList) {
         filmTitleTextField.setText(outputList.get(0));
         if (outputList.get(1).equals("Yes")) {
-            filmWatchedCheckBox.isSelected();
+            filmWatchedCheckBox.setSelected(true);
         }
         filmGenreTextField.setText(outputList.get(2));
         filmDirectorTextField.setText(outputList.get(3));
@@ -962,7 +968,7 @@ public class WatchlistProController implements Initializable {
     private void setTvEditPane(List<String> outputList) {
         tvTitleTextField.setText(outputList.get(0));
         if (outputList.get(1).equals("Yes")) {
-            tvWatchedCheckBox.isSelected();
+            tvWatchedCheckBox.setSelected(true);
         }
         tvGenreTextField.setText(outputList.get(2));
         tvCreatorTextField.setText(outputList.get(3));
