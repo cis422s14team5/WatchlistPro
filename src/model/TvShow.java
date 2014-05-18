@@ -16,9 +16,9 @@ public class TvShow extends Media {
     /**
      * Constructor.
      */
-    public TvShow(StringProperty title, StringProperty genre, StringProperty runtime, StringProperty description,
+    public TvShow(StringProperty title, StringProperty watched, StringProperty genre, StringProperty runtime, StringProperty description,
                   StringProperty creator, StringProperty network, StringProperty numSeasons, StringProperty numEpisodes) {
-        super(title, genre, runtime, description);
+        super(title, watched, genre, runtime, description);
         this.creator = creator;
         this.network = network;
         this.numSeasons = numSeasons;

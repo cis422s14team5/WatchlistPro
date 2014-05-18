@@ -1,10 +1,9 @@
 package model;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import java.util.HashMap;
-
-// TODO write field for watched
 
 /**
  * Stores the fields of a media object. The super class of model.TvShow and model.Film.
@@ -13,6 +12,7 @@ public class Media {
 
     private HashMap<String, String> map;
     private StringProperty title;
+    private StringProperty watched;
     private StringProperty genre;
     private StringProperty runtime;
     private StringProperty description;
@@ -20,11 +20,14 @@ public class Media {
     /**
      * Constructor.
      */
-    public Media(StringProperty title, StringProperty genre, StringProperty runtime, StringProperty description) {
+    public Media(StringProperty title, StringProperty watched, StringProperty genre, StringProperty runtime, StringProperty description) {
         this.title = title;
+        this.watched = watched;
         this.genre = genre;
         this.runtime = runtime;
         this.description = description;
+        watched = new SimpleStringProperty();
+        watched.set("no");
         map = new HashMap<>();
     }
 
@@ -43,6 +46,19 @@ public class Media {
     public void setTitle(String title) {
         this.title.set(title);
         map.put("title", title);
+    }
+
+    public String getWatched() {
+        return watched.get();
+    }
+
+    public StringProperty watchedProperty() {
+        return watched;
+    }
+
+    public void setWatched(String watched) {
+        this.watched.set(watched);
+        map.put("watched", watched);
     }
 
     public String getGenre() {

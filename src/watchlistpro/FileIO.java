@@ -45,15 +45,22 @@ public class FileIO {
         for (String string : list) {
             JSONObject object = (JSONObject) JSONValue.parse(string);
 
+            StringProperty title = new SimpleStringProperty();
+            title.set(object.get("title").toString());
+
+            StringProperty watched = new SimpleStringProperty();
+            watched.set(object.get("watched").toString());
+
+            StringProperty genre = new SimpleStringProperty();
+            genre.set(object.get("genre").toString());
+
+            StringProperty runtime = new SimpleStringProperty();
+            runtime.set(object.get("runtime").toString());
+
+            StringProperty description = new SimpleStringProperty();
+            description.set(object.get("description").toString());
+
             if (object.get("type").equals("film")) {
-                StringProperty title = new SimpleStringProperty();
-                title.set(object.get("title").toString());
-
-                StringProperty genre = new SimpleStringProperty();
-                genre.set(object.get("genre").toString());
-
-                StringProperty runtime = new SimpleStringProperty();
-                runtime.set(object.get("runtime").toString());
 
                 StringProperty director = new SimpleStringProperty();
                 director.set(object.get("director").toString());
@@ -67,20 +74,9 @@ public class FileIO {
                 StringProperty writer = new SimpleStringProperty();
                 writer.set(object.get("writer").toString());
 
-                StringProperty description = new SimpleStringProperty();
-                description.set(object.get("description").toString());
-
                 mediaMap.put(title.get(),
-                        new Film(title, genre, runtime, description, director, rating, producer, writer));
+                        new Film(title, watched, genre, runtime, description, director, rating, producer, writer));
             } else if (object.get("type").equals("tv")) {
-                StringProperty title = new SimpleStringProperty();
-                title.set(object.get("title").toString());
-
-                StringProperty genre = new SimpleStringProperty();
-                genre.set(object.get("genre").toString());
-
-                StringProperty runtime = new SimpleStringProperty();
-                runtime.set(object.get("runtime").toString());
 
                 StringProperty creator = new SimpleStringProperty();
                 creator.set(object.get("creator").toString());
@@ -94,11 +90,8 @@ public class FileIO {
                 StringProperty numEpisodes = new SimpleStringProperty();
                 numEpisodes.set(object.get("numEpisodes").toString());
 
-                StringProperty description = new SimpleStringProperty();
-                description.set(object.get("description").toString());
-
                 mediaMap.put(title.get(),
-                        new TvShow(title, genre, runtime, description, creator, network, numSeasons, numEpisodes));
+                        new TvShow(title, watched, genre, runtime, description, creator, network, numSeasons, numEpisodes));
             }
         }
 
@@ -117,15 +110,22 @@ public class FileIO {
         for (String string : list) {
             JSONObject object = (JSONObject) JSONValue.parse(string);
 
+            StringProperty title = new SimpleStringProperty();
+            title.set(object.get("title").toString());
+
+            StringProperty watched = new SimpleStringProperty();
+            watched.set(object.get("watched").toString());
+
+            StringProperty genre = new SimpleStringProperty();
+            genre.set(object.get("genre").toString());
+
+            StringProperty runtime = new SimpleStringProperty();
+            runtime.set(object.get("runtime").toString());
+
+            StringProperty description = new SimpleStringProperty();
+            description.set(object.get("description").toString());
+
             if (object.get("type").equals("film")) {
-                StringProperty title = new SimpleStringProperty();
-                title.set(object.get("title").toString());
-
-                StringProperty genre = new SimpleStringProperty();
-                genre.set(object.get("genre").toString());
-
-                StringProperty runtime = new SimpleStringProperty();
-                runtime.set(object.get("runtime").toString());
 
                 StringProperty director = new SimpleStringProperty();
                 director.set(object.get("director").toString());
@@ -139,20 +139,9 @@ public class FileIO {
                 StringProperty writer = new SimpleStringProperty();
                 writer.set(object.get("writer").toString());
 
-                StringProperty description = new SimpleStringProperty();
-                description.set(object.get("description").toString());
-
                 mediaMap.put(title.get(),
-                        new Film(title, genre, runtime, description, director, rating, producer, writer));
+                        new Film(title, watched, genre, runtime, description, director, rating, producer, writer));
             } else if (object.get("type").equals("tv")) {
-                StringProperty title = new SimpleStringProperty();
-                title.set(object.get("title").toString());
-
-                StringProperty genre = new SimpleStringProperty();
-                genre.set(object.get("genre").toString());
-
-                StringProperty runtime = new SimpleStringProperty();
-                runtime.set(object.get("runtime").toString());
 
                 StringProperty creator = new SimpleStringProperty();
                 creator.set(object.get("creator").toString());
@@ -166,11 +155,8 @@ public class FileIO {
                 StringProperty numEpisodes = new SimpleStringProperty();
                 numEpisodes.set(object.get("numEpisodes").toString());
 
-                StringProperty description = new SimpleStringProperty();
-                description.set(object.get("description").toString());
-
                 mediaMap.put(title.get(),
-                        new TvShow(title, genre, runtime, description, creator, network, numSeasons, numEpisodes));
+                        new TvShow(title, watched, genre, runtime, description, creator, network, numSeasons, numEpisodes));
             }
         }
 
@@ -182,7 +168,7 @@ public class FileIO {
      * @param list is the array list where each element will become a line in the file.
      * @param file the file to write to.
      */
-    private void write(List<String> list, File file) {
+    public void write(List<String> list, File file) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
             for (String string: list) {
@@ -199,7 +185,7 @@ public class FileIO {
      * @param file the file to read from.
      * @return a list where each element is a line of the file.
      */
-    private List<String> read(File file) {
+    public List<String> read(File file) {
         ArrayList<String> list = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));

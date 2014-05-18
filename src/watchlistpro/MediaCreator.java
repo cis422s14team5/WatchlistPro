@@ -19,6 +19,9 @@ public class MediaCreator {
         StringProperty title = new SimpleStringProperty();
         title.set(titleString);
 
+        StringProperty watched = new SimpleStringProperty();
+        watched.set("");
+
         StringProperty genre = new SimpleStringProperty();
         genre.set("");
 
@@ -40,7 +43,7 @@ public class MediaCreator {
         StringProperty description = new SimpleStringProperty();
         description.set("");
 
-        return new Film(title, genre, runtime, description, director, rating, producer, writer);
+        return new Film(title, watched, genre, runtime, description, director, rating, producer, writer);
     }
 
     /**
@@ -51,6 +54,9 @@ public class MediaCreator {
     public TvShow createTvShow(String titleString) {
         StringProperty title = new SimpleStringProperty();
         title.set(titleString);
+
+        StringProperty watched = new SimpleStringProperty();
+        watched.set("");
 
         StringProperty genre = new SimpleStringProperty();
         genre.set("");
@@ -73,6 +79,6 @@ public class MediaCreator {
         StringProperty description = new SimpleStringProperty();
         description.set("");
 
-        return new TvShow(title, genre, runtime, description, creator, network, numSeasons, numEpisodes);
+        return new TvShow(title, watched, genre, runtime, description, creator, network, numSeasons, numEpisodes);
     }
 }

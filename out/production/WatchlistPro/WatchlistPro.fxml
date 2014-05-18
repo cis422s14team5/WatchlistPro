@@ -139,7 +139,7 @@
                                     <HBox prefHeight="25.0" prefWidth="80.0">
                                        <children>
                                           <Label minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="Watched: " />
-                                          <Label fx:id="watchedLabel" prefHeight="25.0" />
+                                          <Label fx:id="filmWatchedLabel" prefHeight="25.0" />
                                        </children>
                                     </HBox>
 <HBox layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="80.0">
@@ -209,7 +209,7 @@
                                     <HBox layoutX="20.0" layoutY="10.0" prefHeight="25.0" prefWidth="80.0">
                                        <children>
                                           <Label minWidth="-Infinity" prefHeight="45.0" prefWidth="80.0" text="Watched: " />
-                                          <CheckBox fx:id="watchedCheckBox" ellipsisString="" mnemonicParsing="false" />
+                                          <CheckBox fx:id="filmWatchedCheckBox" ellipsisString="" mnemonicParsing="false" onAction="#setWatched" />
                                        </children>
                                     </HBox>
 <HBox layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="80.0">
@@ -284,7 +284,7 @@
                                     <HBox prefHeight="25.0" prefWidth="80.0">
                                        <children>
                                           <Label minWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" text="Watched: " />
-                                          <Label fx:id="watchedLabel1" prefHeight="25.0" />
+                                          <Label fx:id="tvWatchedLabel" prefHeight="25.0" />
                                        </children>
                                     </HBox>
 <HBox layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="80.0">
@@ -356,7 +356,7 @@
                                     <HBox prefHeight="25.0" prefWidth="80.0">
                                        <children>
                                           <Label minWidth="-Infinity" prefHeight="45.0" prefWidth="80.0" text="Watched: " />
-                                          <CheckBox fx:id="watchedCheckBox1" ellipsisString="" mnemonicParsing="false" />
+                                          <CheckBox fx:id="tvWatchedCheckBox" ellipsisString="" mnemonicParsing="false" onAction="#setWatched" />
                                        </children>
                                     </HBox>
 <HBox layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="80.0">

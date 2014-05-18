@@ -33,11 +33,6 @@ import java.net.URL;
 import java.util.*;
 import java.util.prefs.Preferences;
 
-// TODO For watched checkbox: set label to yes if check and no if unchecked,
-// TODO add to 7 methods in controller
-// TODO add to model
-// TODO add to load in FileIO
-
 /**
  * Controls the WatchlistPro view.
  */
@@ -152,23 +147,40 @@ public class WatchlistProController implements Initializable {
     private SeparatorMenuItem recentSeparator;
     @FXML
     private MenuItem clearMenuItem;
+    @FXML
+    private CheckBox tvWatchedCheckBox;
+    @FXML
+    private Label tvWatchedLabel;
+    @FXML
+    private CheckBox filmWatchedCheckBox;
+    @FXML
+    private Label filmWatchedLabel;
 
     /**
      * Constructor.
      */
     public WatchlistProController() {
         mediaCreator = new MediaCreator();
+        io = new FileIO();
+        preferences = Preferences.userRoot().node(this.getClass().getName());
+        recentList = readByteArray(preferences.getByteArray("recentList", "".getBytes()));
 
         // Setup Open Recent List
-        saveFile = new File("store.txt");
+        File defaultFile = new File("store.txt");
+        File recentFile;
+        if (!recentList.isEmpty()) {
+            recentFile = new File(recentList.get(recentList.size() - 1));
+            saveFile = recentFile;
+        } else if (!defaultFile.exists()){
+            io.save(new ObservableMapWrapper<>(new HashMap<>()), defaultFile);
+            saveFile = defaultFile;
+        } else {
+            saveFile = defaultFile;
+        }
 
-        io = new FileIO();
         HashMap<String, Media> map = new HashMap<>();
         mediaMap = io.load(new ObservableMapWrapper<>(map), saveFile);
         updateMasterMediaList();
-
-        preferences = Preferences.userRoot().node(this.getClass().getName());
-        recentList = readByteArray(preferences.getByteArray("recentList", "".getBytes()));
     }
 
     /**
@@ -178,7 +190,8 @@ public class WatchlistProController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        AquaFx.style(); // Throws CoreText performance errors
+        // Throws CoreText performance errors
+        AquaFx.style();
         AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(filterField);
 
         mediaList.setCellFactory((list) -> new ListCell<Media>() {
@@ -401,6 +414,19 @@ public class WatchlistProController implements Initializable {
         } catch (InterruptedException e) {
             System.err.println("Interrupted Exception");
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * Sets the watched value for the currently selected film.
+     */
+    @FXML
+    public void setWatched() {
+        Media media = mediaList.getSelectionModel().getSelectedItem();
+        if (filmWatchedCheckBox.isSelected() || tvWatchedCheckBox.isSelected()) {
+            media.setWatched("yes");
+        } else {
+            media.setWatched("no");
         }
     }
 
@@ -820,6 +846,7 @@ public class WatchlistProController implements Initializable {
      */
     private void clearDisplayPane() {        
         filmTitleLabel.setText("");
+        filmWatchedLabel.setText("");
         filmGenreLabel.setText("");
         filmDirectorLabel.setText("");
         filmRatingLabel.setText("");
@@ -829,6 +856,7 @@ public class WatchlistProController implements Initializable {
         filmDescriptionLabel.setText("");
 
         tvTitleLabel.setText("");
+        tvWatchedLabel.setText("");
         tvGenreLabel.setText("");
         tvCreatorLabel.setText("");
         tvNetworkLabel.setText("");
@@ -845,6 +873,7 @@ public class WatchlistProController implements Initializable {
         Film film = (Film) mediaList.getSelectionModel().getSelectedItem();
 
         filmTitleLabel.setText(film.getTitle());
+        filmWatchedLabel.setText(film.getWatched());
         filmGenreLabel.setText(film.getGenre());
         filmDirectorLabel.setText(film.getDirector());
         filmRatingLabel.setText(film.getRating());
@@ -861,6 +890,7 @@ public class WatchlistProController implements Initializable {
         TvShow show = (TvShow) mediaList.getSelectionModel().getSelectedItem();
 
         tvTitleLabel.setText(show.getTitle());
+        tvWatchedLabel.setText(show.getWatched());
         tvGenreLabel.setText(show.getGenre());
         tvCreatorLabel.setText(show.getCreator());
         tvNetworkLabel.setText(show.getNetwork());
@@ -877,6 +907,9 @@ public class WatchlistProController implements Initializable {
         Film film = (Film) mediaList.getSelectionModel().getSelectedItem();
 
         filmTitleTextField.setText(film.getTitle());
+        if (film.getWatched().equals("yes")) {
+            filmWatchedCheckBox.isSelected();
+        }
         filmGenreTextField.setText(film.getGenre());
         filmDirectorTextField.setText(film.getDirector());
         filmRatingTextField.setText(film.getRating());
@@ -893,6 +926,9 @@ public class WatchlistProController implements Initializable {
         TvShow show = (TvShow) mediaList.getSelectionModel().getSelectedItem();
 
         tvTitleTextField.setText(show.getTitle());
+        if (show.getWatched().equals("yes")) {
+            tvWatchedCheckBox.isSelected();
+        }
         tvGenreTextField.setText(show.getGenre());
         tvCreatorTextField.setText(show.getCreator());
         tvNetworkTextField.setText(show.getNetwork());
@@ -907,13 +943,16 @@ public class WatchlistProController implements Initializable {
      */
     private void setFilmEditPane(List<String> outputList) {
         filmTitleTextField.setText(outputList.get(0));
-        filmGenreTextField.setText(outputList.get(1));
-        filmDirectorTextField.setText(outputList.get(2));
-        filmRatingTextField.setText(outputList.get(3));
-        filmRuntimeTextField.setText(outputList.get(4));
-        filmProducerTextField.setText(outputList.get(5));
-        filmWriterTextField.setText(outputList.get(6));
-        filmDescriptionTextField.setText(outputList.get(7));
+        if (outputList.get(1).equals("yes")) {
+            filmWatchedCheckBox.isSelected();
+        }
+        filmGenreTextField.setText(outputList.get(2));
+        filmDirectorTextField.setText(outputList.get(3));
+        filmRatingTextField.setText(outputList.get(4));
+        filmRuntimeTextField.setText(outputList.get(5));
+        filmProducerTextField.setText(outputList.get(6));
+        filmWriterTextField.setText(outputList.get(7));
+        filmDescriptionTextField.setText(outputList.get(8));
     }
 
     /**
@@ -921,13 +960,16 @@ public class WatchlistProController implements Initializable {
      */
     private void setTvEditPane(List<String> outputList) {
         tvTitleTextField.setText(outputList.get(0));
-        tvGenreTextField.setText(outputList.get(1));
-        tvCreatorTextField.setText(outputList.get(2));
-        tvNetworkTextField.setText(outputList.get(3));
-        tvRuntimeTextField.setText(outputList.get(4));
-        tvNumSeasonsTextField.setText(outputList.get(5));
-        tvNumEpisodesTextField.setText(outputList.get(6));
-        tvDescriptionTextField.setText(outputList.get(7));
+        if (outputList.get(1).equals("yes")) {
+            tvWatchedCheckBox.isSelected();
+        }
+        tvGenreTextField.setText(outputList.get(2));
+        tvCreatorTextField.setText(outputList.get(3));
+        tvNetworkTextField.setText(outputList.get(4));
+        tvRuntimeTextField.setText(outputList.get(5));
+        tvNumSeasonsTextField.setText(outputList.get(6));
+        tvNumEpisodesTextField.setText(outputList.get(7));
+        tvDescriptionTextField.setText(outputList.get(8));
     }
 
     /**

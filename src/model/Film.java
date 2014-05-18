@@ -16,9 +16,9 @@ public class Film extends Media {
     /**
      * Constructor.
      */
-    public Film(StringProperty title, StringProperty genre, StringProperty runtime, StringProperty description,
+    public Film(StringProperty title, StringProperty watched, StringProperty genre, StringProperty runtime, StringProperty description,
                 StringProperty director, StringProperty rating, StringProperty producer, StringProperty writer) {
-        super(title, genre, runtime, description);
+        super(title, watched, genre, runtime, description);
         this.director = director;
         this.rating = rating;
         this.producer = producer;
