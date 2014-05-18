@@ -1,7 +1,6 @@
 package watchlistpro;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,21 +15,14 @@ public class WatchlistPro extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../WatchlistPro.fxml"));
-
         Parent root = loader.load();
-
         WatchlistProController controller = loader.getController();
         controller.setStage(stage);
+
+        stage.setScene(new Scene(root));
         stage.setOnCloseRequest((final WindowEvent windowEvent) -> controller.closeWindow());
-
-        Scene scene = new Scene(root);
-
-        stage.setScene(scene);
+        controller.createRecentMenu();
         stage.setTitle("WatchlistPro");
-
-        controller.updateRecentList();
-        controller.styleButtons();
-
         stage.show();
     }
 

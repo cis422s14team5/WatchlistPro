@@ -1,8 +1,8 @@
 package watchlistpro;
 
 import com.aquafx_project.AquaFx;
-
 import com.aquafx_project.controls.skin.styles.TextFieldType;
+
 import com.sun.javafx.collections.ObservableListWrapper;
 import com.sun.javafx.collections.ObservableMapWrapper;
 
@@ -18,8 +18,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-
 import javafx.stage.*;
+
 import model.Film;
 import model.Media;
 import model.TvShow;
@@ -32,6 +32,11 @@ import java.lang.String;
 import java.net.URL;
 import java.util.*;
 import java.util.prefs.Preferences;
+
+// TODO For watched checkbox: set label to yes if check and no if unchecked,
+// TODO add to 7 methods in controller
+// TODO add to model
+// TODO add to load in FileIO
 
 /**
  * Controls the WatchlistPro view.
@@ -54,7 +59,6 @@ public class WatchlistProController implements Initializable {
     private Stage stage;
     private File saveFile;
     private Preferences preferences;
-    private List<MenuItem> recentMenuList;
     private List<String> recentList;
 
     // View components
@@ -139,15 +143,15 @@ public class WatchlistProController implements Initializable {
     @FXML
     private TextArea tvDescriptionTextField;
     @FXML
-    private Button deleteButton;
-    @FXML
-    private Button addButton;
-    @FXML
     private ToggleButton editToggleButton;
     @FXML
     private Button fetchButton;
     @FXML
     private ToggleButton mediaToggleButton;
+    @FXML
+    private SeparatorMenuItem recentSeparator;
+    @FXML
+    private MenuItem clearMenuItem;
 
     /**
      * Constructor.
@@ -175,6 +179,7 @@ public class WatchlistProController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         AquaFx.style(); // Throws CoreText performance errors
+        AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(filterField);
 
         mediaList.setCellFactory((list) -> new ListCell<Media>() {
             @Override
@@ -191,7 +196,7 @@ public class WatchlistProController implements Initializable {
 
         // Handle Media List selection changes.
         mediaList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            switchView();
+            switchPane();
 
             if (newValue != null) {
 
@@ -218,7 +223,7 @@ public class WatchlistProController implements Initializable {
     public void addMedia() {
         if (editToggleButton.isSelected()) {
             editToggleButton.setSelected(false);
-            switchView();
+            switchPane();
         }
         if (newMediaTextField.getCharacters() != null && newMediaTextField.getLength() > 0) {
             mediaName = newMediaTextField.getCharacters().toString();
@@ -238,7 +243,7 @@ public class WatchlistProController implements Initializable {
 
             setListIndex();
             editToggleButton.setSelected(true);
-            switchView();
+            switchPane();
         }
     }
 
@@ -251,7 +256,7 @@ public class WatchlistProController implements Initializable {
 
             if (editToggleButton.isSelected()) {
                 editToggleButton.setSelected(false);
-                switchView();
+                switchPane();
             }
 
             // Handle ListView selection changes.
@@ -354,7 +359,7 @@ public class WatchlistProController implements Initializable {
             } else {
                 filterField.setDisable(true);
             }
-            switchView();
+            switchPane();
 
         } else {
             editToggleButton.setSelected(false);
@@ -416,12 +421,12 @@ public class WatchlistProController implements Initializable {
             io.save(mediaMap, saveFile);
             updateMediaList();
             clearDisplayPane();
-            updateRecentList(saveFile.getName());
+            updateRecentMenu(saveFile.getName());
         }
     }
 
     /**
-     * Opens a media library text file selected by the user from the file system .
+     * Opens a media library text file selected by the user from the file system.
      */
     @FXML
     public void openLibrary() {
@@ -437,7 +442,7 @@ public class WatchlistProController implements Initializable {
             io.load(mediaMap, saveFile);
             updateMediaList();
             mediaList.getSelectionModel().select(0);
-            updateRecentList(saveFile.getName());
+            updateRecentMenu(saveFile.getName());
         }
     }
 
@@ -468,25 +473,19 @@ public class WatchlistProController implements Initializable {
             System.err.println("Interrupted Exception");
             e.printStackTrace();
         }
-
     }
 
     /**
      * Clears the recent list in the menu.
      */
     @FXML
-    public void clearRecentList() {
-        preferences.remove("recentList");
+    public void clearRecentMenu() {
+        openRecentMenuItem.getItems().clear();
+        openRecentMenuItem.getItems().add(recentSeparator);
+        openRecentMenuItem.getItems().add(clearMenuItem);
+        openRecentMenuItem.setDisable(true);
         recentList.clear();
-        List<MenuItem> items = new ArrayList<>();
-        for (MenuItem item : recentMenuList) {
-            if (!item.getText().equals("Selection 1") || !item.getText().equals("Clear List")) {
-                openRecentMenuItem.getItems().remove(item);
-            }
-        }
-        recentMenuList.clear();
-
-        // http://stackoverflow.com/questions/3062630/showing-the-most-recent-opened-items-in-a-menu-bar
+        preferences.remove("recentList");
     }
 
     /**
@@ -614,10 +613,6 @@ public class WatchlistProController implements Initializable {
         masterMediaList = new ObservableListWrapper<>(media);
     }
 
-    public void styleButtons() {
-        AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(filterField);
-    }
-
     /**
      * Sorts the master media list.
      */
@@ -637,9 +632,9 @@ public class WatchlistProController implements Initializable {
     }
 
     /**
-     * Switches between the display view to the edit view.
+     * Switches between the display pane to the edit pane.
      */
-    private void switchView() {
+    private void switchPane() {
         if (mediaList.getSelectionModel().getSelectedItem() != null) {
             if (mediaList.getSelectionModel().getSelectedItem() instanceof Film) {
                 mediaEditType = "film";
@@ -719,44 +714,67 @@ public class WatchlistProController implements Initializable {
     }
 
     /**
-     * Update the recently opened file list in the menu.
+     * Update the Open Recent menu.
      * @param name the file name to add.
      */
-    private void updateRecentList(String name) {
+    private void updateRecentMenu(String name) {
         if (!recentList.contains(name)) {
             recentList.add(name);
-            MenuItem item = new MenuItem(name);
-            item.setOnAction(actionEvent -> {
-                saveFile = new File(name);
-                clearDisplayPane();
-                io.load(mediaMap, saveFile);
-                updateMediaList();
-                mediaList.getSelectionModel().select(0);
-                updateRecentList(saveFile.getName());
-            });
-
-            openRecentMenuItem.getItems().add(0, item);
-            preferences.putByteArray("recentList", writeByteArray(recentList));
+        } else {
+            int index = 0;
+            for (int i = 0; i < openRecentMenuItem.getItems().size(); i++) {
+                if (openRecentMenuItem.getItems().get(i).getText().equals(name)) {
+                    index = i;
+                }
+            }
+            openRecentMenuItem.getItems().remove(index);
         }
+        checkRecentSize();
+        addRecent(name);
+        preferences.remove("recentList");
+        preferences.putByteArray("recentList", writeByteArray(recentList));
     }
 
     /**
-     * Update the recent list in the menu.
+     * Creates the Open Recent menu.
      */
-    protected void updateRecentList() {
-        for (String name : recentList) {
-            MenuItem item = new MenuItem(name);
-            item.setOnAction(actionEvent -> {
-                saveFile = new File(name);
-                clearDisplayPane();
-                io.load(mediaMap, saveFile);
-                updateMediaList();
-                mediaList.getSelectionModel().select(0);
-                updateRecentList(saveFile.getName());
-            });
-            openRecentMenuItem.getItems().add(0, item);
+    protected void createRecentMenu() {
+        if (!recentList.isEmpty()) {
+            recentList.forEach(this::addRecent);
+        } else {
+            openRecentMenuItem.setDisable(true);
         }
-        preferences.putByteArray("recentList", writeByteArray(recentList));
+
+    }
+
+    /**
+     * Adds a file to the Open Recent menu.
+     * @param name is the file name to add.
+     */
+    private void addRecent(String name) {
+        if (openRecentMenuItem.isDisable()) {
+            openRecentMenuItem.setDisable(false);
+        }
+        MenuItem item = new MenuItem(name);
+        item.setOnAction(actionEvent -> {
+            saveFile = new File(name);
+            mediaMap.clear();
+            clearDisplayPane();
+            io.load(mediaMap, saveFile);
+            updateMediaList();
+            mediaList.getSelectionModel().select(0);
+            updateRecentMenu(saveFile.getName());
+        });
+        openRecentMenuItem.getItems().add(0, item);
+    }
+
+    private void checkRecentSize() {
+        if (recentList.size() > 10) {
+            // Remove the last item.
+            recentList.remove(recentList.get(recentList.size() - 1));
+            openRecentMenuItem.getItems().remove(
+                    openRecentMenuItem.getItems().get(openRecentMenuItem.getItems().size() - 3));
+        }
     }
 
     /**
@@ -783,8 +801,8 @@ public class WatchlistProController implements Initializable {
      * @return a list of strings.
      */
     private List<String> readByteArray(byte[] bytes) {
-        ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
-        DataInputStream in = new DataInputStream(bais);
+        ByteArrayInputStream byteArray = new ByteArrayInputStream(bytes);
+        DataInputStream in = new DataInputStream(byteArray);
         List<String> list = new ArrayList<>();
         try {
             while (in.available() > 0) {
@@ -800,7 +818,7 @@ public class WatchlistProController implements Initializable {
     /**
      * Clears all the fields in both the film and tv display panes.
      */
-    private void clearDisplayPane() {
+    private void clearDisplayPane() {        
         filmTitleLabel.setText("");
         filmGenreLabel.setText("");
         filmDirectorLabel.setText("");
