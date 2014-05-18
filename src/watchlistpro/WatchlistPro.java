@@ -27,6 +27,10 @@ public class WatchlistPro extends Application {
 
         stage.setScene(scene);
         stage.setTitle("WatchlistPro");
+
+        controller.updateRecentList();
+        controller.styleButtons();
+
         stage.show();
     }
 

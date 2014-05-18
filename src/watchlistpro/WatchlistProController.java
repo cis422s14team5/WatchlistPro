@@ -2,6 +2,7 @@ package watchlistpro;
 
 import com.aquafx_project.AquaFx;
 
+import com.aquafx_project.controls.skin.styles.TextFieldType;
 import com.sun.javafx.collections.ObservableListWrapper;
 import com.sun.javafx.collections.ObservableMapWrapper;
 
@@ -14,7 +15,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -27,10 +27,11 @@ import client.Client;
 
 import org.json.simple.JSONValue;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.lang.String;
 import java.net.URL;
 import java.util.*;
+import java.util.prefs.Preferences;
 
 /**
  * Controls the WatchlistPro view.
@@ -52,20 +53,19 @@ public class WatchlistProController implements Initializable {
     private FileIO io;
     private Stage stage;
     private File saveFile;
+    private Preferences preferences;
+    private List<MenuItem> recentMenuList;
+    private List<String> recentList;
 
     // View components
     @FXML
     private ListView<Media> mediaList;
     @FXML
+    private Menu openRecentMenuItem;
+    @FXML
     private TextField filterField;
     @FXML
-    private ToggleButton mediaToggleButton;
-    @FXML
     private TextField newMediaTextField;
-    @FXML
-    private ToggleButton editToggleButton;
-    @FXML
-    private Button fetchButton;
     @FXML
     private VBox filmDisplayPane;
     @FXML
@@ -138,17 +138,33 @@ public class WatchlistProController implements Initializable {
     private TextField tvNumEpisodesTextField;
     @FXML
     private TextArea tvDescriptionTextField;
+    @FXML
+    private Button deleteButton;
+    @FXML
+    private Button addButton;
+    @FXML
+    private ToggleButton editToggleButton;
+    @FXML
+    private Button fetchButton;
+    @FXML
+    private ToggleButton mediaToggleButton;
 
     /**
      * Constructor.
      */
     public WatchlistProController() {
-        // TODO Need to get the last opened file from Preferences, see clearRecentList
-        saveFile = new File("store.txt");
-        io = new FileIO();
-        mediaMap = io.load(new ObservableMapWrapper<>(new HashMap<>()), saveFile);
-        masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
         mediaCreator = new MediaCreator();
+
+        // Setup Open Recent List
+        saveFile = new File("store.txt");
+
+        io = new FileIO();
+        HashMap<String, Media> map = new HashMap<>();
+        mediaMap = io.load(new ObservableMapWrapper<>(map), saveFile);
+        updateMasterMediaList();
+
+        preferences = Preferences.userRoot().node(this.getClass().getName());
+        recentList = readByteArray(preferences.getByteArray("recentList", "".getBytes()));
     }
 
     /**
@@ -173,7 +189,7 @@ public class WatchlistProController implements Initializable {
             }
         });
 
-        // Handle ListView selection changes.
+        // Handle Media List selection changes.
         mediaList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             switchView();
 
@@ -184,11 +200,12 @@ public class WatchlistProController implements Initializable {
                 } else {
                     setTvDisplayPane();
                 }
-                //mediaName = newValue.getTitle();
                 mediaIndex = mediaList.getSelectionModel().getSelectedIndex();
             }
         });
+
         updateMediaList();
+
         mediaList.getSelectionModel().select(0);
     }
 
@@ -241,7 +258,7 @@ public class WatchlistProController implements Initializable {
             if (mediaList.getSelectionModel().getSelectedItem() != null) {
                 String title = mediaList.getSelectionModel().getSelectedItem().getTitle();
                 mediaMap.remove(title);
-                masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
+                updateMasterMediaList();
                 updateMediaList();
                 filterField.clear();
                 mediaList.getSelectionModel().select(0);
@@ -303,8 +320,7 @@ public class WatchlistProController implements Initializable {
                         mediaMap.put(filmTitleTextField.getText(), film);
                     }
                     mediaName = filmTitleTextField.getText();
-
-                    masterMediaList = new ObservableListWrapper<>(new ArrayList<>(mediaMap.values()));
+                    updateMasterMediaList();
                     updateMediaList();
                 } else {
                     if (mediaName.equals(tvTitleTextField.getText())) {
@@ -331,7 +347,7 @@ public class WatchlistProController implements Initializable {
 
                     }
                     mediaName = tvTitleTextField.getText();
-                    masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
+                    
                     updateMediaList();
                 }
                 setListIndex();
@@ -398,9 +414,9 @@ public class WatchlistProController implements Initializable {
             saveFile = selectedFile;
             mediaMap.clear();
             io.save(mediaMap, saveFile);
-            masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
             updateMediaList();
             clearDisplayPane();
+            updateRecentList(saveFile.getName());
         }
     }
 
@@ -419,9 +435,9 @@ public class WatchlistProController implements Initializable {
             mediaMap.clear();
             clearDisplayPane();
             io.load(mediaMap, saveFile);
-            masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
             updateMediaList();
             mediaList.getSelectionModel().select(0);
+            updateRecentList(saveFile.getName());
         }
     }
 
@@ -443,7 +459,7 @@ public class WatchlistProController implements Initializable {
             quit.join();
 
             io.load(mediaMap, saveFile);
-            masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
+            
             updateMediaList();
         } catch (IOException e) {
             System.err.println("IOException");
@@ -460,9 +476,17 @@ public class WatchlistProController implements Initializable {
      */
     @FXML
     public void clearRecentList() {
-        // TODO clear recently opened media libraries
-        // http://stackoverflow.com/questions/3062630/showing-the-most-recent-opened-items-in-a-menu-bar
+        preferences.remove("recentList");
+        recentList.clear();
+        List<MenuItem> items = new ArrayList<>();
+        for (MenuItem item : recentMenuList) {
+            if (!item.getText().equals("Selection 1") || !item.getText().equals("Clear List")) {
+                openRecentMenuItem.getItems().remove(item);
+            }
+        }
+        recentMenuList.clear();
 
+        // http://stackoverflow.com/questions/3062630/showing-the-most-recent-opened-items-in-a-menu-bar
     }
 
     /**
@@ -485,7 +509,7 @@ public class WatchlistProController implements Initializable {
         if (selectedFile != null) {
             saveFile = selectedFile;
             io.save(mediaMap, saveFile);
-            masterMediaList = new ObservableListWrapper<>(new ArrayList<Media>(mediaMap.values()));
+            
             updateMediaList();
             mediaList.getSelectionModel().select(0);
         }
@@ -545,7 +569,11 @@ public class WatchlistProController implements Initializable {
 
     // Helper Methods
 
+    /**
+     * Updates the media list and facilitates filtering.
+     */
     private void updateMediaList() {
+        updateMasterMediaList();
         mediaList.setItems(masterMediaList);
 
         // Wrap the ObservableList in a FilteredList (initially display all data).
@@ -576,6 +604,18 @@ public class WatchlistProController implements Initializable {
             }
 
         }
+    }
+
+    /**
+     * Updates the master media list.
+     */
+    public void updateMasterMediaList() {
+        List<Media> media = new ArrayList<>(mediaMap.values());
+        masterMediaList = new ObservableListWrapper<>(media);
+    }
+
+    public void styleButtons() {
+        AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(filterField);
     }
 
     /**
@@ -676,6 +716,85 @@ public class WatchlistProController implements Initializable {
             }
 
         }
+    }
+
+    /**
+     * Update the recently opened file list in the menu.
+     * @param name the file name to add.
+     */
+    private void updateRecentList(String name) {
+        if (!recentList.contains(name)) {
+            recentList.add(name);
+            MenuItem item = new MenuItem(name);
+            item.setOnAction(actionEvent -> {
+                saveFile = new File(name);
+                clearDisplayPane();
+                io.load(mediaMap, saveFile);
+                updateMediaList();
+                mediaList.getSelectionModel().select(0);
+                updateRecentList(saveFile.getName());
+            });
+
+            openRecentMenuItem.getItems().add(0, item);
+            preferences.putByteArray("recentList", writeByteArray(recentList));
+        }
+    }
+
+    /**
+     * Update the recent list in the menu.
+     */
+    protected void updateRecentList() {
+        for (String name : recentList) {
+            MenuItem item = new MenuItem(name);
+            item.setOnAction(actionEvent -> {
+                saveFile = new File(name);
+                clearDisplayPane();
+                io.load(mediaMap, saveFile);
+                updateMediaList();
+                mediaList.getSelectionModel().select(0);
+                updateRecentList(saveFile.getName());
+            });
+            openRecentMenuItem.getItems().add(0, item);
+        }
+        preferences.putByteArray("recentList", writeByteArray(recentList));
+    }
+
+    /**
+     * Write to byte array.
+     * @param list is the list to write.
+     * @return a byte array.
+     */
+    private byte[] writeByteArray(List<String> list) {
+        ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+        DataOutputStream out = new DataOutputStream(byteArray);
+        list.forEach((t) -> {
+            try {
+                out.writeUTF(t);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        return byteArray.toByteArray();
+    }
+
+    /**
+     * Read from byte array.
+     * @param bytes is the array of bytes to read.
+     * @return a list of strings.
+     */
+    private List<String> readByteArray(byte[] bytes) {
+        ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+        DataInputStream in = new DataInputStream(bais);
+        List<String> list = new ArrayList<>();
+        try {
+            while (in.available() > 0) {
+                String element = in.readUTF();
+                list.add(element);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
     /**

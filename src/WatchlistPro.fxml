@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.input.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
@@ -28,10 +29,9 @@
                      <accelerator>
                         <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                      </accelerator></MenuItem>
-                  <Menu mnemonicParsing="false" text="Open Recent">
+                  <Menu fx:id="openRecentMenuItem" mnemonicParsing="false" text="Open Recent">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="&lt;recents&gt;" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <SeparatorMenuItem mnemonicParsing="false" text="Separator1" />
                       <MenuItem fx:id="clearMenuItem" mnemonicParsing="false" onAction="#clearRecentList" text="Clear List" />
                     </items>
                   </Menu>
@@ -49,7 +49,6 @@
                      <accelerator>
                         <KeyCodeCombination alt="DOWN" code="S" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                      </accelerator></MenuItem>
-                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="closeWMenuItem" mnemonicParsing="false" onAction="#closeWindow" text="Close">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="W" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
@@ -80,50 +79,51 @@
         </HBox>
         <SplitPane id="splitPaneHorizontal1" dividerPositions="0.31" focusTraversable="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0" VBox.vgrow="ALWAYS">
             <items>
-<VBox prefHeight="538.0" prefWidth="349.0">
+<VBox prefHeight="538.0" prefWidth="250.0">
 <children>
 <VBox prefHeight="538.0" prefWidth="315.0" VBox.vgrow="ALWAYS">
 <children>
-<HBox layoutX="10.0" layoutY="514.0" prefHeight="30.0" prefWidth="197.0" spacing="5.0">
-<children><ToggleButton fx:id="mediaToggleButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#toggleMedia" prefHeight="28.0" prefWidth="60.0" text="Film" />
-<TextField fx:id="newMediaTextField" onAction="#addMedia" prefHeight="24.0" prefWidth="135.0" promptText="Enter Title to Add" HBox.hgrow="ALWAYS">
-<padding>
-<Insets right="5.0" />
-</padding>
+<HBox layoutX="10.0" layoutY="514.0" maxHeight="-Infinity" prefHeight="30.0" prefWidth="244.0" VBox.vgrow="ALWAYS">
+<children>
+<TextField fx:id="newMediaTextField" onAction="#addMedia" prefHeight="20.0" prefWidth="234.0" promptText="Enter New Title" HBox.hgrow="ALWAYS">
+                                 <padding>
+                                    <Insets right="5.0" />
+                                 </padding>
 </TextField>
 </children>
 <padding>
 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 </padding>
-</HBox><Separator prefWidth="200.0" />
+</HBox>
 <HBox layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="197.0" spacing="5.0">
 <padding>
-<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+<Insets bottom="5.0" left="5.0" right="5.0" />
 </padding>
 <children>
-                        <Button id="button3" fx:id="deleteButton" maxWidth="1.7976931348623157E308" onAction="#deleteMedia" prefHeight="24.0" prefWidth="273.0" text="Delete Selected" HBox.hgrow="ALWAYS" />
+                              <ToggleButton fx:id="mediaToggleButton" ellipsisString="Film" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toggleMedia" prefHeight="30.0" prefWidth="83.0" text="Film" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="addButton" ellipsisString="Add" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addMedia" prefHeight="28.0" prefWidth="83.0" styleClass="theme" text="Add" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
+                        <Button id="button3" fx:id="deleteButton" ellipsisString="Delete" maxWidth="1.7976931348623157E308" onAction="#deleteMedia" prefHeight="28.0" prefWidth="83.0" text="Delete" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
 </children>
 </HBox>
-                <ListView fx:id="mediaList" styleClass="darkList" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS" /><HBox layoutX="161.0" layoutY="269.0" prefHeight="30.0" prefWidth="197.0" spacing="5.0">
-<children><Label text="Filter:" HBox.hgrow="NEVER">
-<HBox.margin>
-<Insets />
-</HBox.margin>
-<padding>
-<Insets top="4.0" />
-</padding></Label><TextField fx:id="filterField" prefHeight="24.0" prefWidth="135.0" promptText="Enter Title" HBox.hgrow="ALWAYS">
-<padding>
-<Insets right="5.0" />
-</padding></TextField>
-</children>
-<padding>
-<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-</padding></HBox>
-</children>
-</VBox>
+                        <Separator prefWidth="200.0" />
+                        <HBox layoutX="161.0" layoutY="269.0" prefHeight="30.0" prefWidth="197.0" spacing="5.0">
+      <children>
+                              <TextField fx:id="filterField" prefHeight="24.0" prefWidth="135.0" promptText="    Enter Title to Search" HBox.hgrow="ALWAYS">
+      <padding>
+      <Insets right="5.0" />
+      </padding>
+                              </TextField>
+      </children>
+      <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+      </padding>
+                        </HBox>
+                <ListView fx:id="mediaList" styleClass="darkList" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS" />
 </children>
 </VBox>
-                        <AnchorPane id="anchorPane4" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+</children>
+</VBox>
+                        <AnchorPane id="anchorPane4" prefHeight="532.0" prefWidth="528.0">
 <children><VBox layoutX="90.0" layoutY="137.0" prefHeight="558.0" prefWidth="548.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 <children><StackPane prefHeight="579.0" prefWidth="548.0" VBox.vgrow="ALWAYS">
 <children>
