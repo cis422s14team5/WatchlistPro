@@ -200,8 +200,8 @@ public class WatchlistProController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Throws CoreText performance errors
-        AquaFx.style();
-        AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(filterField);
+//        AquaFx.style();
+//        AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(filterField);
 
         mediaList.setCellFactory((list) -> new ListCell<Media>() {
             @Override
