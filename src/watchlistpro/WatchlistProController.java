@@ -1,8 +1,8 @@
 package watchlistpro;
 
+
 import com.aquafx_project.AquaFx;
 import com.aquafx_project.controls.skin.styles.TextFieldType;
-
 import com.sun.javafx.collections.ObservableListWrapper;
 import com.sun.javafx.collections.ObservableMapWrapper;
 
@@ -39,6 +39,8 @@ import java.util.prefs.Preferences;
 // TODO put fetching in its own thread
 // TODO open from server should create a new library and open the save dialog
 // TODO change title of window to WatchlistPro - <currently opened file>
+// TODO notify the user if fetch does not find
+// TODO store entire path of saved files on New and on first run open the New dialog
 
 /**
  * Controls the WatchlistPro view.
@@ -62,6 +64,7 @@ public class WatchlistProController implements Initializable {
     private File saveFile;
     private Preferences preferences;
     private List<String> recentList;
+    private ByteArrayHandler byteArrayHandler;
 
     // View components
     @FXML
@@ -168,22 +171,28 @@ public class WatchlistProController implements Initializable {
      */
     public WatchlistProController() {
         mediaCreator = new MediaCreator();
+        byteArrayHandler = new ByteArrayHandler();
         io = new FileIO();
         preferences = Preferences.userRoot().node(this.getClass().getName());
-        recentList = readByteArray(preferences.getByteArray("recentList", "".getBytes()));
 
-        // Setup Open Recent List
         File defaultFile = new File("store.txt");
-        File recentFile = new File(recentList.get(recentList.size() - 1));
-        if (!recentList.isEmpty()) {
-            if (!recentFile.exists()) {
-                io.save(new ObservableMapWrapper<>(new HashMap<>()), recentFile);
+        try {
+            recentList = byteArrayHandler.readByteArray(preferences.getByteArray("recentList", "".getBytes()));
+
+            // Setup Open Recent List
+            File recentFile = new File(recentList.get(recentList.size() - 1));
+            if (!recentList.isEmpty()) {
+                if (!recentFile.exists()) {
+                    io.save(new ObservableMapWrapper<>(new HashMap<>()), recentFile);
+                }
+                saveFile = recentFile;
+            } else if (!defaultFile.exists()){
+                io.save(new ObservableMapWrapper<>(new HashMap<>()), defaultFile);
+                saveFile = defaultFile;
+            } else {
+                saveFile = defaultFile;
             }
-            saveFile = recentFile;
-        } else if (!defaultFile.exists()){
-            io.save(new ObservableMapWrapper<>(new HashMap<>()), defaultFile);
-            saveFile = defaultFile;
-        } else {
+        } catch (Exception e) {
             saveFile = defaultFile;
         }
 
@@ -200,8 +209,8 @@ public class WatchlistProController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Throws CoreText performance errors
-//        AquaFx.style();
-//        AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(filterField);
+        AquaFx.style();
+        AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(filterField);
 
         mediaList.setCellFactory((list) -> new ListCell<Media>() {
             @Override
@@ -765,7 +774,7 @@ public class WatchlistProController implements Initializable {
         checkRecentSize();
         addRecent(name);
         preferences.remove("recentList");
-        preferences.putByteArray("recentList", writeByteArray(recentList));
+        preferences.putByteArray("recentList", byteArrayHandler.writeByteArray(recentList));
     }
 
     /**
@@ -808,44 +817,6 @@ public class WatchlistProController implements Initializable {
             openRecentMenuItem.getItems().remove(
                     openRecentMenuItem.getItems().get(openRecentMenuItem.getItems().size() - 3));
         }
-    }
-
-    /**
-     * Write to byte array.
-     * @param list is the list to write.
-     * @return a byte array.
-     */
-    private byte[] writeByteArray(List<String> list) {
-        ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-        DataOutputStream out = new DataOutputStream(byteArray);
-        list.forEach((t) -> {
-            try {
-                out.writeUTF(t);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        return byteArray.toByteArray();
-    }
-
-    /**
-     * Read from byte array.
-     * @param bytes is the array of bytes to read.
-     * @return a list of strings.
-     */
-    private List<String> readByteArray(byte[] bytes) {
-        ByteArrayInputStream byteArray = new ByteArrayInputStream(bytes);
-        DataInputStream in = new DataInputStream(byteArray);
-        List<String> list = new ArrayList<>();
-        try {
-            while (in.available() > 0) {
-                String element = in.readUTF();
-                list.add(element);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return list;
     }
 
     /**
