@@ -66,18 +66,18 @@
       <file leaf-file-name="WatchlistProController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/watchlistpro/WatchlistProController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27027026" vertical-offset="2550" max-vertical-offset="14475">
-              <caret line="184" column="66" selection-start-line="184" selection-start-column="43" selection-end-line="184" selection-end-column="43" />
+            <state vertical-scroll-proportion="-3.088803" vertical-offset="2895" max-vertical-offset="14460">
+              <caret line="33" column="66" selection-start-line="33" selection-start-column="35" selection-end-line="34" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6131#6488#0" expanded="true" />
-                <element signature="e#6477#6478#0" expanded="true" />
-                <element signature="e#17858#17859#0" expanded="true" />
-                <element signature="e#17901#17902#0" expanded="true" />
-                <element signature="e#21546#21547#0" expanded="true" />
-                <element signature="e#21649#21650#0" expanded="true" />
-                <element signature="e#32784#32785#0" expanded="true" />
-                <element signature="e#32818#32819#0" expanded="true" />
+                <element signature="e#6109#6466#0" expanded="true" />
+                <element signature="e#6455#6456#0" expanded="true" />
+                <element signature="e#17836#17837#0" expanded="true" />
+                <element signature="e#17879#17880#0" expanded="true" />
+                <element signature="e#21524#21525#0" expanded="true" />
+                <element signature="e#21627#21628#0" expanded="true" />
+                <element signature="e#32762#32763#0" expanded="true" />
+                <element signature="e#32796#32797#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -142,8 +142,8 @@
         <option value="$PROJECT_DIR$/src/aquafx/com/aquafx_project/controls/skin/styles/styler/ButtonStyler.java" />
         <option value="$PROJECT_DIR$/src/aquafx/com/aquafx_project/controls/skin/styles/styler/CheckBoxStyler.java" />
         <option value="$PROJECT_DIR$/src/aquafx/com/aquafx_project/controls/skin/styles/styler/ChoiceBoxStyler.java" />
-        <option value="$PROJECT_DIR$/src/watchlistpro/WatchlistProController.java" />
         <option value="$PROJECT_DIR$/src/com/aquafx_project/controls/skin/AquaPasswordFieldSkin.java" />
+        <option value="$PROJECT_DIR$/src/watchlistpro/WatchlistProController.java" />
       </list>
     </option>
   </component>
@@ -227,6 +227,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="watchlistpro" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WatchlistPro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WatchlistPro" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aquafx_project" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -555,12 +573,12 @@
       <workItem from="1400195983131" duration="61000" />
       <workItem from="1400196599098" duration="11553000" />
       <workItem from="1400274486903" duration="78000" />
-      <workItem from="1400290605981" duration="52224000" />
+      <workItem from="1400290605981" duration="52395000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102591000" />
+    <option name="totallyTimeSpent" value="102762000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="874" extended-state="0" />
@@ -786,18 +804,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/watchlistpro/WatchlistProController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27027026" vertical-offset="2550" max-vertical-offset="14475">
-          <caret line="184" column="66" selection-start-line="184" selection-start-column="43" selection-end-line="184" selection-end-column="43" />
+        <state vertical-scroll-proportion="-3.088803" vertical-offset="2895" max-vertical-offset="14460">
+          <caret line="33" column="66" selection-start-line="33" selection-start-column="35" selection-end-line="34" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6131#6488#0" expanded="true" />
-            <element signature="e#6477#6478#0" expanded="true" />
-            <element signature="e#17858#17859#0" expanded="true" />
-            <element signature="e#17901#17902#0" expanded="true" />
-            <element signature="e#21546#21547#0" expanded="true" />
-            <element signature="e#21649#21650#0" expanded="true" />
-            <element signature="e#32784#32785#0" expanded="true" />
-            <element signature="e#32818#32819#0" expanded="true" />
+            <element signature="e#6109#6466#0" expanded="true" />
+            <element signature="e#6455#6456#0" expanded="true" />
+            <element signature="e#17836#17837#0" expanded="true" />
+            <element signature="e#17879#17880#0" expanded="true" />
+            <element signature="e#21524#21525#0" expanded="true" />
+            <element signature="e#21627#21628#0" expanded="true" />
+            <element signature="e#32762#32763#0" expanded="true" />
+            <element signature="e#32796#32797#0" expanded="true" />
           </folding>
         </state>
       </provider>

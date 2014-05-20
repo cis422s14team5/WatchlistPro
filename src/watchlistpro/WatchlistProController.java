@@ -1,8 +1,8 @@
 package watchlistpro;
 
-
 import com.aquafx_project.AquaFx;
 import com.aquafx_project.controls.skin.styles.TextFieldType;
+
 import com.sun.javafx.collections.ObservableListWrapper;
 import com.sun.javafx.collections.ObservableMapWrapper;
 
@@ -27,7 +27,6 @@ import client.Client;
 
 import org.json.simple.JSONValue;
 
-import javax.swing.*;
 import java.io.*;
 import java.lang.String;
 import java.net.URL;
