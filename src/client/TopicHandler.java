@@ -159,27 +159,9 @@ public class TopicHandler {
     public List<String> tvOutput(JSONObject jsonObject) {
         List<String> output = new ArrayList<>();
 
-
-//        JSONArray episodes =
-//                JsonPath.read(topic,"$.property['/tv/tv_program/episodes'].values");
-//        ArrayList<String> episodeList = new ArrayList<>();
-//        for (Object obj : episodes) {
-//            JSONObject episode = (JSONObject) obj;
-//            episodeList.add(episode.get("text").toString());
-//        }
-
-//        String website;
-//        try {
-//            website =
-//                    JsonPath.read(topic,
-//                            "$.property['/common/topic/official_website'].values[0].value").toString();
-//        } catch (com.jayway.jsonpath.InvalidPathException e) {
-//            website = "No website listed.";
-//        }
-
         output.clear();
         output.add(jsonObject.get("title").toString());
-        output.add("No"); // Watched.
+        output.add("No");
         output.add(jsonObject.get("genre").toString());
         output.add(jsonObject.get("creator").toString());
 
@@ -188,14 +170,15 @@ public class TopicHandler {
         output.add(jsonObject.get("runtime").toString()); // runtime
 
         output.add(String.format(jsonObject.get("seasons").toString()));
-        output.add(jsonObject.get("seasons").toString());
+        output.add(jsonObject.get("episodes").toString());
         output.add(jsonObject.get("description").toString());
 
-        int num = (int) jsonObject.get("seasons");
-        for (int i = 0; i < num; i++) {
-            output.add(jsonObject.get(i).toString());
-        }
-
+        // TODO Handle episode list
+//        int num = (int) jsonObject.get("seasons");
+//        for (int i = 0; i < num; i++) {
+//            output.add(jsonObject.get(i).toString());
+//        }
+//
         return output;
     }
 
