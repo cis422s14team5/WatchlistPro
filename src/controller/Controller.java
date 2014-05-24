@@ -35,7 +35,7 @@ import java.util.*;
 import java.util.prefs.Preferences;
 
 // TODO warn user that it will not save if they dont press done after editing
-// TODO put fetching in its own thread, add progress bar
+// TODO put fetching in its own thread, add progress bar or loading wheel
 // TODO open from server should create a new library and open the save dialog
 // TODO notify the user if fetch does not find title
 // TODO store entire path of saved files on New and on first run open the New dialog
@@ -544,6 +544,9 @@ public class Controller implements Initializable {
 
     // Server Menu
 
+    /**
+     * Create an account on the server.
+     */
     @FXML
     public void createAccount() {
         // TODO popup a window with fields for username, password; buttons for cancel, create
@@ -563,6 +566,9 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * Load a save file from the server.
+     */
     @FXML
     public void loginToServer() {
         // TODO popup a window with field for username, password; buttons for cancel, login, create account
@@ -583,6 +589,9 @@ public class Controller implements Initializable {
 
     }
 
+    /**
+     * Get the list of saves from the server.
+     */
     @FXML
     public void getSaves() {
         Client client = new Client();
@@ -1030,6 +1039,10 @@ public class Controller implements Initializable {
         this.stage = stage;
     }
 
+    /**
+     * Get the current save file.
+     * @return the save file.
+     */
     public File getSaveFile() {
         return saveFile;
     }
