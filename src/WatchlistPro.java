@@ -13,7 +13,7 @@ public class WatchlistPro extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("WatchlistPro.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/WatchlistPro.fxml"));
         Parent root = loader.load();
         Controller controller = loader.getController();
         controller.setStage(stage);

@@ -1,4 +1,4 @@
-package controller;
+package view;
 
 /**
  * Created by Keith on 5/18/14.

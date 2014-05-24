@@ -71,72 +71,28 @@
       <file leaf-file-name="Controller.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.14516129" vertical-offset="8754" max-vertical-offset="15480">
-              <caret line="589" column="83" selection-start-line="589" selection-start-column="63" selection-end-line="589" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.32795697" vertical-offset="12342" max-vertical-offset="15540">
+              <caret line="835" column="52" selection-start-line="835" selection-start-column="7" selection-end-line="835" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6081#6438#0" expanded="true" />
-                <element signature="e#6427#6428#0" expanded="true" />
-                <element signature="e#17147#17148#0" expanded="true" />
-                <element signature="e#17200#17201#0" expanded="true" />
-                <element signature="e#21661#21662#0" expanded="true" />
-                <element signature="e#21694#21695#0" expanded="true" />
-                <element signature="e#34606#34607#0" expanded="true" />
-                <element signature="e#34640#34641#0" expanded="true" />
+                <element signature="e#6074#6431#0" expanded="true" />
+                <element signature="e#6420#6421#0" expanded="true" />
+                <element signature="e#17140#17141#0" expanded="true" />
+                <element signature="e#17193#17194#0" expanded="true" />
+                <element signature="e#21788#21789#0" expanded="true" />
+                <element signature="e#21821#21822#0" expanded="true" />
+                <element signature="e#34931#34932#0" expanded="true" />
+                <element signature="e#34965#34966#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MediaCollection.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/MediaCollection.java">
+      <file leaf-file-name="ByteArrayHandler.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/ByteArrayHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="477" max-vertical-offset="1170">
-              <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#347#348#0" expanded="true" />
-                <element signature="e#373#374#0" expanded="true" />
-                <element signature="e#419#420#0" expanded="true" />
-                <element signature="e#446#447#0" expanded="true" />
-                <element signature="e#482#483#0" expanded="true" />
-                <element signature="e#517#518#0" expanded="true" />
-                <element signature="e#552#553#0" expanded="true" />
-                <element signature="e#590#591#0" expanded="true" />
-                <element signature="e#841#842#0" expanded="true" />
-                <element signature="e#872#873#0" expanded="true" />
-                <element signature="e#899#900#0" expanded="true" />
-                <element signature="e#926#927#0" expanded="true" />
-                <element signature="e#981#982#0" expanded="true" />
-                <element signature="e#1018#1019#0" expanded="true" />
-                <element signature="e#1059#1060#0" expanded="true" />
-                <element signature="e#1094#1095#0" expanded="true" />
-                <element signature="e#1119#1120#0" expanded="true" />
-                <element signature="e#1153#1154#0" expanded="true" />
-                <element signature="e#1227#1228#0" expanded="true" />
-                <element signature="e#1319#1320#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TopicHandler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/TopicHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4005" max-vertical-offset="5895">
-              <caret line="297" column="9" selection-start-line="297" selection-start-column="9" selection-end-line="297" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientThread.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/ClientThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="378" max-vertical-offset="1155">
-              <caret line="57" column="118" selection-start-line="57" selection-start-column="53" selection-end-line="57" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="795">
+              <caret line="27" column="44" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -152,7 +108,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/freebase/TopicHandler.java" />
         <option value="$PROJECT_DIR$/src/freebase/ClientThread.java" />
         <option value="$PROJECT_DIR$/src/WatchlistProController.java" />
         <option value="$PROJECT_DIR$/src/FileIO.java" />
@@ -202,6 +157,7 @@
         <option value="$PROJECT_DIR$/src/watchlistpro/WatchlistProController.java" />
         <option value="$PROJECT_DIR$/src/watchlistpro/Controller.java" />
         <option value="$PROJECT_DIR$/src/model/MediaCollection.java" />
+        <option value="$PROJECT_DIR$/src/controller/ByteArrayHandler.java" />
         <option value="$PROJECT_DIR$/src/controller/Controller.java" />
       </list>
     </option>
@@ -285,43 +241,7 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WatchlistPro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WatchlistPro" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WatchlistPro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WatchlistPro" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -352,7 +272,7 @@
     <property name="dynamic.classpath" value="false" />
     <property name="FullScreen" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/aquafx-0.1-sources.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/view" />
     <property name="Downloaded.Files.Path" value="$PROJECT_DIR$/lib" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
@@ -366,11 +286,13 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/view" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/watchlistpro" />
       <recent name="$PROJECT_DIR$/src/freebase" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="view" />
       <recent name="watchlistpro" />
       <recent name="" />
     </key>
@@ -652,12 +574,12 @@
       <workItem from="1400196599098" duration="11553000" />
       <workItem from="1400274486903" duration="78000" />
       <workItem from="1400290605981" duration="52395000" />
-      <workItem from="1400802600690" duration="29195000" />
+      <workItem from="1400802600690" duration="31938000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131957000" />
+    <option name="totallyTimeSpent" value="134700000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="874" extended-state="6" />
@@ -720,14 +642,14 @@
           <caret line="619" column="62" selection-start-line="619" selection-start-column="62" selection-end-line="619" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6081#6438#0" expanded="true" />
-            <element signature="e#6427#6428#0" expanded="true" />
-            <element signature="e#17147#17148#0" expanded="true" />
-            <element signature="e#17200#17201#0" expanded="true" />
-            <element signature="e#21661#21662#0" expanded="true" />
-            <element signature="e#21694#21695#0" expanded="true" />
-            <element signature="e#34606#34607#0" expanded="true" />
-            <element signature="e#34640#34641#0" expanded="true" />
+            <element signature="e#6074#6431#0" expanded="true" />
+            <element signature="e#6420#6421#0" expanded="true" />
+            <element signature="e#17140#17141#0" expanded="true" />
+            <element signature="e#17193#17194#0" expanded="true" />
+            <element signature="e#21788#21789#0" expanded="true" />
+            <element signature="e#21821#21822#0" expanded="true" />
+            <element signature="e#34931#34932#0" expanded="true" />
+            <element signature="e#34965#34966#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -748,14 +670,14 @@
           <caret line="33" column="66" selection-start-line="33" selection-start-column="35" selection-end-line="34" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6081#6438#0" expanded="true" />
-            <element signature="e#6427#6428#0" expanded="true" />
-            <element signature="e#17147#17148#0" expanded="true" />
-            <element signature="e#17200#17201#0" expanded="true" />
-            <element signature="e#21661#21662#0" expanded="true" />
-            <element signature="e#21694#21695#0" expanded="true" />
-            <element signature="e#34606#34607#0" expanded="true" />
-            <element signature="e#34640#34641#0" expanded="true" />
+            <element signature="e#6074#6431#0" expanded="true" />
+            <element signature="e#6420#6421#0" expanded="true" />
+            <element signature="e#17140#17141#0" expanded="true" />
+            <element signature="e#17193#17194#0" expanded="true" />
+            <element signature="e#21788#21789#0" expanded="true" />
+            <element signature="e#21821#21822#0" expanded="true" />
+            <element signature="e#34931#34932#0" expanded="true" />
+            <element signature="e#34965#34966#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -766,14 +688,14 @@
           <caret line="33" column="66" selection-start-line="33" selection-start-column="35" selection-end-line="34" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6081#6438#0" expanded="true" />
-            <element signature="e#6427#6428#0" expanded="true" />
-            <element signature="e#17147#17148#0" expanded="true" />
-            <element signature="e#17200#17201#0" expanded="true" />
-            <element signature="e#21661#21662#0" expanded="true" />
-            <element signature="e#21694#21695#0" expanded="true" />
-            <element signature="e#34606#34607#0" expanded="true" />
-            <element signature="e#34640#34641#0" expanded="true" />
+            <element signature="e#6074#6431#0" expanded="true" />
+            <element signature="e#6420#6421#0" expanded="true" />
+            <element signature="e#17140#17141#0" expanded="true" />
+            <element signature="e#17193#17194#0" expanded="true" />
+            <element signature="e#21788#21789#0" expanded="true" />
+            <element signature="e#21821#21822#0" expanded="true" />
+            <element signature="e#34931#34932#0" expanded="true" />
+            <element signature="e#34965#34966#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -806,7 +728,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/WatchlistPro.fxml">
+    <entry file="file://$PROJECT_DIR$/src/view/WatchlistPro.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.692307" vertical-offset="5194" max-vertical-offset="6720">
           <caret line="370" column="72" selection-start-line="370" selection-start-column="7" selection-end-line="370" selection-end-column="7" />
@@ -849,25 +771,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/AboutDialog.java">
+    <entry file="file://$PROJECT_DIR$/src/view/AboutDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="900">
           <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/WatchlistPro.css">
+    <entry file="file://$PROJECT_DIR$/src/view/WatchlistPro.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
           <caret line="26" column="52" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WatchlistPro.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -929,14 +843,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ByteArrayHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="795">
-          <caret line="34" column="10" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/MediaCollection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="477" max-vertical-offset="1170">
@@ -967,20 +873,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/WatchlistPro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13440861" vertical-offset="0" max-vertical-offset="558">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ByteArrayHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="795">
+          <caret line="27" column="44" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14516129" vertical-offset="8754" max-vertical-offset="15480">
-          <caret line="589" column="83" selection-start-line="589" selection-start-column="63" selection-end-line="589" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.32795697" vertical-offset="12342" max-vertical-offset="15540">
+          <caret line="835" column="52" selection-start-line="835" selection-start-column="7" selection-end-line="835" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6081#6438#0" expanded="true" />
-            <element signature="e#6427#6428#0" expanded="true" />
-            <element signature="e#17147#17148#0" expanded="true" />
-            <element signature="e#17200#17201#0" expanded="true" />
-            <element signature="e#21661#21662#0" expanded="true" />
-            <element signature="e#21694#21695#0" expanded="true" />
-            <element signature="e#34606#34607#0" expanded="true" />
-            <element signature="e#34640#34641#0" expanded="true" />
+            <element signature="e#6074#6431#0" expanded="true" />
+            <element signature="e#6420#6421#0" expanded="true" />
+            <element signature="e#17140#17141#0" expanded="true" />
+            <element signature="e#17193#17194#0" expanded="true" />
+            <element signature="e#21788#21789#0" expanded="true" />
+            <element signature="e#21821#21822#0" expanded="true" />
+            <element signature="e#34931#34932#0" expanded="true" />
+            <element signature="e#34965#34966#0" expanded="true" />
           </folding>
         </state>
       </provider>

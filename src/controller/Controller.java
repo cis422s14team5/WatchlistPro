@@ -26,6 +26,7 @@ import client.Client;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+import view.AboutDialog;
 
 import java.io.*;
 import java.lang.String;
@@ -46,25 +47,22 @@ import java.util.prefs.Preferences;
  */
 public class Controller implements Initializable {
 
-    // Data structures
     private MediaCollection watchlist;
+    private MediaCreator mediaCreator;
+    private FileIO io;
+    private Stage stage;
+    private File saveFile;
+    private Preferences preferences;
+    private LinkedList<String> recentList;
+    private ByteArrayHandler byteArrayHandler;
+    private String username;
+    private String password;
 
     // Control variables
     private int mediaIndex;
     private String mediaName;
     private String mediaType;
     private String mediaEditType;
-
-    // Other
-    private MediaCreator mediaCreator;
-    private FileIO io;
-    private Stage stage;
-    private File saveFile;
-    private Preferences preferences;
-    private List<String> recentList;
-    private ByteArrayHandler byteArrayHandler;
-    private String username;
-    private String password;
 
     // View components
     @FXML
@@ -189,7 +187,7 @@ public class Controller implements Initializable {
         // Setup Open Recent List
         recentList = byteArrayHandler.readByteArray(preferences.getByteArray("recentList", "".getBytes()));
         if (!recentList.isEmpty()) {
-            File recentFile = new File(recentList.get(recentList.size() - 1));
+            File recentFile = new File(recentList.get(0));
             if (!recentFile.exists()) {
                 io.save(new ObservableMapWrapper<>(new HashMap<>()), recentFile);
             }
@@ -212,7 +210,7 @@ public class Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Throws CoreText performance errors
+        // Throws CoreText performance errors on OS X Mavericks.
         AquaFx.style();
         AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(filterField);
 
@@ -539,6 +537,8 @@ public class Controller implements Initializable {
     @FXML
     public void closeWindow() {
         io.save(watchlist.getMap(), saveFile);
+        preferences.remove("recentList");
+        preferences.putByteArray("recentList", byteArrayHandler.writeByteArray(recentList));
         Platform.exit();
     }
 
@@ -599,7 +599,6 @@ public class Controller implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     /**
@@ -816,8 +815,10 @@ public class Controller implements Initializable {
      */
     private void updateRecentMenu(String name) {
         if (!recentList.contains(name)) {
-            recentList.add(name);
+            recentList.push(name);
         } else {
+            recentList.remove(name);
+            recentList.push(name);
             int index = 0;
             for (int i = 0; i < openRecentMenuItem.getItems().size(); i++) {
                 if (openRecentMenuItem.getItems().get(i).getText().equals(name)) {
@@ -837,7 +838,10 @@ public class Controller implements Initializable {
      */
     public void createRecentMenu() {
         if (!recentList.isEmpty()) {
-            recentList.forEach(this::addRecent);
+            for (int i = recentList.size() - 1; i >= 0; i--) {
+                addRecent(recentList.get(i));
+            }
+            //recentList.forEach(this::addRecent);
         } else {
             openRecentMenuItem.setDisable(true);
         }
