@@ -9,7 +9,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox id="root" fx:id="root" prefHeight="600.0" prefWidth="800.0" styleClass="theme" stylesheets="@WatchlistPro.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="watchlistpro.WatchlistProController">
+<VBox id="root" fx:id="root" prefHeight="600.0" prefWidth="800.0" styleClass="theme" stylesheets="@WatchlistPro.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
     <children>
       <MenuBar fx:id="menuBar">
         <menus>
@@ -26,10 +26,6 @@
                         <KeyCodeCombination alt="UP" code="O" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                      </accelerator>
                   </MenuItem>
-                  <MenuItem fx:id="serverLoad" mnemonicParsing="false" onAction="#loadFromServer" text="Open from Server">
-                     <accelerator>
-                        <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
-                     </accelerator></MenuItem>
                   <Menu fx:id="openRecentMenuItem" mnemonicParsing="false" text="Open Recent">
                     <items>
                         <SeparatorMenuItem fx:id="recentSeparator" mnemonicParsing="false" text="Separator1" />
@@ -46,10 +42,6 @@
                         <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="DOWN" shortcut="DOWN" />
                      </accelerator>
                   </MenuItem>
-                  <MenuItem fx:id="serverSave" mnemonicParsing="false" onAction="#saveToServer" text="Save to Server">
-                     <accelerator>
-                        <KeyCodeCombination alt="DOWN" code="S" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
-                     </accelerator></MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="closeWMenuItem" mnemonicParsing="false" onAction="#closeWindow" text="Close">
                      <accelerator>
@@ -57,6 +49,21 @@
                      </accelerator></MenuItem>
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Server">
+              <items>
+                  <MenuItem fx:id="createAccountMenuItem" mnemonicParsing="false" onAction="#createAccount" text="Create Account" />
+                <MenuItem fx:id="loginMenuItem" mnemonicParsing="false" onAction="#loginToServer" text="Login" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="serverLoad" mnemonicParsing="false" onAction="#loadFromServer" text="Load from Server">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="serverSave" mnemonicParsing="false" onAction="#saveToServer" text="Save to Server">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="S" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+                     </accelerator></MenuItem>
+              </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Help">
                <items>
                   <MenuItem fx:id="aboutMenu" mnemonicParsing="false" onAction="#openAbout" text="About">
@@ -77,11 +84,17 @@
 <children><ToggleButton fx:id="editToggleButton" maxHeight="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" onAction="#toggleEdit" prefHeight="26.0" prefWidth="70.0" text="Edit" HBox.hgrow="ALWAYS">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
-                     </cursor></ToggleButton>
+                     </cursor>
+                     <tooltip>
+                        <Tooltip text="Edit this entry." />
+                     </tooltip></ToggleButton>
 <Button id="button3" fx:id="fetchButton" disable="true" layoutX="473.0" layoutY="17.0" maxHeight="1.7976931348623157E308" minHeight="-Infinity" onAction="#fetchMedia" prefHeight="26.0" prefWidth="80.0" styleClass="theme" text="Fetch" HBox.hgrow="ALWAYS">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
-                     </cursor></Button>
+                     </cursor>
+                     <tooltip>
+                        <Tooltip text="Automatically fill the fields from the database." />
+                     </tooltip></Button>
 </children>
 <padding>
 <Insets bottom="5.0" right="5.0" top="5.0" />
@@ -102,7 +115,10 @@
                                  </cursor>
                                  <HBox.margin>
                                     <Insets right="5.0" />
-                                 </HBox.margin></ToggleButton>
+                                 </HBox.margin>
+                                 <tooltip>
+                                    <Tooltip text="Toggle between adding films and TV shows." />
+                                 </tooltip></ToggleButton>
 <TextField fx:id="newMediaTextField" onAction="#addMedia" prefHeight="20.0" prefWidth="234.0" promptText="Enter New Title" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets top="2.0" />
@@ -121,11 +137,17 @@
                               <Button fx:id="addButton" ellipsisString="Add" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addMedia" prefHeight="28.0" prefWidth="83.0" styleClass="theme" text="Add" textAlignment="CENTER" HBox.hgrow="ALWAYS">
                                  <cursor>
                                     <Cursor fx:constant="DEFAULT" />
-                                 </cursor></Button>
+                                 </cursor>
+                                 <tooltip>
+                                    <Tooltip text="Add a new entry using the entered title." />
+                                 </tooltip></Button>
                         <Button id="button3" fx:id="deleteButton" ellipsisString="Delete" maxWidth="1.7976931348623157E308" onAction="#deleteMedia" prefHeight="28.0" prefWidth="83.0" text="Delete" textAlignment="CENTER" HBox.hgrow="ALWAYS">
                                  <cursor>
                                     <Cursor fx:constant="DEFAULT" />
-                                 </cursor></Button>
+                                 </cursor>
+                                 <tooltip>
+                                    <Tooltip text="Delete the currently selected entry." />
+                                 </tooltip></Button>
 </children>
 </HBox>
                         <Separator prefWidth="200.0" />

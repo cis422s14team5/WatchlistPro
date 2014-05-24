@@ -1282,7 +1282,7 @@ TODO: effect-chaining!!!
 }
 
 .text-area .content {
-    -fx-padding: 1.2 3.0 2.0 1.0; 
+    -fx-padding: 1.2 3.0 2.0 1.0;
     -fx-cursor: text;
 }
 
