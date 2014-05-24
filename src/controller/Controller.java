@@ -35,11 +35,9 @@ import java.util.*;
 import java.util.prefs.Preferences;
 
 // TODO warn user that it will not save if they dont press done after editing
-// TODO delete key should call delete button
-// TODO put fetching in its own thread
+// TODO put fetching in its own thread, add progress bar
 // TODO open from server should create a new library and open the save dialog
-// TODO change title of window to WatchlistPro - <currently opened file>
-// TODO notify the user if fetch does not find
+// TODO notify the user if fetch does not find title
 // TODO store entire path of saved files on New and on first run open the New dialog
 
 /**
@@ -182,7 +180,7 @@ public class Controller implements Initializable {
         username = "user1";
         password = "12345";
 
-        File defaultFile = new File("store.txt");
+        File defaultFile = new File("watchlist.wl");
 
         // Setup Open Recent List
         recentList = byteArrayHandler.readByteArray(preferences.getByteArray("recentList", "".getBytes()));
@@ -460,10 +458,11 @@ public class Controller implements Initializable {
     public void createNew() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Create New Media File");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT Files (*.txt)", "*.txt"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Watchlist Files (*.wl)", "*.wl"));
         File selectedFile = fileChooser.showSaveDialog(stage);
         if (selectedFile != null) {
             saveFile = selectedFile;
+            stage.setTitle("WatchlistPro - " + saveFile.getName());
             watchlist.clear();
             io.save(watchlist.getMap(), saveFile);
             updateMediaList();
@@ -479,10 +478,11 @@ public class Controller implements Initializable {
     public void openLibrary() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Media File");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT Files (*.txt)", "*.txt"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Watchlist Files (*.wl)", "*.wl"));
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile != null) {
             saveFile = selectedFile;
+            stage.setTitle("WatchlistPro - " + saveFile.getName());
             watchlist.clear();
             clearDisplayPane();
             io.load(watchlist.getMap(), saveFile);
@@ -520,7 +520,7 @@ public class Controller implements Initializable {
     public void saveAs() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save As...");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT Files (*.txt)", "*.txt"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Watchlist Files (*.wl)", "*.wl"));
         File selectedFile = fileChooser.showSaveDialog(stage);
         if (selectedFile != null) {
             saveFile = selectedFile;
@@ -859,6 +859,7 @@ public class Controller implements Initializable {
         MenuItem item = new MenuItem(name);
         item.setOnAction(actionEvent -> {
             saveFile = new File(name);
+            stage.setTitle("WatchlistPro - " + saveFile.getName());
             watchlist.clear();
             clearDisplayPane();
             io.load(watchlist.getMap(), saveFile);
@@ -1028,4 +1029,9 @@ public class Controller implements Initializable {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
+    public File getSaveFile() {
+        return saveFile;
+    }
+
 }
