@@ -3,9 +3,14 @@ package controller;
 import com.aquafx_project.AquaFx;
 import com.aquafx_project.controls.skin.styles.TextFieldType;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.sun.javafx.collections.ObservableListWrapper;
 import com.sun.javafx.collections.ObservableMapWrapper;
 
 import javafx.application.Platform;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,6 +35,7 @@ import view.AboutDialog;
 
 import java.io.*;
 import java.lang.String;
+import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.*;
 import java.util.prefs.Preferences;
@@ -53,6 +59,7 @@ public class Controller implements Initializable {
     private Preferences preferences;
     private LinkedList<String> recentList;
     private ByteArrayHandler byteArrayHandler;
+    private Gson gson;
     private String username;
     private String password;
 
@@ -162,13 +169,13 @@ public class Controller implements Initializable {
     @FXML
     private Label filmWatchedLabel;
     @FXML
-    private TableView<Media> episodeTable;
+    private TableView<String> episodeTable;
     @FXML
-    private TableColumn<Media, String> seasonNumCol;
+    private TableColumn<TvShow, String> seasonNumCol;
     @FXML
-    private TableColumn<Media, String> episodeTitleCol;
+    private TableColumn<TvShow, String> episodeTitleCol;
     @FXML
-    private TableColumn<Media, String> watchedCol;
+    private TableColumn<TvShow, String> watchedCol;
 
 
     /**
@@ -180,6 +187,7 @@ public class Controller implements Initializable {
         io = new FileIO();
         preferences = Preferences.userRoot().node(this.getClass().getName());
         watchlist = new MediaCollection();
+        gson = new Gson();
 
         mediaName = null;
         mediaIndex = -1;
@@ -254,11 +262,9 @@ public class Controller implements Initializable {
         mediaList.getSelectionModel().select(0);
 
         // Initialize the episode table columns
-//        seasonNumCol.setCellValueFactory(cellData -> cellData.getValue()/*.seasonNumProperty()*/); // needs appended .seasonNumProperty()
-//        episodeTitleCol.setCellValueFactory(cellData -> cellData.getValue()/*.episodeTitleProperty()*/); // needs appended .episodeTitleProperty()
-//        watchedCol.setCellValueFactory(cellData -> cellData.getValue().watchedProperty());
-        // Add data to the table
-//        episodeTable.setItems(/*add list of episodes for selected tv series*/);
+        seasonNumCol.setCellValueFactory(cellData -> cellData.getValue().numSeasonsProperty());
+        episodeTitleCol.setCellValueFactory(cellData -> cellData.getValue().episodeListProperty());
+        watchedCol.setCellValueFactory(cellData -> cellData.getValue().watchedProperty());
 
     }
 
@@ -392,6 +398,7 @@ public class Controller implements Initializable {
                         show.setNumSeasons(tvNumSeasonsTextField.getText());
                         show.setNumEpisodes(tvNumEpisodesTextField.getText());
                         show.setDescription(tvDescriptionTextField.getText());
+                        show.setEpisodeList(seasonNumCol.getText()); // TODO check if this works
 
                         watchlist.remove(mediaName);
                         watchlist.put(tvTitleTextField.getText(), show);
@@ -962,6 +969,14 @@ public class Controller implements Initializable {
         tvNumSeasonsLabel.setText(show.getNumSeasons());
         tvNumEpisodesLabel.setText(show.getNumEpisodes());
         tvDescriptionLabel.setText(show.getDescription());
+
+        // TODO set items in TV display pane episode table
+
+        // Add data to the table
+        Type collectionType = new TypeToken<ArrayList<String>>(){}.getType();
+        ArrayList<String> episodes = gson.fromJson(show.getEpisodeList(), collectionType);
+        ObservableList<String> episodeList = new ObservableListWrapper<>(episodes);
+        episodeTable.setItems(episodeList);
     }
 
     /**
@@ -1000,6 +1015,18 @@ public class Controller implements Initializable {
         tvNumSeasonsTextField.setText(show.getNumSeasons());
         tvNumEpisodesTextField.setText(show.getNumEpisodes());
         tvDescriptionTextField.setText(show.getDescription());
+
+        // TODO set items in TV edit pane episode table
+        // Add data to the table
+        Type listOfListsType = new TypeToken<ArrayList<ArrayList<String>>>(){}.getType();
+
+        // show.getEpisodesList() returns a JsonArray<JsonArray<String>> where each inner JsonArray is a season of episodes
+        ArrayList<ArrayList<String>> seasons = gson.fromJson(show.getEpisodeList(), listOfListsType);
+        for (ArrayList<String> episodes : seasons) {
+            ObservableList<String> episodeList = new ObservableListWrapper<>(episodes);
+            // TODO set each section of the table to its own episodeList
+            episodeTable.setItems(episodeList);
+        }
     }
 
     /**
@@ -1035,17 +1062,19 @@ public class Controller implements Initializable {
         tvNumEpisodesTextField.setText(outputList.get(7));
         tvDescriptionTextField.setText(outputList.get(8));
 
-        JSONObject seasons = (JSONObject) JSONValue.parse(outputList.get(9));
+        // TODO put seasonList in view
+        Type mapType = new TypeToken<HashMap<String, String>>(){}.getType();
+        HashMap<String, String> seasons = gson.fromJson(outputList.get(9), mapType);
+        //JSONObject seasons = (JSONObject) JSONValue.parse(outputList.get(9));
         int numSeasons = Integer.parseInt(outputList.get(6));
 
+        Type arrayListType = new TypeToken<ArrayList<String>>(){}.getType();
         ArrayList<ArrayList<String>> seasonList = new ArrayList<>();
         for (int i = 0; i <= numSeasons; i++) {
-            JSONArray array = (JSONArray) seasons.get(String.valueOf(i));
-            seasonList.add(array);
+            //JSONArray episodes = (JSONArray) seasons.get(String.valueOf(i));
+            ArrayList<String> episodes = gson.fromJson(seasons.get(String.valueOf(i)), arrayListType);
+            seasonList.add(episodes);
         }
-
-        // TODO put seasonList in view
-        System.out.println(seasonList);
     }
 
     /**

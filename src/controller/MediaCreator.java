@@ -79,6 +79,9 @@ public class MediaCreator {
         StringProperty description = new SimpleStringProperty();
         description.set("");
 
-        return new TvShow(title, watched, genre, runtime, description, creator, network, numSeasons, numEpisodes);
+        StringProperty episodeList = new SimpleStringProperty();
+        episodeList.set("");
+
+        return new TvShow(title, watched, genre, runtime, description, creator, network, numSeasons, numEpisodes, episodeList);
     }
 }

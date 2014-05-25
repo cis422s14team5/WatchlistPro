@@ -11,18 +11,19 @@ public class TvShow extends Media {
     private StringProperty network;
     private StringProperty numSeasons;
     private StringProperty numEpisodes;
-
+    private StringProperty episodeList;
 
     /**
      * Constructor.
      */
     public TvShow(StringProperty title, StringProperty watched, StringProperty genre, StringProperty runtime, StringProperty description,
-                  StringProperty creator, StringProperty network, StringProperty numSeasons, StringProperty numEpisodes) {
+                  StringProperty creator, StringProperty network, StringProperty numSeasons, StringProperty numEpisodes, StringProperty episodeList) {
         super(title, watched, genre, runtime, description);
         this.creator = creator;
         this.network = network;
         this.numSeasons = numSeasons;
         this.numEpisodes = numEpisodes;
+        this.episodeList = episodeList;
 
         getMap().put("type", "tv");
         getMap().put("title", title.get());
@@ -34,6 +35,7 @@ public class TvShow extends Media {
         getMap().put("numSeasons", numSeasons.get());
         getMap().put("numEpisodes", numEpisodes.get());
         getMap().put("description", description.get());
+        getMap().put("episodeList", episodeList.get());
     }
 
     public String getNumEpisodes() {
@@ -87,4 +89,18 @@ public class TvShow extends Media {
         this.creator.set(creator);
         getMap().put("creator", creator);
     }
+
+    public String getEpisodeList() {
+        return episodeList.get();
+    }
+
+    public StringProperty episodeListProperty() {
+        return episodeList;
+    }
+
+    public void setEpisodeList(String episodeList) {
+        this.episodeList.set(episodeList);
+        getMap().put("episodeList", episodeList);
+    }
+
 }

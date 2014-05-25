@@ -90,8 +90,11 @@ public class FileIO {
                 StringProperty numEpisodes = new SimpleStringProperty();
                 numEpisodes.set(object.get("numEpisodes").toString());
 
+                StringProperty episodeList = new SimpleStringProperty();
+                episodeList.set(object.get("episodeList").toString());
+
                 mediaMap.put(title.get(),
-                        new TvShow(title, watched, genre, runtime, description, creator, network, numSeasons, numEpisodes));
+                        new TvShow(title, watched, genre, runtime, description, creator, network, numSeasons, numEpisodes, episodeList));
             }
         }
 
@@ -155,8 +158,11 @@ public class FileIO {
                 StringProperty numEpisodes = new SimpleStringProperty();
                 numEpisodes.set(object.get("numEpisodes").toString());
 
+                StringProperty episodeList = new SimpleStringProperty();
+                episodeList.set(object.get("episodeList").toString());
+
                 mediaMap.put(title.get(),
-                        new TvShow(title, watched, genre, runtime, description, creator, network, numSeasons, numEpisodes));
+                        new TvShow(title, watched, genre, runtime, description, creator, network, numSeasons, numEpisodes, episodeList));
             }
         }
 
