@@ -161,6 +161,15 @@ public class Controller implements Initializable {
     private CheckBox filmWatchedCheckBox;
     @FXML
     private Label filmWatchedLabel;
+    @FXML
+    private TableView<Media> episodeTable;
+    @FXML
+    private TableColumn<Media, String> seasonNumCol;
+    @FXML
+    private TableColumn<Media, String> episodeTitleCol;
+    @FXML
+    private TableColumn<Media, String> watchedCol;
+
 
     /**
      * Constructor.
@@ -243,6 +252,14 @@ public class Controller implements Initializable {
         updateMediaList();
 
         mediaList.getSelectionModel().select(0);
+
+        // Initialize the episode table columns
+//        seasonNumCol.setCellValueFactory(cellData -> cellData.getValue()/*.seasonNumProperty()*/); // needs appended .seasonNumProperty()
+//        episodeTitleCol.setCellValueFactory(cellData -> cellData.getValue()/*.episodeTitleProperty()*/); // needs appended .episodeTitleProperty()
+//        watchedCol.setCellValueFactory(cellData -> cellData.getValue().watchedProperty());
+        // Add data to the table
+//        episodeTable.setItems(/*add list of episodes for selected tv series*/);
+
     }
 
     // Button and Field Methods
