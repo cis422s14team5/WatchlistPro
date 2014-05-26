@@ -68,37 +68,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Controller.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Controller.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.6956521" vertical-offset="8670" max-vertical-offset="16155">
-              <caret line="794" column="13" selection-start-line="794" selection-start-column="13" selection-end-line="794" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="10501" max-vertical-offset="18450">
+              <caret line="726" column="63" selection-start-line="726" selection-start-column="48" selection-end-line="726" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
-                <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
-                <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
-                <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
-                <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
-                <element signature="method#createNew#0;class#Controller#0" expanded="false" />
-                <element signature="method#openLibrary#0;class#Controller#0" expanded="false" />
-                <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
-                <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
-                <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
-                <element signature="e#27560#27561#0" expanded="true" />
-                <element signature="e#27593#27594#0" expanded="true" />
-                <element signature="e#41637#41638#0" expanded="true" />
-                <element signature="e#41671#41672#0" expanded="true" />
+                <element signature="e#18573#18574#0" expanded="true" />
+                <element signature="e#18626#18627#0" expanded="true" />
+                <element signature="e#27570#27571#0" expanded="true" />
+                <element signature="e#27603#27604#0" expanded="true" />
+                <element signature="e#41647#41648#0" expanded="true" />
+                <element signature="e#41681#41682#0" expanded="true" />
+                <element signature="e#41794#41795#0" expanded="true" />
+                <element signature="e#41825#41826#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TopicHandler.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TopicHandler.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/TopicHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="79" max-vertical-offset="5970">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.13743456" vertical-offset="0" max-vertical-offset="5970">
+              <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientThread.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/ClientThread.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="1170">
+              <caret line="37" column="84" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -195,7 +199,6 @@
         <option value="$PROJECT_DIR$/src/aquafx/com/aquafx_project/controls/skin/styles/styler/ChoiceBoxStyler.java" />
         <option value="$PROJECT_DIR$/src/com/aquafx_project/controls/skin/AquaPasswordFieldSkin.java" />
         <option value="$PROJECT_DIR$/src/client/TopicHandler.java" />
-        <option value="$PROJECT_DIR$/src/client/ClientThread.java" />
         <option value="$PROJECT_DIR$/src/watchlistpro/TopicHandler.java" />
         <option value="$PROJECT_DIR$/src/watchlistpro/WatchlistProController.java" />
         <option value="$PROJECT_DIR$/src/watchlistpro/Controller.java" />
@@ -208,16 +211,17 @@
         <option value="$PROJECT_DIR$/src/model/TvShow.java" />
         <option value="$PROJECT_DIR$/src/client/Client.java" />
         <option value="$PROJECT_DIR$/src/controller/FileIO.java" />
-        <option value="$PROJECT_DIR$/src/controller/TopicHandler.java" />
         <option value="$PROJECT_DIR$/src/view/WatchlistPro.css" />
         <option value="$PROJECT_DIR$/src/view/AboutDialog.java" />
         <option value="$PROJECT_DIR$/src/WatchlistPro.java" />
+        <option value="$PROJECT_DIR$/src/client/ClientThread.java" />
         <option value="$PROJECT_DIR$/src/controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/controller/TopicHandler.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="363" />
+    <option name="x" value="361" />
     <option name="y" value="22" />
     <option name="width" value="1077" />
     <option name="height" value="874" />
@@ -663,7 +667,7 @@
     <option name="totallyTimeSpent" value="146663000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="363" y="22" width="1077" height="874" extended-state="0" />
+    <frame x="361" y="22" width="1077" height="874" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -682,8 +686,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18055555" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25093168" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18012999" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25093168" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -728,20 +732,14 @@
           <caret line="36" column="24" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
-            <element signature="method#createNew#0;class#Controller#0" expanded="false" />
-            <element signature="method#openLibrary#0;class#Controller#0" expanded="false" />
-            <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
-            <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
-            <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
-            <element signature="e#27560#27561#0" expanded="true" />
-            <element signature="e#27593#27594#0" expanded="true" />
-            <element signature="e#41637#41638#0" expanded="true" />
-            <element signature="e#41671#41672#0" expanded="true" />
+            <element signature="e#18573#18574#0" expanded="true" />
+            <element signature="e#18626#18627#0" expanded="true" />
+            <element signature="e#27570#27571#0" expanded="true" />
+            <element signature="e#27603#27604#0" expanded="true" />
+            <element signature="e#41647#41648#0" expanded="true" />
+            <element signature="e#41681#41682#0" expanded="true" />
+            <element signature="e#41794#41795#0" expanded="true" />
+            <element signature="e#41825#41826#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -752,20 +750,14 @@
           <caret line="281" column="34" selection-start-line="281" selection-start-column="34" selection-end-line="281" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
-            <element signature="method#createNew#0;class#Controller#0" expanded="false" />
-            <element signature="method#openLibrary#0;class#Controller#0" expanded="false" />
-            <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
-            <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
-            <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
-            <element signature="e#27560#27561#0" expanded="true" />
-            <element signature="e#27593#27594#0" expanded="true" />
-            <element signature="e#41637#41638#0" expanded="true" />
-            <element signature="e#41671#41672#0" expanded="true" />
+            <element signature="e#18573#18574#0" expanded="true" />
+            <element signature="e#18626#18627#0" expanded="true" />
+            <element signature="e#27570#27571#0" expanded="true" />
+            <element signature="e#27603#27604#0" expanded="true" />
+            <element signature="e#41647#41648#0" expanded="true" />
+            <element signature="e#41681#41682#0" expanded="true" />
+            <element signature="e#41794#41795#0" expanded="true" />
+            <element signature="e#41825#41826#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -820,20 +812,14 @@
           <caret line="215" column="0" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
-            <element signature="method#createNew#0;class#Controller#0" expanded="false" />
-            <element signature="method#openLibrary#0;class#Controller#0" expanded="false" />
-            <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
-            <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
-            <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
-            <element signature="e#27560#27561#0" expanded="true" />
-            <element signature="e#27593#27594#0" expanded="true" />
-            <element signature="e#41637#41638#0" expanded="true" />
-            <element signature="e#41671#41672#0" expanded="true" />
+            <element signature="e#18573#18574#0" expanded="true" />
+            <element signature="e#18626#18627#0" expanded="true" />
+            <element signature="e#27570#27571#0" expanded="true" />
+            <element signature="e#27603#27604#0" expanded="true" />
+            <element signature="e#41647#41648#0" expanded="true" />
+            <element signature="e#41681#41682#0" expanded="true" />
+            <element signature="e#41794#41795#0" expanded="true" />
+            <element signature="e#41825#41826#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -878,20 +864,14 @@
           <caret line="210" column="51" selection-start-line="210" selection-start-column="51" selection-end-line="210" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
-            <element signature="method#createNew#0;class#Controller#0" expanded="false" />
-            <element signature="method#openLibrary#0;class#Controller#0" expanded="false" />
-            <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
-            <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
-            <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
-            <element signature="e#27560#27561#0" expanded="true" />
-            <element signature="e#27593#27594#0" expanded="true" />
-            <element signature="e#41637#41638#0" expanded="true" />
-            <element signature="e#41671#41672#0" expanded="true" />
+            <element signature="e#18573#18574#0" expanded="true" />
+            <element signature="e#18626#18627#0" expanded="true" />
+            <element signature="e#27570#27571#0" expanded="true" />
+            <element signature="e#27603#27604#0" expanded="true" />
+            <element signature="e#41647#41648#0" expanded="true" />
+            <element signature="e#41681#41682#0" expanded="true" />
+            <element signature="e#41794#41795#0" expanded="true" />
+            <element signature="e#41825#41826#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -936,20 +916,14 @@
           <caret line="200" column="0" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
-            <element signature="method#createNew#0;class#Controller#0" expanded="false" />
-            <element signature="method#openLibrary#0;class#Controller#0" expanded="false" />
-            <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
-            <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
-            <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
-            <element signature="e#27560#27561#0" expanded="true" />
-            <element signature="e#27593#27594#0" expanded="true" />
-            <element signature="e#41637#41638#0" expanded="true" />
-            <element signature="e#41671#41672#0" expanded="true" />
+            <element signature="e#18573#18574#0" expanded="true" />
+            <element signature="e#18626#18627#0" expanded="true" />
+            <element signature="e#27570#27571#0" expanded="true" />
+            <element signature="e#27603#27604#0" expanded="true" />
+            <element signature="e#41647#41648#0" expanded="true" />
+            <element signature="e#41681#41682#0" expanded="true" />
+            <element signature="e#41794#41795#0" expanded="true" />
+            <element signature="e#41825#41826#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1002,20 +976,14 @@
           <caret line="218" column="26" selection-start-line="218" selection-start-column="16" selection-end-line="218" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
-            <element signature="method#createNew#0;class#Controller#0" expanded="false" />
-            <element signature="method#openLibrary#0;class#Controller#0" expanded="false" />
-            <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
-            <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
-            <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
-            <element signature="e#27560#27561#0" expanded="true" />
-            <element signature="e#27593#27594#0" expanded="true" />
-            <element signature="e#41637#41638#0" expanded="true" />
-            <element signature="e#41671#41672#0" expanded="true" />
+            <element signature="e#18573#18574#0" expanded="true" />
+            <element signature="e#18626#18627#0" expanded="true" />
+            <element signature="e#27570#27571#0" expanded="true" />
+            <element signature="e#27603#27604#0" expanded="true" />
+            <element signature="e#41647#41648#0" expanded="true" />
+            <element signature="e#41681#41682#0" expanded="true" />
+            <element signature="e#41794#41795#0" expanded="true" />
+            <element signature="e#41825#41826#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1046,13 +1014,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6484375" vertical-offset="73" max-vertical-offset="660">
           <caret line="35" column="64" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/ClientThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="378" max-vertical-offset="1155">
-          <caret line="57" column="118" selection-start-line="57" selection-start-column="53" selection-end-line="57" selection-end-column="53" />
         </state>
       </provider>
     </entry>
@@ -1242,35 +1203,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/TopicHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/client/ClientThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="79" max-vertical-offset="5970">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="1170">
+          <caret line="37" column="84" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.6956521" vertical-offset="8670" max-vertical-offset="16155">
-          <caret line="794" column="13" selection-start-line="794" selection-start-column="13" selection-end-line="794" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="10501" max-vertical-offset="18450">
+          <caret line="726" column="63" selection-start-line="726" selection-start-column="48" selection-end-line="726" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
-            <element signature="method#createNew#0;class#Controller#0" expanded="false" />
-            <element signature="method#openLibrary#0;class#Controller#0" expanded="false" />
-            <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
-            <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
-            <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
-            <element signature="e#27560#27561#0" expanded="true" />
-            <element signature="e#27593#27594#0" expanded="true" />
-            <element signature="e#41637#41638#0" expanded="true" />
-            <element signature="e#41671#41672#0" expanded="true" />
+            <element signature="e#18573#18574#0" expanded="true" />
+            <element signature="e#18626#18627#0" expanded="true" />
+            <element signature="e#27570#27571#0" expanded="true" />
+            <element signature="e#27603#27604#0" expanded="true" />
+            <element signature="e#41647#41648#0" expanded="true" />
+            <element signature="e#41681#41682#0" expanded="true" />
+            <element signature="e#41794#41795#0" expanded="true" />
+            <element signature="e#41825#41826#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/TopicHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13743456" vertical-offset="0" max-vertical-offset="5970">
+          <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>

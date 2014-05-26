@@ -42,6 +42,7 @@ public class ClientThread implements Runnable {
         try {
             if ((input = in.readLine()) != null && !input.equals("Bye.")) {
                 String[] output = input.split("");
+                System.out.println(input);
 
                 // Handle input from server.
                 // TODO handle getting the list of server save files here, possibly use JSON

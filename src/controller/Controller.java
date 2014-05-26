@@ -636,7 +636,7 @@ public class Controller implements Initializable {
         if (getUserCredentials()) {
             Client client = new Client();
             try {
-                Thread account = client.send("add" + "||" + username + "||" + password);
+                Thread account = client.send("add" + "-=-" + username + "-=-" + password);
                 Thread quit = client.send("quit");
 
                 account.start();
@@ -713,7 +713,7 @@ public class Controller implements Initializable {
         if (getUserLogin()) {
             Client client = new Client();
             try {
-                Thread login = client.send("login" + "||" + username + "||" + password);
+                Thread login = client.send("login" + "-=-" + username + "-=-" + password);
                 Thread quit = client.send("quit");
 
                 login.start();
@@ -744,7 +744,7 @@ public class Controller implements Initializable {
     public void getSaves() {
         Client client = new Client();
         try {
-            Thread saves = client.send("getsaves" + "||" + username);
+            Thread saves = client.send("getsaves" + "-=-" + username);
             Thread quit = client.send("quit");
 
             saves.start();
@@ -778,7 +778,7 @@ public class Controller implements Initializable {
 
             Client client = new Client();
             try {
-                Thread save = client.send("save" + "||" + username + "||" + saveName + "||" + data);
+                Thread save = client.send("save" + "-=-" + username + "-=-" + saveName + "-=-" + data);
                 Thread quit = client.send("quit");
 
                 save.start();
@@ -810,7 +810,7 @@ public class Controller implements Initializable {
         String saveName = "save1";
         Client client = new Client();
         try {
-            Thread load = client.send("load" + "||" + username + "||" + saveName);
+            Thread load = client.send("load" + "-=-" + username + "-=-" + saveName);
             Thread quit = client.send("quit");
 
             load.start();
