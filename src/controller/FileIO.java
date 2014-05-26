@@ -10,23 +10,27 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 import model.Film;
 import model.Media;
 import model.TvShow;
 
 import java.io.*;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Observable;
+import java.util.*;
 
 /**
  * Reads and writes to the file system. Used to read and write to the store.txt file.
  */
 public class FileIO {
+
+    private Gson gson;
+
+    /**
+     * Constructor.
+     */
+    public FileIO() {
+        gson = new Gson();
+    }
 
     /**
      * Encodes each Media object in the mediaMap into a JSON string and writes it to the file system using write.
@@ -37,7 +41,7 @@ public class FileIO {
         ArrayList<String> list = new ArrayList<>();
         for (HashMap.Entry entry : mediaMap.entrySet()) {
             Media media = (Media) entry.getValue();
-            String jsonString = JSONValue.toJSONString(media.getMap());
+            String jsonString = gson.toJson(media.getMap());
             list.add(jsonString);
         }
         write(list, file);
@@ -73,61 +77,62 @@ public class FileIO {
      * @return a filled mediaMap
      */
     private ObservableMap<String, Media> setProperties(ObservableMap<String, Media> mediaMap, List<String> list) {
+        Type mapType = new TypeToken<HashMap<String, String>>(){}.getType();
+
         for (String string : list) {
-            JSONObject object = (JSONObject) JSONValue.parse(string);
+            Map<String, String> map = gson.fromJson(string, mapType);
 
             StringProperty title = new SimpleStringProperty();
-            title.set(object.get("title").toString());
+            title.set(map.get("title"));
 
             StringProperty watched = new SimpleStringProperty();
-            watched.set(object.get("watched").toString());
+            watched.set(map.get("watched"));
 
             StringProperty genre = new SimpleStringProperty();
-            genre.set(object.get("genre").toString());
+            genre.set(map.get("genre"));
 
             StringProperty runtime = new SimpleStringProperty();
-            runtime.set(object.get("runtime").toString());
+            runtime.set(map.get("runtime"));
 
             StringProperty description = new SimpleStringProperty();
-            description.set(object.get("description").toString());
+            description.set(map.get("description"));
 
-            if (object.get("type").equals("film")) {
+            if (map.get("type").equals("film")) {
 
                 StringProperty director = new SimpleStringProperty();
-                director.set(object.get("director").toString());
+                director.set(map.get("director"));
 
                 StringProperty rating = new SimpleStringProperty();
-                rating.set(object.get("rating").toString());
+                rating.set(map.get("rating"));
 
                 StringProperty producer = new SimpleStringProperty();
-                producer.set(object.get("producer").toString());
+                producer.set(map.get("producer"));
 
                 StringProperty writer = new SimpleStringProperty();
-                writer.set(object.get("writer").toString());
+                writer.set(map.get("writer"));
 
                 mediaMap.put(title.get(),
                         new Film(title, watched, genre, runtime, description, director, rating, producer, writer));
-            } else if (object.get("type").equals("tv")) {
+            } else if (map.get("type").equals("tv")) {
 
                 StringProperty creator = new SimpleStringProperty();
-                creator.set(object.get("creator").toString());
+                creator.set(map.get("creator"));
 
                 StringProperty network = new SimpleStringProperty();
-                network.set(object.get("network").toString());
+                network.set(map.get("network"));
 
                 StringProperty numSeasons = new SimpleStringProperty();
-                numSeasons.set(object.get("numSeasons").toString());
+                numSeasons.set(map.get("numSeasons"));
 
                 StringProperty numEpisodes = new SimpleStringProperty();
-                numEpisodes.set(object.get("numEpisodes").toString());
+                numEpisodes.set(map.get("numEpisodes"));
 
-                Gson gson = new Gson();
-                Type observableListType = new TypeToken<ObservableList<String>>(){}.getType();
+                // Convert episode list from JSON string to ObservableList.
+                Type arrayListType = new TypeToken<ArrayList<String>>(){}.getType();
+                ArrayList<String> arrayList = gson.fromJson(map.get("episodeList"), arrayListType);
+                ObservableList<String> observableList = new ObservableListWrapper<>(arrayList);
 
                 ListProperty<String> episodeList = new SimpleListProperty<>();
-                ArrayList<String> tempList = gson.fromJson(object.get("episodeList").toString(),
-                        observableListType);
-                ObservableList<String> observableList = new ObservableListWrapper<>(tempList);
                 episodeList.set(observableList);
 
                 mediaMap.put(title.get(),

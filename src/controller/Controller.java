@@ -274,11 +274,10 @@ public class Controller implements Initializable {
 
         mediaList.getSelectionModel().select(0);
 
-        // Initialize the episode table columns
-        seasonNumCol.setCellValueFactory(cellData -> cellData.getValue().numSeasonsProperty());
-        // TODO fix setting data in column
+        // TODO Initialize the episode table columns
+        // seasonNumCol.setCellValueFactory(cellData -> cellData.getValue().numSeasonsProperty());
         // episodeTitleCol.setCellValueFactory(cellData -> cellData.getValue().episodeListProperty());
-        watchedCol.setCellValueFactory(cellData -> cellData.getValue().watchedProperty());
+        // watchedCol.setCellValueFactory(cellData -> cellData.getValue().watchedProperty());
 
     }
 
@@ -1173,7 +1172,9 @@ public class Controller implements Initializable {
 
         // TODO put seasonList in view
         Type observableListType = new TypeToken<ObservableList<String>>(){}.getType();
-        episodeTable.setItems(gson.fromJson(outputList.get(9), observableListType));
+        ArrayList<String> tempList = gson.fromJson(outputList.get(9), observableListType);
+        ObservableList<String> episodeList = new ObservableListWrapper<>(tempList);
+        episodeTable.setItems(episodeList);
 //        Type mapType = new TypeToken<HashMap<String, String>>(){}.getType();
 //        HashMap<String, String> seasons = gson.fromJson(outputList.get(9), mapType);
 //        //JSONObject seasons = (JSONObject) JSONValue.parse(outputList.get(9));
