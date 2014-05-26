@@ -9,7 +9,6 @@ import com.sun.javafx.collections.ObservableListWrapper;
 import com.sun.javafx.collections.ObservableMapWrapper;
 
 import javafx.application.Platform;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
@@ -19,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.stage.*;
 
@@ -27,12 +27,10 @@ import model.Media;
 import model.MediaCollection;
 import model.TvShow;
 import client.Client;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 import view.AboutDialog;
 
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.io.*;
 import java.lang.String;
 import java.lang.reflect.Type;
@@ -62,6 +60,7 @@ public class Controller implements Initializable {
     private Gson gson;
     private String username;
     private String password;
+    private Boolean isLoggedIn;
 
     // Control variables
     private int mediaIndex;
@@ -205,10 +204,11 @@ public class Controller implements Initializable {
         mediaName = null;
         mediaIndex = -1;
         mediaType = "film";
+        isLoggedIn = false;
 
         // TODO get username and password from user input
-        username = "user1";
-        password = "12345";
+        username = "";
+        password = "";
 
         File defaultFile = new File("watchlist.wl");
 
@@ -579,6 +579,7 @@ public class Controller implements Initializable {
         preferences.remove("recentList");
         preferences.putByteArray("recentList", byteArrayHandler.writeByteArray(recentList));
         Platform.exit();
+        System.exit(0);
     }
 
     // Server Menu
@@ -635,7 +636,7 @@ public class Controller implements Initializable {
         if (getUserCredentials()) {
             Client client = new Client();
             try {
-                Thread account = client.send("add " + username + " " + password);
+                Thread account = client.send("add" + "||" + username + "||" + password);
                 Thread quit = client.send("quit");
 
                 account.start();
@@ -708,10 +709,11 @@ public class Controller implements Initializable {
     @FXML
     public void loginToServer() {
         // if user entered name & password try to login
+
         if (getUserLogin()) {
             Client client = new Client();
             try {
-                Thread login = client.send("login " + username + " " + password);
+                Thread login = client.send("login" + "||" + username + "||" + password);
                 Thread quit = client.send("quit");
 
                 login.start();
@@ -742,7 +744,7 @@ public class Controller implements Initializable {
     public void getSaves() {
         Client client = new Client();
         try {
-            Thread saves = client.send("getsaves " + username);
+            Thread saves = client.send("getsaves" + "||" + username);
             Thread quit = client.send("quit");
 
             saves.start();
@@ -761,33 +763,40 @@ public class Controller implements Initializable {
      */
     @FXML
     public void saveToServer() {
-        // TODO popup window with field for save name; buttons for cancel, save
-        String saveName = "save1";
+        if (isLoggedIn) {
+            // TODO popup window with field for save name; buttons for cancel, save
+            String saveName = saveFile.getName();
 
-        String output = "";
-        for (Map.Entry<String, Media> entry : watchlist.entrySet()) {
-            Media media = entry.getValue();
-            String jsonString = JSONValue.toJSONString(media.getMap());
-            output += jsonString + "//";
+            String data = "";
+            for (Map.Entry<String, Media> entry : watchlist.entrySet()) {
+                Media media = entry.getValue();
+                String jsonString = gson.toJson(media.getMap()); // JSONValue.toJSONString(media.getMap());
+                data += jsonString + "//";
+            }
+
+            System.out.println(data);
+
+            Client client = new Client();
+            try {
+                Thread save = client.send("save" + "||" + username + "||" + saveName + "||" + data);
+                Thread quit = client.send("quit");
+
+                save.start();
+                save.join();
+
+                quit.start();
+                quit.join();
+            } catch (IOException e) {
+                System.err.println("IOException");
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                System.err.println("Interrupted Exception");
+                e.printStackTrace();
+            }
+        } else {
+
         }
 
-        Client client = new Client();
-        try {
-            Thread save = client.send("save " + username + " " + saveName + " " + output);
-            Thread quit = client.send("quit");
-
-            save.start();
-            save.join();
-
-            quit.start();
-            quit.join();
-        } catch (IOException e) {
-            System.err.println("IOException");
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            System.err.println("Interrupted Exception");
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -801,7 +810,7 @@ public class Controller implements Initializable {
         String saveName = "save1";
         Client client = new Client();
         try {
-            Thread load = client.send("load " + " " + username + " " + saveName);
+            Thread load = client.send("load" + "||" + username + "||" + saveName);
             Thread quit = client.send("quit");
 
             load.start();
@@ -1205,4 +1214,12 @@ public class Controller implements Initializable {
         return saveFile;
     }
 
+    // TODO allow delete button to call deleteMedia()
+//    public void initializeAccelerators() {
+//        stage.getScene().setOnKeyReleased(keyEvent -> {
+//            if (keyEvent.getCode() == KeyCode.BACK_SPACE) {
+//                deleteMedia();
+//            }
+//        });
+//    }
 }

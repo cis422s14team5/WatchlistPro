@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import controller.Controller;
 
+import javax.swing.*;
+import java.awt.*;
+
 /**
  * Launches the WatchlistPro view.
  */
@@ -33,11 +36,8 @@ public class WatchlistPro extends Application {
         stage.setTitle("WatchlistPro - " + file);
         stage.show();
 
-        scene.setOnKeyReleased(keyEvent -> {
-            if (keyEvent.getCode() == KeyCode.BACK_SPACE) {
-                controller.deleteMedia();
-            }
-        });
+        // controller.initializeAccelerators();
+
     }
 
     /**

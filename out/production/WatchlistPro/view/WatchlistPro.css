@@ -36,6 +36,7 @@
 
 .text-area {
     -fx-padding: 2;
+    -fx-font-weight: normal;
 }
 
 .text-field {
@@ -49,4 +50,5 @@
 .label {
     -fx-text-fill: derive(grey, -20%);
     -fx-font-size: 12px;
+    -fx-font-weight: normal;
 }
