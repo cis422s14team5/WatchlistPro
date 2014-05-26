@@ -2,6 +2,7 @@ package controller;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.sun.javafx.collections.ObservableListWrapper;
 import com.sun.javafx.collections.ObservableMapWrapper;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -124,8 +125,9 @@ public class FileIO {
                 Type observableListType = new TypeToken<ObservableList<String>>(){}.getType();
 
                 ListProperty<String> episodeList = new SimpleListProperty<>();
-                ObservableList<String> observableList = gson.fromJson(object.get("episodeList").toString(),
+                ArrayList<String> tempList = gson.fromJson(object.get("episodeList").toString(),
                         observableListType);
+                ObservableList<String> observableList = new ObservableListWrapper<>(tempList);
                 episodeList.set(observableList);
 
                 mediaMap.put(title.get(),

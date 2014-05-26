@@ -1172,8 +1172,8 @@ public class Controller implements Initializable {
         tvDescriptionTextField.setText(outputList.get(8));
 
         // TODO put seasonList in view
-        Type arrayListType = new TypeToken<ArrayList<String>>(){}.getType();
-        episodeTable.setItems(gson.fromJson(outputList.get(9), arrayListType));
+        Type observableListType = new TypeToken<ObservableList<String>>(){}.getType();
+        episodeTable.setItems(gson.fromJson(outputList.get(9), observableListType));
 //        Type mapType = new TypeToken<HashMap<String, String>>(){}.getType();
 //        HashMap<String, String> seasons = gson.fromJson(outputList.get(9), mapType);
 //        //JSONObject seasons = (JSONObject) JSONValue.parse(outputList.get(9));
