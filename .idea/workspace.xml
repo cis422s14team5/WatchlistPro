@@ -71,36 +71,25 @@
       <file leaf-file-name="Controller.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.0339285" vertical-offset="3009" max-vertical-offset="15825">
-              <caret line="200" column="0" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.24324325" vertical-offset="459" max-vertical-offset="16201">
+              <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
               <folding>
-                <element signature="e#6542#6899#0" expanded="true" />
-                <element signature="e#6888#6889#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileIO.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/FileIO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2034" max-vertical-offset="3015">
-              <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TvShow.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/TvShow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="573" max-vertical-offset="1440">
-              <caret line="96" column="26" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="47" />
-              <folding>
-                <element signature="e#2663#2664#0" expanded="true" />
-                <element signature="e#2703#2704#0" expanded="true" />
-                <element signature="e#2754#2755#0" expanded="true" />
-                <element signature="e#2788#2789#0" expanded="true" />
+                <element signature="method#initialize#0;class#Controller#0" expanded="false" />
+                <element signature="e#6870#7227#0" expanded="true" />
+                <element signature="e#7216#7217#0" expanded="true" />
+                <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
+                <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
+                <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
+                <element signature="method#toggleEdit#0;class#Controller#0" expanded="false" />
+                <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
+                <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
+                <element signature="method#createNew#0;class#Controller#0" expanded="false" />
+                <element signature="method#openLibrary#0;class#Controller#0" expanded="false" />
+                <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
+                <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
+                <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
+                <element signature="e#27237#27238#0" expanded="true" />
+                <element signature="e#27270#27271#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -116,8 +105,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/FileIO.java" />
-        <option value="$PROJECT_DIR$/src/freebase/ClientProcessor.java" />
         <option value="$PROJECT_DIR$/src/freebase/Client.java" />
         <option value="$PROJECT_DIR$/src/WatchlistPro.fxml" />
         <option value="$PROJECT_DIR$/src/watchlistpro/FileIO.java" />
@@ -153,7 +140,6 @@
         <option value="$PROJECT_DIR$/src/aquafx/com/aquafx_project/controls/skin/styles/styler/CheckBoxStyler.java" />
         <option value="$PROJECT_DIR$/src/aquafx/com/aquafx_project/controls/skin/styles/styler/ChoiceBoxStyler.java" />
         <option value="$PROJECT_DIR$/src/com/aquafx_project/controls/skin/AquaPasswordFieldSkin.java" />
-        <option value="$PROJECT_DIR$/src/com/aquafx_project/mac_os.css" />
         <option value="$PROJECT_DIR$/src/client/TopicHandler.java" />
         <option value="$PROJECT_DIR$/src/client/Client.java" />
         <option value="$PROJECT_DIR$/src/client/ClientThread.java" />
@@ -166,14 +152,52 @@
         <option value="$PROJECT_DIR$/src/model/TvShow.java" />
         <option value="$PROJECT_DIR$/src/controller/MediaCreator.java" />
         <option value="$PROJECT_DIR$/src/controller/FileIO.java" />
+        <option value="$PROJECT_DIR$/src/view/WatchlistPro.fxml" />
+        <option value="$PROJECT_DIR$/src/com/aquafx_project/mac_os.css" />
+        <option value="$PROJECT_DIR$/watchlist.wl" />
         <option value="$PROJECT_DIR$/src/controller/Controller.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="22" />
-    <option name="width" value="1440" />
-    <option name="height" value="874" />
+    <option name="x" value="294" />
+    <option name="y" value="103" />
+    <option name="width" value="1534" />
+    <option name="height" value="1041" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Android Lint</id>
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+          <State>
+            <id>Groovy</id>
+          </State>
+          <State>
+            <id>Maven</id>
+          </State>
+          <State>
+            <id>Plugin DevKit</id>
+          </State>
+          <State>
+            <id>XPath</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Abstraction issues</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -203,8 +227,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -311,15 +333,17 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="options.lastSelected" value="Errors" />
+    <property name="options.lastSelected" value="editor.preferences.appearance" />
     <property name="project.structure.side.proportion" value="0.2525355" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -334,7 +358,7 @@
     <property name="dynamic.classpath" value="false" />
     <property name="FullScreen" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/view" />
+    <property name="last_opened_file_path" value="C:/Program Files (x86)/Oracle/JavaFX Scene Builder 2.0/JavaFX Scene Builder 2.0.exe" />
     <property name="Downloaded.Files.Path" value="$PROJECT_DIR$/lib" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
@@ -394,14 +418,25 @@
       <option name="PROGRAM_PARAMETERS" />
       <method />
     </configuration>
-    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
-      <setting name="vmparams" value="" />
-      <setting name="cmdLine" value="run-app" />
-      <setting name="depsClasspath" value="false" />
-      <setting name="passParentEnv" value="true" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <setting name="launchBrowser" value="false" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -410,9 +445,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -456,6 +488,21 @@
       <listeners />
       <method />
     </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -475,110 +522,6 @@
       </option>
       <envs />
       <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
-      <option name="BCName" value="" />
-      <option name="IOSSimulatorSdkPath" value="" />
-      <option name="adlOptions" value="" />
-      <option name="airProgramParameters" value="" />
-      <option name="appDescriptorForEmulator" value="Android" />
-      <option name="debugTransport" value="USB" />
-      <option name="debuggerSdkRaw" value="BC SDK" />
-      <option name="emulator" value="NexusOne" />
-      <option name="emulatorAdlOptions" value="" />
-      <option name="fastPackaging" value="true" />
-      <option name="fullScreenHeight" value="0" />
-      <option name="fullScreenWidth" value="0" />
-      <option name="launchUrl" value="false" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="mobileRunTarget" value="Emulator" />
-      <option name="moduleName" value="" />
-      <option name="overriddenMainClass" value="" />
-      <option name="overriddenOutputFileName" value="" />
-      <option name="overrideMainClass" value="false" />
-      <option name="runTrusted" value="true" />
-      <option name="screenDpi" value="0" />
-      <option name="screenHeight" value="0" />
-      <option name="screenWidth" value="0" />
-      <option name="url" value="http://" />
-      <option name="usbDebugPort" value="7936" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
-      <option name="BCName" value="" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="moduleName" value="" />
-      <option name="trusted" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" />
-      <option name="GLUE" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -645,7 +588,7 @@
     <option name="totallyTimeSpent" value="146663000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="874" extended-state="6" />
+    <frame x="294" y="103" width="1534" height="1041" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -653,28 +596,28 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32832617" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20372671" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32298136" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32223415" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JSON Formatter" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18680556" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26956522" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28392622" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2950644" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="JSON Formatter" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -704,6 +647,181 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="18717">
+          <caret line="281" column="34" selection-start-line="281" selection-start-column="34" selection-end-line="281" selection-end-column="34" />
+          <folding>
+            <element signature="method#initialize#0;class#Controller#0" expanded="false" />
+            <element signature="e#6870#7227#0" expanded="true" />
+            <element signature="e#7216#7217#0" expanded="true" />
+            <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#toggleEdit#0;class#Controller#0" expanded="false" />
+            <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
+            <element signature="method#createNew#0;class#Controller#0" expanded="false" />
+            <element signature="method#openLibrary#0;class#Controller#0" expanded="false" />
+            <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
+            <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
+            <element signature="e#27237#27238#0" expanded="true" />
+            <element signature="e#27270#27271#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="153">
+          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/FileIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3638">
+          <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/TvShow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="1904">
+          <caret line="96" column="26" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2754" max-vertical-offset="17935">
+          <caret line="215" column="0" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
+          <folding>
+            <element signature="method#initialize#0;class#Controller#0" expanded="false" />
+            <element signature="e#6870#7227#0" expanded="true" />
+            <element signature="e#7216#7217#0" expanded="true" />
+            <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#toggleEdit#0;class#Controller#0" expanded="false" />
+            <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
+            <element signature="method#createNew#0;class#Controller#0" expanded="false" />
+            <element signature="method#openLibrary#0;class#Controller#0" expanded="false" />
+            <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
+            <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
+            <element signature="e#27237#27238#0" expanded="true" />
+            <element signature="e#27270#27271#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/FileIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3638">
+          <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/TvShow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="1904">
+          <caret line="96" column="26" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2754" max-vertical-offset="17935">
+          <caret line="210" column="51" selection-start-line="210" selection-start-column="51" selection-end-line="210" selection-end-column="51" />
+          <folding>
+            <element signature="method#initialize#0;class#Controller#0" expanded="false" />
+            <element signature="e#6870#7227#0" expanded="true" />
+            <element signature="e#7216#7217#0" expanded="true" />
+            <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#toggleEdit#0;class#Controller#0" expanded="false" />
+            <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
+            <element signature="method#createNew#0;class#Controller#0" expanded="false" />
+            <element signature="method#openLibrary#0;class#Controller#0" expanded="false" />
+            <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
+            <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
+            <element signature="e#27237#27238#0" expanded="true" />
+            <element signature="e#27270#27271#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/FileIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2737" max-vertical-offset="3638">
+          <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/TvShow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="1904">
+          <caret line="96" column="26" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2754" max-vertical-offset="17935">
+          <caret line="200" column="0" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
+          <folding>
+            <element signature="method#initialize#0;class#Controller#0" expanded="false" />
+            <element signature="e#6870#7227#0" expanded="true" />
+            <element signature="e#7216#7217#0" expanded="true" />
+            <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#toggleEdit#0;class#Controller#0" expanded="false" />
+            <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
+            <element signature="method#createNew#0;class#Controller#0" expanded="false" />
+            <element signature="method#openLibrary#0;class#Controller#0" expanded="false" />
+            <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
+            <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
+            <element signature="e#27237#27238#0" expanded="true" />
+            <element signature="e#27270#27271#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/FileIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2737" max-vertical-offset="3638">
+          <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/TvShow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="1904">
+          <caret line="96" column="26" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/WatchlistPro.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="840">
@@ -717,8 +835,22 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="3135" max-vertical-offset="15480">
           <caret line="218" column="26" selection-start-line="218" selection-start-column="16" selection-end-line="218" selection-end-column="26" />
           <folding>
-            <element signature="e#6542#6899#0" expanded="true" />
-            <element signature="e#6888#6889#0" expanded="true" />
+            <element signature="method#initialize#0;class#Controller#0" expanded="false" />
+            <element signature="e#6870#7227#0" expanded="true" />
+            <element signature="e#7216#7217#0" expanded="true" />
+            <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#toggleEdit#0;class#Controller#0" expanded="false" />
+            <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
+            <element signature="method#createNew#0;class#Controller#0" expanded="false" />
+            <element signature="method#openLibrary#0;class#Controller#0" expanded="false" />
+            <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
+            <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
+            <element signature="e#27237#27238#0" expanded="true" />
+            <element signature="e#27270#27271#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -752,20 +884,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/aquafx_project/mac_os.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.0849257" vertical-offset="18248" max-vertical-offset="53640">
-          <caret line="1282" column="45" selection-start-line="1282" selection-start-column="0" selection-end-line="1282" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="712" max-vertical-offset="1110">
-          <caret line="23" column="79" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/ClientThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="378" max-vertical-offset="1155">
@@ -789,297 +907,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="uml://JAVA/controller.Controller">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>controller.Controller</OriginalElement>
-          <nodes>
-            <node x="" y="">controller.Controller</node>
-            <node x="" y="">javafx.fxml.Initializable</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="52.5" y="54.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement />
-          <nodes>
-            <node x="390.0" y="307.1328125">resources</node>
-            <node x="20.0" y="5.6328125">model</node>
-            <node x="0.0" y="529.1328125">com</node>
-            <node x="116.66666666666669" y="193.6328125">client</node>
-            <node x="196.0" y="307.1328125">templates</node>
-            <node x="0.0" y="381.1328125">netscape</node>
-            <node x="501.0" y="455.1328125">junit</node>
-            <node x="188.0" y="381.1328125">HTMLConverter</node>
-            <node x="153.0" y="603.1328125">net</node>
-            <node x="362.0" y="381.1328125">oracle</node>
-            <node x="0.0" y="603.1328125">org</node>
-            <node x="0.0" y="455.1328125">javafx</node>
-            <node x="0.0" y="307.1328125">META-INF</node>
-            <node x="316.0" y="529.1328125">sun</node>
-            <node x="336.0" y="455.1328125">javax</node>
-            <node x="170.0" y="455.1328125">apple</node>
-            <node x="471.0" y="529.1328125">WatchlistPro</node>
-            <node x="305.0" y="603.1328125">jdk</node>
-            <node x="-277.0" y="377.0">toolbarButtonGraphics</node>
-            <node x="159.0" y="529.1328125">java</node>
-            <node x="57.666666666666686" y="94.6328125">controller</node>
-            <node x="166.0" y="5.6328125">view</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="controller" target="client">
-              <point x="55.5" y="14.5" />
-              <point x="187.16666666666669" y="173.6328125" />
-              <point x="208.16666666666669" y="173.6328125" />
-              <point x="30.5" y="-14.5" />
-            </edge>
-            <edge source="model" target="model">
-              <point x="-42.0" y="14.5" />
-              <point x="41.0" y="54.6328125" />
-              <point x="0.0" y="54.6328125" />
-              <point x="0.0" y="20.1328125" />
-              <point x="-63.0" y="-0.0" />
-            </edge>
-            <edge source="client" target="controller">
-              <point x="-30.5" y="-14.5" />
-              <point x="147.16666666666669" y="173.6328125" />
-              <point x="150.16666666666669" y="173.6328125" />
-              <point x="18.5" y="14.5" />
-            </edge>
-            <edge source="controller" target="controller">
-              <point x="-18.5" y="14.5" />
-              <point x="113.16666666666669" y="153.6328125" />
-              <point x="27.666666666666686" y="153.6328125" />
-              <point x="27.666666666666686" y="101.8828125" />
-              <point x="-74.0" y="-7.25" />
-            </edge>
-            <edge source="controller" target="view">
-              <point x="49.33333333333337" y="-14.5" />
-              <point x="181.00000000000006" y="74.6328125" />
-              <point x="223.5" y="74.6328125" />
-              <point x="0.0" y="14.5" />
-            </edge>
-            <edge source="controller" target="model">
-              <point x="-49.33333333333337" y="-14.5" />
-              <point x="0.0" y="14.5" />
-            </edge>
-            <edge source="client" target="client">
-              <point x="-30.5" y="14.5" />
-              <point x="147.16666666666669" y="242.6328125" />
-              <point x="96.66666666666669" y="242.6328125" />
-              <point x="96.66666666666669" y="215.3828125" />
-              <point x="-61.0" y="7.25" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="-90.0" y="-15.0" />
-          <SelectedNodes>
-            <node>toolbarButtonGraphics</node>
-          </SelectedNodes>
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/WatchlistPro">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>WatchlistPro</OriginalElement>
-          <nodes>
-            <node x="-1.0" y="64.0">WatchlistPro</node>
-            <node x="3.0" y="0.0">javafx.application.Application</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="WatchlistPro" target="javafx.application.Application">
-              <point x="0.0" y="-14.5" />
-              <point x="0.0" y="14.5" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="-290.5" y="-81.0" />
-          <SelectedNodes>
-            <node>WatchlistPro</node>
-          </SelectedNodes>
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://MODULES/mdl-WatchlistPro">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>MODULES</ID>
-          <OriginalElement>mdl-WatchlistPro</OriginalElement>
-          <nodes>
-            <node x="" y="">lib-com.googlecode.json-simple:json-simple:1.1.1</node>
-            <node x="" y="">mdl-WatchlistPro</node>
-            <node x="" y="">lib-com.jayway.jsonpath:json-path-assert:0.8.1</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="220.5" y="66.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Libraries</Category>
-          </Categories>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/controller">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>controller</OriginalElement>
-          <nodes>
-            <node x="240.87500000000003" y="79.0">model.Film</node>
-            <node x="349.0507478632478" y="0.0">model.Media</node>
-            <node x="418.20468304843297" y="158.0">controller.FileIO</node>
-            <node x="674.2890847578348" y="514.0">WatchlistPro</node>
-            <node x="0.0" y="395.0">view.AboutDialog</node>
-            <node x="642.2890847578348" y="395.0">javafx.fxml</node>
-            <node x="226.87500000000003" y="158.0">controller.MediaCreator</node>
-            <node x="384.4166666666667" y="514.0">controller.Controller</node>
-            <node x="304.73139245014244" y="395.0">controller.TopicHandler</node>
-            <node x="362.51486823361824" y="316.0">client.Client</node>
-            <node x="409.20468304843297" y="79.0">model.TvShow</node>
-            <node x="481.28908475783476" y="395.0">controller.ByteArrayHandler</node>
-            <node x="131.00000000000006" y="395.0">model.MediaCollection</node>
-            <node x="0.0" y="588.0">java</node>
-            <node x="340.98139245014244" y="237.0">client.ClientThread</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="controller.Controller" target="javafx.fxml">
-              <point x="43.84615384615387" y="-14.5" />
-              <point x="366.03551628551634" y="504.0" />
-              <point x="657.9455128205128" y="504.0" />
-              <point x="-29.0" y="14.5" />
-            </edge>
-            <edge source="model.TvShow" target="model.Media">
-              <point x="0.0" y="-14.5" />
-              <point x="8.625" y="14.5" />
-            </edge>
-            <edge source="WatchlistPro" target="javafx.fxml">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="controller.Controller" target="controller.MediaCreator">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="model.Film" target="model.Media">
-              <point x="0.0" y="-14.5" />
-              <point x="161.4038461538462" y="59.0" />
-              <point x="232.64838877338877" y="59.0" />
-              <point x="-8.625" y="14.5" />
-            </edge>
-            <edge source="controller.Controller" target="client.Client">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="controller.MediaCreator" target="model.Film">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="controller.Controller" target="controller.ByteArrayHandler">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="controller.MediaCreator" target="model.TvShow">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="controller.Controller" target="controller.TopicHandler">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="controller.Controller" target="view.AboutDialog">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="controller.Controller" target="model.Media">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="model.MediaCollection" target="model.Media">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="controller.Controller" target="model.MediaCollection">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="controller.TopicHandler" target="client.Client">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="controller.Controller" target="controller.FileIO">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="client.Client" target="client.ClientThread">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="client.ClientThread" target="controller.FileIO">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="controller.FileIO" target="model.TvShow">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="controller.FileIO" target="model.Film">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="client.ClientThread" target="client.Client">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="47.0" y="173.5" />
-          <SelectedNodes>
-            <node>view.AboutDialog</node>
-          </SelectedNodes>
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/WatchlistPro.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9437172" vertical-offset="1485" max-vertical-offset="7575">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/TvShow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="1440">
           <caret line="96" column="26" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="47" />
-          <folding>
-            <element signature="e#2663#2664#0" expanded="true" />
-            <element signature="e#2703#2704#0" expanded="true" />
-            <element signature="e#2754#2755#0" expanded="true" />
-            <element signature="e#2788#2789#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1087,15 +919,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="573" max-vertical-offset="1350">
           <caret line="69" column="107" selection-start-line="69" selection-start-column="60" selection-end-line="69" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WatchlistPro.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0625" vertical-offset="100" max-vertical-offset="660">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1107,13 +930,150 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05821918" vertical-offset="0" max-vertical-offset="876">
+          <caret line="3" column="54" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="903">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22591361" vertical-offset="0" max-vertical-offset="903">
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WatchlistPro.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="903">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.1269663" vertical-offset="113" max-vertical-offset="1003">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/AboutDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15060908" vertical-offset="0" max-vertical-offset="903">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_05/javafx-src.zip!/javafx/beans/property/IntegerPropertyBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3323124" vertical-offset="1075" max-vertical-offset="3910">
+          <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/aquafx_project/controls/skin/styles/ButtonType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31875" vertical-offset="0" max-vertical-offset="1207">
+          <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/aquafx_project/AquaFx.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0" vertical-offset="346" max-vertical-offset="3893">
+          <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WatchlistPro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4532925" vertical-offset="95" max-vertical-offset="748">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0912981" vertical-offset="0" max-vertical-offset="1071">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/aquafx_project/mac_os.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5151515" vertical-offset="21029" max-vertical-offset="60775">
+          <caret line="1257" column="2" selection-start-line="1257" selection-start-column="2" selection-end-line="1257" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/aquafx_project/controls/skin/styles/styler/LabelStyler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2425107" vertical-offset="0" max-vertical-offset="701">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/WatchlistPro.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3090909" vertical-offset="765" max-vertical-offset="10727">
+          <caret line="57" column="124" selection-start-line="57" selection-start-column="124" selection-end-line="57" selection-end-column="124" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/watchlist.wl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0339285" vertical-offset="3009" max-vertical-offset="15825">
-          <caret line="200" column="0" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.24324325" vertical-offset="459" max-vertical-offset="16201">
+          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
           <folding>
-            <element signature="e#6542#6899#0" expanded="true" />
-            <element signature="e#6888#6889#0" expanded="true" />
+            <element signature="method#initialize#0;class#Controller#0" expanded="false" />
+            <element signature="e#6870#7227#0" expanded="true" />
+            <element signature="e#7216#7217#0" expanded="true" />
+            <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#toggleEdit#0;class#Controller#0" expanded="false" />
+            <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
+            <element signature="method#createNew#0;class#Controller#0" expanded="false" />
+            <element signature="method#openLibrary#0;class#Controller#0" expanded="false" />
+            <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
+            <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
+            <element signature="e#27237#27238#0" expanded="true" />
+            <element signature="e#27270#27271#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1152,7 +1112,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.2525355" />
               </list>
             </option>
           </splitter-proportions>
@@ -1164,7 +1124,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.2525355" />
               </list>
             </option>
           </splitter-proportions>
@@ -1184,7 +1144,7 @@
       </state>
       <state key="ProjectJDKs.UI">
         <settings>
-          <last-edited>1.6</last-edited>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

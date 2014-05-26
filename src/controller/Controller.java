@@ -176,7 +176,20 @@ public class Controller implements Initializable {
     private TableColumn<TvShow, String> episodeTitleCol;
     @FXML
     private TableColumn<TvShow, String> watchedCol;
-
+    @FXML
+    private VBox userLoginPane;
+    @FXML
+    private VBox root;
+    @FXML
+    private TextField userNameField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private VBox createAccountPane;
+    @FXML
+    private TextField createUserNameField;
+    @FXML
+    private PasswordField createPasswordField;
 
     /**
      * Constructor.
@@ -569,48 +582,155 @@ public class Controller implements Initializable {
     // Server Menu
 
     /**
-     * Create an account on the server.
+     * Closes user login pane and returns to main application pane. Triggered by Cancel button.
+     */
+    @FXML
+    public void cancelAccountCreation() {
+        createAccountPane.setVisible(false);
+        createAccountPane.setDisable(true);
+        root.setVisible(true);
+    }
+
+    /**
+     * Switches view to account creation pane. Triggered by Server menu > Create Account.
+     */
+    @FXML
+    public void switchToAccountCreatePage() {
+        // displays account creation pane
+        Platform.runLater(createUserNameField::requestFocus);
+        createAccountPane.setVisible(true);
+        createAccountPane.setDisable(false);
+        root.setVisible(false);
+    }
+
+    /**
+     * Gets username and password to create account with. Sets username and password.
+     * @return true if user entered both a name and password, else false.
+     */
+    @FXML
+    public boolean getUserCredentials() {
+        // user entered something in userNameField
+        if (createUserNameField.getText() != null && !createUserNameField.getText().isEmpty()) {
+            username = createUserNameField.getText();
+            // user entered something in both userNameField and passwordField
+            if (createPasswordField.getText() != null && !createPasswordField.getText().isEmpty()) {
+                password = createPasswordField.getText();
+//                System.out.printf("username: %s\n", username);
+//                System.out.printf("password: %s\n", password);
+
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Create an account on the server. Triggered by Create Account button on account pane.
      */
     @FXML
     public void createAccount() {
-        // TODO popup a window with fields for username, password; buttons for cancel, create
-        Client client = new Client();
-        try {
-            Thread account = client.send("add " + username + " " + password);
-            Thread quit = client.send("quit");
+        // if user entered name & password try to create account
+        if (getUserCredentials()) {
+            Client client = new Client();
+            try {
+                Thread account = client.send("add " + username + " " + password);
+                Thread quit = client.send("quit");
 
-            account.start();
-            account.join();
+                account.start();
+                account.join();
 
-            quit.start();
-            quit.join();
+                // clear createUserNameField and createPasswordField
+                createUserNameField.clear();
+                createPasswordField.clear();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+                // set view back to main application
+                createAccountPane.setVisible(false);
+                createAccountPane.setDisable(true);
+                root.setVisible(true);
+
+                quit.start();
+                quit.join();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
     /**
-     * Load a save file from the server.
+     * Closes user login pane and returns to main application pane. Triggered by Cancel button.
+     */
+    @FXML
+    public void cancelServerLogin() {
+        userLoginPane.setVisible(false);
+        userLoginPane.setDisable(true);
+        root.setVisible(true);
+    }
+
+    /**
+     * Switches view to login pane. Triggered by Server menu > Login.
+     */
+    @FXML
+    public void switchToLoginPage() {
+        // displays account login pane
+        Platform.runLater(userNameField::requestFocus);
+        userLoginPane.setVisible(true);
+        userLoginPane.setDisable(false);
+        root.setVisible(false);
+    }
+
+    /**
+     * Gets username and password from login attempt. Sets username and password.
+     * @return true if user entered both a name and password, else false.
+     */
+    @FXML
+    public boolean getUserLogin() {
+        // user entered something in userNameField
+        if (userNameField.getText() != null && !userNameField.getText().isEmpty()) {
+            username = userNameField.getText();
+            // user entered something in both userNameField and passwordField
+            if (passwordField.getText() != null && !passwordField.getText().isEmpty()) {
+                password = passwordField.getText();
+
+//                System.out.printf("username: %s\n", username);
+//                System.out.printf("password: %s\n", password);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Load a save file from the server. Triggered by Login button on login pane.
      */
     @FXML
     public void loginToServer() {
-        // TODO popup a window with field for username, password; buttons for cancel, login, create account
-        Client client = new Client();
-        try {
-            Thread login = client.send("login " + username + " " + password);
-            Thread quit = client.send("quit");
+        // if user entered name & password try to login
+        if (getUserLogin()) {
+            Client client = new Client();
+            try {
+                Thread login = client.send("login " + username + " " + password);
+                Thread quit = client.send("quit");
 
-            login.start();
-            login.join();
+                login.start();
+                login.join();
 
-            quit.start();
-            quit.join();
+                // clear userNameField and passwordField
+                userNameField.clear();
+                passwordField.clear();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+                // set view back to main application
+                userLoginPane.setVisible(false);
+                userLoginPane.setDisable(true);
+                root.setVisible(true);
+
+                quit.start();
+                quit.join();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-
     }
 
     /**

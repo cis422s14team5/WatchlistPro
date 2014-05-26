@@ -277,8 +277,7 @@
 
 .label:show-mnemonics > .mnemonic-underline {
     -fx-stroke: -fx-text-base-color;
-} 
-
+}
 
 
 /*******************************************************************************
@@ -1251,12 +1250,12 @@ TODO: effect-chaining!!!
  * PasswordField                                                               *
  *                                                                             *
  ******************************************************************************/
-
+/*
 .password-field {
     -fx-skin: "com.aquafx_project.controls.skin.AquaPasswordFieldSkin";
     -fx-text-fill: -fx-text-base-color;
 }
-
+*/
 /*******************************************************************************
  *                                                                             *
  * TextArea                                                                    *
