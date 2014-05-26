@@ -1,9 +1,14 @@
 package controller;
 
+import com.sun.javafx.collections.ObservableListWrapper;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import model.Film;
 import model.TvShow;
+
+import java.util.ArrayList;
 
 /**
  * Creates new media objects.
@@ -79,8 +84,8 @@ public class MediaCreator {
         StringProperty description = new SimpleStringProperty();
         description.set("");
 
-        StringProperty episodeList = new SimpleStringProperty();
-        episodeList.set("");
+        ListProperty<String> episodeList = new SimpleListProperty<>();
+        episodeList.set(new ObservableListWrapper<>(new ArrayList<>()));
 
         return new TvShow(title, watched, genre, runtime, description, creator, network, numSeasons, numEpisodes, episodeList);
     }

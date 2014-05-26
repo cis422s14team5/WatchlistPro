@@ -1,8 +1,13 @@
 package controller;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.sun.javafx.collections.ObservableMapWrapper;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -11,9 +16,11 @@ import model.Media;
 import model.TvShow;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Observable;
 
 /**
  * Reads and writes to the file system. Used to read and write to the store.txt file.
@@ -38,67 +45,12 @@ public class FileIO {
     /**
      * Reads the contents of the file using read into an array list and creates a Media object from a JSON string on
      * each line. Fills and returns a mediaMap.
+     * @param list is the list of JSON strings to load.
      * @return a filled mediaMap
      */
     public ObservableMap<String, Media> load(List<String> list) {
         ObservableMap<String, Media> mediaMap = new ObservableMapWrapper<>(new HashMap<>());
-        for (String string : list) {
-            JSONObject object = (JSONObject) JSONValue.parse(string);
-
-            StringProperty title = new SimpleStringProperty();
-            title.set(object.get("title").toString());
-
-            StringProperty watched = new SimpleStringProperty();
-            watched.set(object.get("watched").toString());
-
-            StringProperty genre = new SimpleStringProperty();
-            genre.set(object.get("genre").toString());
-
-            StringProperty runtime = new SimpleStringProperty();
-            runtime.set(object.get("runtime").toString());
-
-            StringProperty description = new SimpleStringProperty();
-            description.set(object.get("description").toString());
-
-            if (object.get("type").equals("film")) {
-
-                StringProperty director = new SimpleStringProperty();
-                director.set(object.get("director").toString());
-
-                StringProperty rating = new SimpleStringProperty();
-                rating.set(object.get("rating").toString());
-
-                StringProperty producer = new SimpleStringProperty();
-                producer.set(object.get("producer").toString());
-
-                StringProperty writer = new SimpleStringProperty();
-                writer.set(object.get("writer").toString());
-
-                mediaMap.put(title.get(),
-                        new Film(title, watched, genre, runtime, description, director, rating, producer, writer));
-            } else if (object.get("type").equals("tv")) {
-
-                StringProperty creator = new SimpleStringProperty();
-                creator.set(object.get("creator").toString());
-
-                StringProperty network = new SimpleStringProperty();
-                network.set(object.get("network").toString());
-
-                StringProperty numSeasons = new SimpleStringProperty();
-                numSeasons.set(object.get("numSeasons").toString());
-
-                StringProperty numEpisodes = new SimpleStringProperty();
-                numEpisodes.set(object.get("numEpisodes").toString());
-
-                StringProperty episodeList = new SimpleStringProperty();
-                episodeList.set(object.get("episodeList").toString());
-
-                mediaMap.put(title.get(),
-                        new TvShow(title, watched, genre, runtime, description, creator, network, numSeasons, numEpisodes, episodeList));
-            }
-        }
-
-        return mediaMap;
+        return setProperties(mediaMap, list);
     }
 
     /**
@@ -110,6 +62,16 @@ public class FileIO {
      */
     protected ObservableMap<String, Media> load(ObservableMap<String, Media> mediaMap, File file) {
         List<String> list = read(file);
+        return setProperties(mediaMap, list);
+    }
+
+    /**
+     * Set the media object properties and return the map.
+     * @param mediaMap is a map of entities to load into.
+     * @param list is the list of JSON strings to load.
+     * @return a filled mediaMap
+     */
+    private ObservableMap<String, Media> setProperties(ObservableMap<String, Media> mediaMap, List<String> list) {
         for (String string : list) {
             JSONObject object = (JSONObject) JSONValue.parse(string);
 
@@ -158,11 +120,17 @@ public class FileIO {
                 StringProperty numEpisodes = new SimpleStringProperty();
                 numEpisodes.set(object.get("numEpisodes").toString());
 
-                StringProperty episodeList = new SimpleStringProperty();
-                episodeList.set(object.get("episodeList").toString());
+                Gson gson = new Gson();
+                Type observableListType = new TypeToken<ObservableList<String>>(){}.getType();
+
+                ListProperty<String> episodeList = new SimpleListProperty<>();
+                ObservableList<String> observableList = gson.fromJson(object.get("episodeList").toString(),
+                        observableListType);
+                episodeList.set(observableList);
 
                 mediaMap.put(title.get(),
-                        new TvShow(title, watched, genre, runtime, description, creator, network, numSeasons, numEpisodes, episodeList));
+                        new TvShow(title, watched, genre, runtime, description, creator, network, numSeasons,
+                                numEpisodes, episodeList));
             }
         }
 

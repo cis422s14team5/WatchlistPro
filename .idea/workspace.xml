@@ -59,8 +59,8 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties converted="true" />
     <breakpoint_rules converted="true" />
+    <ui_properties converted="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -68,19 +68,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Controller.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Controller.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24324325" vertical-offset="459" max-vertical-offset="16201">
-              <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="14902" max-vertical-offset="15840">
+              <caret line="1174" column="8" selection-start-line="1174" selection-start-column="8" selection-end-line="1174" selection-end-column="76" />
               <folding>
-                <element signature="method#initialize#0;class#Controller#0" expanded="false" />
-                <element signature="e#6870#7227#0" expanded="true" />
-                <element signature="e#7216#7217#0" expanded="true" />
+                <element signature="imports" expanded="true" />
                 <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
                 <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
                 <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
-                <element signature="method#toggleEdit#0;class#Controller#0" expanded="false" />
                 <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
                 <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
                 <element signature="method#createNew#0;class#Controller#0" expanded="false" />
@@ -88,9 +85,51 @@
                 <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
                 <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
                 <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
-                <element signature="e#27237#27238#0" expanded="true" />
-                <element signature="e#27270#27271#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TvShow.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/TvShow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="1740">
+              <caret line="43" column="69" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2020#2021#0" expanded="true" />
+                <element signature="e#2054#2055#0" expanded="true" />
+                <element signature="e#2324#2325#0" expanded="true" />
+                <element signature="e#2354#2355#0" expanded="true" />
+                <element signature="e#2609#2610#0" expanded="true" />
+                <element signature="e#2642#2643#0" expanded="true" />
+                <element signature="e#2906#2907#0" expanded="true" />
+                <element signature="e#2936#2937#0" expanded="true" />
+                <element signature="e#3119#3120#0" expanded="true" />
+                <element signature="e#3159#3160#0" expanded="true" />
+                <element signature="e#3216#3217#0" expanded="true" />
+                <element signature="e#3250#3251#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Client.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/Client.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="945">
+              <caret line="1" column="55" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileIO.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/controller/FileIO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.76296294" vertical-offset="1373" max-vertical-offset="2430">
+              <caret line="139" column="84" selection-start-line="139" selection-start-column="7" selection-end-line="139" selection-end-column="7" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -141,7 +180,6 @@
         <option value="$PROJECT_DIR$/src/aquafx/com/aquafx_project/controls/skin/styles/styler/ChoiceBoxStyler.java" />
         <option value="$PROJECT_DIR$/src/com/aquafx_project/controls/skin/AquaPasswordFieldSkin.java" />
         <option value="$PROJECT_DIR$/src/client/TopicHandler.java" />
-        <option value="$PROJECT_DIR$/src/client/Client.java" />
         <option value="$PROJECT_DIR$/src/client/ClientThread.java" />
         <option value="$PROJECT_DIR$/src/watchlistpro/TopicHandler.java" />
         <option value="$PROJECT_DIR$/src/watchlistpro/WatchlistProController.java" />
@@ -149,21 +187,21 @@
         <option value="$PROJECT_DIR$/src/model/MediaCollection.java" />
         <option value="$PROJECT_DIR$/src/controller/ByteArrayHandler.java" />
         <option value="$PROJECT_DIR$/src/WatchlistPro.java" />
-        <option value="$PROJECT_DIR$/src/model/TvShow.java" />
-        <option value="$PROJECT_DIR$/src/controller/MediaCreator.java" />
-        <option value="$PROJECT_DIR$/src/controller/FileIO.java" />
         <option value="$PROJECT_DIR$/src/view/WatchlistPro.fxml" />
         <option value="$PROJECT_DIR$/src/com/aquafx_project/mac_os.css" />
         <option value="$PROJECT_DIR$/watchlist.wl" />
         <option value="$PROJECT_DIR$/src/controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/client/Client.java" />
+        <option value="$PROJECT_DIR$/src/controller/MediaCreator.java" />
+        <option value="$PROJECT_DIR$/src/model/TvShow.java" />
+        <option value="$PROJECT_DIR$/src/controller/FileIO.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="294" />
-    <option name="y" value="103" />
-    <option name="width" value="1534" />
-    <option name="height" value="1041" />
+    <option name="y" value="22" />
+    <option name="width" value="1440" />
+    <option name="height" value="874" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -227,6 +265,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -256,24 +296,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WatchlistPro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WatchlistPro" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -333,8 +355,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -447,19 +467,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -486,6 +493,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -588,7 +608,7 @@
     <option name="totallyTimeSpent" value="146663000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="294" y="103" width="1534" height="1041" extended-state="0" />
+    <frame x="0" y="22" width="1440" height="874" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -596,26 +616,26 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32832617" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20372671" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32223415" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32173914" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28392622" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2950644" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18055555" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29440993" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32832617" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="JSON Formatter" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -649,16 +669,13 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="18717">
-          <caret line="281" column="34" selection-start-line="281" selection-start-column="34" selection-end-line="281" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13725">
+          <caret line="36" column="24" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="method#initialize#0;class#Controller#0" expanded="false" />
-            <element signature="e#6870#7227#0" expanded="true" />
-            <element signature="e#7216#7217#0" expanded="true" />
+            <element signature="imports" expanded="true" />
             <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
             <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
             <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#toggleEdit#0;class#Controller#0" expanded="false" />
             <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
             <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
             <element signature="method#createNew#0;class#Controller#0" expanded="false" />
@@ -666,8 +683,26 @@
             <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
             <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
             <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
-            <element signature="e#27237#27238#0" expanded="true" />
-            <element signature="e#27270#27271#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="18717">
+          <caret line="281" column="34" selection-start-line="281" selection-start-column="34" selection-end-line="281" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
+            <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
+            <element signature="method#createNew#0;class#Controller#0" expanded="false" />
+            <element signature="method#openLibrary#0;class#Controller#0" expanded="false" />
+            <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
+            <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -679,7 +714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="153">
           <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -695,7 +729,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="1904">
           <caret line="96" column="26" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="47" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2020#2021#0" expanded="true" />
+            <element signature="e#2054#2055#0" expanded="true" />
+            <element signature="e#2324#2325#0" expanded="true" />
+            <element signature="e#2354#2355#0" expanded="true" />
+            <element signature="e#2609#2610#0" expanded="true" />
+            <element signature="e#2642#2643#0" expanded="true" />
+            <element signature="e#2906#2907#0" expanded="true" />
+            <element signature="e#2936#2937#0" expanded="true" />
+            <element signature="e#3119#3120#0" expanded="true" />
+            <element signature="e#3159#3160#0" expanded="true" />
+            <element signature="e#3216#3217#0" expanded="true" />
+            <element signature="e#3250#3251#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -704,13 +752,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2754" max-vertical-offset="17935">
           <caret line="215" column="0" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
           <folding>
-            <element signature="method#initialize#0;class#Controller#0" expanded="false" />
-            <element signature="e#6870#7227#0" expanded="true" />
-            <element signature="e#7216#7217#0" expanded="true" />
+            <element signature="imports" expanded="true" />
             <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
             <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
             <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#toggleEdit#0;class#Controller#0" expanded="false" />
             <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
             <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
             <element signature="method#createNew#0;class#Controller#0" expanded="false" />
@@ -718,8 +763,6 @@
             <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
             <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
             <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
-            <element signature="e#27237#27238#0" expanded="true" />
-            <element signature="e#27270#27271#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -736,7 +779,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="1904">
           <caret line="96" column="26" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="47" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2020#2021#0" expanded="true" />
+            <element signature="e#2054#2055#0" expanded="true" />
+            <element signature="e#2324#2325#0" expanded="true" />
+            <element signature="e#2354#2355#0" expanded="true" />
+            <element signature="e#2609#2610#0" expanded="true" />
+            <element signature="e#2642#2643#0" expanded="true" />
+            <element signature="e#2906#2907#0" expanded="true" />
+            <element signature="e#2936#2937#0" expanded="true" />
+            <element signature="e#3119#3120#0" expanded="true" />
+            <element signature="e#3159#3160#0" expanded="true" />
+            <element signature="e#3216#3217#0" expanded="true" />
+            <element signature="e#3250#3251#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -745,13 +802,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2754" max-vertical-offset="17935">
           <caret line="210" column="51" selection-start-line="210" selection-start-column="51" selection-end-line="210" selection-end-column="51" />
           <folding>
-            <element signature="method#initialize#0;class#Controller#0" expanded="false" />
-            <element signature="e#6870#7227#0" expanded="true" />
-            <element signature="e#7216#7217#0" expanded="true" />
+            <element signature="imports" expanded="true" />
             <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
             <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
             <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#toggleEdit#0;class#Controller#0" expanded="false" />
             <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
             <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
             <element signature="method#createNew#0;class#Controller#0" expanded="false" />
@@ -759,8 +813,6 @@
             <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
             <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
             <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
-            <element signature="e#27237#27238#0" expanded="true" />
-            <element signature="e#27270#27271#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -777,7 +829,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="1904">
           <caret line="96" column="26" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="47" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2020#2021#0" expanded="true" />
+            <element signature="e#2054#2055#0" expanded="true" />
+            <element signature="e#2324#2325#0" expanded="true" />
+            <element signature="e#2354#2355#0" expanded="true" />
+            <element signature="e#2609#2610#0" expanded="true" />
+            <element signature="e#2642#2643#0" expanded="true" />
+            <element signature="e#2906#2907#0" expanded="true" />
+            <element signature="e#2936#2937#0" expanded="true" />
+            <element signature="e#3119#3120#0" expanded="true" />
+            <element signature="e#3159#3160#0" expanded="true" />
+            <element signature="e#3216#3217#0" expanded="true" />
+            <element signature="e#3250#3251#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -786,13 +852,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2754" max-vertical-offset="17935">
           <caret line="200" column="0" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
           <folding>
-            <element signature="method#initialize#0;class#Controller#0" expanded="false" />
-            <element signature="e#6870#7227#0" expanded="true" />
-            <element signature="e#7216#7217#0" expanded="true" />
+            <element signature="imports" expanded="true" />
             <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
             <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
             <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#toggleEdit#0;class#Controller#0" expanded="false" />
             <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
             <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
             <element signature="method#createNew#0;class#Controller#0" expanded="false" />
@@ -800,8 +863,6 @@
             <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
             <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
             <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
-            <element signature="e#27237#27238#0" expanded="true" />
-            <element signature="e#27270#27271#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -818,7 +879,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="1904">
           <caret line="96" column="26" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="47" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2020#2021#0" expanded="true" />
+            <element signature="e#2054#2055#0" expanded="true" />
+            <element signature="e#2324#2325#0" expanded="true" />
+            <element signature="e#2354#2355#0" expanded="true" />
+            <element signature="e#2609#2610#0" expanded="true" />
+            <element signature="e#2642#2643#0" expanded="true" />
+            <element signature="e#2906#2907#0" expanded="true" />
+            <element signature="e#2936#2937#0" expanded="true" />
+            <element signature="e#3119#3120#0" expanded="true" />
+            <element signature="e#3159#3160#0" expanded="true" />
+            <element signature="e#3216#3217#0" expanded="true" />
+            <element signature="e#3250#3251#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -835,13 +910,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="3135" max-vertical-offset="15480">
           <caret line="218" column="26" selection-start-line="218" selection-start-column="16" selection-end-line="218" selection-end-column="26" />
           <folding>
-            <element signature="method#initialize#0;class#Controller#0" expanded="false" />
-            <element signature="e#6870#7227#0" expanded="true" />
-            <element signature="e#7216#7217#0" expanded="true" />
+            <element signature="imports" expanded="true" />
             <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
             <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
             <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#toggleEdit#0;class#Controller#0" expanded="false" />
             <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
             <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
             <element signature="method#createNew#0;class#Controller#0" expanded="false" />
@@ -849,8 +921,6 @@
             <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
             <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
             <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
-            <element signature="e#27237#27238#0" expanded="true" />
-            <element signature="e#27270#27271#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -907,29 +977,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/TvShow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="1440">
-          <caret line="96" column="26" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/MediaCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="573" max-vertical-offset="1350">
-          <caret line="69" column="107" selection-start-line="69" selection-start-column="60" selection-end-line="69" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/FileIO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2034" max-vertical-offset="3015">
-          <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider editor-type-id="MarkdownPreviewEditor">
         <state />
@@ -937,7 +984,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.05821918" vertical-offset="0" max-vertical-offset="876">
           <caret line="3" column="54" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -945,7 +991,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="903">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -953,7 +998,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22591361" vertical-offset="0" max-vertical-offset="903">
           <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -961,7 +1005,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="903">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -981,19 +1024,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_05/javafx-src.zip!/javafx/beans/property/IntegerPropertyBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3323124" vertical-offset="1075" max-vertical-offset="3910">
-          <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/aquafx_project/controls/skin/styles/ButtonType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31875" vertical-offset="0" max-vertical-offset="1207">
           <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1013,19 +1047,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0912981" vertical-offset="0" max-vertical-offset="1071">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/aquafx_project/mac_os.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5151515" vertical-offset="21029" max-vertical-offset="60775">
           <caret line="1257" column="2" selection-start-line="1257" selection-start-column="2" selection-end-line="1257" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1033,7 +1058,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2425107" vertical-offset="0" max-vertical-offset="701">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1049,22 +1073,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ByteArrayHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.083333336" vertical-offset="150" max-vertical-offset="795">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/MediaCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47876447" vertical-offset="952" max-vertical-offset="1470">
+          <caret line="80" column="123" selection-start-line="80" selection-start-column="64" selection-end-line="80" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="945">
+          <caret line="1" column="55" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24324325" vertical-offset="459" max-vertical-offset="16201">
-          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="14902" max-vertical-offset="15840">
+          <caret line="1174" column="8" selection-start-line="1174" selection-start-column="8" selection-end-line="1174" selection-end-column="76" />
           <folding>
-            <element signature="method#initialize#0;class#Controller#0" expanded="false" />
-            <element signature="e#6870#7227#0" expanded="true" />
-            <element signature="e#7216#7217#0" expanded="true" />
+            <element signature="imports" expanded="true" />
             <element signature="method#addMedia#0;class#Controller#0" expanded="false" />
             <element signature="method#deleteMedia#0;class#Controller#0" expanded="false" />
             <element signature="method#toggleMedia#0;class#Controller#0" expanded="false" />
-            <element signature="method#toggleEdit#0;class#Controller#0" expanded="false" />
             <element signature="method#fetchMedia#0;class#Controller#0" expanded="false" />
             <element signature="method#setWatched#0;class#Controller#0" expanded="false" />
             <element signature="method#createNew#0;class#Controller#0" expanded="false" />
@@ -1072,9 +1118,37 @@
             <element signature="method#clearRecentMenu#0;class#Controller#0" expanded="false" />
             <element signature="method#saveAs#0;class#Controller#0" expanded="false" />
             <element signature="method#closeWindow#0;class#Controller#0" expanded="false" />
-            <element signature="e#27237#27238#0" expanded="true" />
-            <element signature="e#27270#27271#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/TvShow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="1740">
+          <caret line="43" column="69" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2020#2021#0" expanded="true" />
+            <element signature="e#2054#2055#0" expanded="true" />
+            <element signature="e#2324#2325#0" expanded="true" />
+            <element signature="e#2354#2355#0" expanded="true" />
+            <element signature="e#2609#2610#0" expanded="true" />
+            <element signature="e#2642#2643#0" expanded="true" />
+            <element signature="e#2906#2907#0" expanded="true" />
+            <element signature="e#2936#2937#0" expanded="true" />
+            <element signature="e#3119#3120#0" expanded="true" />
+            <element signature="e#3159#3160#0" expanded="true" />
+            <element signature="e#3216#3217#0" expanded="true" />
+            <element signature="e#3250#3251#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/FileIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.76296294" vertical-offset="1373" max-vertical-offset="2430">
+          <caret line="139" column="84" selection-start-line="139" selection-start-column="7" selection-end-line="139" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
