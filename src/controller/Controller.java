@@ -245,7 +245,7 @@ public class Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Throws CoreText performance errors on OS X Mavericks.
+        // AquaFx throws CoreText performance errors on OS X Mavericks.
         AquaFx.style();
         AquaFx.createTextFieldStyler().setType(TextFieldType.SEARCH).style(filterField);
 
@@ -301,6 +301,8 @@ public class Controller implements Initializable {
                 loadIndex = loadList.getSelectionModel().getSelectedIndex();
             }
         });
+
+        loadList.getSelectionModel().select(0);
 
         // TODO Initialize the episode table columns
         // seasonNumCol.setCellValueFactory(cellData -> cellData.getValue().numSeasonsProperty());
@@ -440,7 +442,7 @@ public class Controller implements Initializable {
                         show.setNumEpisodes(tvNumEpisodesTextField.getText());
                         show.setDescription(tvDescriptionTextField.getText());
 
-                        // TODO fix getting date from column
+                        // TODO fix getting data from column
                         //show.setEpisodeList(seasonNumCol.getText());
 
                         watchlist.remove(mediaName);
@@ -785,6 +787,7 @@ public class Controller implements Initializable {
             List<String> arrayList = Arrays.asList(saveArray);
             ObservableList<String> list = new ObservableListWrapper<>(arrayList);
             loadList.setItems(list);
+            loadList.getSelectionModel().select(0);
             switchToLoadChoice();
         } catch (Exception e) {
             e.printStackTrace();
@@ -828,6 +831,19 @@ public class Controller implements Initializable {
             switchToLoginPage();
         }
 
+    }
+
+    @FXML
+    public void cancelLoadChoice() {
+        loadFromServerPane.setVisible(false);
+        loadFromServerPane.setDisable(true);
+        root.setVisible(true);
+    }
+
+    @FXML
+    public void sendLoadChoice() {
+        loadFromServer();
+        cancelLoadChoice();
     }
 
     /**
@@ -882,22 +898,6 @@ public class Controller implements Initializable {
     @FXML
     public void openAbout() {
         new AboutDialog();
-    }
-
-
-    // Load from server.
-
-    @FXML
-    public void cancelLoadChoice() {
-        loadFromServerPane.setVisible(false);
-        loadFromServerPane.setDisable(true);
-        root.setVisible(true);
-    }
-
-    @FXML
-    public void sendLoadChoice() {
-        loadFromServer();
-        cancelLoadChoice();
     }
 
     // Helper Methods
