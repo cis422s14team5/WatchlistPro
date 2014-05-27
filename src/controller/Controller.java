@@ -65,6 +65,7 @@ public class Controller implements Initializable {
 
     // Control variables
     private int mediaIndex;
+    private int loadIndex;
     private String mediaName;
     private String mediaType;
     private String mediaEditType;
@@ -208,6 +209,7 @@ public class Controller implements Initializable {
 
         mediaName = null;
         mediaIndex = -1;
+        loadIndex = -1;
         mediaType = "film";
         isLoggedIn = false;
 
@@ -291,6 +293,12 @@ public class Controller implements Initializable {
                 } else {
                     setText(string);
                 }
+            }
+        });
+
+        loadList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                loadIndex = loadList.getSelectionModel().getSelectedIndex();
             }
         });
 

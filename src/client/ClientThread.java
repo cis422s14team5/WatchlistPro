@@ -1,5 +1,8 @@
 package client;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import javafx.collections.ObservableList;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import controller.FileIO;
@@ -8,8 +11,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.lang.reflect.Type;
 import java.net.Socket;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class ClientThread implements Runnable {
@@ -44,10 +49,9 @@ public class ClientThread implements Runnable {
             if ((input = in.readLine()) != null && !input.equals("Bye.")) {
                 String[] output = input.split("");
 
-                System.out.println("server says " + input);
+                System.out.println("Server says: " + input);
 
                 // Handle input from server.
-                // TODO handle getting the list of server save files here, possibly use JSON
                 // TODO refactor b/c FILM, TV, and GETTOPIC all do the same thing
                 if (output[0].equals("{")) {
                     switch (state) {
@@ -66,7 +70,11 @@ public class ClientThread implements Runnable {
                         case GETTOPIC:
                             jsonOutput = (JSONObject) JSONValue.parse(input);
                         case GETSAVES:
-                            String[] inputArray = input.split("-=-");
+                            Gson gson = new Gson();
+                            Type mapType = new TypeToken<HashMap<String, String>>(){}.getType();
+                            HashMap<String, String> savesMap = gson.fromJson(input, mapType);
+                            String saves = savesMap.get("saves");
+                            String[] inputArray = saves.split("-=-");
                             client.setSaveArray(inputArray);
                         default:
                             break;
