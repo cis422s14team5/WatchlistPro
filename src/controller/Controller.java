@@ -851,42 +851,46 @@ public class Controller implements Initializable {
      */
     @FXML
     public void loadFromServer() {
-        Client client = new Client();
-        try {
-            // TODO warn user that overwrite will occur if file exists
-            saveFile = new File(loadList.getSelectionModel().getSelectedItem());
+        if (isLoggedIn) {
+            Client client = new Client();
+            try {
+                // TODO warn user that overwrite will occur if file already exists
+                saveFile = new File(loadList.getSelectionModel().getSelectedItem());
 
-            stage.setTitle("WatchlistPro - " + saveFile.getName());
+                stage.setTitle("WatchlistPro - " + saveFile.getName());
 
-            watchlist.clear();
+                watchlist.clear();
 
-            if (!saveFile.exists()) {
-                io.save(watchlist.getMap(), saveFile);
+                if (!saveFile.exists()) {
+                    io.save(watchlist.getMap(), saveFile);
+                }
+
+                updateMediaList();
+                clearDisplayPane();
+                updateRecentMenu(saveFile.getName());
+
+                Thread load = client.send(
+                        "load" + "-=-" + username + "-=-" + loadList.getSelectionModel().getSelectedItem());
+                Thread quit = client.send("quit");
+
+                load.start();
+                load.join();
+
+                quit.start();
+                quit.join();
+
+                io.load(watchlist.getMap(), saveFile);
+
+                updateMediaList();
+            } catch (IOException e) {
+                System.err.println("IOException");
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                System.err.println("Interrupted Exception");
+                e.printStackTrace();
             }
-
-            updateMediaList();
-            clearDisplayPane();
-            updateRecentMenu(saveFile.getName());
-
-            Thread load = client.send(
-                    "load" + "-=-" + username + "-=-" + loadList.getSelectionModel().getSelectedItem());
-            Thread quit = client.send("quit");
-
-            load.start();
-            load.join();
-
-            quit.start();
-            quit.join();
-
-            io.load(watchlist.getMap(), saveFile);
-
-            updateMediaList();
-        } catch (IOException e) {
-            System.err.println("IOException");
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            System.err.println("Interrupted Exception");
-            e.printStackTrace();
+        } else {
+            switchToLoginPage();
         }
     }
 
