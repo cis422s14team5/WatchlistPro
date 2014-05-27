@@ -68,10 +68,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Controller.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Controller.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.19014084" vertical-offset="12075" max-vertical-offset="18870">
+            <state vertical-scroll-proportion="0.0" vertical-offset="12075" max-vertical-offset="18870">
               <caret line="856" column="76" selection-start-line="856" selection-start-column="76" selection-end-line="856" selection-end-column="76" />
               <folding>
                 <element signature="e#29620#29621#0" expanded="true" />
@@ -81,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Client.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Client.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1125">
-              <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.23239437" vertical-offset="0" max-vertical-offset="1125">
+              <caret line="14" column="70" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -179,14 +179,14 @@
         <option value="$PROJECT_DIR$/src/WatchlistPro.java" />
         <option value="$PROJECT_DIR$/src/controller/TopicHandler.java" />
         <option value="$PROJECT_DIR$/src/view/AboutDialog.java" />
-        <option value="$PROJECT_DIR$/src/client/Client.java" />
         <option value="$PROJECT_DIR$/src/client/ClientThread.java" />
         <option value="$PROJECT_DIR$/src/controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/client/Client.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="832" />
+    <option name="x" value="831" />
     <option name="y" value="22" />
     <option name="width" value="1077" />
     <option name="height" value="1054" />
@@ -637,7 +637,7 @@
     <option name="totallyTimeSpent" value="146663000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="832" y="22" width="1077" height="1054" extended-state="0" />
+    <frame x="831" y="22" width="1077" height="1054" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1164,14 +1164,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
-          <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/ClientThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="370" max-vertical-offset="1290">
@@ -1182,12 +1174,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19014084" vertical-offset="12075" max-vertical-offset="18870">
+        <state vertical-scroll-proportion="0.0" vertical-offset="12075" max-vertical-offset="18870">
           <caret line="856" column="76" selection-start-line="856" selection-start-column="76" selection-end-line="856" selection-end-column="76" />
           <folding>
             <element signature="e#29620#29621#0" expanded="true" />
             <element signature="e#29653#29654#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23239437" vertical-offset="0" max-vertical-offset="1125">
+          <caret line="14" column="70" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
