@@ -14,12 +14,14 @@ public class Client {
     private static final int TV = 1;
     private static final int LOADING = 2;
     private static final int GETTOPIC = 3;
+    private static final int GETSAVES = 4;
 
     private int state;
 
     private Socket socket;
     private File file;
     private JSONObject topic;
+    private String[] saveArray;
 
     public Client() {
         try {
@@ -30,7 +32,8 @@ public class Client {
     }
 
     public Thread send(String command) throws IOException, InterruptedException {
-        String[] commands = command.split(" ");
+        System.out.println("command " + command);
+        String[] commands = command.split("-=-");
         switch (commands[0]) {
             case "film":
                 state = FILM;
@@ -44,6 +47,10 @@ public class Client {
                 break;
             case "getTopic":
                 state = GETTOPIC;
+                break;
+            case "getsaves":
+                System.out.println("getsaves");
+                state = GETSAVES;
                 break;
         }
         return new Thread(new ClientThread(this, state, socket, command), "thread");
@@ -64,5 +71,14 @@ public class Client {
     public void setTopic(JSONObject topic) {
         this.topic = topic;
     }
+
+    public String[] getSaveArray() {
+        return saveArray;
+    }
+
+    public void setSaveArray(String[] saveArray) {
+        this.saveArray = saveArray;
+    }
+
 
 }

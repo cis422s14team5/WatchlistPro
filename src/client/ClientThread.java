@@ -18,6 +18,7 @@ public class ClientThread implements Runnable {
     private static final int TV = 1;
     private static final int LOADING = 2;
     private static final int GETTOPIC = 3;
+    private static final int GETSAVES = 4;
 
     private int state;
     private Client client;
@@ -42,7 +43,8 @@ public class ClientThread implements Runnable {
         try {
             if ((input = in.readLine()) != null && !input.equals("Bye.")) {
                 String[] output = input.split("");
-                System.out.println(input);
+
+                System.out.println("server says " + input);
 
                 // Handle input from server.
                 // TODO handle getting the list of server save files here, possibly use JSON
@@ -63,6 +65,9 @@ public class ClientThread implements Runnable {
                             break;
                         case GETTOPIC:
                             jsonOutput = (JSONObject) JSONValue.parse(input);
+                        case GETSAVES:
+                            String[] inputArray = input.split("-=-");
+                            client.setSaveArray(inputArray);
                         default:
                             break;
                     }

@@ -27,15 +27,15 @@ public class AboutDialog implements WindowFocusListener {
         dialog.addWindowFocusListener(this);
         dialog.setUndecorated(true);
         container = new Container();
-        line = new JLabel(" •.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•");
+        line      = new JLabel(" •.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.• ");
         creators1 = new JLabel("      Created by The Dragons (Team 5): Keith Hamm, Noah Hasson,");
         creators2 = new JLabel("            Jason Keller, Wenbo Zhang, John Beck, David Chapman");
         container.add(creators1);
         container.add(creators2);
 
 
-        madeFor = new JLabel("      Created for CIS 422.");
-        madeIn = new JLabel("      Programmed using IntelliJ IDEA, using Java 8.");
+        madeFor   = new JLabel("      Created for CIS 422.");
+        madeIn    = new JLabel("      Programmed using IntelliJ IDEA, using Java 8.");
 
         GridLayout layout = new GridLayout(6,0);
         GridLayout layout2 = new GridLayout(3,0);

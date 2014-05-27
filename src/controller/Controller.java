@@ -18,7 +18,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.stage.*;
 
@@ -29,8 +28,7 @@ import model.TvShow;
 import client.Client;
 import view.AboutDialog;
 
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
+import javax.swing.*;
 import java.io.*;
 import java.lang.String;
 import java.lang.reflect.Type;
@@ -43,6 +41,9 @@ import java.util.prefs.Preferences;
 // TODO open from server should create a new library and open the save dialog
 // TODO notify the user if fetch does not find title
 // TODO store entire path of saved files on New and on first run open the New dialog
+// TODO create logout menu item
+// TODO add logged in as: label
+// TODO if logged in, disable login menu item
 
 /**
  * Controls the WatchlistPro view.
@@ -189,6 +190,10 @@ public class Controller implements Initializable {
     private TextField createUserNameField;
     @FXML
     private PasswordField createPasswordField;
+    @FXML
+    private ListView<String> loadList;
+    @FXML
+    private VBox loadFromServerPane;
 
     /**
      * Constructor.
@@ -273,6 +278,21 @@ public class Controller implements Initializable {
         updateMediaList();
 
         mediaList.getSelectionModel().select(0);
+
+        // Load List
+
+        loadList.setCellFactory((list) -> new ListCell<String>() {
+            @Override
+            protected void updateItem(String string, boolean empty) {
+                super.updateItem(string, empty);
+
+                if (string == null || empty) {
+                    setText(null);
+                } else {
+                    setText(string);
+                }
+            }
+        });
 
         // TODO Initialize the episode table columns
         // seasonNumCol.setCellValueFactory(cellData -> cellData.getValue().numSeasonsProperty());
@@ -709,8 +729,8 @@ public class Controller implements Initializable {
     @FXML
     public void loginToServer() {
         // if user entered name & password try to login
-
         if (getUserLogin()) {
+            isLoggedIn = true;
             Client client = new Client();
             try {
                 Thread login = client.send("login" + "-=-" + username + "-=-" + password);
@@ -753,6 +773,11 @@ public class Controller implements Initializable {
             quit.start();
             quit.join();
 
+            String[] saveArray = client.getSaveArray();
+            List<String> arrayList = Arrays.asList(saveArray);
+            ObservableList<String> list = new ObservableListWrapper<>(arrayList);
+            loadList.setItems(list);
+            switchToLoadChoice();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -774,8 +799,6 @@ public class Controller implements Initializable {
                 data += jsonString + "//";
             }
 
-            System.out.println(data);
-
             Client client = new Client();
             try {
                 Thread save = client.send("save" + "-=-" + username + "-=-" + saveName + "-=-" + data);
@@ -794,7 +817,7 @@ public class Controller implements Initializable {
                 e.printStackTrace();
             }
         } else {
-
+            switchToLoginPage();
         }
 
     }
@@ -804,13 +827,25 @@ public class Controller implements Initializable {
      */
     @FXML
     public void loadFromServer() {
-        // TODO call getSaves and populate a popup window's list with all the server save names
-        // TODO the window needs a list, cancel button, load button
-        getSaves();
-        String saveName = "save1";
         Client client = new Client();
         try {
-            Thread load = client.send("load" + "-=-" + username + "-=-" + saveName);
+            // TODO warn user that overwrite will occur if file exists
+            saveFile = new File(loadList.getSelectionModel().getSelectedItem());
+
+            stage.setTitle("WatchlistPro - " + saveFile.getName());
+
+            watchlist.clear();
+
+            if (!saveFile.exists()) {
+                io.save(watchlist.getMap(), saveFile);
+            }
+
+            updateMediaList();
+            clearDisplayPane();
+            updateRecentMenu(saveFile.getName());
+
+            Thread load = client.send(
+                    "load" + "-=-" + username + "-=-" + loadList.getSelectionModel().getSelectedItem());
             Thread quit = client.send("quit");
 
             load.start();
@@ -839,6 +874,22 @@ public class Controller implements Initializable {
     @FXML
     public void openAbout() {
         new AboutDialog();
+    }
+
+
+    // Load from server.
+
+    @FXML
+    public void cancelLoadChoice() {
+        loadFromServerPane.setVisible(false);
+        loadFromServerPane.setDisable(true);
+        root.setVisible(true);
+    }
+
+    @FXML
+    public void sendLoadChoice() {
+        loadFromServer();
+        cancelLoadChoice();
     }
 
     // Helper Methods
@@ -1213,6 +1264,17 @@ public class Controller implements Initializable {
     public File getSaveFile() {
         return saveFile;
     }
+
+    private void switchToLoadChoice() {
+        // displays account login pane
+        //Platform.runLater(userNameField::requestFocus);
+        loadFromServerPane.setVisible(true);
+        loadFromServerPane.setDisable(false);
+        root.setVisible(false);
+
+    }
+
+
 
     // TODO allow delete button to call deleteMedia()
 //    public void initializeAccelerators() {
