@@ -17,6 +17,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * A client thread used to communicate with the WatchlistPro Server.
+ */
 public class ClientThread implements Runnable {
 
     private static final int FILM = 0;
@@ -33,6 +36,14 @@ public class ClientThread implements Runnable {
     private BufferedReader in;
     private JSONObject jsonOutput;
 
+    /**
+     * Constructor.
+     * @param client is the client that initialized the thread.
+     * @param state is the current state of the client/client thread system.
+     * @param socket is the socket through which communication occurs.
+     * @param command is the command to send to the server.
+     * @throws IOException
+     */
     public ClientThread(Client client, int state, Socket socket, String command) throws IOException {
         this.state = state;
         this.client = client;
@@ -42,6 +53,9 @@ public class ClientThread implements Runnable {
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     }
 
+    /**
+     * Runs the main thread loop which communicates with the server.
+     */
     @Override
     public void run() {
         String input;

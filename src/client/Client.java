@@ -5,6 +5,9 @@ import org.json.simple.JSONObject;
 import java.io.*;
 import java.net.Socket;
 
+/**
+ * A client used to connect and communicate with the WatchlistPro Server.
+ */
 public class Client {
 
     private static final String HOST = "hkhamm.com"; // "localhost"; // "hkhamm.com"; // "128.223.4.21"; // ix.cs.uoregon.edu
@@ -23,6 +26,9 @@ public class Client {
     private JSONObject topic;
     private String[] saveArray;
 
+    /**
+     * Constructor.
+     */
     public Client() {
         try {
             socket = new Socket(HOST, PORT);
@@ -31,6 +37,13 @@ public class Client {
         }
     }
 
+    /**
+     * Create a thread that will communicate with the server.
+     * @param command the command to send to the server.
+     * @return the client thread.
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public Thread send(String command) throws IOException, InterruptedException {
         System.out.println("command " + command);
         String[] commands = command.split("-=-");
