@@ -32,10 +32,12 @@ import java.util.*;
 import java.util.prefs.Preferences;
 
 // TODO warn user that it will not save if they dont press done after editing
-// TODO put fetching in its own thread, add progress bar or loading wheel
+// TODO during load from server warn user that overwrite will occur if file already exists
+// TODO during save to server give user option to changed save name, warn if overwrite will occur, use get saves
 // TODO open from server should create a new library and open the save dialog
 // TODO notify the user if fetch does not find title
 // TODO add logged in as: label
+// TODO allow delete button to call deleteMedia() only when no other field is in focus
 
 /**
  * Controls the WatchlistPro view.
@@ -46,27 +48,28 @@ public class Controller implements Initializable {
     private MediaCreator mediaCreator;
     private FileIO io;
     private Stage stage;
-    private File saveFile;
-    private Preferences preferences;
     private LinkedList<String> recentList;
     private ByteArrayHandler byteArrayHandler;
-    private Gson gson;
     private String username;
     private String password;
     private Boolean isLoggedIn;
+
     private TreeItem<Episode> masterRoot; // master root of dropdown menu
     private List<TreeItem<Episode>> seasonRootList; // list of season roots
 
+    protected String slash;
+    protected File saveDir;
+    private File saveFile;
+
+    private Gson gson;
+    private Preferences preferences;
+
     // Control variables
     private int mediaIndex;
-    private int loadIndex;
     private String mediaName;
     private String mediaType;
     private String mediaEditType;
-    int seasonNum; // loop counter for episodes table
-
-    protected String slash;
-    protected File saveDir;
+    private int seasonNum; // loop counter for episodes table
 
     // View components
     @FXML
@@ -224,7 +227,6 @@ public class Controller implements Initializable {
 
         mediaName = null;
         mediaIndex = -1;
-        loadIndex = -1;
         mediaType = "film";
         isLoggedIn = false;
 
@@ -241,7 +243,7 @@ public class Controller implements Initializable {
                 io.save(new ObservableMapWrapper<>(new HashMap<>()), recentFile);
             }
             saveFile = recentFile;
-        } else if (!defaultFile.exists()){
+        } else if (!defaultFile.exists()) {
             io.save(new ObservableMapWrapper<>(new HashMap<>()), defaultFile);
             saveFile = defaultFile;
         } else {
@@ -295,8 +297,6 @@ public class Controller implements Initializable {
 
         mediaList.getSelectionModel().select(0);
 
-        // Load List
-
         loadList.setCellFactory((list) -> new ListCell<String>() {
             @Override
             protected void updateItem(String string, boolean empty) {
@@ -310,13 +310,9 @@ public class Controller implements Initializable {
             }
         });
 
-        loadList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                loadIndex = loadList.getSelectionModel().getSelectedIndex();
-            }
-        });
+        logoutMenuItem.setDisable(true);
 
-        logoutMenuItem.setDisable(true); //Cell factory for the data the season number column
+        //Cell factory for the data the season number column
         seasonCol.setCellValueFactory(
                 (TreeTableColumn.CellDataFeatures<Episode, String> param) ->
                         new ReadOnlyStringWrapper(param.getValue().getValue().getSeasonNum())
@@ -481,9 +477,6 @@ public class Controller implements Initializable {
                         show.setNumSeasons(tvNumSeasonsTextField.getText());
                         show.setNumEpisodes(tvNumEpisodesTextField.getText());
                         show.setDescription(tvDescriptionTextField.getText());
-
-                        // TODO fix getting data from column
-                        //show.setEpisodeList(seasonNumCol.getText());
 
                         watchlist.remove(mediaName);
                         watchlist.put(tvTitleTextField.getText(), show);
@@ -848,7 +841,6 @@ public class Controller implements Initializable {
     @FXML
     public void saveToServer() {
         if (isLoggedIn) {
-            // TODO popup window with field for save name; buttons for cancel, save
             String saveName = saveFile.getName();
 
             String data = "";
@@ -902,7 +894,6 @@ public class Controller implements Initializable {
         if (isLoggedIn) {
             Client client = new Client();
             try {
-                // TODO warn user that overwrite will occur if file already exists
                 saveFile = new File(loadList.getSelectionModel().getSelectedItem());
 
                 stage.setTitle("WatchlistPro - " + saveFile.getName());
@@ -1352,18 +1343,14 @@ public class Controller implements Initializable {
             seasonRootList.add(new TreeItem<>(new Episode("Season " + (seasonNum + 1), "", "")));
 
             // for each episode object in the current season
-            seasons.get(seasonNum).stream().forEach((episode) -> {
-                // add a new TreeItem containing episode as child of its season root
-                seasonRootList.get(seasonNum).getChildren().add(new TreeItem<>(episode));
-//                System.out.printf("Season: %s, Episode: %s, Watched: %s\n", episode.getSeasonNum(), episode.getEpisodeName(), episode.getWatched());
-            });
+            seasons.get(seasonNum).stream().forEach((episode) ->
+                    seasonRootList.get(seasonNum).getChildren().add(new TreeItem<>(episode)));
 
             // add season roots to master root
             masterRoot.getChildren().add(seasonNum, seasonRootList.get(seasonNum));
         }
     }
 
-    // TODO allow delete button to call deleteMedia()
 //    public void initializeAccelerators() {
 //        stage.getScene().setOnKeyReleased(keyEvent -> {
 //            if (keyEvent.getCode() == KeyCode.BACK_SPACE) {
