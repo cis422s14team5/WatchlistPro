@@ -52,7 +52,6 @@ public class ClientThread implements Runnable {
                 System.out.println("Server says: " + input);
 
                 // Handle input from server.
-                // TODO refactor b/c FILM, TV, and GETTOPIC all do the same thing
                 if (output[0].equals("{")) {
                     switch (state) {
                         case FILM:
@@ -68,14 +67,18 @@ public class ClientThread implements Runnable {
                             io.save(io.load(inputList), client.getFile());
                             break;
                         case GETTOPIC:
+                            System.out.println("Getting topic.");
                             jsonOutput = (JSONObject) JSONValue.parse(input);
+                            break;
                         case GETSAVES:
+                            System.out.println("Getting saves.");
                             Gson gson = new Gson();
                             Type mapType = new TypeToken<HashMap<String, String>>(){}.getType();
                             HashMap<String, String> savesMap = gson.fromJson(input, mapType);
                             String saves = savesMap.get("saves");
                             String[] inputArray = saves.split("-=-");
                             client.setSaveArray(inputArray);
+                            break;
                         default:
                             break;
                     }

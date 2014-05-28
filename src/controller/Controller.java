@@ -40,10 +40,7 @@ import java.util.prefs.Preferences;
 // TODO put fetching in its own thread, add progress bar or loading wheel
 // TODO open from server should create a new library and open the save dialog
 // TODO notify the user if fetch does not find title
-// TODO store entire path of saved files on New and on first run open the New dialog
-// TODO create logout menu item
 // TODO add logged in as: label
-// TODO if logged in, disable login menu item
 
 /**
  * Controls the WatchlistPro view.
@@ -69,6 +66,9 @@ public class Controller implements Initializable {
     private String mediaName;
     private String mediaType;
     private String mediaEditType;
+
+    protected String slash;
+    protected File saveDir;
 
     // View components
     @FXML
@@ -195,11 +195,18 @@ public class Controller implements Initializable {
     private ListView<String> loadList;
     @FXML
     private VBox loadFromServerPane;
+    @FXML
+    private MenuItem loginMenuItem;
+    @FXML
+    private MenuItem logoutMenuItem;
+    @FXML
+    private VBox progressIndicatorPane;
 
     /**
      * Constructor.
      */
     public Controller() {
+        checkOS();
         mediaCreator = new MediaCreator();
         byteArrayHandler = new ByteArrayHandler();
         io = new FileIO();
@@ -213,11 +220,10 @@ public class Controller implements Initializable {
         mediaType = "film";
         isLoggedIn = false;
 
-        // TODO get username and password from user input
         username = "";
         password = "";
 
-        File defaultFile = new File("watchlist.wl");
+        File defaultFile = new File(saveDir + slash + "watchlist.wl");
 
         // Setup Open Recent List
         recentList = byteArrayHandler.readByteArray(preferences.getByteArray("recentList", "".getBytes()));
@@ -251,13 +257,13 @@ public class Controller implements Initializable {
 
         mediaList.setCellFactory((list) -> new ListCell<Media>() {
             @Override
-            protected void updateItem(Media Media, boolean empty) {
-                super.updateItem(Media, empty);
+            protected void updateItem(Media media, boolean empty) {
+                super.updateItem(media, empty);
 
-                if (Media == null || empty) {
+                if (media == null || empty) {
                     setText(null);
                 } else {
-                    setText(Media.getTitle());
+                    setText(media.getTitle());
                 }
             }
         });
@@ -302,7 +308,7 @@ public class Controller implements Initializable {
             }
         });
 
-        loadList.getSelectionModel().select(0);
+        logoutMenuItem.setDisable(true);
 
         // TODO Initialize the episode table columns
         // seasonNumCol.setCellValueFactory(cellData -> cellData.getValue().numSeasonsProperty());
@@ -469,40 +475,9 @@ public class Controller implements Initializable {
      */
     @FXML
     public void fetchMedia() {
-        try {
-            Client client = new Client();
-            String command = mediaList.getSelectionModel().getSelectedItem().getTitle();
-
-            Thread type = client.send(mediaEditType);
-            Thread search = client.send(command);
-            Thread quit = client.send("quit");
-
-            type.start();
-            type.join();
-
-            search.start();
-            search.join();
-
-            quit.start();
-            quit.join();
-
-            TopicHandler handler = new TopicHandler();
-            List<String> outputList;
-            if (mediaEditType.equals("film")) {
-                outputList = handler.filmOutput(client.getTopic());
-                setFilmEditPane(outputList);
-            } else {
-                outputList = handler.tvOutput(client.getTopic());
-                setTvEditPane(outputList);
-            }
-
-        } catch (IOException e) {
-            System.err.println("IOException");
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            System.err.println("Interrupted Exception");
-            e.printStackTrace();
-        }
+        Thread thread = new Thread(new Fetch(this, mediaList, mediaEditType));
+        thread.setDaemon(true);
+        thread.start();
     }
 
     /**
@@ -527,6 +502,7 @@ public class Controller implements Initializable {
     public void createNew() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Create New Media File");
+        fileChooser.setInitialDirectory(saveDir);
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Watchlist Files (*.wl)", "*.wl"));
         File selectedFile = fileChooser.showSaveDialog(stage);
         if (selectedFile != null) {
@@ -547,6 +523,7 @@ public class Controller implements Initializable {
     public void openLibrary() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Media File");
+        fileChooser.setInitialDirectory(saveDir);
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Watchlist Files (*.wl)", "*.wl"));
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile != null) {
@@ -589,10 +566,12 @@ public class Controller implements Initializable {
     public void saveAs() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save As...");
+        fileChooser.setInitialDirectory(saveDir);
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Watchlist Files (*.wl)", "*.wl"));
         File selectedFile = fileChooser.showSaveDialog(stage);
         if (selectedFile != null) {
             saveFile = selectedFile;
+            stage.setTitle("WatchlistPro - " + saveFile.getName());
             io.save(watchlist.getMap(), saveFile);
             updateMediaList();
             mediaList.getSelectionModel().select(0);
@@ -605,6 +584,7 @@ public class Controller implements Initializable {
      */
     @FXML
     public void closeWindow() {
+        logoutFromServer();
         io.save(watchlist.getMap(), saveFile);
         preferences.remove("recentList");
         preferences.putByteArray("recentList", byteArrayHandler.writeByteArray(recentList));
@@ -741,6 +721,8 @@ public class Controller implements Initializable {
         // if user entered name & password try to login
         if (getUserLogin()) {
             isLoggedIn = true;
+            loginMenuItem.setDisable(true);
+            logoutMenuItem.setDisable(false);
             Client client = new Client();
             try {
                 Thread login = client.send("login" + "-=-" + username + "-=-" + password);
@@ -767,30 +749,62 @@ public class Controller implements Initializable {
         }
     }
 
+    @FXML
+    public void logoutFromServer() {
+        if (isLoggedIn) {
+            isLoggedIn = false;
+            loginMenuItem.setDisable(false);
+            logoutMenuItem.setDisable(true);
+            Client client = new Client();
+            try {
+                Thread logout = client.send("logout" + "-=-" + username + "-=-" + password);
+                Thread quit = client.send("quit");
+
+                logout.start();
+                logout.join();
+
+                quit.start();
+                quit.join();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            username = "";
+            password = "";
+
+        }
+
+
+    }
+
     /**
      * Get the list of saves from the server.
      */
     @FXML
     public void getSaves() {
-        Client client = new Client();
-        try {
-            Thread saves = client.send("getsaves" + "-=-" + username);
-            Thread quit = client.send("quit");
+        if (isLoggedIn) {
+            Client client = new Client();
+            try {
+                Thread saves = client.send("getsaves" + "-=-" + username);
+                Thread quit = client.send("quit");
 
-            saves.start();
-            saves.join();
+                saves.start();
+                saves.join();
 
-            quit.start();
-            quit.join();
+                quit.start();
+                quit.join();
 
-            String[] saveArray = client.getSaveArray();
-            List<String> arrayList = Arrays.asList(saveArray);
-            ObservableList<String> list = new ObservableListWrapper<>(arrayList);
-            loadList.setItems(list);
-            loadList.getSelectionModel().select(0);
-            switchToLoadChoice();
-        } catch (Exception e) {
-            e.printStackTrace();
+                String[] saveArray = client.getSaveArray();
+                List<String> arrayList = Arrays.asList(saveArray);
+                ObservableList<String> list = new ObservableListWrapper<>(arrayList);
+                loadList.setItems(list);
+                loadList.getSelectionModel().select(0);
+                switchToLoadChoice();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            switchToLoginPage();
         }
     }
 
@@ -942,7 +956,6 @@ public class Controller implements Initializable {
 
         }
     }
-    
 
     /**
      * Sets the index of the ListView to the last created or edited item.
@@ -1212,7 +1225,7 @@ public class Controller implements Initializable {
     /**
      * Populates the film edit pane based on passed in arguments.
      */
-    private void setFilmEditPane(List<String> outputList) {
+    protected void setFilmEditPane(List<String> outputList) {
         filmTitleTextField.setText(outputList.get(0));
         if (outputList.get(1).equals("Yes")) {
             filmWatchedCheckBox.setSelected(true);
@@ -1229,7 +1242,7 @@ public class Controller implements Initializable {
     /**
      * Populates the tv edit pane based on passed in arguments.
      */
-    private void setTvEditPane(List<String> outputList) {
+    protected void setTvEditPane(List<String> outputList) {
         tvTitleTextField.setText(outputList.get(0));
         if (outputList.get(1).equals("Yes")) {
             tvWatchedCheckBox.setSelected(true);
@@ -1247,18 +1260,6 @@ public class Controller implements Initializable {
         ArrayList<String> tempList = gson.fromJson(outputList.get(9), observableListType);
         ObservableList<String> episodeList = new ObservableListWrapper<>(tempList);
         episodeTable.setItems(episodeList);
-//        Type mapType = new TypeToken<HashMap<String, String>>(){}.getType();
-//        HashMap<String, String> seasons = gson.fromJson(outputList.get(9), mapType);
-//        //JSONObject seasons = (JSONObject) JSONValue.parse(outputList.get(9));
-//        int numSeasons = Integer.parseInt(outputList.get(6));
-//
-//        Type arrayListType = new TypeToken<ArrayList<String>>(){}.getType();
-//        ArrayList<ArrayList<String>> seasonList = new ArrayList<>();
-//        for (int i = 0; i <= numSeasons; i++) {
-//            //JSONArray episodes = (JSONArray) seasons.get(String.valueOf(i));
-//            ArrayList<String> episodes = gson.fromJson(seasons.get(String.valueOf(i)), arrayListType);
-//            seasonList.add(episodes);
-//        }
     }
 
     /**
@@ -1277,6 +1278,9 @@ public class Controller implements Initializable {
         return saveFile;
     }
 
+    /**
+     * Switch to the server file choose pane when loading from the server.
+     */
     private void switchToLoadChoice() {
         // displays account login pane
         //Platform.runLater(userNameField::requestFocus);
@@ -1286,7 +1290,39 @@ public class Controller implements Initializable {
 
     }
 
+    /**
+     * Checks what the OS to decide where to read/write the save files.
+     */
+    private void checkOS() {
+        String os = System.getProperty("os.name");
+        if (os.equals("Windows")) {
+            saveDir = new File(System.getProperty("user.home"), "Application Data\\WatchLists");
+            slash = "\\";
+        } else {
+            saveDir = new File(System.getProperty("user.home") + "/WatchLists");
+            slash = "/";
+        }
 
+        if (!saveDir.exists()) {
+            saveDir.mkdir();
+        }
+    }
+
+    /**
+     * Starts the progress indicator during fetch.
+     */
+    protected void startProgressIndicator() {
+        progressIndicatorPane.setDisable(false);
+        progressIndicatorPane.setVisible(true);
+    }
+
+    /**
+     * Stops the progress indicator after fetch
+     */
+    protected void stopProgressIndicator() {
+        progressIndicatorPane.setDisable(true);
+        progressIndicatorPane.setVisible(false);
+    }
 
     // TODO allow delete button to call deleteMedia()
 //    public void initializeAccelerators() {

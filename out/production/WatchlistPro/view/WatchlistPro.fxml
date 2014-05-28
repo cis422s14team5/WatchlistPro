@@ -15,7 +15,7 @@
           <children>
             <MenuBar fx:id="menuBar">
               <menus>
-                <Menu mnemonicParsing="false" text="File">
+                <Menu fx:id="File" mnemonicParsing="false" text="File">
                   <items>
                         <MenuItem id="newMenuItem" fx:id="newMenuItem" mnemonicParsing="false" onAction="#createNew" text="New...">
                            <accelerator>
@@ -53,10 +53,11 @@
                         </MenuItem>
                   </items>
                 </Menu>
-                  <Menu mnemonicParsing="false" text="Server">
+                  <Menu fx:id="Server" mnemonicParsing="false" text="Server">
                     <items>
                         <MenuItem fx:id="createAccountMenuItem" mnemonicParsing="false" onAction="#switchToAccountCreatePage" text="Create Account" />
                       <MenuItem fx:id="loginMenuItem" mnemonicParsing="false" onAction="#switchToLoginPage" text="Login" />
+                        <MenuItem fx:id="logoutMenuItem" mnemonicParsing="false" onAction="#logoutFromServer" text="Logout" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem fx:id="serverLoad" mnemonicParsing="false" onAction="#getSaves" text="Load from Server">
                            <accelerator>
@@ -70,7 +71,7 @@
                         </MenuItem>
                     </items>
                   </Menu>
-                <Menu mnemonicParsing="false" text="Help">
+                <Menu fx:id="Help" mnemonicParsing="false" text="Help">
                      <items>
                         <MenuItem fx:id="aboutMenu" mnemonicParsing="false" onAction="#openAbout" text="About">
                            <accelerator>
@@ -634,7 +635,6 @@
             <GridPane alignment="CENTER" layoutX="198.0" layoutY="255.0" minWidth="300.0">
                <children>
                   <ListView fx:id="loadList" prefHeight="200.0" prefWidth="200.0" />
-                  <ScrollPane prefHeight="200.0" prefWidth="200.0" />
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <children>
                         <HBox alignment="CENTER" layoutY="3.0" minWidth="0.0" prefHeight="0.0" prefWidth="200.0" spacing="1.0">
@@ -663,6 +663,11 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
                </rowConstraints>
             </GridPane>
+         </children>
+      </VBox>
+      <VBox fx:id="progressIndicatorPane" alignment="CENTER" disable="true" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: rgba(0, 0, 0, 0);" visible="false" StackPane.alignment="CENTER">
+         <children>
+            <ProgressIndicator fx:id="progressIndicator" prefHeight="53.0" prefWidth="485.0" />
          </children>
       </VBox>
    </children>
