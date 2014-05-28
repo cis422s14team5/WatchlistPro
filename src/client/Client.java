@@ -10,7 +10,8 @@ import java.net.Socket;
  */
 public class Client {
 
-    private static final String HOST = "hkhamm.com"; // "localhost"; // "hkhamm.com"; // "128.223.4.21"; // ix.cs.uoregon.edu
+    // "localhost"; "hkhamm.com"; "128.223.4.21"; <- ix.cs.uoregon.edu
+    private static final String HOST = "hkhamm.com";
     private static final int PORT = 1981;
 
     private static final int FILM = 0;
@@ -69,26 +70,50 @@ public class Client {
         return new Thread(new ClientThread(this, state, socket, command), "thread");
     }
 
+    /**
+     * Gets the current save file.
+     * @return the file.
+     */
     public File getFile() {
         return file;
     }
 
+    /**
+     * Sets the current save file.
+     * @param file is the new file.
+     */
     public void setFile(File file) {
         this.file = file;
     }
 
+    /**
+     * Gets the current topic.
+     * @return the topic.
+     */
     public JSONObject getTopic() {
         return topic;
     }
 
+    /**
+     * Sets the current topic.
+     * @param topic is the topic.
+     */
     public void setTopic(JSONObject topic) {
         this.topic = topic;
     }
 
+    /**
+     * Gets the current array of save file names.
+     * @return the array of save files.
+     */
     public String[] getSaveArray() {
         return saveArray;
     }
 
+    /**
+     * Sets the current array of save file names.
+     * @param saveArray is an array of file names
+     */
     public void setSaveArray(String[] saveArray) {
         this.saveArray = saveArray;
     }
