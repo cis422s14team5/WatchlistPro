@@ -38,6 +38,7 @@ import java.util.prefs.Preferences;
 // TODO notify the user if fetch does not find title
 // TODO add logged in as: label
 // TODO allow delete button to call deleteMedia() only when no other field is in focus
+// TODO doc comments for media and film
 
 /**
  * Controls the WatchlistPro view.
