@@ -3,19 +3,19 @@ package model;
 /**
  * Author: Jason Keller
  * Class Name: Episode.java
- * Class Description: An object representing
- * a single episode of a tv show.
+ * Class Description: An object representing a single episode of a tv show.
  */
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Episode {
+
     private final StringProperty seasonNum;
     private final StringProperty episodeName;
     private final StringProperty watched;
 
     /**
-     * Constructor for Episode object
+     * Constructor for Episode object.
      * @param seasonNum season number
      * @param episodeName episode name
      * @param watched watched true/false
@@ -27,7 +27,7 @@ public class Episode {
     }
 
     /**
-     * getter for season number
+     * Getter for season number.
      * @return season number
      */
     public String getSeasonNum() {
@@ -35,7 +35,7 @@ public class Episode {
     }
 
     /**
-     * setter for season number
+     * Setter for season number.
      * @param season season number
      */
     public void setSeasonNum(String season) {
@@ -43,7 +43,7 @@ public class Episode {
     }
 
     /**
-     * getter for season number property
+     * Getter for season number property.
      * @return season number property
      */
     public StringProperty seasonNumProperty() {
@@ -51,7 +51,7 @@ public class Episode {
     }
 
     /**
-     * getter for episode name
+     * Getter for episode name.
      * @return episode name
      */
     public String getEpisodeName() {
@@ -59,7 +59,7 @@ public class Episode {
     }
 
     /**
-     * setter for episode name
+     * Setter for episode name.
      * @param episodeName episode name
      */
     public void setEpisodeName(String episodeName) {
@@ -67,7 +67,7 @@ public class Episode {
     }
 
     /**
-     * getter for episode name property
+     * Getter for episode name property.
      * @return episode name property
      */
     public StringProperty episodeNameProperty() {
@@ -75,7 +75,7 @@ public class Episode {
     }
 
     /**
-     * getter for watched
+     * Getter for watched.
      * @return watched
      */
     public String getWatched() {
@@ -83,7 +83,7 @@ public class Episode {
     }
 
     /**
-     * setter for watched
+     * Setter for watched.
      * @param watched watched true/false
      */
     public void setWatched(String watched) {
@@ -91,7 +91,7 @@ public class Episode {
     }
 
     /**
-     * getter for watched property
+     * Getter for watched property.
      * @return watched property
      */
     public StringProperty watchedProperty() {

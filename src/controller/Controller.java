@@ -57,8 +57,8 @@ public class Controller implements Initializable {
     private TreeItem<Episode> masterRoot; // master root of dropdown menu
     private List<TreeItem<Episode>> seasonRootList; // list of season roots
 
-    protected String slash;
-    protected File saveDir;
+    private String slash;
+    private File saveDir;
     private File saveFile;
 
     private Gson gson;
@@ -648,7 +648,7 @@ public class Controller implements Initializable {
      * @return true if user entered both a name and password, else false.
      */
     @FXML
-    public boolean getUserCredentials() {
+    protected boolean getUserCredentials() {
         // user entered something in userNameField
         if (createUserNameField.getText() != null && !createUserNameField.getText().isEmpty()) {
             username = createUserNameField.getText();
@@ -711,7 +711,7 @@ public class Controller implements Initializable {
      * Switches view to login pane. Triggered by Server menu > Login.
      */
     @FXML
-    public void switchToLoginPage() {
+    protected void switchToLoginPage() {
         // displays account login pane
         Platform.runLater(userNameField::requestFocus);
         userLoginPane.setVisible(true);
@@ -724,7 +724,7 @@ public class Controller implements Initializable {
      * @return true if user entered both a name and password, else false.
      */
     @FXML
-    public boolean getUserLogin() {
+    protected boolean getUserLogin() {
         // user entered something in userNameField
         if (userNameField.getText() != null && !userNameField.getText().isEmpty()) {
             username = userNameField.getText();
@@ -777,7 +777,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void logoutFromServer() {
+    protected void logoutFromServer() {
         if (isLoggedIn) {
             isLoggedIn = false;
             loginMenuItem.setDisable(false);
@@ -874,7 +874,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void cancelLoadChoice() {
+    protected void cancelLoadChoice() {
         loadFromServerPane.setVisible(false);
         loadFromServerPane.setDisable(true);
         root.setVisible(true);
@@ -890,7 +890,7 @@ public class Controller implements Initializable {
      * Load the library from the server into the media map.
      */
     @FXML
-    public void loadFromServer() {
+    protected void loadFromServer() {
         if (isLoggedIn) {
             Client client = new Client();
             try {

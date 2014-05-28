@@ -10,9 +10,17 @@ import org.json.simple.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Handles the processing of Freebase JSON topics into our required fields.
+ */
 public class TopicHandler {
 
-    public List<String> filmOutput(JSONObject topic) {
+    /**
+     * Handles film JSON topics and puts the required elements into a list.
+     * @param topic is the JSON string to process.
+     * @return a list of strings used to fill in the edit pane fields.
+     */
+    public List<String> handleFilmOutput(JSONObject topic) {
         List<String> output = new ArrayList<>();
 
         String title;
@@ -158,33 +166,12 @@ public class TopicHandler {
         return output;
     }
 
-//    public List<String> tvOutput(JSONObject jsonObject) {
-//        List<String> output = new ArrayList<>();
-//
-//        output.clear();
-//        output.add(jsonObject.get("title").toString());
-//        output.add("No");
-//        output.add(jsonObject.get("genre").toString());
-//        output.add(jsonObject.get("creator").toString());
-//
-//        output.add(jsonObject.get("network").toString());
-//
-//        output.add(jsonObject.get("runtime").toString()); // runtime
-//
-//        output.add(String.format(jsonObject.get("seasons").toString()));
-//        output.add(jsonObject.get("episodes").toString());
-//        output.add(jsonObject.get("description").toString());
-//
-//
-////        int num = (int) jsonObject.get("seasons");
-////        for (int i = 0; i < num; i++) {
-////            output.add(jsonObject.get(i).toString());
-////        }
-////
-//        return output;
-//    }
-
-    public List<String> tvOutput(JSONObject topic) {
+    /**
+     * Handles TV show JSON topics and puts the required elements them into a list.
+     * @param topic is the JSON string to process.
+     * @return a list of strings used to fill in the edit pane fields.
+     */
+    public List<String> handleTvOutput(JSONObject topic) {
         List<String> output = new ArrayList<>();
         Gson gson = new Gson();
 

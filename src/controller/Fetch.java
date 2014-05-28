@@ -64,10 +64,10 @@ public class Fetch extends Task {
         TopicHandler handler = new TopicHandler();
         List<String> outputList;
         if (mediaEditType.equals("film")) {
-            outputList = handler.filmOutput(client.getTopic());
+            outputList = handler.handleFilmOutput(client.getTopic());
             controller.setFilmEditPane(outputList);
         } else {
-            outputList = handler.tvOutput(client.getTopic());
+            outputList = handler.handleTvOutput(client.getTopic());
             controller.setTvEditPane(outputList);
         }
         controller.stopProgressIndicator();
