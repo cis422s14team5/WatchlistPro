@@ -11,7 +11,7 @@ import java.net.Socket;
 public class Client {
 
     // "localhost"; "hkhamm.com"; "128.223.4.21"; <- ix.cs.uoregon.edu
-    private static final String HOST = "hkhamm.com";
+    private static final String HOST = "localhost";
     private static final int PORT = 1981;
 
     private static final int FILM = 0;
