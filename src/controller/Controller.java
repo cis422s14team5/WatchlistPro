@@ -39,6 +39,9 @@ import java.util.prefs.Preferences;
 // TODO add logged in as: label
 // TODO allow delete button to call deleteMedia() only when no other field is in focus
 // TODO doc comments for media and film
+// TODO load from server is broken!!!
+// TODO drop down list buttons for TV/Film toggle
+// TODO sort ListView into TV, Film, or All with dropdown
 
 /**
  * Controls the WatchlistPro view.
@@ -236,6 +239,7 @@ public class Controller implements Initializable {
 
         File defaultFile = new File(saveDir + slash + "watchlist.wl");
 
+        preferences.remove("recentList");
         // Setup Open Recent List
         recentList = byteArrayHandler.readByteArray(preferences.getByteArray("recentList", "".getBytes()));
         if (!recentList.isEmpty()) {
