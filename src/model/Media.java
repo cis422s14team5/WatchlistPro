@@ -6,7 +6,7 @@ import javafx.beans.property.StringProperty;
 import java.util.HashMap;
 
 /**
- * Stores the fields of a media object. The super class of model.TvShow and model.Film.
+ * Stores the fields of a media object. The super class of TvShow and Film.
  */
 public class Media {
 

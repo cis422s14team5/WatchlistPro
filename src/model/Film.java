@@ -12,7 +12,6 @@ public class Film extends Media {
     private StringProperty producer;
     private StringProperty writer;
 
-
     /**
      * Constructor.
      */
