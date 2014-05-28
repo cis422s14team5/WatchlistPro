@@ -347,6 +347,8 @@ public class Controller implements Initializable {
         // add columns to TreeTableView
         tvEpisodeTable.getColumns().setAll(seasonCol, episodeCol, watchedCol);
 
+//        addEpisodesToTable(numberOfSeasons, masterSeasonList);
+
     }
 
     // Button and Field Methods
