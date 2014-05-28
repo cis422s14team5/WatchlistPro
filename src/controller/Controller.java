@@ -4,11 +4,11 @@ import com.aquafx_project.AquaFx;
 import com.aquafx_project.controls.skin.styles.TextFieldType;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.sun.javafx.collections.ObservableListWrapper;
 import com.sun.javafx.collections.ObservableMapWrapper;
 
 import javafx.application.Platform;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
@@ -21,17 +21,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.*;
 
-import model.Film;
-import model.Media;
-import model.MediaCollection;
-import model.TvShow;
+import model.*;
 import client.Client;
 import view.AboutDialog;
 
-import javax.swing.*;
 import java.io.*;
 import java.lang.String;
-import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.*;
 import java.util.prefs.Preferences;
@@ -59,6 +54,8 @@ public class Controller implements Initializable {
     private String username;
     private String password;
     private Boolean isLoggedIn;
+    private TreeItem<Episode> masterRoot; // master root of dropdown menu
+    private List<TreeItem<Episode>> seasonRootList; // list of season roots
 
     // Control variables
     private int mediaIndex;
@@ -66,6 +63,7 @@ public class Controller implements Initializable {
     private String mediaName;
     private String mediaType;
     private String mediaEditType;
+    int seasonNum; // loop counter for episodes table
 
     protected String slash;
     protected File saveDir;
@@ -170,14 +168,6 @@ public class Controller implements Initializable {
     @FXML
     private Label filmWatchedLabel;
     @FXML
-    private TableView<String> episodeTable;
-    @FXML
-    private TableColumn<TvShow, String> seasonNumCol;
-    @FXML
-    private TableColumn<TvShow, String> episodeTitleCol;
-    @FXML
-    private TableColumn<TvShow, String> watchedCol;
-    @FXML
     private VBox userLoginPane;
     @FXML
     private VBox root;
@@ -201,12 +191,30 @@ public class Controller implements Initializable {
     private MenuItem logoutMenuItem;
     @FXML
     private VBox progressIndicatorPane;
+//    @FXML
+//    private TableView<String> episodeTable;
+//    @FXML
+//    private TableColumn<TvShow, String> seasonNumCol;
+//    @FXML
+//    private TableColumn<TvShow, String> episodeTitleCol;
+//    @FXML
+//    private TableColumn<TvShow, String> watchedCol;
+    @FXML
+    private TreeTableView<Episode> tvEpisodeTable;
+    @FXML
+    private TreeTableColumn<Episode,String> seasonCol;
+    @FXML
+    private TreeTableColumn<Episode, String> episodeCol;
+    @FXML
+    private TreeTableColumn<Episode, String> watchedCol;
 
     /**
      * Constructor.
      */
     public Controller() {
         checkOS();
+        masterRoot = new TreeItem<>(new Episode("Master", "", ""));
+        seasonRootList = new ArrayList<>();
         mediaCreator = new MediaCreator();
         byteArrayHandler = new ByteArrayHandler();
         io = new FileIO();
@@ -308,12 +316,36 @@ public class Controller implements Initializable {
             }
         });
 
-        logoutMenuItem.setDisable(true);
+        logoutMenuItem.setDisable(true); //Cell factory for the data the season number column
+        seasonCol.setCellValueFactory(
+                (TreeTableColumn.CellDataFeatures<Episode, String> param) ->
+                        new ReadOnlyStringWrapper(param.getValue().getValue().getSeasonNum())
+        );
 
-        // TODO Initialize the episode table columns
-        // seasonNumCol.setCellValueFactory(cellData -> cellData.getValue().numSeasonsProperty());
-        // episodeTitleCol.setCellValueFactory(cellData -> cellData.getValue().episodeListProperty());
-        // watchedCol.setCellValueFactory(cellData -> cellData.getValue().watchedProperty());
+        //Cell factory for the data the episode column
+        episodeCol.setCellValueFactory(
+                (TreeTableColumn.CellDataFeatures<Episode, String> param) ->
+                        new ReadOnlyStringWrapper(param.getValue().getValue().getEpisodeName())
+        );
+
+        //Cell factory for the data in the watched column
+        watchedCol.setCellValueFactory(
+                (TreeTableColumn.CellDataFeatures<Episode, String> param) ->
+                        new ReadOnlyStringWrapper(param.getValue().getValue().getWatched())
+        );
+
+        // add master root to TreeTableView
+        tvEpisodeTable.setRoot(masterRoot);
+        // set root as expanded by default
+        masterRoot.setExpanded(true);
+        // hide master root
+        tvEpisodeTable.setShowRoot(false);
+        // set TreeTableView as editable
+        tvEpisodeTable.setEditable(true);
+        // set watched column as editable
+        watchedCol.setEditable(true);
+        // add columns to TreeTableView
+        tvEpisodeTable.getColumns().setAll(seasonCol, episodeCol, watchedCol);
 
     }
 
@@ -1176,9 +1208,6 @@ public class Controller implements Initializable {
         tvNumSeasonsLabel.setText(show.getNumSeasons());
         tvNumEpisodesLabel.setText(show.getNumEpisodes());
         tvDescriptionLabel.setText(show.getDescription());
-
-        // TODO set items in TV display pane episode table
-        episodeTable.setItems(show.getEpisodeList());
     }
 
     /**
@@ -1217,9 +1246,6 @@ public class Controller implements Initializable {
         tvNumSeasonsTextField.setText(show.getNumSeasons());
         tvNumEpisodesTextField.setText(show.getNumEpisodes());
         tvDescriptionTextField.setText(show.getDescription());
-
-        // TODO set items in TV edit pane episode table
-        episodeTable.setItems(show.getEpisodeList());
     }
 
     /**
@@ -1254,12 +1280,6 @@ public class Controller implements Initializable {
         tvNumSeasonsTextField.setText(outputList.get(6));
         tvNumEpisodesTextField.setText(outputList.get(7));
         tvDescriptionTextField.setText(outputList.get(8));
-
-        // TODO put seasonList in view
-        Type observableListType = new TypeToken<ObservableList<String>>(){}.getType();
-        ArrayList<String> tempList = gson.fromJson(outputList.get(9), observableListType);
-        ObservableList<String> episodeList = new ObservableListWrapper<>(tempList);
-        episodeTable.setItems(episodeList);
     }
 
     /**
@@ -1322,6 +1342,23 @@ public class Controller implements Initializable {
     protected void stopProgressIndicator() {
         progressIndicatorPane.setDisable(true);
         progressIndicatorPane.setVisible(false);
+    }
+
+    public void addEpisodesToTable(int numSeasons, ObservableList<List<Episode>> seasons) {
+        for (seasonNum = 0; seasonNum < numSeasons; seasonNum++){
+            // create season roots, save them to list
+            seasonRootList.add(new TreeItem<>(new Episode("Season " + (seasonNum + 1), "", "")));
+
+            // for each episode object in the current season
+            seasons.get(seasonNum).stream().forEach((episode) -> {
+                // add a new TreeItem containing episode as child of its season root
+                seasonRootList.get(seasonNum).getChildren().add(new TreeItem<>(episode));
+//                System.out.printf("Season: %s, Episode: %s, Watched: %s\n", episode.getSeasonNum(), episode.getEpisodeName(), episode.getWatched());
+            });
+
+            // add season roots to master root
+            masterRoot.getChildren().add(seasonNum, seasonRootList.get(seasonNum));
+        }
     }
 
     // TODO allow delete button to call deleteMedia()
