@@ -7,10 +7,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import controller.FileIO;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.lang.reflect.Type;
 import java.net.Socket;
 import java.util.Arrays;
@@ -78,7 +75,9 @@ public class ClientThread implements Runnable {
                             FileIO io = new FileIO();
                             String[] splitInput = input.split("//");
                             List<String> inputList = Arrays.asList(splitInput);
-                            io.save(io.load(inputList), client.getFile());
+
+                            File file = client.getFile();
+                            io.save(io.load(inputList), file);
                             break;
                         case GETTOPIC:
                             System.out.println("Getting topic.");

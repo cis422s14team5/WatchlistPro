@@ -46,7 +46,7 @@ public class Client {
      * @throws InterruptedException
      */
     public Thread send(String command) throws IOException, InterruptedException {
-        System.out.println("command " + command);
+        System.out.println("Command: " + command);
         String[] commands = command.split("-=-");
         switch (commands[0]) {
             case "film":
@@ -58,6 +58,7 @@ public class Client {
             case "load":
                 state = LOADING;
                 file = new File(commands[2]);
+                command = commands[0] + "-=-" + commands[1] + "-=-" + file.getName();
                 break;
             case "getTopic":
                 state = GETTOPIC;

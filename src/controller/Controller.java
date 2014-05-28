@@ -39,7 +39,6 @@ import java.util.prefs.Preferences;
 // TODO add logged in as: label
 // TODO allow delete button to call deleteMedia() only when no other field is in focus
 // TODO doc comments for media and film
-// TODO load from server is broken!!!
 // TODO drop down list buttons for TV/Film toggle
 // TODO sort ListView into TV, Film, or All with dropdown
 
@@ -239,11 +238,11 @@ public class Controller implements Initializable {
 
         File defaultFile = new File(saveDir + slash + "watchlist.wl");
 
-        preferences.remove("recentList");
+        //preferences.remove("recentList");
         // Setup Open Recent List
         recentList = byteArrayHandler.readByteArray(preferences.getByteArray("recentList", "".getBytes()));
         if (!recentList.isEmpty()) {
-            File recentFile = new File(recentList.get(0));
+            File recentFile = new File(saveDir + slash + recentList.get(0));
             if (!recentFile.exists()) {
                 io.save(new ObservableMapWrapper<>(new HashMap<>()), recentFile);
             }
@@ -541,7 +540,7 @@ public class Controller implements Initializable {
             saveFile = selectedFile;
             stage.setTitle("WatchlistPro - " + saveFile.getName());
             watchlist.clear();
-            io.save(watchlist.getMap(), saveFile);
+            saveList();
             updateMediaList();
             clearDisplayPane();
             updateRecentMenu(saveFile.getName());
@@ -588,7 +587,8 @@ public class Controller implements Initializable {
      */
     @FXML
     public void saveList() {
-        io.save(watchlist.getMap(), saveFile);
+        File file = new File(saveDir + slash + saveFile.getName());
+        io.save(watchlist.getMap(), file);
     }
 
     /**
@@ -604,7 +604,7 @@ public class Controller implements Initializable {
         if (selectedFile != null) {
             saveFile = selectedFile;
             stage.setTitle("WatchlistPro - " + saveFile.getName());
-            io.save(watchlist.getMap(), saveFile);
+            saveList();
             updateMediaList();
             mediaList.getSelectionModel().select(0);
             updateRecentMenu(saveFile.getName());
@@ -617,7 +617,7 @@ public class Controller implements Initializable {
     @FXML
     public void closeWindow() {
         logoutFromServer();
-        io.save(watchlist.getMap(), saveFile);
+        saveList();
         preferences.remove("recentList");
         preferences.putByteArray("recentList", byteArrayHandler.writeByteArray(recentList));
         Platform.exit();
@@ -803,10 +803,7 @@ public class Controller implements Initializable {
             }
             username = "";
             password = "";
-
         }
-
-
     }
 
     /**
@@ -899,14 +896,14 @@ public class Controller implements Initializable {
         if (isLoggedIn) {
             Client client = new Client();
             try {
-                saveFile = new File(loadList.getSelectionModel().getSelectedItem());
+                saveFile = new File(saveDir + slash + loadList.getSelectionModel().getSelectedItem());
 
                 stage.setTitle("WatchlistPro - " + saveFile.getName());
 
                 watchlist.clear();
 
                 if (!saveFile.exists()) {
-                    io.save(watchlist.getMap(), saveFile);
+                    saveList();
                 }
 
                 updateMediaList();
@@ -914,7 +911,7 @@ public class Controller implements Initializable {
                 updateRecentMenu(saveFile.getName());
 
                 Thread load = client.send(
-                        "load" + "-=-" + username + "-=-" + loadList.getSelectionModel().getSelectedItem());
+                        "load" + "-=-" + username + "-=-" + saveFile);
                 Thread quit = client.send("quit");
 
                 load.start();
@@ -1128,7 +1125,7 @@ public class Controller implements Initializable {
         }
         MenuItem item = new MenuItem(name);
         item.setOnAction(actionEvent -> {
-            saveFile = new File(name);
+            saveFile = new File(saveDir + slash + name);
             stage.setTitle("WatchlistPro - " + saveFile.getName());
             watchlist.clear();
             clearDisplayPane();
