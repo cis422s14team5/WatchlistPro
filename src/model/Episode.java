@@ -5,6 +5,8 @@ package model;
  * Class Name: Episode.java
  * Class Description: An object representing a single episode of a tv show.
  */
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -12,18 +14,18 @@ public class Episode {
 
     private final StringProperty seasonNum;
     private final StringProperty episodeName;
-    private final StringProperty watched;
+    private final BooleanProperty watched;
 
     /**
      * Constructor for Episode object.
      * @param seasonNum season number
      * @param episodeName episode name
-     * @param watched watched true/false
+     * @param watched watched true/false boolean
      */
-    public Episode(String seasonNum, String episodeName, String watched) {
+    public Episode(String seasonNum, String episodeName, Boolean watched) {
         this.seasonNum = new SimpleStringProperty(seasonNum);
         this.episodeName = new SimpleStringProperty(episodeName);
-        this.watched = new SimpleStringProperty(watched);
+        this.watched = new SimpleBooleanProperty(watched);
     }
 
     /**
@@ -78,7 +80,7 @@ public class Episode {
      * Getter for watched.
      * @return watched
      */
-    public String getWatched() {
+    public Boolean getWatched() {
         return watched.get();
     }
 
@@ -86,7 +88,7 @@ public class Episode {
      * Setter for watched.
      * @param watched watched true/false
      */
-    public void setWatched(String watched) {
+    public void setWatched(Boolean watched) {
         this.watched.set(watched);
     }
 
@@ -94,7 +96,7 @@ public class Episode {
      * Getter for watched property.
      * @return watched property
      */
-    public StringProperty watchedProperty() {
+    public BooleanProperty watchedProperty() {
         return watched;
     }
 }

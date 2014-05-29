@@ -9,7 +9,6 @@ import com.sun.javafx.collections.ObservableListWrapper;
 import com.sun.javafx.collections.ObservableMapWrapper;
 
 import javafx.application.Platform;
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
@@ -19,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.CheckBoxTreeTableCell;
 import javafx.scene.layout.VBox;
 import javafx.stage.*;
 
@@ -224,7 +224,8 @@ public class Controller implements Initializable {
     @FXML
     private TreeTableColumn<Episode, String> episodeCol;
     @FXML
-    private TreeTableColumn<Episode, String> watchedCol;
+    private TreeTableColumn<Episode, Boolean> watchedCol;
+
 
     /**
      * Constructor.
@@ -235,7 +236,7 @@ public class Controller implements Initializable {
         saveDir = os.getSaveDir();
         slash = os.getSlash();
 
-        masterRoot = new TreeItem<>(new Episode("Master", "", ""));
+        masterRoot = new TreeItem<>(new Episode("Master", "", false));
         seasonRootList = new ArrayList<>();
         mediaCreator = new MediaCreator();
         byteArrayHandler = new ByteArrayHandler();
@@ -337,20 +338,23 @@ public class Controller implements Initializable {
         //Cell factory for the data the season number column
         seasonCol.setCellValueFactory(
                 (TreeTableColumn.CellDataFeatures<Episode, String> param) ->
-                        new ReadOnlyStringWrapper(param.getValue().getValue().getSeasonNum())
+                        param.getValue().getValue().seasonNumProperty()
         );
 
         //Cell factory for the data the episode column
         episodeCol.setCellValueFactory(
                 (TreeTableColumn.CellDataFeatures<Episode, String> param) ->
-                        new ReadOnlyStringWrapper(param.getValue().getValue().getEpisodeName())
+                        param.getValue().getValue().episodeNameProperty()
         );
 
         //Cell factory for the data in the watched column
         watchedCol.setCellValueFactory(
-                (TreeTableColumn.CellDataFeatures<Episode, String> param) ->
-                        new ReadOnlyStringWrapper(param.getValue().getValue().getWatched())
+                (TreeTableColumn.CellDataFeatures<Episode, Boolean> param) ->
+                        param.getValue().getValue().watchedProperty()
         );
+
+        // add checkboxes
+        watchedCol.setCellFactory(CheckBoxTreeTableCell.forTreeTableColumn(watchedCol));
 
         // add master root to TreeTableView
         tvEpisodeTable.setRoot(masterRoot);
@@ -364,7 +368,7 @@ public class Controller implements Initializable {
         watchedCol.setEditable(true);
         // add columns to TreeTableView
         tvEpisodeTable.getColumns().setAll(seasonCol, episodeCol, watchedCol);
-
+        // populate the table with data
 //        addEpisodesToTable(numberOfSeasons, masterSeasonList);
 
     }
@@ -1345,7 +1349,7 @@ public class Controller implements Initializable {
     public void addEpisodesToTable(int numSeasons, ObservableList<List<Episode>> seasons) {
         for (seasonNum = 0; seasonNum < numSeasons; seasonNum++){
             // create season roots, save them to list
-            seasonRootList.add(new TreeItem<>(new Episode("Season " + (seasonNum + 1), "", "")));
+            seasonRootList.add(new TreeItem<>(new Episode("Season " + (seasonNum + 1), "", false)));
 
             // for each episode object in the current season
             seasons.get(seasonNum).stream().forEach((episode) ->
