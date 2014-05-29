@@ -8,8 +8,6 @@ import com.sun.javafx.collections.ObservableListWrapper;
 import com.sun.javafx.collections.ObservableMapWrapper;
 
 import javafx.application.Platform;
-import javafx.beans.property.ReadOnlyBooleanWrapper;
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
@@ -322,19 +320,19 @@ public class Controller implements Initializable {
         //Cell factory for the data the season number column
         seasonCol.setCellValueFactory(
                 (TreeTableColumn.CellDataFeatures<Episode, String> param) ->
-                        new ReadOnlyStringWrapper(param.getValue().getValue().getSeasonNum())
+                        param.getValue().getValue().seasonNumProperty()
         );
 
         //Cell factory for the data the episode column
         episodeCol.setCellValueFactory(
                 (TreeTableColumn.CellDataFeatures<Episode, String> param) ->
-                        new ReadOnlyStringWrapper(param.getValue().getValue().getEpisodeName())
+                        param.getValue().getValue().episodeNameProperty()
         );
 
         //Cell factory for the data in the watched column
         watchedCol.setCellValueFactory(
                 (TreeTableColumn.CellDataFeatures<Episode, Boolean> param) ->
-                        new ReadOnlyBooleanWrapper(param.getValue().getValue().getWatched())
+                        param.getValue().getValue().watchedProperty()
         );
 
         // add checkboxes
