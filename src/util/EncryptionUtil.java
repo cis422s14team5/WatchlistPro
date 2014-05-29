@@ -1,10 +1,6 @@
 package util;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
@@ -119,6 +115,16 @@ public class EncryptionUtil {
         }
 
         return new String(decryptedText);
+    }
+
+    public PublicKey getPublicKey() throws IOException, ClassNotFoundException {
+        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(publicKeyFile));
+        return (PublicKey) inputStream.readObject();
+    }
+
+    public PrivateKey getPrivateKey() throws IOException, ClassNotFoundException {
+        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(privateKeyFile));
+        return (PrivateKey) inputStream.readObject();
     }
 
     public File getPrivateKeyFile() {

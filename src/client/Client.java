@@ -11,7 +11,7 @@ import java.net.Socket;
 public class Client {
 
     // "localhost"; "hkhamm.com"; "128.223.4.21"; <- ix.cs.uoregon.edu
-    private static final String HOST = "hkhamm.com";
+    private static final String HOST = "localhost";
     private static final int PORT = 1981;
 
     private static final int FILM = 0;
@@ -52,23 +52,29 @@ public class Client {
         switch (commands[0]) {
             case "film":
                 state = FILM;
+                System.out.println("Ready to search for a film.");
                 break;
             case "tv":
                 state = TV;
+                System.out.println("Ready to search for a TV show.");
                 break;
             case "load":
                 state = LOADING;
+                System.out.println("Ready to load from the server.");
                 file = new File(commands[2]);
                 command = commands[0] + "-=-" + commands[1] + "-=-" + file.getName();
                 break;
             case "getTopic":
                 state = GETTOPIC;
+                System.out.println("Ready to get a topic from the server.");
                 break;
             case "getsaves":
                 state = GETSAVES;
+                System.out.println("Ready to get saves from the server.");
                 break;
             case "add":
                 state = ADDACCOUNT;
+                System.out.println("Ready add a new server account.");
                 break;
         }
         return new Thread(new ClientThread(this, state, socket, command), "thread");

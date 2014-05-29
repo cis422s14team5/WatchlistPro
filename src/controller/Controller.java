@@ -4,7 +4,6 @@ import com.aquafx_project.AquaFx;
 import com.aquafx_project.controls.skin.styles.TextFieldType;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.sun.javafx.collections.ObservableListWrapper;
 import com.sun.javafx.collections.ObservableMapWrapper;
 
@@ -24,6 +23,7 @@ import javafx.stage.*;
 
 import model.*;
 import client.Client;
+import util.ByteArrayHandler;
 import util.CheckOS;
 import util.EncryptionUtil;
 import util.FileIO;
@@ -31,7 +31,6 @@ import view.AboutDialog;
 
 import java.io.*;
 import java.lang.String;
-import java.lang.reflect.Type;
 import java.net.URL;
 import java.security.PrivateKey;
 import java.security.PublicKey;
@@ -701,17 +700,17 @@ public class Controller implements Initializable {
         if (getUserCredentials()) {
             Client client = new Client();
             try {
-                Thread create = client.send("add");
+                Thread add = client.send("add");
                 String token = getToken();
-                Thread account = client.send(token);
+                Thread sendToken = client.send(token);
                 //Thread account = client.send("add" + "-=-" + username + "-=-" + password);
                 Thread quit = client.send("quit");
 
-                create.start();
-                create.join();
+                add.start();
+                add.join();
 
-                account.start();
-                account.join();
+                sendToken.start();
+                sendToken.join();
 
                 // clear createUserNameField and createPasswordField
                 createUserNameField.clear();

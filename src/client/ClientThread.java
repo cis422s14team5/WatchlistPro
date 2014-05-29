@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+import sun.misc.BASE64Decoder;
 import util.CheckOS;
 import util.EncryptionUtil;
 import util.FileIO;
@@ -11,8 +12,9 @@ import util.FileIO;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.net.Socket;
-import java.security.PrivateKey;
-import java.security.PublicKey;
+import java.security.*;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -36,6 +38,7 @@ public class ClientThread implements Runnable {
     private PrintWriter out;
     private BufferedReader in;
     private JSONObject jsonOutput;
+    private Gson gson;
 
     /**
      * Constructor.
@@ -49,6 +52,8 @@ public class ClientThread implements Runnable {
         this.state = state;
         this.client = client;
         this.command = command;
+
+        gson = new Gson();
 
         out = new PrintWriter(socket.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -89,7 +94,6 @@ public class ClientThread implements Runnable {
                             break;
                         case GETSAVES:
                             System.out.println("Getting saves.");
-                            Gson gson = new Gson();
                             Type mapType = new TypeToken<HashMap<String, String>>(){}.getType();
                             HashMap<String, String> savesMap = gson.fromJson(input, mapType);
                             String saves = savesMap.get("saves");
@@ -97,14 +101,29 @@ public class ClientThread implements Runnable {
                             client.setSaveArray(inputArray);
                             break;
                         case ADDACCOUNT:
-                            // Saving the Public key in a file
+                            // Convert JSON into map.
+                            Type keyMapType = new TypeToken<HashMap<String, byte[]>>(){}.getType();
+                            HashMap<String, byte[]> keyMap = gson.fromJson(input, keyMapType);
+
+                            // Decode byte array into public key.
+                            X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(keyMap.get("key"));
+                            PublicKey publicKey = null;
+                            try {
+                                KeyFactory keyFact = KeyFactory.getInstance("RSA", "BC");
+                                publicKey = keyFact.generatePublic(x509KeySpec);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                            // Saving the public key in a file.
+                            System.out.println("Saving the public key.");
                             CheckOS os = new CheckOS();
                             os.check();
                             File saveDir = os.getSaveDir();
                             String slash = os.getSlash();
                             File publicKeyFile = new File (saveDir + "keys" + slash + "public.key");
                             ObjectOutputStream publicKeyOS = new ObjectOutputStream(new FileOutputStream(publicKeyFile));
-                            publicKeyOS.writeObject(input);
+                            publicKeyOS.writeObject(publicKey);
                             publicKeyOS.close();
                         default:
                             break;
