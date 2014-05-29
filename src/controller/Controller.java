@@ -4,6 +4,7 @@ import com.aquafx_project.AquaFx;
 import com.aquafx_project.controls.skin.styles.TextFieldType;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.sun.javafx.collections.ObservableListWrapper;
 import com.sun.javafx.collections.ObservableMapWrapper;
 
@@ -23,24 +24,33 @@ import javafx.stage.*;
 
 import model.*;
 import client.Client;
+import util.CheckOS;
+import util.EncryptionUtil;
+import util.FileIO;
 import view.AboutDialog;
 
 import java.io.*;
 import java.lang.String;
+import java.lang.reflect.Type;
 import java.net.URL;
+import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.util.*;
 import java.util.prefs.Preferences;
 
 // TODO warn user that it will not save if they dont press done after editing
 // TODO during load from server warn user that overwrite will occur if file already exists
+// TODO OR load from server should create a new library and open the save dialog
 // TODO during save to server give user option to changed save name, warn if overwrite will occur, use get saves
-// TODO open from server should create a new library and open the save dialog
 // TODO notify the user if fetch does not find title
+// TODO notify user if not connected to the internet for all server based functions
 // TODO add logged in as: label
 // TODO allow delete button to call deleteMedia() only when no other field is in focus
 // TODO doc comments for media and film
 // TODO drop down list buttons for TV/Film toggle
 // TODO sort ListView into TV, Film, or All with dropdown
+
+// TODO encrypt username and password with RSA, first thing server sends is its public key
 
 /**
  * Controls the WatchlistPro view.
@@ -56,6 +66,8 @@ public class Controller implements Initializable {
     private String username;
     private String password;
     private Boolean isLoggedIn;
+
+    private EncryptionUtil cipher;
 
     private TreeItem<Episode> masterRoot; // master root of dropdown menu
     private List<TreeItem<Episode>> seasonRootList; // list of season roots
@@ -218,7 +230,11 @@ public class Controller implements Initializable {
      * Constructor.
      */
     public Controller() {
-        checkOS();
+        CheckOS os = new CheckOS();
+        os.check();
+        saveDir = os.getSaveDir();
+        slash = os.getSlash();
+
         masterRoot = new TreeItem<>(new Episode("Master", "", ""));
         seasonRootList = new ArrayList<>();
         mediaCreator = new MediaCreator();
@@ -227,6 +243,8 @@ public class Controller implements Initializable {
         preferences = Preferences.userRoot().node(this.getClass().getName());
         watchlist = new MediaCollection();
         gson = new Gson();
+
+        cipher = new EncryptionUtil();
 
         mediaName = null;
         mediaIndex = -1;
@@ -654,6 +672,7 @@ public class Controller implements Initializable {
      */
     @FXML
     protected boolean getUserCredentials() {
+
         // user entered something in userNameField
         if (createUserNameField.getText() != null && !createUserNameField.getText().isEmpty()) {
             username = createUserNameField.getText();
@@ -678,6 +697,8 @@ public class Controller implements Initializable {
         if (getUserCredentials()) {
             Client client = new Client();
             try {
+
+
                 Thread account = client.send("add" + "-=-" + username + "-=-" + password);
                 Thread quit = client.send("quit");
 
@@ -1306,24 +1327,6 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Checks what the OS to decide where to read/write the save files.
-     */
-    private void checkOS() {
-        String os = System.getProperty("os.name");
-        if (os.equals("Windows")) {
-            saveDir = new File(System.getProperty("user.home"), "Application Data\\WatchLists");
-            slash = "\\";
-        } else {
-            saveDir = new File(System.getProperty("user.home") + "/WatchLists");
-            slash = "/";
-        }
-
-        if (!saveDir.exists()) {
-            saveDir.mkdir();
-        }
-    }
-
-    /**
      * Starts the progress indicator during fetch.
      */
     protected void startProgressIndicator() {
@@ -1351,6 +1354,42 @@ public class Controller implements Initializable {
             // add season roots to master root
             masterRoot.getChildren().add(seasonNum, seasonRootList.get(seasonNum));
         }
+    }
+
+    private String handleEncryption() {
+        Gson gson = new Gson();
+        HashMap<String, Object> commandMap = new HashMap<>();
+        commandMap.put("username", encrypt(username));
+        commandMap.put("password", encrypt(password));
+
+        return gson.toJson(commandMap);
+    }
+
+    private byte[] encrypt(String originalText) {
+        ObjectInputStream inputStream;
+        PublicKey publicKey = null;
+        try {
+            inputStream = new ObjectInputStream(new FileInputStream(cipher.getPublicKeyFile()));
+            publicKey = (PublicKey) inputStream.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return cipher.encrypt(originalText, publicKey);
+    }
+
+    private String decrypt(byte[] cipherText) {
+        ObjectInputStream inputStream;
+        PrivateKey privateKey = null;
+
+        try {
+            inputStream = new ObjectInputStream(new FileInputStream(cipher.getPrivateKeyFile()));
+            privateKey = (PrivateKey) inputStream.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return cipher.decrypt(cipherText, privateKey);
     }
 
 //    public void initializeAccelerators() {

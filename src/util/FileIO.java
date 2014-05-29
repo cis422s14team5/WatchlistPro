@@ -1,4 +1,4 @@
-package controller;
+package util;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -65,7 +65,7 @@ public class FileIO {
      * @param file the file to load from.
      * @return a filled mediaMap
      */
-    protected ObservableMap<String, Media> load(ObservableMap<String, Media> mediaMap, File file) {
+    public ObservableMap<String, Media> load(ObservableMap<String, Media> mediaMap, File file) {
         List<String> list = read(file);
         return setProperties(mediaMap, list);
     }
