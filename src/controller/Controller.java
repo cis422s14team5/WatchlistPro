@@ -701,10 +701,14 @@ public class Controller implements Initializable {
         if (getUserCredentials()) {
             Client client = new Client();
             try {
-
-
-                Thread account = client.send("add" + "-=-" + username + "-=-" + password);
+                Thread create = client.send("add");
+                String token = getToken();
+                Thread account = client.send(token);
+                //Thread account = client.send("add" + "-=-" + username + "-=-" + password);
                 Thread quit = client.send("quit");
+
+                create.start();
+                create.join();
 
                 account.start();
                 account.join();
@@ -1360,7 +1364,7 @@ public class Controller implements Initializable {
         }
     }
 
-    private String handleEncryption() {
+    private String getToken() {
         Gson gson = new Gson();
         HashMap<String, Object> commandMap = new HashMap<>();
         commandMap.put("username", encrypt(username));

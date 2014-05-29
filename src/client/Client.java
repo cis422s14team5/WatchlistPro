@@ -19,6 +19,7 @@ public class Client {
     private static final int LOADING = 2;
     private static final int GETTOPIC = 3;
     private static final int GETSAVES = 4;
+    private static final int ADDACCOUNT = 5;
 
     private int state;
 
@@ -64,8 +65,10 @@ public class Client {
                 state = GETTOPIC;
                 break;
             case "getsaves":
-                System.out.println("getsaves");
                 state = GETSAVES;
+                break;
+            case "add":
+                state = ADDACCOUNT;
                 break;
         }
         return new Thread(new ClientThread(this, state, socket, command), "thread");

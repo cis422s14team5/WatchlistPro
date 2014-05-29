@@ -1,13 +1,9 @@
 package util;
 
-import util.CheckOS;
-
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -18,24 +14,12 @@ import java.security.PublicKey;
 import javax.crypto.Cipher;
 
 /**
- * @author JavaDigest
- *
+ * This code is a modified version of code written by JavaDigest.
  */
 public class EncryptionUtil {
 
-    /**
-     * String to hold name of the encryption algorithm.
-     */
     public static final String ALGORITHM = "RSA";
-
-    /**
-     * String to hold the name of the private key file.
-     */
     public File privateKeyFile;
-
-    /**
-     * String to hold name of the public key file.
-     */
     public File publicKeyFile;
 
     public EncryptionUtil() {
@@ -49,8 +33,7 @@ public class EncryptionUtil {
 
     /**
      * Generate key which contains a pair of private and public key using 1024
-     * bytes. Store the set of keys in Private.key and Public.key files.
-     *
+     * bytes. Store the set of keys in private.key and public.key files.
      * @throws NoSuchAlgorithmException
      * @throws IOException
      * @throws FileNotFoundException
@@ -73,14 +56,12 @@ public class EncryptionUtil {
             publicKeyFile.createNewFile();
 
             // Saving the Public key in a file
-            ObjectOutputStream publicKeyOS = new ObjectOutputStream(
-                    new FileOutputStream(publicKeyFile));
+            ObjectOutputStream publicKeyOS = new ObjectOutputStream(new FileOutputStream(publicKeyFile));
             publicKeyOS.writeObject(key.getPublic());
             publicKeyOS.close();
 
             // Saving the Private key in a file
-            ObjectOutputStream privateKeyOS = new ObjectOutputStream(
-                    new FileOutputStream(privateKeyFile));
+            ObjectOutputStream privateKeyOS = new ObjectOutputStream(new FileOutputStream(privateKeyFile));
             privateKeyOS.writeObject(key.getPrivate());
             privateKeyOS.close();
         } catch (Exception e) {
@@ -91,21 +72,17 @@ public class EncryptionUtil {
 
     /**
      * The method checks if the pair of public and private key has been generated.
-     *
-     * @return flag indicating if the pair of keys were generated.
+     * @return a flag indicating if the pair of keys were generated.
      */
     public boolean areKeysPresent() {
         return privateKeyFile.exists() && publicKeyFile.exists();
     }
 
     /**
-     * Encrypt the plain text using public key.
-     *
-     * @param text
-     *          : original plain text
-     * @param key
-     *          :The public key
-     * @return Encrypted text
+     * Encrypt the plain text using the public key.
+     * @param text is the original plain text.
+     * @param key is the public key.
+     * @return the encrypted text.
      */
     public byte[] encrypt(String text, PublicKey key) {
         byte[] cipherText = null;
@@ -122,13 +99,10 @@ public class EncryptionUtil {
     }
 
     /**
-     * Decrypt text using private key.
-     *
-     * @param text
-     *          :encrypted text
-     * @param key
-     *          :The private key
-     * @return plain text
+     * Decrypt the text using the private key.
+     * @param text is the encrypted text.
+     * @param key is the private key
+     * @return the plain text version of the encrypted text.
      */
     public String decrypt(byte[] text, PrivateKey key) {
         byte[] decryptedText = null;

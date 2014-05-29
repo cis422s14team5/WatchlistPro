@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+import util.CheckOS;
 import util.EncryptionUtil;
 import util.FileIO;
 
@@ -26,6 +27,7 @@ public class ClientThread implements Runnable {
     private static final int LOADING = 2;
     private static final int GETTOPIC = 3;
     private static final int GETSAVES = 4;
+    private static final int ADDACCOUNT = 5;
 
     private int state;
     private Client client;
@@ -94,6 +96,16 @@ public class ClientThread implements Runnable {
                             String[] inputArray = saves.split("-=-");
                             client.setSaveArray(inputArray);
                             break;
+                        case ADDACCOUNT:
+                            // Saving the Public key in a file
+                            CheckOS os = new CheckOS();
+                            os.check();
+                            File saveDir = os.getSaveDir();
+                            String slash = os.getSlash();
+                            File publicKeyFile = new File (saveDir + "keys" + slash + "public.key");
+                            ObjectOutputStream publicKeyOS = new ObjectOutputStream(new FileOutputStream(publicKeyFile));
+                            publicKeyOS.writeObject(input);
+                            publicKeyOS.close();
                         default:
                             break;
                     }
