@@ -2,11 +2,16 @@ package controller;
 
 import client.Client;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.jayway.jsonpath.InvalidPathException;
 import com.jayway.jsonpath.JsonPath;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import model.Episode;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -268,7 +273,7 @@ public class TopicHandler {
             seasonIdList.add(season.get("id").toString());
         }
 
-        List<String> episodeList = new ArrayList<>();
+        List<List<String>> seasonList = new ArrayList<>();
         int episodeNumber = 1;
         for (String id : seasonIdList) {
             JSONObject seasonTopic = getTopic(id);
@@ -279,6 +284,7 @@ public class TopicHandler {
             JSONArray episodes =
                     JsonPath.read(seasonTopic, "$.property['/tv/tv_series_season/episodes'].values");
 
+            List<String> episodeList = new ArrayList<>();
             for (Object obj : episodes) {
                 JSONObject episode = (JSONObject) obj;
 
@@ -289,13 +295,20 @@ public class TopicHandler {
                     number = Integer.toString(episodeNumber);
                 }
 
-                episodeList.add("S" + seasonNumber + "E" + number + " " + episode.get("text").toString());
+                Episode ep = new Episode(seasonNumber, "E" + number + " " + episode.get("text").toString(), false);
+                episodeList.add(gson.toJson(ep.getMap()));
                 episodeNumber++;
             }
+
+            seasonList.add(episodeList);
             episodeNumber = 1;
         }
-        System.out.println(title + " Episode List:");
-        episodeList.forEach(System.out::println);
+//        System.out.println(title + " Episode List:");
+//        for (List<Episode> episodes : seasonList) {
+//            for (Episode episode : episodes) {
+//                System.out.println(episode.getEpisodeName());
+//            }
+//        }
 
         output.clear();
 
@@ -353,7 +366,7 @@ public class TopicHandler {
         output.add(descriptionTemp);
 
         // Index 9
-        output.add(gson.toJson(episodeList));
+        output.add(gson.toJson(seasonList));
 
         return output;
     }

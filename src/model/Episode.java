@@ -10,11 +10,14 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.util.HashMap;
+
 public class Episode {
 
     private final StringProperty seasonNum;
     private final StringProperty episodeName;
     private final BooleanProperty watched;
+    private HashMap<String, String> map;
 
     /**
      * Constructor for Episode object.
@@ -26,6 +29,11 @@ public class Episode {
         this.seasonNum = new SimpleStringProperty(seasonNum);
         this.episodeName = new SimpleStringProperty(episodeName);
         this.watched = new SimpleBooleanProperty(watched);
+
+        map = new HashMap<>();
+        map.put("seasonNum", seasonNum);
+        map.put("episodeName", episodeName);
+        map.put("watched", watched.toString());
     }
 
     /**
@@ -42,6 +50,7 @@ public class Episode {
      */
     public void setSeasonNum(String season) {
         this.seasonNum.set(season);
+        map.put("seasonNum", season);
     }
 
     /**
@@ -66,6 +75,7 @@ public class Episode {
      */
     public void setEpisodeName(String episodeName) {
         this.episodeName.set(episodeName);
+        map.put("episodeName", episodeName);
     }
 
     /**
@@ -90,6 +100,7 @@ public class Episode {
      */
     public void setWatched(Boolean watched) {
         this.watched.set(watched);
+        map.put("watched", watched.toString());
     }
 
     /**
@@ -98,5 +109,9 @@ public class Episode {
      */
     public BooleanProperty watchedProperty() {
         return watched;
+    }
+
+    public HashMap<String, String> getMap() {
+        return map;
     }
 }

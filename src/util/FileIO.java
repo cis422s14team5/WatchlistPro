@@ -8,8 +8,10 @@ import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
+import model.Episode;
 import model.Film;
 import model.Media;
 import model.TvShow;
@@ -128,12 +130,22 @@ public class FileIO {
                 numEpisodes.set(map.get("numEpisodes"));
 
                 // Convert episode list from JSON string to ObservableList.
-                Type arrayListType = new TypeToken<ArrayList<String>>(){}.getType();
-                ArrayList<String> arrayList = gson.fromJson(map.get("episodeList"), arrayListType);
-                ObservableList<String> observableList = new ObservableListWrapper<>(arrayList);
+                Type arrayListType = new TypeToken<ArrayList<List<HashMap<String, String>>>>(){}.getType();
+                ArrayList<List<HashMap<String, String>>> arrayList = gson.fromJson(map.get("episodeList"), arrayListType);
 
-                ListProperty<String> episodeList = new SimpleListProperty<>();
-                episodeList.set(observableList);
+                ObservableList<List<Episode>> seasonList = FXCollections.observableArrayList();
+                for (List<HashMap<String, String>> episodes : arrayList) {
+                    List<Episode> episodeList = new ArrayList<>();
+                    for (HashMap<String, String> hashMap : episodes) {
+                        Episode episode = new Episode(hashMap.get("seasonNum"), hashMap.get("episodeName"),
+                                Boolean.parseBoolean(hashMap.get("watched")));
+                        episodeList.add(episode);
+                    }
+                    seasonList.add(episodeList);
+                }
+
+                ListProperty<List<Episode>> episodeList = new SimpleListProperty<>();
+                episodeList.set(seasonList);
 
                 mediaMap.put(title.get(),
                         new TvShow(title, watched, genre, runtime, description, creator, network, numSeasons,

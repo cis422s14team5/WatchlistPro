@@ -9,6 +9,9 @@ import com.sun.javafx.collections.ObservableListWrapper;
 import com.sun.javafx.collections.ObservableMapWrapper;
 
 import javafx.application.Platform;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
@@ -24,8 +27,6 @@ import javafx.stage.*;
 
 import model.*;
 import client.Client;
-import util.CheckOS;
-import util.EncryptionUtil;
 import util.FileIO;
 import view.AboutDialog;
 
@@ -67,8 +68,6 @@ public class Controller implements Initializable {
     private String password;
     private Boolean isLoggedIn;
 
-    private EncryptionUtil cipher;
-
     private TreeItem<Episode> masterRoot; // master root of dropdown menu
     private List<TreeItem<Episode>> seasonRootList; // list of season roots
 
@@ -78,6 +77,10 @@ public class Controller implements Initializable {
 
     private Gson gson;
     private Preferences preferences;
+
+    private ObservableList<List<Episode>> masterSeasonList;
+    private ListProperty<List<Episode>> episodeList;
+    private int numberOfSeasons;
 
     // Control variables
     private int mediaIndex;
@@ -231,10 +234,7 @@ public class Controller implements Initializable {
      * Constructor.
      */
     public Controller() {
-        CheckOS os = new CheckOS();
-        os.check();
-        saveDir = os.getSaveDir();
-        slash = os.getSlash();
+        checkOS();
 
         masterRoot = new TreeItem<>(new Episode("Master", "", false));
         seasonRootList = new ArrayList<>();
@@ -245,8 +245,6 @@ public class Controller implements Initializable {
         watchlist = new MediaCollection();
         gson = new Gson();
 
-        cipher = new EncryptionUtil();
-
         mediaName = null;
         mediaIndex = -1;
         mediaType = "film";
@@ -255,9 +253,13 @@ public class Controller implements Initializable {
         username = "";
         password = "";
 
+        masterSeasonList = FXCollections.observableArrayList();
+        episodeList = new SimpleListProperty<>();
+        episodeList.set(masterSeasonList);
+
         File defaultFile = new File(saveDir + slash + "watchlist.wl");
 
-        //preferences.remove("recentList");
+        preferences.remove("recentList");
         // Setup Open Recent List
         recentList = byteArrayHandler.readByteArray(preferences.getByteArray("recentList", "".getBytes()));
         if (!recentList.isEmpty()) {
@@ -307,11 +309,11 @@ public class Controller implements Initializable {
 
             if (newValue != null) {
 
-                if (mediaList.getSelectionModel().getSelectedItem() instanceof Film) {
-                    setFilmDisplayPane();
-                } else {
-                    setTvDisplayPane();
-                }
+//                if (mediaList.getSelectionModel().getSelectedItem() instanceof Film) {
+//                    setFilmDisplayPane();
+//                } else {
+//                    setTvDisplayPane();
+//                }
                 mediaIndex = mediaList.getSelectionModel().getSelectedIndex();
             }
         });
@@ -369,7 +371,8 @@ public class Controller implements Initializable {
         // add columns to TreeTableView
         tvEpisodeTable.getColumns().setAll(seasonCol, episodeCol, watchedCol);
         // populate the table with data
-//        addEpisodesToTable(numberOfSeasons, masterSeasonList);
+
+
 
     }
 
@@ -485,6 +488,7 @@ public class Controller implements Initializable {
                     watchlist.update();
                     updateMediaList();
                 } else {
+
                     if (mediaName.equals(tvTitleTextField.getText())) {
                         watchlist.get(mediaName).setTitle(tvTitleTextField.getText());
                         watchlist.get(mediaName).setGenre(tvGenreTextField.getText());
@@ -494,6 +498,7 @@ public class Controller implements Initializable {
                         ((TvShow) watchlist.get(mediaName)).setNumSeasons(tvNumSeasonsTextField.getText());
                         ((TvShow) watchlist.get(mediaName)).setNumEpisodes(tvNumEpisodesTextField.getText());
                         watchlist.get(mediaName).setDescription(tvDescriptionTextField.getText());
+                        ((TvShow) watchlist.get(mediaName)).setEpisodeList(episodeList);
                     } else {
                         TvShow show = mediaCreator.createTvShow(tvTitleTextField.getText());
                         show.setGenre(tvGenreTextField.getText());
@@ -503,6 +508,7 @@ public class Controller implements Initializable {
                         show.setNumSeasons(tvNumSeasonsTextField.getText());
                         show.setNumEpisodes(tvNumEpisodesTextField.getText());
                         show.setDescription(tvDescriptionTextField.getText());
+                        show.setEpisodeList(episodeList);
 
                         watchlist.remove(mediaName);
                         watchlist.put(tvTitleTextField.getText(), show);
@@ -1214,7 +1220,7 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Populates the tv display pane based on values from the film edit pane.
+     * Populates the tv display pane based on values from the film edit pane. Called on start.
      */
     private void setTvDisplayPane() {
         TvShow show = (TvShow) mediaList.getSelectionModel().getSelectedItem();
@@ -1228,6 +1234,20 @@ public class Controller implements Initializable {
         tvNumSeasonsLabel.setText(show.getNumSeasons());
         tvNumEpisodesLabel.setText(show.getNumEpisodes());
         tvDescriptionLabel.setText(show.getDescription());
+
+        numberOfSeasons = Integer.parseInt(show.getNumSeasons());
+        masterSeasonList.addAll(show.getEpisodeList());
+        episodeList.set(masterSeasonList);
+        addEpisodesToTable(numberOfSeasons, masterSeasonList);
+//
+//        System.out.println(show.getEpisodeList().size());
+//
+//        for (List<Episode> episodes : show.getEpisodeList()) {
+//            for (Episode episode : episodes) {
+//                System.out.println(episode.getEpisodeName());
+//            }
+//        }
+
     }
 
     /**
@@ -1250,7 +1270,7 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Populates the tv edit pane based on passed in arguments.
+     * Populates the tv edit pane based on passed in arguments. Called on start.
      */
     private void setTvEditPane() {
         TvShow show = (TvShow) mediaList.getSelectionModel().getSelectedItem();
@@ -1266,10 +1286,22 @@ public class Controller implements Initializable {
         tvNumSeasonsTextField.setText(show.getNumSeasons());
         tvNumEpisodesTextField.setText(show.getNumEpisodes());
         tvDescriptionTextField.setText(show.getDescription());
+
+//        numberOfSeasons = Integer.parseInt(show.getNumSeasons());
+//        masterSeasonList.addAll(show.getEpisodeList());
+//        addEpisodesToTable(numberOfSeasons, masterSeasonList);
+
+//        System.out.println(show.getEpisodeList().size());
+//
+//        for (List<Episode> episodes : show.getEpisodeList()) {
+//            for (Episode episode : episodes) {
+//                System.out.println(episode.getEpisodeName());
+//            }
+//        }
     }
 
     /**
-     * Populates the film edit pane based on passed in arguments.
+     * Populates the film edit pane based on passed in arguments. Called after fetch.
      */
     protected void setFilmEditPane(List<String> outputList) {
         filmTitleTextField.setText(outputList.get(0));
@@ -1286,7 +1318,7 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Populates the tv edit pane based on passed in arguments.
+     * Populates the tv edit pane based on passed in arguments. Called after fetch.
      */
     protected void setTvEditPane(List<String> outputList) {
         tvTitleTextField.setText(outputList.get(0));
@@ -1300,6 +1332,36 @@ public class Controller implements Initializable {
         tvNumSeasonsTextField.setText(outputList.get(6));
         tvNumEpisodesTextField.setText(outputList.get(7));
         tvDescriptionTextField.setText(outputList.get(8));
+
+//        System.out.println(outputList.get(0) + " Episode List:");
+//        System.out.println();
+
+        Type listType = new TypeToken<List<List<String>>>(){}.getType();
+        List<List<String>> list = gson.fromJson(outputList.get(9), listType);
+
+        ObservableList<List<Episode>> seasonList = FXCollections.observableArrayList();
+        for (List<String> episodes : list) {
+            List<Episode> episodeList = new ArrayList<>();
+            for (String json : episodes) {
+                Type mapType = new TypeToken<HashMap<String, String>>(){}.getType();
+                HashMap<String, String> map = gson.fromJson(json, mapType);
+                Episode episode = new Episode(map.get("seasonNum"), map.get("episodeName"), Boolean.parseBoolean(map.get("watched")));
+                episodeList.add(episode);
+            }
+            seasonList.add(episodeList);
+        }
+
+        numberOfSeasons = Integer.parseInt(outputList.get(6));
+        masterSeasonList.addAll(seasonList);
+        episodeList.set(masterSeasonList);
+        addEpisodesToTable(numberOfSeasons, masterSeasonList);
+
+        for (List<Episode> episodes : masterSeasonList) {
+            for (Episode episode : episodes) {
+                System.out.println(episode.getEpisodeName());
+            }
+        }
+
     }
 
     /**
@@ -1360,40 +1422,22 @@ public class Controller implements Initializable {
         }
     }
 
-    private String handleEncryption() {
-        Gson gson = new Gson();
-        HashMap<String, Object> commandMap = new HashMap<>();
-        commandMap.put("username", encrypt(username));
-        commandMap.put("password", encrypt(password));
-
-        return gson.toJson(commandMap);
-    }
-
-    private byte[] encrypt(String originalText) {
-        ObjectInputStream inputStream;
-        PublicKey publicKey = null;
-        try {
-            inputStream = new ObjectInputStream(new FileInputStream(cipher.getPublicKeyFile()));
-            publicKey = (PublicKey) inputStream.readObject();
-        } catch (Exception e) {
-            e.printStackTrace();
+    /**
+     * Checks what the OS to decide where to read/write the save files.
+     */
+    public void checkOS() {
+        String os = System.getProperty("os.name");
+        if (os.equals("Windows")) {
+            saveDir = new File(System.getProperty("user.home"), "Application Data\\WatchLists");
+            slash = "\\";
+        } else {
+            saveDir = new File(System.getProperty("user.home") + "/WatchLists");
+            slash = "/";
         }
 
-        return cipher.encrypt(originalText, publicKey);
-    }
-
-    private String decrypt(byte[] cipherText) {
-        ObjectInputStream inputStream;
-        PrivateKey privateKey = null;
-
-        try {
-            inputStream = new ObjectInputStream(new FileInputStream(cipher.getPrivateKeyFile()));
-            privateKey = (PrivateKey) inputStream.readObject();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!saveDir.exists()) {
+            saveDir.mkdir();
         }
-
-        return cipher.decrypt(cipherText, privateKey);
     }
 
 //    public void initializeAccelerators() {

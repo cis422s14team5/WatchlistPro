@@ -4,9 +4,14 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Stores the fields of a TV show entity.
@@ -17,7 +22,7 @@ public class TvShow extends Media {
     private StringProperty network;
     private StringProperty numSeasons;
     private StringProperty numEpisodes;
-    private ListProperty<String> episodeList;
+    private ListProperty<List<Episode>> episodeList;
     private Gson gson;
 
     /**
@@ -25,7 +30,7 @@ public class TvShow extends Media {
      */
     public TvShow(StringProperty title, StringProperty watched, StringProperty genre, StringProperty runtime,
                   StringProperty description, StringProperty creator, StringProperty network,
-                  StringProperty numSeasons, StringProperty numEpisodes, ListProperty<String> episodeList) {
+                  StringProperty numSeasons, StringProperty numEpisodes, ListProperty<List<Episode>> episodeList) {
         super(title, watched, genre, runtime, description);
         this.creator = creator;
         this.network = network;
@@ -34,7 +39,6 @@ public class TvShow extends Media {
         this.episodeList = episodeList;
 
         gson = new Gson();
-        Type observableListType = new TypeToken<ObservableList<String>>(){}.getType();
 
         getMap().put("type", "tv");
         getMap().put("title", title.get());
@@ -46,7 +50,7 @@ public class TvShow extends Media {
         getMap().put("numSeasons", numSeasons.get());
         getMap().put("numEpisodes", numEpisodes.get());
         getMap().put("description", description.get());
-        getMap().put("episodeList", gson.toJson(episodeList, observableListType));
+        getMap().put("episodeList", getJSONEpisodeList(episodeList));
     }
 
     /**
@@ -153,7 +157,7 @@ public class TvShow extends Media {
      * Gets the episode list for this TV show.
      * @return the episode list.
      */
-    public ObservableList<String> getEpisodeList() {
+    public ObservableList<List<Episode>> getEpisodeList() {
         return episodeList.get();
     }
 
@@ -161,7 +165,7 @@ public class TvShow extends Media {
      * Gets the episodeList property.
      * @return the episodeList property.
      */
-    public ListProperty<String> episodeListProperty() {
+    public ListProperty<List<Episode>> episodeListProperty() {
         return episodeList;
     }
 
@@ -169,8 +173,26 @@ public class TvShow extends Media {
      * Sets the episodeList property.
      * @param episodeList is the value to set.
      */
-    public void setEpisodeList(ListProperty<String> episodeList) {
+    public void setEpisodeList(ListProperty<List<Episode>> episodeList) {
         this.episodeList.set(episodeList);
-        getMap().put("episodeList", gson.toJson(episodeList));
+        getMap().put("episodeList", getJSONEpisodeList(episodeList));
+    }
+
+    private String getJSONEpisodeList(ListProperty<List<Episode>> list) {
+        ObservableList<List<Map<String, String>>> seasonList = FXCollections.observableArrayList();
+        for (List<Episode> episodes : list) {
+            List<Map<String, String>> episodeList = new ArrayList<>();
+            for (Episode episode : episodes) {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("seasonNum", episode.getSeasonNum());
+                map.put("episodeName", episode.getEpisodeName());
+                map.put("watched", Boolean.toString(episode.getWatched()));
+                episodeList.add(map);
+            }
+            seasonList.add(episodeList);
+        }
+        Type observableListType = new TypeToken<ObservableList<String>>(){}.getType();
+
+        return gson.toJson(seasonList, observableListType);
     }
 }

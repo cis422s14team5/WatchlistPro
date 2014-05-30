@@ -5,10 +5,12 @@ import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import model.Episode;
 import model.Film;
 import model.TvShow;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Creates new media objects.
@@ -76,15 +78,15 @@ public class MediaCreator {
         network.set("");
 
         StringProperty numSeasons = new SimpleStringProperty();
-        numSeasons.set("");
+        numSeasons.set("0");
 
         StringProperty numEpisodes = new SimpleStringProperty();
-        numEpisodes.set("");
+        numEpisodes.set("0");
 
         StringProperty description = new SimpleStringProperty();
         description.set("");
 
-        ListProperty<String> episodeList = new SimpleListProperty<>();
+        ListProperty<List<Episode>> episodeList = new SimpleListProperty<>();
         episodeList.set(new ObservableListWrapper<>(new ArrayList<>()));
 
         return new TvShow(title, watched, genre, runtime, description, creator, network, numSeasons, numEpisodes, episodeList);
