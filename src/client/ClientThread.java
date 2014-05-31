@@ -23,6 +23,8 @@ public class ClientThread implements Runnable {
     private static final int LOADING = 2;
     private static final int GETTOPIC = 3;
     private static final int GETSAVES = 4;
+    private static final int LOGIN = 5;
+    private static final int LOGOUT = 6;
 
     private int state;
     private Client client;
@@ -59,6 +61,8 @@ public class ClientThread implements Runnable {
             if ((input = in.readLine()) != null && !input.equals("Bye.")) {
                 String[] output = input.split("");
 
+                System.out.println("Server: " + input);
+
                 // Handle input from server.
                 if (output[0].equals("{")) {
                     switch (state) {
@@ -88,6 +92,19 @@ public class ClientThread implements Runnable {
                             client.setSaveArray(inputArray);
                             break;
                         default:
+                            break;
+                    }
+                }
+
+                if (input.equals("true")) {
+                    switch (state) {
+                        case LOGIN:
+                            // disable login, enable logout, isLoggedIn = true
+                            client.setLoggedIn(true);
+                            break;
+                        case LOGOUT:
+                            // enable login, disable logout, isLoggedIn = false
+                            client.setLoggedIn(false);
                             break;
                     }
                 }

@@ -775,7 +775,6 @@ public class Controller implements Initializable {
     public void loginToServer() {
         // if user entered name & password try to login
         if (getUserLogin()) {
-            isLoggedIn = true;
 
             Client client = new Client();
             try {
@@ -797,9 +796,11 @@ public class Controller implements Initializable {
                 quit.start();
                 quit.join();
 
-                loginMenuItem.setDisable(true);
-                logoutMenuItem.setDisable(false);
-
+                if (client.isLoggedIn()) {
+                    isLoggedIn = true;
+                    loginMenuItem.setDisable(true);
+                    logoutMenuItem.setDisable(false);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -809,9 +810,6 @@ public class Controller implements Initializable {
     @FXML
     protected void logoutFromServer() {
         if (isLoggedIn) {
-            isLoggedIn = false;
-            loginMenuItem.setDisable(false);
-            logoutMenuItem.setDisable(true);
             Client client = new Client();
             try {
                 Thread logout = client.send("logout" + "-=-" + username + "-=-" + password);
@@ -823,6 +821,11 @@ public class Controller implements Initializable {
                 quit.start();
                 quit.join();
 
+                if (!client.isLoggedIn()) {
+                    isLoggedIn = false;
+                    loginMenuItem.setDisable(false);
+                    logoutMenuItem.setDisable(true);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -19,6 +19,8 @@ public class Client {
     private static final int LOADING = 2;
     private static final int GETTOPIC = 3;
     private static final int GETSAVES = 4;
+    private static final int LOGIN = 5;
+    private static final int LOGOUT = 6;
 
     private int state;
 
@@ -26,6 +28,8 @@ public class Client {
     private File file;
     private JSONObject topic;
     private String[] saveArray;
+
+    private boolean isLoggedIn = false;
 
     /**
      * Constructor.
@@ -46,7 +50,7 @@ public class Client {
      * @throws InterruptedException
      */
     public Thread send(String command) throws IOException, InterruptedException {
-        System.out.println("Command: " + command);
+        System.out.println("Client: " + command);
         String[] commands = command.split("-=-");
         switch (commands[0]) {
             case "film":
@@ -64,8 +68,13 @@ public class Client {
                 state = GETTOPIC;
                 break;
             case "getsaves":
-                System.out.println("getsaves");
                 state = GETSAVES;
+                break;
+            case "login":
+                state = LOGIN;
+                break;
+            case "logout":
+                state = LOGOUT;
                 break;
         }
         return new Thread(new ClientThread(this, state, socket, command), "thread");
@@ -117,6 +126,22 @@ public class Client {
      */
     public void setSaveArray(String[] saveArray) {
         this.saveArray = saveArray;
+    }
+
+    /**
+     * Get isLoggedIn.
+     * @return isLoggedIn.
+     */
+    public boolean isLoggedIn() {
+        return isLoggedIn;
+    }
+
+    /**
+     * Set isLoggedIn.
+     * @param isLoggedIn is the value to set.
+     */
+    public void setLoggedIn(boolean isLoggedIn) {
+        this.isLoggedIn = isLoggedIn;
     }
 
 
