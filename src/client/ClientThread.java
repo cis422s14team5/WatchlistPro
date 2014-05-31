@@ -59,8 +59,6 @@ public class ClientThread implements Runnable {
             if ((input = in.readLine()) != null && !input.equals("Bye.")) {
                 String[] output = input.split("");
 
-                System.out.println("Server says: " + input);
-
                 // Handle input from server.
                 if (output[0].equals("{")) {
                     switch (state) {
@@ -79,11 +77,9 @@ public class ClientThread implements Runnable {
                             io.save(io.load(inputList), file);
                             break;
                         case GETTOPIC:
-                            System.out.println("Getting topic.");
                             jsonOutput = (JSONObject) JSONValue.parse(input);
                             break;
                         case GETSAVES:
-                            System.out.println("Getting saves.");
                             Gson gson = new Gson();
                             Type mapType = new TypeToken<HashMap<String, String>>(){}.getType();
                             HashMap<String, String> savesMap = gson.fromJson(input, mapType);

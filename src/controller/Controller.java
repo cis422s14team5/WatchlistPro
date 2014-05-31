@@ -1436,7 +1436,7 @@ public class Controller implements Initializable {
 
         for (seasonNum = 0; seasonNum < seasons.size(); seasonNum++) {
             // create season roots, save them to list
-            seasonRootList.add(new TreeItem<>(new Episode("Season " + (seasonNum + 1), "", false)));
+            seasonRootList.add(new TreeItem<>(new Episode("Season " + (seasonNum), "", false)));
 
             // for each episode object in the current season
             seasons.get(seasonNum).stream().forEach((episode) ->

@@ -274,6 +274,10 @@ public class TopicHandler {
         }
 
         List<List<String>> seasonList = new ArrayList<>();
+        for (String id : seasonIdList) {
+            seasonList.add(new ArrayList<>());
+        }
+
         int episodeNumber = 1;
         for (String id : seasonIdList) {
             JSONObject seasonTopic = getTopic(id);
@@ -285,6 +289,7 @@ public class TopicHandler {
                     JsonPath.read(seasonTopic, "$.property['/tv/tv_series_season/episodes'].values");
 
             List<String> episodeList = new ArrayList<>();
+
             for (Object obj : episodes) {
                 JSONObject episode = (JSONObject) obj;
 
@@ -300,15 +305,10 @@ public class TopicHandler {
                 episodeNumber++;
             }
 
-            seasonList.add(episodeList);
+            seasonList.set(Integer.parseInt(seasonNumber), episodeList);
+            //seasonList.add(episodeList);
             episodeNumber = 1;
         }
-//        System.out.println(title + " Episode List:");
-//        for (List<Episode> episodes : seasonList) {
-//            for (Episode episode : episodes) {
-//                System.out.println(episode.getEpisodeName());
-//            }
-//        }
 
         output.clear();
 
