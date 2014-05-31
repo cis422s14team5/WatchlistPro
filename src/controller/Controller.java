@@ -1468,6 +1468,8 @@ public class Controller implements Initializable {
         }
     }
 
+
+
 //    public void initializeAccelerators() {
 //        stage.getScene().setOnKeyReleased(keyEvent -> {
 //            if (keyEvent.getCode() == KeyCode.BACK_SPACE) {

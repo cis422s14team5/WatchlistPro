@@ -282,11 +282,19 @@ public class TopicHandler {
         for (String id : seasonIdList) {
             JSONObject seasonTopic = getTopic(id);
 
-            String seasonNumber =
-                    JsonPath.read(seasonTopic,
-                            "$.property['/tv/tv_series_season/season_number'].values[0].text").toString();
-            JSONArray episodes =
-                    JsonPath.read(seasonTopic, "$.property['/tv/tv_series_season/episodes'].values");
+            String seasonNumber;
+            try {
+                seasonNumber = JsonPath.read(seasonTopic,
+                        "$.property['/tv/tv_series_season/season_number'].values[0].text").toString();
+            } catch (Exception e) {
+                seasonNumber = "0";
+            }
+            JSONArray episodes;
+            try {
+                episodes = JsonPath.read(seasonTopic, "$.property['/tv/tv_series_season/episodes'].values");
+            } catch (Exception e) {
+                episodes = new JSONArray();
+            }
 
             List<String> episodeList = new ArrayList<>();
 
