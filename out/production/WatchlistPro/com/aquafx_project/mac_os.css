@@ -45,7 +45,7 @@
 }
 
 .text {
-    -fx-font-smoothing-type: lcd;
+    -fx-font-smoothing-type: gray;
 }
 
 /*******************************************************************************
