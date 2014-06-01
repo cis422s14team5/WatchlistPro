@@ -25,7 +25,7 @@ import model.*;
 import org.controlsfx.control.action.Action;
 import util.FileIO;
 import view.AboutDialog;
-import view.WarningDialog;
+import view.DialogPane;
 
 import java.io.File;
 import java.io.IOException;
@@ -58,7 +58,7 @@ public class Controller implements Initializable {
     private String username;
     private String password;
     private Boolean isLoggedIn;
-    WarningDialog warningDialog;
+    DialogPane dialogPane;
 
     private TreeItem<Episode> masterRoot; // master root of dropdown menu
     private List<TreeItem<Episode>> seasonRootList; // list of season roots
@@ -256,7 +256,7 @@ public class Controller implements Initializable {
 
         File defaultFile = new File(saveDir + slash + "watchlist.wl");
 
-        warningDialog = new WarningDialog();
+        dialogPane = new DialogPane();
 
         preferences.remove("recentList");
         // Setup Open Recent List
@@ -927,11 +927,17 @@ public class Controller implements Initializable {
                 quit.join();
 
                 String[] saveArray = client.getSaveArray();
-                List<String> arrayList = Arrays.asList(saveArray);
-                ObservableList<String> list = new ObservableListWrapper<>(arrayList);
-                loadList.setItems(list);
-                loadList.getSelectionModel().select(0);
-                switchToLoadChoice();
+                if (saveArray != null) {
+                    List<String> arrayList = Arrays.asList(saveArray);
+                    ObservableList<String> list = new ObservableListWrapper<>(arrayList);
+                    loadList.setItems(list);
+                    loadList.getSelectionModel().select(0);
+                    switchToLoadChoice();
+                } else {
+                    dialogPane.createWarningDialog("No server saves found",
+                            "It looks like you've never saved to the server before.\n" +
+                            "Try saving to the server before loading from the server.");
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -994,7 +1000,7 @@ public class Controller implements Initializable {
             for (String mediaName : recentList) {
                 if (selectedFile.equals(mediaName)) {
                     found = true;
-                    action = warningDialog.createDialog("Warning!", "Doing this will overwrite your WatchList with the same name. Continue?");
+                    action = dialogPane.createConfirmDialog("Warning!", "Doing this will overwrite your WatchList with the same name. Continue?");
                     if (action.equals("YES")) {
                         loadFromServer();
                         cancelLoadChoice();
@@ -1005,7 +1011,7 @@ public class Controller implements Initializable {
                 }
             }
         } else {
-            action = warningDialog.createDialog("Warning!", "Doing this will overwrite your WatchList with the same name. Continue?");
+            action = dialogPane.createConfirmDialog("Warning!", "Doing this will overwrite your WatchList with the same name. Continue?");
             if (action.equals("YES")) {
                 loadFromServer();
                 cancelLoadChoice();
