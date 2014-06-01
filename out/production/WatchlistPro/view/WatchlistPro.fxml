@@ -54,7 +54,7 @@
                 </Menu>
                   <Menu mnemonicParsing="false" text="Server">
                     <items>
-                        <MenuItem fx:id="usernameMenuItem" mnemonicParsing="false" text="Not logged in" />
+                        <MenuItem fx:id="usernameMenuItem" mnemonicParsing="false" text="Logged in as: &lt;none&gt;" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem fx:id="createAccountMenuItem" mnemonicParsing="false" onAction="#switchToAccountCreatePage" text="Create Account" />
                       <MenuItem fx:id="loginMenuItem" mnemonicParsing="false" onAction="#switchToLoginPage" text="Login" />

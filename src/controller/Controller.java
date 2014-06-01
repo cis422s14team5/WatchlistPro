@@ -855,7 +855,7 @@ public class Controller implements Initializable {
                 quit.join();
 
                 if (client.isLoggedIn()) {
-                    usernameMenuItem.setText(username + " logged in");
+                    usernameMenuItem.setText("Logged in as: " + username);
                     isLoggedIn = true;
                     loginMenuItem.setDisable(true);
                     logoutMenuItem.setDisable(false);
@@ -881,7 +881,7 @@ public class Controller implements Initializable {
                 quit.join();
 
                 if (!client.isLoggedIn()) {
-                    usernameMenuItem.setText("Not logged in");
+                    usernameMenuItem.setText("Logged in as: <none>");
                     isLoggedIn = false;
                     loginMenuItem.setDisable(false);
                     logoutMenuItem.setDisable(true);
