@@ -48,7 +48,19 @@
 }
 
 .label {
+/*
+    -fx-text-fill: black;
+*/
     -fx-text-fill: derive(grey, -20%);
+    -fx-font-size: 12px;
+    -fx-font-weight: normal;
+}
+
+.label2 {
+    -fx-text-fill: black;
+/*
+    -fx-text-fill: derive(grey, -20%);
+*/
     -fx-font-size: 12px;
     -fx-font-weight: normal;
 }

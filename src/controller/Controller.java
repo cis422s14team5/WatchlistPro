@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTreeTableCell;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.*;
@@ -161,8 +162,14 @@ public class Controller implements Initializable {
     private ToggleButton editToggleButton;
     @FXML
     private Button fetchButton;
+
     @FXML
-    private ToggleButton mediaToggleButton;
+    private SplitMenuButton addButton;
+    @FXML
+    private MenuItem filmSelectButton;
+    @FXML
+    private MenuItem tvSelectButton;
+
     @FXML
     private SeparatorMenuItem recentSeparator;
     @FXML
@@ -199,14 +206,6 @@ public class Controller implements Initializable {
     private MenuItem logoutMenuItem;
     @FXML
     private VBox progressIndicatorPane;
-    //    @FXML
-//    private TableView<String> episodeTable;
-//    @FXML
-//    private TableColumn<TvShow, String> seasonNumCol;
-//    @FXML
-//    private TableColumn<TvShow, String> episodeTitleCol;
-//    @FXML
-//    private TableColumn<TvShow, String> watchedCol;
     @FXML
     private TreeTableView<Episode> tvEpisodeTable;
     @FXML
@@ -418,18 +417,45 @@ public class Controller implements Initializable {
         }
     }
 
+//    /**
+//     * Toggles the type of media to be added.
+//     */
+//    @FXML
+//    public void toggleMedia() {
+//        if (mediaToggleButton.isSelected()){
+//            mediaToggleButton.setText("TV");
+//            mediaType = "tv";
+//        } else {
+//            mediaToggleButton.setText("Film");
+//            mediaType = "film";
+//        }
+//    }
+
     /**
-     * Toggles the type of media to be added.
+     * Selects film as the media to be added.
      */
     @FXML
-    public void toggleMedia() {
-        if (mediaToggleButton.isSelected()){
-            mediaToggleButton.setText("TV");
-            mediaType = "tv";
-        } else {
-            mediaToggleButton.setText("Film");
-            mediaType = "film";
-        }
+    public void setMediaToFilm() {
+        mediaType = "film";
+        addButton.setText("Add Film");
+        addButton.setTextFill(Color.BLACK);
+        newMediaTextField.setPromptText("Enter Name of Film to Add");
+        filmSelectButton.setVisible(false);
+        tvSelectButton.setVisible(true);
+        System.out.println(mediaType);
+    }
+
+    /**
+     * Selects tv as the media to be added.
+     */
+    @FXML
+    public void setMediaToTV() {
+        mediaType = "tv";
+        addButton.setText("Add TV Show");
+        newMediaTextField.setPromptText("Enter Name of TV Show to Add");
+        tvSelectButton.setVisible(false);
+        filmSelectButton.setVisible(true);
+        System.out.println(mediaType);
     }
 
     /**
