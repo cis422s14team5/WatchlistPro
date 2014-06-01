@@ -2188,14 +2188,11 @@ TODO: effect-chaining!!!
     -fx-border-insets: 0.0;
 }
 
-
 /* This is especially for AquaFX. Apple uses tables with one column for simple Lists. This is just, to make it possible for users. The ListView Class  */
 .table-view.hide-header .column-header{
-/*
     -fx-min-height: 0.0;
     -fx-max-height: 0.0;
     -fx-pref-height: 0.0;
-*/
 }
 
 /* filler is the area, which is next to column-header, but has no column..*/
