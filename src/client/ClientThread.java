@@ -61,7 +61,7 @@ public class ClientThread implements Runnable {
             if ((input = in.readLine()) != null && !input.equals("Bye.")) {
                 String[] output = input.split("");
 
-                System.out.println("Server: " + input);
+                //System.out.println("Server: " + input);
 
                 // Handle input from server.
                 if (output[0].equals("{")) {

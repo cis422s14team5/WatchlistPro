@@ -38,7 +38,6 @@ import java.util.prefs.Preferences;
 // TODO notify the user if fetch does not find title
 // TODO notify user if not connected to the internet for all server based functions
 // TODO add logged in as: label
-// TODO allow delete button to call deleteMedia() only when no other field is in focus
 // TODO doc comments for media and film
 // TODO drop down list buttons for TV/Film toggle
 // TODO sort ListView into TV, Film, or All with dropdown
@@ -72,7 +71,6 @@ public class Controller implements Initializable {
 
     private ObservableList<List<Episode>> masterSeasonList;
     private ListProperty<List<Episode>> episodeList;
-    private int numberOfSeasons;
 
     // Control variables
     private int mediaIndex;
@@ -215,7 +213,7 @@ public class Controller implements Initializable {
     @FXML
     private TreeTableView<Episode> tvEpisodeTable;
     @FXML
-    private TreeTableColumn<Episode,String> seasonCol;
+    private TreeTableColumn<Episode, String> seasonCol;
     @FXML
     private TreeTableColumn<Episode, String> episodeCol;
     @FXML
@@ -477,18 +475,46 @@ public class Controller implements Initializable {
                     updateMediaList();
                 } else if (mediaList.getSelectionModel().getSelectedItem() instanceof TvShow) {
 
+                    String tvNumEpisodes = tvNumEpisodesTextField.getText();
+                    if (tvNumEpisodes.equals("")) {
+                        tvNumEpisodes = "0";
+                    }
+
+                    String tvNumSeasons = tvNumEpisodesTextField.getText();
+                    if (tvNumSeasons.equals("")) {
+                        tvNumSeasons = "0";
+                    }
+
                     if (mediaName.equals(tvTitleTextField.getText())) {
                         watchlist.get(mediaName).setTitle(tvTitleTextField.getText());
                         watchlist.get(mediaName).setGenre(tvGenreTextField.getText());
                         ((TvShow) watchlist.get(mediaName)).setCreator(tvCreatorTextField.getText());
                         ((TvShow) watchlist.get(mediaName)).setNetwork(tvNetworkTextField.getText());
                         watchlist.get(mediaName).setRuntime(tvRuntimeTextField.getText());
-                        ((TvShow) watchlist.get(mediaName)).setNumSeasons(tvNumSeasonsTextField.getText());
-                        ((TvShow) watchlist.get(mediaName)).setNumEpisodes(tvNumEpisodesTextField.getText());
+                        ((TvShow) watchlist.get(mediaName)).setNumSeasons(tvNumSeasons);
+                        ((TvShow) watchlist.get(mediaName)).setNumEpisodes(tvNumEpisodes);
                         watchlist.get(mediaName).setDescription(tvDescriptionTextField.getText());
                         ((TvShow) watchlist.get(mediaName)).setEpisodeList(episodeList);
 
-                        addEpisodesToTable(Integer.parseInt(tvNumEpisodesTextField.getText()), episodeList);
+                        List<Boolean> episodeBoolList = new ArrayList<>();
+                        List<TreeItem<Episode>> list = tvEpisodeTable.getRoot().getChildren();
+
+                        for (int i = 0; i < list.size(); i++) {
+                            for (int j = 0; j < list.get(i).getChildren().size(); j++) {
+                                episodeBoolList.add(list.get(i).getChildren().get(j).getValue().getWatched());
+                                //System.out.println(list.get(i).getChildren().get(j).getValue().getWatched());
+                            }
+                        }
+
+                        int count = 0;
+                        for (int i = 0; i < episodeList.size(); i++) {
+                            for (int j = 0; j < episodeList.get(i).size(); j++) {
+                                episodeList.get(i).get(j).setWatched(episodeBoolList.get(count));
+                                count++;
+                            }
+                        }
+
+                        addEpisodesToTable(Integer.parseInt(tvNumEpisodes), episodeList);
 
                     } else {
                         TvShow show = mediaCreator.createTvShow(tvTitleTextField.getText());
@@ -496,8 +522,8 @@ public class Controller implements Initializable {
                         show.setCreator(tvCreatorTextField.getText());
                         show.setNetwork(tvNetworkTextField.getText());
                         show.setRuntime(tvRuntimeTextField.getText());
-                        show.setNumSeasons(tvNumSeasonsTextField.getText());
-                        show.setNumEpisodes(tvNumEpisodesTextField.getText());
+                        show.setNumSeasons(tvNumSeasons);
+                        show.setNumEpisodes(tvNumEpisodes);
                         show.setDescription(tvDescriptionTextField.getText());
                         show.setEpisodeList(episodeList);
 
@@ -699,8 +725,6 @@ public class Controller implements Initializable {
         if (getUserCredentials()) {
             Client client = new Client();
             try {
-
-
                 Thread account = client.send("add" + "-=-" + username + "-=-" + password);
                 Thread quit = client.send("quit");
 
@@ -1233,13 +1257,24 @@ public class Controller implements Initializable {
         tvNumEpisodesLabel.setText(show.getNumEpisodes());
         tvDescriptionLabel.setText(show.getDescription());
 
-        numberOfSeasons = Integer.parseInt(show.getNumSeasons());
-        //masterSeasonList.addAll(show.getEpisodeList());
         ObservableList<List<Episode>> tempList = new ObservableListWrapper<>(new ArrayList<>());
         for (List<Episode> episodes : show.getEpisodeList()) {
             tempList.add(episodes);
         }
         addEpisodesToTable(Integer.parseInt(show.getNumSeasons()), tempList);
+
+        List<TreeItem<Episode>> list = tvEpisodeTable.getRoot().getChildren();
+        for (int i = 0; i < list.size(); i++) {
+            boolean watched = true;
+            for (int j = 0; j < list.get(i).getChildren().size(); j++) {
+                if (!list.get(i).getChildren().get(j).getValue().getWatched()) {
+                    watched = false;
+                }
+            }
+            if (watched) {
+                list.get(i).getValue().setWatched(true);
+            }
+        }
 
         episodeList.set(tempList);
 
@@ -1425,6 +1460,8 @@ public class Controller implements Initializable {
         // add checkboxes
         watchedCol.setCellFactory(CheckBoxTreeTableCell.forTreeTableColumn(watchedCol));
 
+
+
         tvEpisodeTable.setRoot(masterRoot);
         // set root as expanded by default
         masterRoot.setExpanded(true);
@@ -1467,14 +1504,4 @@ public class Controller implements Initializable {
             saveDir.mkdir();
         }
     }
-
-
-
-//    public void initializeAccelerators() {
-//        stage.getScene().setOnKeyReleased(keyEvent -> {
-//            if (keyEvent.getCode() == KeyCode.BACK_SPACE) {
-//                deleteMedia();
-//            }
-//        });
-//    }
 }

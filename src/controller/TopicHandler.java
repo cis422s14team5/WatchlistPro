@@ -252,7 +252,7 @@ public class TopicHandler {
         try {
             numSeasons = String.format("%s", (int) Float.parseFloat(JsonPath.read(topic,
                     "$.property['/tv/tv_program/number_of_seasons'].values[0].value").toString()));
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             numSeasons = "";
         }
 
@@ -274,9 +274,11 @@ public class TopicHandler {
         }
 
         List<List<String>> seasonList = new ArrayList<>();
-        for (String id : seasonIdList) {
+        for (int i = 0; i < seasonIdList.size(); i++) {
             seasonList.add(new ArrayList<>());
         }
+
+        System.out.println("seasonList size: " + seasonList.size());
 
         int episodeNumber = 1;
         for (String id : seasonIdList) {
@@ -318,6 +320,14 @@ public class TopicHandler {
             episodeNumber = 1;
         }
 
+        System.out.println("Episodes");
+        for (List<String> season : seasonList) {
+            for (String episode : season) {
+                System.out.println(episode);
+            }
+        }
+
+
         output.clear();
 
         // Index 0
@@ -356,9 +366,11 @@ public class TopicHandler {
         output.add(String.format(numSeasons));
 
         // Index 7
-        if (!numEpisodes.equals("[]")) {
+        if (!numEpisodes.equals("[]") || !numEpisodes.equals("")) {
+            //String[] num = numEpisodes.split(".");
             int num = (int) Float.parseFloat(numEpisodes);
             output.add(Integer.toString(num));
+            //output.add(num[0]);
         } else {
             output.add("");
         }

@@ -50,7 +50,7 @@ public class Client {
      * @throws InterruptedException
      */
     public Thread send(String command) throws IOException, InterruptedException {
-        System.out.println("Client: " + command);
+        //System.out.println("Client: " + command);
         String[] commands = command.split("-=-");
         switch (commands[0]) {
             case "film":
