@@ -632,7 +632,7 @@
             </GridPane>
          </children>
       </VBox>
-      <VBox fx:id="loadFromServerPane" alignment="CENTER" layoutX="10.0" layoutY="10.0">
+      <VBox fx:id="loadFromServerPane" alignment="CENTER" layoutX="10.0" layoutY="10.0" visible="false">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
