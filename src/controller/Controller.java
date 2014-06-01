@@ -25,7 +25,7 @@ import model.*;
 import org.controlsfx.control.action.Action;
 import util.FileIO;
 import view.AboutDialog;
-import view.DialogPane;
+import view.WarningDialog;
 
 import java.io.File;
 import java.io.IOException;
@@ -58,8 +58,7 @@ public class Controller implements Initializable {
     private String username;
     private String password;
     private Boolean isLoggedIn;
-    private DialogPane dialogPane;
-    private int sortState;
+    WarningDialog warningDialog;
 
     private TreeItem<Episode> masterRoot; // master root of dropdown menu
     private List<TreeItem<Episode>> seasonRootList; // list of season roots
@@ -251,15 +250,13 @@ public class Controller implements Initializable {
         username = "";
         password = "";
 
-        sortState = 0;
-
         masterSeasonList = FXCollections.observableArrayList();
         episodeList = new SimpleListProperty<>();
         episodeList.set(masterSeasonList);
 
         File defaultFile = new File(saveDir + slash + "watchlist.wl");
 
-        dialogPane = new DialogPane();
+        warningDialog = new WarningDialog();
 
         preferences.remove("recentList");
         // Setup Open Recent List
@@ -543,9 +540,9 @@ public class Controller implements Initializable {
                         List<TreeItem<Episode>> list = tvEpisodeTable.getRoot().getChildren();
 
                         for (int i = 0; i < list.size(); i++) {
-                            seasonBoolList.add(list.get(i).getValue().getWatched());
-                            for (int j = 0; j < list.get(i).getChildren().size(); j++) {
-                                episodeBoolList.add(list.get(i).getChildren().get(j).getValue().getWatched());
+                            seasonBoolList.add(tvEpisodeTable.getTreeItem(i).getValue().getWatched());
+                            for (int j = 0; j < tvEpisodeTable.getTreeItem(i).getChildren().size(); j++) {
+                                episodeBoolList.add(tvEpisodeTable.getTreeItem(i).getChildren().get(j).getValue().getWatched());
                             }
                         }
 
@@ -555,15 +552,14 @@ public class Controller implements Initializable {
                         // in the view, if the page is save and loaded it loads with the correct checks
 
                         int count = 0;
-
                         for (int i = 0; i < list.size(); i++) {
-                            boolean seasonBool = list.get(i).getValue().getWatched();
+                            boolean seasonBool = tvEpisodeTable.getTreeItem(i).getValue().getWatched();
                             ((TvShow) watchlist.get(mediaName)).getSeasonWatchedList().set(i, seasonBool);
                             for (int j = 0; j < list.get(i).getChildren().size(); j++) {
                                 if (seasonBool) {
-                                    list.get(i).getChildren().get(j).getValue().setWatched(true);
+                                    episodeList.get(i).get(j).setWatched(true);
                                 } else {
-                                    list.get(i).getChildren().get(j).getValue().setWatched(episodeBoolList.get(count));
+                                    episodeList.get(i).get(j).setWatched(episodeBoolList.get(count));
                                 }
                                 count++;
                             }
@@ -586,18 +582,6 @@ public class Controller implements Initializable {
                         // Refresh the watchlist after creation.
                         watchlist.remove(mediaName);
                         watchlist.put(tvTitleTextField.getText(), show);
-
-//                        List<Boolean> episodeBoolList = new ArrayList<>();
-//                        List<Boolean> seasonBoolList = new ArrayList<>();
-//                        List<TreeItem<Episode>> list = tvEpisodeTable.getRoot().getChildren();
-//
-//                        for (int i = 0; i < list.size(); i++) {
-//                            tvEpisodeTable.getTreeItem(i).setExpanded(false);
-//                            for (int j = 0; j < tvEpisodeTable.getTreeItem(i).getChildren().size(); j++) {
-//                                episodeBoolList.add(tvEpisodeTable.getTreeItem(i).getChildren().get(j).getValue().getWatched());
-//                            }
-//                        }
-
                     }
                     mediaName = tvTitleTextField.getText();
                     updateMediaList();
@@ -943,17 +927,11 @@ public class Controller implements Initializable {
                 quit.join();
 
                 String[] saveArray = client.getSaveArray();
-                if (saveArray != null) {
-                    List<String> arrayList = Arrays.asList(saveArray);
-                    ObservableList<String> list = new ObservableListWrapper<>(arrayList);
-                    loadList.setItems(list);
-                    loadList.getSelectionModel().select(0);
-                    switchToLoadChoice();
-                } else {
-                    dialogPane.createWarningDialog("No server saves found",
-                            "It looks like you've never saved to the server before.\n" +
-                            "Try saving to the server before loading from the server.");
-                }
+                List<String> arrayList = Arrays.asList(saveArray);
+                ObservableList<String> list = new ObservableListWrapper<>(arrayList);
+                loadList.setItems(list);
+                loadList.getSelectionModel().select(0);
+                switchToLoadChoice();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -1016,7 +994,7 @@ public class Controller implements Initializable {
             for (String mediaName : recentList) {
                 if (selectedFile.equals(mediaName)) {
                     found = true;
-                    action = dialogPane.createConfirmDialog("Warning!", "Doing this will overwrite your WatchList with the same name. Continue?");
+                    action = warningDialog.createDialog("Warning!", "Doing this will overwrite your WatchList with the same name. Continue?");
                     if (action.equals("YES")) {
                         loadFromServer();
                         cancelLoadChoice();
@@ -1027,7 +1005,7 @@ public class Controller implements Initializable {
                 }
             }
         } else {
-            action = dialogPane.createConfirmDialog("Warning!", "Doing this will overwrite your WatchList with the same name. Continue?");
+            action = warningDialog.createDialog("Warning!", "Doing this will overwrite your WatchList with the same name. Continue?");
             if (action.equals("YES")) {
                 loadFromServer();
                 cancelLoadChoice();
@@ -1106,33 +1084,11 @@ public class Controller implements Initializable {
      * Updates the media list and facilitates filtering.
      */
     private void updateMediaList() {
-        MediaCollection temp = new MediaCollection();
-
         watchlist.update();
-        if (sortState == 0) {
-            temp = watchlist;
-            mediaList.setItems(temp.getList());
-        } else if (sortState == 1) {
-            temp.update();
-            for (Media media : watchlist.getList()) {
-                if (media instanceof Film) {
-                    temp.put(media.getTitle(), media);
-                }
-            }
-            mediaList.setItems(temp.getList());
-        } else if (sortState == 2) {
-            temp.update();
-            for (Media media : watchlist.getList()) {
-                if (media instanceof TvShow) {
-                    temp.put(media.getTitle(), media);
-                }
-            }
-            mediaList.setItems(temp.getList());
-        }
-
+        mediaList.setItems(watchlist.getList());
 
         // Wrap the ObservableList in a FilteredList (initially display all data).
-        FilteredList<Media> filteredData = new FilteredList<>(temp.getList(), p -> true);
+        FilteredList<Media> filteredData = new FilteredList<>(watchlist.getList(), p -> true);
 
         // Set the filter Predicate whenever the filter changes.
         filterField.textProperty().addListener((observable, oldValue, newValue) -> filteredData.setPredicate(Media -> {
@@ -1148,10 +1104,10 @@ public class Controller implements Initializable {
 
         mediaList.setItems(filteredData);
 
-        temp.sort();
+        watchlist.sort();
 
         // Reselect the correct media object in the media list.
-        if (!mediaList.equals(temp.getList())) {
+        if (!mediaList.equals(watchlist.getList())) {
             for (int i = 0; i < mediaList.getItems().size(); i++) {
                 if (mediaList.getItems().get(i) != null){
                     mediaList.getSelectionModel().select(i);
@@ -1395,11 +1351,10 @@ public class Controller implements Initializable {
         }
 
         List<TreeItem<Episode>> list = tvEpisodeTable.getRoot().getChildren();
-        boolean watched;
         for (int i = 0; i < list.size(); i++) {
-            watched = true;
+            boolean watched = true;
             for (int j = 0; j < list.get(i).getChildren().size(); j++) {
-                if (!list.get(i).getChildren().get(j).getValue().getWatched() || list.get(i).getChildren().size() == 0) {
+                if (!list.get(i).getChildren().get(j).getValue().getWatched()) {
                     watched = false;
                 }
             }
@@ -1651,27 +1606,21 @@ public class Controller implements Initializable {
      * Set mediaList to display all films/tv shows
      */
     public void setSortToAll() {
-        sortState = 0;
         sortMenuButton.setText("View All");
-        updateMediaList();
     }
 
     /**
      * Set mediaList to display only films
      */
     public void setSortToFilmOnly() {
-        sortState = 1;
         sortMenuButton.setText("View Films Only");
-        updateMediaList();
     }
 
     /**
      * Set mediaList to display only tv shows
      */
     public void setSortToTvOnly() {
-        sortState = 2;
         sortMenuButton.setText("View TV Shows Only");
-        updateMediaList();
     }
 
 }
