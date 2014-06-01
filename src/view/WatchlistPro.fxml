@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
@@ -124,18 +123,7 @@
       <children>
       <HBox layoutX="10.0" layoutY="514.0" maxHeight="-Infinity" prefHeight="30.0" prefWidth="244.0" VBox.vgrow="ALWAYS">
       <children>
-                                    <ToggleButton fx:id="mediaToggleButton" ellipsisString="Film" minWidth="-Infinity" mnemonicParsing="false" onAction="#toggleMedia" prefHeight="30.0" prefWidth="55.0" text="Film" textAlignment="CENTER" HBox.hgrow="ALWAYS">
-                                       <cursor>
-                                          <Cursor fx:constant="DEFAULT" />
-                                       </cursor>
-                                       <HBox.margin>
-                                          <Insets right="5.0" />
-                                       </HBox.margin>
-                                       <tooltip>
-                                          <Tooltip text="Toggle between adding films and TV shows." />
-                                       </tooltip>
-                                    </ToggleButton>
-      <TextField fx:id="newMediaTextField" onAction="#addMedia" prefHeight="20.0" prefWidth="234.0" promptText="Enter New Title" HBox.hgrow="ALWAYS">
+      <TextField fx:id="newMediaTextField" onAction="#addMedia" prefHeight="20.0" prefWidth="234.0" promptText="Enter Name of Film to Add" HBox.hgrow="ALWAYS">
                                        <HBox.margin>
                                           <Insets top="2.0" />
                                        </HBox.margin>
@@ -149,16 +137,19 @@
       <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" />
       </padding>
-      <children>
-                                    <Button fx:id="addButton" ellipsisString="Add" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addMedia" prefHeight="28.0" prefWidth="83.0" styleClass="theme" text="Add" textAlignment="CENTER" HBox.hgrow="ALWAYS">
-                                       <cursor>
-                                          <Cursor fx:constant="DEFAULT" />
-                                       </cursor>
-                                       <tooltip>
-                                          <Tooltip text="Add a new entry using the entered title." />
-                                       </tooltip>
-                                    </Button>
-                              <Button id="button3" fx:id="deleteButton" ellipsisString="Delete" maxWidth="1.7976931348623157E308" onAction="#deleteMedia" prefHeight="28.0" prefWidth="83.0" text="Delete" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+      <children><SplitMenuButton fx:id="addButton" alignment="CENTER" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="130.0" mnemonicParsing="false" onAction="#addMedia" prefHeight="28.0" text="Add Film" HBox.hgrow="ALWAYS">
+  <items>
+    <MenuItem fx:id="filmSelectButton" mnemonicParsing="false" onAction="#setMediaToFilm" text="Add Film" visible="false" />
+    <MenuItem fx:id="tvSelectButton" mnemonicParsing="false" onAction="#setMediaToTV" text="Add TV" />
+  </items>
+<tooltip>
+                                          <Tooltip text="Add a new entry using the entered title. Toggle between adding films and TV shows." />
+</tooltip>
+<HBox.margin>
+<Insets />
+</HBox.margin>
+</SplitMenuButton>
+                              <Button id="button3" fx:id="deleteButton" ellipsisString="Delete" maxWidth="1.7976931348623157E308" minHeight="-Infinity" onAction="#deleteMedia" prefHeight="28.0" text="Delete" textAlignment="CENTER" HBox.hgrow="ALWAYS">
                                        <cursor>
                                           <Cursor fx:constant="DEFAULT" />
                                        </cursor>
@@ -259,6 +250,9 @@
             </HBox.margin>
                                                       </Label>
                                                    </content>
+<HBox.margin>
+<Insets top="4.0" />
+</HBox.margin>
                                                 </ScrollPane>
       </children>
       </HBox>
@@ -423,6 +417,9 @@
             </HBox.margin>
             </Label>
                                                    </content>
+<HBox.margin>
+<Insets top="4.0" />
+</HBox.margin>
                                                 </ScrollPane>
       </children>
       </HBox>
