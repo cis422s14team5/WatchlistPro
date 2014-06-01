@@ -177,7 +177,17 @@
             <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </padding>
-                              </HBox>
+                              </HBox><HBox prefHeight="30.0" prefWidth="197.0" spacing="5.0">
+<padding>
+<Insets bottom="5.0" left="5.0" right="5.0" />
+</padding>
+<children><MenuButton fx:id="sortMenuButton" alignment="CENTER" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" prefHeight="28.0" text="View All" HBox.hgrow="ALWAYS">
+  <items>
+    <MenuItem fx:id="sortAllMenuItem" mnemonicParsing="false" onAction="#setSortToAll" text="View All" />
+    <MenuItem fx:id="sortFilmMenuItem" mnemonicParsing="false" onAction="#setSortToFilmOnly" text="View Films Only" /><MenuItem fx:id="sortTvMenuItem" mnemonicParsing="false" onAction="#setSortToTvOnly" text="View TV Shows Only" />
+  </items>
+</MenuButton>
+</children></HBox>
                       <ListView fx:id="mediaList" styleClass="darkList" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS" />
       </children>
       </VBox>
