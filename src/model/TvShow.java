@@ -23,6 +23,8 @@ public class TvShow extends Media {
     private StringProperty numSeasons;
     private StringProperty numEpisodes;
     private ListProperty<List<Episode>> episodeList;
+
+    private ListProperty<Boolean> seasonWatchedList;
     private Gson gson;
 
     /**
@@ -30,13 +32,15 @@ public class TvShow extends Media {
      */
     public TvShow(StringProperty title, StringProperty watched, StringProperty genre, StringProperty runtime,
                   StringProperty description, StringProperty creator, StringProperty network,
-                  StringProperty numSeasons, StringProperty numEpisodes, ListProperty<List<Episode>> episodeList) {
+                  StringProperty numSeasons, StringProperty numEpisodes, ListProperty<List<Episode>> episodeList,
+                  ListProperty<Boolean> seasonWatchedList) {
         super(title, watched, genre, runtime, description);
         this.creator = creator;
         this.network = network;
         this.numSeasons = numSeasons;
         this.numEpisodes = numEpisodes;
         this.episodeList = episodeList;
+        this.seasonWatchedList = seasonWatchedList;
 
         gson = new Gson();
 
@@ -51,6 +55,7 @@ public class TvShow extends Media {
         getMap().put("numEpisodes", numEpisodes.get());
         getMap().put("description", description.get());
         getMap().put("episodeList", getJSONEpisodeList(episodeList));
+        getMap().put("seasonWatchedList", gson.toJson(seasonWatchedList));
     }
 
     /**
@@ -194,5 +199,18 @@ public class TvShow extends Media {
         Type observableListType = new TypeToken<ObservableList<String>>(){}.getType();
 
         return gson.toJson(seasonList, observableListType);
+    }
+
+    public ObservableList<Boolean> getSeasonWatchedList() {
+        return seasonWatchedList.get();
+    }
+
+    public ListProperty<Boolean> seasonWatchedListProperty() {
+        return seasonWatchedList;
+    }
+
+    public void setSeasonWatchedList(ObservableList<Boolean> seasonWatchedList) {
+        this.seasonWatchedList.set(seasonWatchedList);
+        getMap().put("seasonWatchedList", gson.toJson(seasonWatchedList));
     }
 }

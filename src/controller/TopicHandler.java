@@ -246,7 +246,7 @@ public class TopicHandler {
             numSeasons = String.format("%s", (int) Float.parseFloat(JsonPath.read(topic,
                     "$.property['/tv/tv_program/number_of_seasons'].values[0].value").toString()));
         } catch (Exception e) {
-            numSeasons = "";
+            numSeasons = "0";
         }
 
         String numEpisodes;
@@ -254,7 +254,7 @@ public class TopicHandler {
             numEpisodes = JsonPath.read(topic,
                     "$.property['/tv/tv_program/number_of_episodes'].values[0].value").toString();
         } catch (Exception e) {
-            numEpisodes = "";
+            numEpisodes = "0";
         }
 
         // Get episodes for every season
@@ -360,10 +360,8 @@ public class TopicHandler {
 
         // Index 7
         if (!numEpisodes.equals("[]") || !numEpisodes.equals("")) {
-            //String[] num = numEpisodes.split(".");
             int num = (int) Float.parseFloat(numEpisodes);
             output.add(Integer.toString(num));
-            //output.add(num[0]);
         } else {
             output.add("");
         }

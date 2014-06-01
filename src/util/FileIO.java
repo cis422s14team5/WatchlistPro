@@ -132,7 +132,7 @@ public class FileIO {
                 // Convert episode list from JSON string to ObservableList.
                 Type arrayListType = new TypeToken<ArrayList<List<HashMap<String, String>>>>(){}.getType();
                 ArrayList<List<HashMap<String, String>>> arrayList = gson.fromJson(map.get("episodeList"), arrayListType);
-
+                // Build seasonList
                 ObservableList<List<Episode>> seasonList = FXCollections.observableArrayList();
                 for (List<HashMap<String, String>> episodes : arrayList) {
                     List<Episode> episodeList = new ArrayList<>();
@@ -147,9 +147,17 @@ public class FileIO {
                 ListProperty<List<Episode>> episodeList = new SimpleListProperty<>();
                 episodeList.set(seasonList);
 
+                // Convert episode list from JSON string to ObservableList.
+                Type boolListType = new TypeToken<ArrayList<Boolean>>(){}.getType();
+                ArrayList<Boolean> tempBoolList = gson.fromJson(map.get("seasonWatchedList"), boolListType);
+                ObservableList<Boolean> boolList = new ObservableListWrapper<>(tempBoolList);
+
+                ListProperty<Boolean> seasonWatchedList = new SimpleListProperty<>();
+                seasonWatchedList.set(boolList);
+
                 mediaMap.put(title.get(),
                         new TvShow(title, watched, genre, runtime, description, creator, network, numSeasons,
-                                numEpisodes, episodeList));
+                                numEpisodes, episodeList, seasonWatchedList));
             }
         }
 

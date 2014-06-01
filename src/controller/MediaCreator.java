@@ -89,6 +89,10 @@ public class MediaCreator {
         ListProperty<List<Episode>> episodeList = new SimpleListProperty<>();
         episodeList.set(new ObservableListWrapper<>(new ArrayList<>()));
 
-        return new TvShow(title, watched, genre, runtime, description, creator, network, numSeasons, numEpisodes, episodeList);
+        ListProperty<Boolean> seasonWatchedList = new SimpleListProperty<>();
+        seasonWatchedList.set(new ObservableListWrapper<>(new ArrayList<>()));
+
+        return new TvShow(title, watched, genre, runtime, description, creator, network, numSeasons, numEpisodes,
+                episodeList, seasonWatchedList);
     }
 }
