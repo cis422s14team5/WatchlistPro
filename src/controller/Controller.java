@@ -162,14 +162,12 @@ public class Controller implements Initializable {
     private ToggleButton editToggleButton;
     @FXML
     private Button fetchButton;
-
     @FXML
     private SplitMenuButton addButton;
     @FXML
     private MenuItem filmSelectButton;
     @FXML
     private MenuItem tvSelectButton;
-
     @FXML
     private SeparatorMenuItem recentSeparator;
     @FXML
@@ -216,6 +214,15 @@ public class Controller implements Initializable {
     private TreeTableColumn<Episode, Boolean> watchedCol;
     @FXML
     private MenuItem usernameMenuItem;
+    @FXML
+    private MenuItem sortAllMenuItem;
+    @FXML
+    private MenuItem sortFilmMenuItem;
+    @FXML
+    private MenuItem sortTvMenuItem;
+    @FXML
+    private MenuButton sortMenuButton;
+
 
     /**
      * Constructor.
@@ -1556,4 +1563,26 @@ public class Controller implements Initializable {
             saveDir.mkdir();
         }
     }
+
+    /**
+     * Set mediaList to display all films/tv shows
+     */
+    public void setSortToAll() {
+        sortMenuButton.setText("View All");
+    }
+
+    /**
+     * Set mediaList to display only films
+     */
+    public void setSortToFilmOnly() {
+        sortMenuButton.setText("View Films Only");
+    }
+
+    /**
+     * Set mediaList to display only tv shows
+     */
+    public void setSortToTvOnly() {
+        sortMenuButton.setText("View TV Shows Only");
+    }
+
 }

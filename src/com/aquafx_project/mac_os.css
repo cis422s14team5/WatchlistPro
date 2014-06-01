@@ -1395,7 +1395,20 @@ TODO: effect-chaining!!!
  ******************************************************************************/
 .menu-button {
     -fx-skin: "com.aquafx_project.controls.skin.AquaMenuButtonSkin";
-    -fx-background-color: 
+    /* gradients for glossy-aqua-effect */
+    -fx-background-color: rgb(255.0, 255.0, 255.0),
+        linear-gradient(rgb(255.0, 255.0, 255.0) 25.0%, rgb(243.0, 243.0, 243.0) 50.0%, rgb(236.0, 236.0, 236.0) 50.0%, rgb(243.0, 243.0, 243.0) 100.0% );
+    -fx-background-insets:0.0;
+    -fx-background-radius: 3.5, 3.5;
+    -fx-border-radius: 4.0;
+    -fx-border-width: 0.5;
+    -fx-border-insets:-0.5, 0.0 ;
+    -fx-border-color: rgb(147.0, 147.0, 147.0) rgb(129.0, 129.0, 129.0) rgb(129.0, 129.0, 129.0) rgb(129.0, 129.0, 129.0);
+    -fx-padding: 0.1em 0.0em 0.153846em 0.0em;
+
+
+/*
+    -fx-background-color:
         linear-gradient(rgb(245.0, 245.0, 245.0), rgb(185.0, 185.0, 185.0));
     -fx-background-insets:0.0;
     -fx-background-radius: 3.5, 3.5;
@@ -1405,6 +1418,7 @@ TODO: effect-chaining!!!
     -fx-border-color: linear-gradient(rgb(147.0, 147.0, 147.0), rgb(131.0, 131.0, 131.0)),
         linear-gradient(rgb(116.0, 116.0, 116.0), rgb(105.0, 105.0, 105.0));
     -fx-padding: 0.1em 0.0em 0.153846em 0.0em;
+*/
 }
 
 .menu-button > .label {
