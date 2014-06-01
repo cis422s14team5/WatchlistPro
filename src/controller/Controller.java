@@ -1301,6 +1301,10 @@ public class Controller implements Initializable {
         }
         addEpisodesToTable(Integer.parseInt(show.getNumSeasons()), tempList);
 
+        if (show.getWatched().equals("Yes")) {
+            checkEveryEpisodeInShow();
+        }
+
         List<TreeItem<Episode>> list = tvEpisodeTable.getRoot().getChildren();
         for (int i = 0; i < list.size(); i++) {
             boolean watched = true;
@@ -1309,7 +1313,7 @@ public class Controller implements Initializable {
                     watched = false;
                 }
             }
-            if (watched) {
+            if (watched && list.size() > 0) {
                 list.get(i).getValue().setWatched(true);
             }
         }
@@ -1522,6 +1526,16 @@ public class Controller implements Initializable {
 
             // add season roots to master root
             masterRoot.getChildren().add(seasonNum, seasonRootList.get(seasonNum));
+        }
+    }
+
+    private void checkEveryEpisodeInShow () {
+
+        List<TreeItem<Episode>> list = tvEpisodeTable.getRoot().getChildren();
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 0; j < list.get(i).getChildren().size(); j++) {
+                list.get(i).getChildren().get(j).getValue().setWatched(true);
+            }
         }
     }
 
