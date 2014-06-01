@@ -38,9 +38,7 @@ import java.util.prefs.Preferences;
 // TODO notify the user if fetch does not find title
 // TODO notify user if not connected to the internet for all server based functions
 // TODO doc comments for media and film
-// TODO drop down list buttons for TV/Film toggle
 // TODO sort ListView into TV, Film, or All with dropdown
-
 // TODO encrypt username and password with RSA, first thing server sends is its public key
 
 /**

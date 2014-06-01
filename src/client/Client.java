@@ -37,8 +37,9 @@ public class Client {
     public Client() {
         try {
             socket = new Socket(HOST, PORT);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            // TODO add warning dialog
+            System.err.println("Cannot connect to server.");
         }
     }
 

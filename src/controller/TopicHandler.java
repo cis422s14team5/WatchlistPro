@@ -38,7 +38,7 @@ public class TopicHandler {
         JSONArray genres;
         try {
             genres = JsonPath.read(topic, "$.property['/film/film/genre'].values");
-        } catch (InvalidPathException e) {
+        } catch (Exception e) {
             genres = new JSONArray();
         }
         ArrayList<String> genreList = new ArrayList<>();
@@ -65,6 +65,7 @@ public class TopicHandler {
             director = "";
         }
 
+        // TODO fix film runtime
         //String runtime = JsonPath.read(topic, "$.property['/film/film/runtime'].values[0].text").toString();
 
         JSONArray producers;
@@ -114,14 +115,6 @@ public class TopicHandler {
         } else {
             descriptionList.add("");
         }
-
-//        String website;
-//        try {
-//            website = JsonPath.read(topic,
-//                    "$.property['/common/topic/official_website'].values[0].value").toString();
-//        } catch (com.jayway.jsonpath.InvalidPathException e) {
-//            website = "No website listed.";
-//        }
 
         output.clear();
         output.add(title);
@@ -225,11 +218,11 @@ public class TopicHandler {
                     "$.property['/tv/tv_program/original_network'].values[0]");
             network = JsonPath.read(networkTemp,
                     "$.property['/tv/tv_network_duration/network'].values[0].text");
-        } catch (InvalidPathException e) {
+        } catch (Exception e) {
             network = "";
         }
 
-        // TODO fix runtime
+        // TODO fix TV runtime
         //String runtime = JsonPath.read(topic, "$.property['/tv/tv_program/runtime'].values[0].text").toString();
 
         JSONArray descriptions;

@@ -82,6 +82,7 @@ public class Fetch extends Task {
     @Override
     protected void failed() {
         super.failed();
+        // TODO warn user dialog
         System.out.println("Fetch failed!");
         end();
     }
