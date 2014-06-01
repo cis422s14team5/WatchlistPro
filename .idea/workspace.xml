@@ -68,11 +68,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="mac_os.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Controller.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.1923077" vertical-offset="16680" max-vertical-offset="23805">
+              <caret line="1151" column="73" selection-start-line="1151" selection-start-column="40" selection-end-line="1151" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mac_os.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/aquafx_project/mac_os.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5065666" vertical-offset="33780" max-vertical-offset="54405">
-              <caret line="2270" column="40" selection-start-line="2270" selection-start-column="40" selection-end-line="2270" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="31680" max-vertical-offset="54405">
+              <caret line="2127" column="58" selection-start-line="2127" selection-start-column="58" selection-end-line="2127" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -146,9 +156,9 @@
         <option value="$PROJECT_DIR$/src/controller/MediaCreator.java" />
         <option value="$PROJECT_DIR$/src/model/TvShow.java" />
         <option value="$PROJECT_DIR$/src/util/FileIO.java" />
-        <option value="$PROJECT_DIR$/src/controller/Controller.java" />
         <option value="$PROJECT_DIR$/src/view/WatchlistPro.css" />
         <option value="$PROJECT_DIR$/src/com/aquafx_project/mac_os.css" />
+        <option value="$PROJECT_DIR$/src/controller/Controller.java" />
       </list>
     </option>
   </component>
@@ -663,7 +673,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17770597" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15835777" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3680352" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1093,18 +1103,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="22614" max-vertical-offset="23145">
-          <caret line="1550" column="4" selection-start-line="1550" selection-start-column="4" selection-end-line="1550" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/MediaCreator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.0275229" vertical-offset="715" max-vertical-offset="1410">
           <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/aquafx_project/mac_os.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="31680" max-vertical-offset="54405">
+          <caret line="2127" column="58" selection-start-line="2127" selection-start-column="58" selection-end-line="2127" selection-end-column="58" />
           <folding />
         </state>
       </provider>
@@ -1117,10 +1127,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/aquafx_project/mac_os.css">
+    <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5065666" vertical-offset="33780" max-vertical-offset="54405">
-          <caret line="2270" column="40" selection-start-line="2270" selection-start-column="40" selection-end-line="2270" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.1923077" vertical-offset="16680" max-vertical-offset="23805">
+          <caret line="1151" column="73" selection-start-line="1151" selection-start-column="40" selection-end-line="1151" selection-end-column="40" />
           <folding />
         </state>
       </provider>
