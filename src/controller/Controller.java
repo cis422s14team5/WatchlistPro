@@ -37,7 +37,6 @@ import java.util.prefs.Preferences;
 // TODO during save to server give user option to change save name, warn if overwrite will occur, use get saves
 // TODO notify the user if fetch does not find title
 // TODO notify user if not connected to the internet for all server based functions
-// TODO add logged in as: label
 // TODO doc comments for media and film
 // TODO drop down list buttons for TV/Film toggle
 // TODO sort ListView into TV, Film, or All with dropdown
@@ -218,7 +217,8 @@ public class Controller implements Initializable {
     private TreeTableColumn<Episode, String> episodeCol;
     @FXML
     private TreeTableColumn<Episode, Boolean> watchedCol;
-
+    @FXML
+    private MenuItem usernameMenuItem;
 
     /**
      * Constructor.
@@ -507,8 +507,8 @@ public class Controller implements Initializable {
                         }
 
                         int count = 0;
-                        for (int i = 0; i < episodeList.size(); i++) {
-                            for (int j = 0; j < episodeList.get(i).size(); j++) {
+                        for (int i = 0; i < list.size(); i++) {
+                            for (int j = 0; j < list.get(i).getChildren().size(); j++) {
                                 episodeList.get(i).get(j).setWatched(episodeBoolList.get(count));
                                 count++;
                             }
@@ -783,9 +783,6 @@ public class Controller implements Initializable {
             // user entered something in both userNameField and passwordField
             if (passwordField.getText() != null && !passwordField.getText().isEmpty()) {
                 password = passwordField.getText();
-
-//                System.out.printf("username: %s\n", username);
-//                System.out.printf("password: %s\n", password);
                 return true;
             }
         }
@@ -821,6 +818,7 @@ public class Controller implements Initializable {
                 quit.join();
 
                 if (client.isLoggedIn()) {
+                    usernameMenuItem.setText(username + " logged in");
                     isLoggedIn = true;
                     loginMenuItem.setDisable(true);
                     logoutMenuItem.setDisable(false);
@@ -846,6 +844,7 @@ public class Controller implements Initializable {
                 quit.join();
 
                 if (!client.isLoggedIn()) {
+                    usernameMenuItem.setText("Not logged in");
                     isLoggedIn = false;
                     loginMenuItem.setDisable(false);
                     logoutMenuItem.setDisable(true);
