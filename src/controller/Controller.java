@@ -31,7 +31,7 @@ import java.net.URL;
 import java.util.*;
 import java.util.prefs.Preferences;
 
-// TODO warn user that it will not save if they dont press done after editing
+
 // TODO during load from server warn user that overwrite will occur if file already exists
 // TODO OR load from server should create a new library and open the save dialog
 // TODO during save to server give user option to change save name, warn if overwrite will occur, use get saves
@@ -294,12 +294,10 @@ public class Controller implements Initializable {
 
         // Handle Media List selection changes.
         mediaList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+
+
+            // TODO warn user that it will not save if they dont press done after editing
             switchPane();
-
-            //System.out.println(count++);
-
-
-
 
             if (newValue != null) {
                 mediaIndex = mediaList.getSelectionModel().getSelectedIndex();
