@@ -22,8 +22,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.*;
+import org.controlsfx.control.action.Action;
 import util.FileIO;
 import view.AboutDialog;
+import view.WarningDialog;
 
 import java.io.File;
 import java.io.IOException;
@@ -56,6 +58,7 @@ public class Controller implements Initializable {
     private String username;
     private String password;
     private Boolean isLoggedIn;
+    WarningDialog warningDialog;
 
     private TreeItem<Episode> masterRoot; // master root of dropdown menu
     private List<TreeItem<Episode>> seasonRootList; // list of season roots
@@ -246,6 +249,8 @@ public class Controller implements Initializable {
 
         File defaultFile = new File(saveDir + slash + "watchlist.wl");
 
+        warningDialog = new WarningDialog();
+
         preferences.remove("recentList");
         // Setup Open Recent List
         recentList = byteArrayHandler.readByteArray(preferences.getByteArray("recentList", "".getBytes()));
@@ -290,6 +295,7 @@ public class Controller implements Initializable {
             }
 
         });
+
 
         // Handle Media List selection changes.
         mediaList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -802,6 +808,8 @@ public class Controller implements Initializable {
     @FXML
     protected void switchToLoginPage() {
         // displays account login pane
+
+
         Platform.runLater(userNameField::requestFocus);
         userLoginPane.setVisible(true);
         userLoginPane.setDisable(false);
@@ -972,8 +980,38 @@ public class Controller implements Initializable {
 
     @FXML
     public void sendLoadChoice() {
-        loadFromServer();
-        cancelLoadChoice();
+        String selectedFile = loadList.getSelectionModel().getSelectedItem();
+        Action action;
+        boolean found = false;
+        if (!saveFile.getName().equals(selectedFile)) {
+            for (String mediaName : recentList) {
+                if (selectedFile.equals(mediaName)) {
+                    found = true;
+                    action = warningDialog.createDialog("Warning!", "Doing this will overwrite your WatchList with the same name. Continue?");
+                    if (action.equals("YES")) {
+                        loadFromServer();
+                        cancelLoadChoice();
+
+                    } else {
+                        cancelLoadChoice();
+                    }
+                }
+            }
+        } else {
+            action = warningDialog.createDialog("Warning!", "Doing this will overwrite your WatchList with the same name. Continue?");
+            if (action.equals("YES")) {
+                loadFromServer();
+                cancelLoadChoice();
+
+            } else {
+                cancelLoadChoice();
+            }
+        }
+
+        if (!found) {
+            loadFromServer();
+            cancelLoadChoice();
+        }
     }
 
     /**
