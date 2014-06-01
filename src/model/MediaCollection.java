@@ -1,6 +1,7 @@
 package model;
 
 import com.sun.javafx.collections.ObservableListWrapper;
+import com.sun.javafx.collections.ObservableMapWrapper;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 
@@ -13,6 +14,11 @@ public class MediaCollection {
 
     private ObservableMap<String, Media> map;
     private ObservableList<Media> list;
+
+    public MediaCollection() {
+        map = new ObservableMapWrapper<>(new HashMap<>());
+        list = new ObservableListWrapper<>(new ArrayList<>());
+    }
 
     /**
      * Gets the map.
