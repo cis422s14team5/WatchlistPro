@@ -4,8 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
-import util.FileIO;
-import view.DialogPane;
+import controller.FileIO;
 
 import java.io.*;
 import java.lang.reflect.Type;

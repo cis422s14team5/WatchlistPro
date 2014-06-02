@@ -22,7 +22,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.*;
 import org.controlsfx.control.action.Action;
-import util.FileIO;
 import view.AboutDialog;
 import view.DialogPane;
 
