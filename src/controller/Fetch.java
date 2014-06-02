@@ -4,6 +4,7 @@ import client.Client;
 import javafx.concurrent.Task;
 import javafx.scene.control.ListView;
 import model.Media;
+import view.DialogPane;
 
 import java.util.List;
 
@@ -82,8 +83,9 @@ public class Fetch extends Task {
     @Override
     protected void failed() {
         super.failed();
-        // TODO warn user dialog
-        System.out.println("Fetch failed!");
+        DialogPane dialogPane = new DialogPane();
+        dialogPane.createWarningDialog("Failed to connect!", "Failed to fetch because the server is unavailable.\n" +
+                                                             "Please try again later.");
         end();
     }
 
