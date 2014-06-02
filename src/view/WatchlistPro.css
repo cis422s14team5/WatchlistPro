@@ -24,6 +24,13 @@
     -fx-border-color: red;
 }
 
+/*
+.table-column {
+
+}
+*/
+
+
 .text-area {
     -fx-background-radius: 4;
     -fx-border-radius: 4;

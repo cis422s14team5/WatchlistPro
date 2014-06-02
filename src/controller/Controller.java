@@ -370,6 +370,10 @@ public class Controller implements Initializable {
         // add columns to TreeTableView
         tvEpisodeTable.getColumns().setAll(seasonCol, episodeCol, watchedCol);
         // populate the table with data
+
+        seasonCol.prefWidthProperty().bind(tvEpisodeTable.widthProperty().multiply(0.20));
+        episodeCol.prefWidthProperty().bind(tvEpisodeTable.widthProperty().multiply(0.65));
+        watchedCol.prefWidthProperty().bind(tvEpisodeTable.widthProperty().multiply(0.15));
     }
 
     // Button and Field Methods
@@ -1613,8 +1617,6 @@ public class Controller implements Initializable {
         // add checkboxes
         watchedCol.setCellFactory(CheckBoxTreeTableCell.forTreeTableColumn(watchedCol));
 
-
-
         tvEpisodeTable.setRoot(masterRoot);
         // set root as expanded by default
         masterRoot.setExpanded(true);
@@ -1638,6 +1640,9 @@ public class Controller implements Initializable {
             // add season roots to master root
             masterRoot.getChildren().add(seasonNum, seasonRootList.get(seasonNum));
         }
+        seasonCol.prefWidthProperty().bind(tvEpisodeTable.widthProperty().multiply(0.20));
+        episodeCol.prefWidthProperty().bind(tvEpisodeTable.widthProperty().multiply(0.65));
+        watchedCol.prefWidthProperty().bind(tvEpisodeTable.widthProperty().multiply(0.15));
     }
 
     private void checkEveryEpisodeInShow () {
