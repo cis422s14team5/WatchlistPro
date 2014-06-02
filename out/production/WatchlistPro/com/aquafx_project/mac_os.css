@@ -2078,7 +2078,7 @@ TODO: effect-chaining!!!
     -fx-text-fill: white;
 }
 
-.table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled:selected, 
+.table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled:selected,
 .tree-table-view:focused > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell:filled:selected,
 .table-view:row-selection:focused > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled:focused:selected:hover,
 .tree-table-view:row-selection:focused > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell:filled:focused:selected:hover {
@@ -2142,7 +2142,7 @@ TODO: effect-chaining!!!
 }
 
 /* When the TableView is _not_ focused, we show alternate selection colors */
- .table-row-cell:filled > .table-cell:selected:focused, 
+ .table-row-cell:filled > .table-cell:selected:focused,
  .table-row-cell:filled > .table-cell:selected,
  .tree-table-row-cell:filled > .tree-table-cell:selected:focused, 
  .tree-table-row-cell:filled > .tree-table-cell:selected {
@@ -2186,6 +2186,7 @@ TODO: effect-chaining!!!
     -fx-border-color: rgb(212.0, 212.0, 212.0, 0.8) -fx-right-border rgb(212.0, 212.0, 212.0, 0.8) transparent;
     -fx-border-width: 0.5 1.0 0.5 0.0;
     -fx-border-insets: 0.0;
+    -fx-padding: 6.0;  /* added this */
 }
 
 /* This is especially for AquaFX. Apple uses tables with one column for simple Lists. This is just, to make it possible for users. The ListView Class  */
