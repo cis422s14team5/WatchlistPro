@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import model.Episode;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import view.DialogPane;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -27,6 +28,8 @@ public class TopicHandler {
      */
     public List<String> handleFilmOutput(JSONObject topic) {
         List<String> output = new ArrayList<>();
+
+        checkTopic(topic.toJSONString());
 
         String title;
         try {
@@ -172,6 +175,8 @@ public class TopicHandler {
     public List<String> handleTvOutput(JSONObject topic) {
         List<String> output = new ArrayList<>();
         Gson gson = new Gson();
+
+        checkTopic(topic.toJSONString());
 
         String title;
         try {
@@ -406,6 +411,18 @@ public class TopicHandler {
             e.printStackTrace();
         }
 
-        return client.getTopic();
+        JSONObject topic = client.getTopic();
+
+        checkTopic(topic.toJSONString());
+
+        return topic;
+    }
+
+    private void checkTopic(String topic) {
+        if (topic.equals("{}")) {
+            DialogPane dialogPane = new DialogPane();
+            dialogPane.createWarningDialog("Failed to fetch!", "Failed to fetch the title you entered.\n" +
+                    "Please try a different title.");
+        }
     }
 }

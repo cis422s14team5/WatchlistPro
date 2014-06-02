@@ -65,7 +65,7 @@
                               <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                            </accelerator>
                         </MenuItem>
-                        <MenuItem fx:id="serverSave" mnemonicParsing="false" onAction="#saveToServer" text="Save to Server">
+                        <MenuItem fx:id="serverSave" mnemonicParsing="false" onAction="#checkSaves" text="Save to Server">
                            <accelerator>
                               <KeyCodeCombination alt="DOWN" code="S" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                            </accelerator>

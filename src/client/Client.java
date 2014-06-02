@@ -1,6 +1,7 @@
 package client;
 
 import org.json.simple.JSONObject;
+import view.DialogPane;
 
 import java.io.*;
 import java.net.Socket;
@@ -30,6 +31,7 @@ public class Client {
     private String[] saveArray;
 
     private boolean isLoggedIn = false;
+    private boolean connected = true;
 
     /**
      * Constructor.
@@ -38,8 +40,10 @@ public class Client {
         try {
             socket = new Socket(HOST, PORT);
         } catch (Exception e) {
-            // TODO add warning dialog
-            System.err.println("Cannot connect to server.");
+            DialogPane dialogPane = new DialogPane();
+            dialogPane.createWarningDialog("Cannot connect to server", "Sorry, but for some reason you cannot connect to the server.\n" +
+                    "Check that you are connected to the internet.");
+            connected = false;
         }
     }
 
@@ -144,6 +148,11 @@ public class Client {
     public void setLoggedIn(boolean isLoggedIn) {
         this.isLoggedIn = isLoggedIn;
     }
+
+    public boolean isConnected() {
+        return connected;
+    }
+
 
 
 }
