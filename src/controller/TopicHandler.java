@@ -68,8 +68,13 @@ public class TopicHandler {
             director = "";
         }
 
-        // TODO fix film runtime
-        //String runtime = JsonPath.read(topic, "$.property['/film/film/runtime'].values[0].text").toString();
+        String runtime;
+        try {
+            String tempTime = JsonPath.read(topic, "$.property['/film/film/runtime'].values[0].property['/film/film_cut/runtime'].values[0].text");
+            runtime = Integer.toString((int) Float.parseFloat(tempTime));
+        } catch (Exception e) {
+            runtime = "";
+        }
 
         JSONArray producers;
         try {
@@ -135,7 +140,7 @@ public class TopicHandler {
         output.add(String.format(director));
         output.add(String.format(rating));
 
-        output.add(""); // runtime
+        output.add(runtime);
 
         String producersTemp = "";
         for (int i = 0; i < producersList.size(); i++) {
@@ -227,8 +232,13 @@ public class TopicHandler {
             network = "";
         }
 
-        // TODO fix TV runtime
-        //String runtime = JsonPath.read(topic, "$.property['/tv/tv_program/runtime'].values[0].text").toString();
+        String runtime;
+        try {
+            String tempTime = JsonPath.read(topic, "$.property['/tv/tv_program/episode_running_time'].values[0].text").toString();
+            runtime = Integer.toString((int) Float.parseFloat(tempTime));
+        } catch (NumberFormatException e) {
+            runtime = "";
+        }
 
         JSONArray descriptions;
         try {
@@ -346,7 +356,7 @@ public class TopicHandler {
         output.add(String.format(network));
 
         // Index 5
-        output.add(""); // runtime
+        output.add(runtime);
 
         // Index 6
         output.add(String.format(numSeasons));
