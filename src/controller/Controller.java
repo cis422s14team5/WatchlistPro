@@ -395,7 +395,7 @@ public class Controller implements Initializable {
             }
             newMediaTextField.clear();
             filterField.clear();
-            updateMediaList();
+            setSortToAll();
 
             setListIndex();
             editToggleButton.setSelected(true);
@@ -484,6 +484,9 @@ public class Controller implements Initializable {
                 filterField.clear();
                 filterField.setDisable(false);
                 if (mediaList.getSelectionModel().getSelectedItem() instanceof Film) {
+                    if (filmTitleTextField.getText().equals("")) {
+                        filmTitleTextField.setText(mediaName);
+                    }
                     if (mediaName.equals(filmTitleTextField.getText())) {
                         // A new media object does not need to be created.
                         watchlist.get(mediaName).setTitle(filmTitleTextField.getText());
@@ -513,6 +516,9 @@ public class Controller implements Initializable {
                     watchlist.update();
                     updateMediaList();
                 } else if (mediaList.getSelectionModel().getSelectedItem() instanceof TvShow) {
+                    if (tvTitleTextField.getText().equals("")) {
+                        tvTitleTextField.setText(mediaName);
+                    }
 
                     String tvNumEpisodes = tvNumEpisodesTextField.getText();
                     if (tvNumEpisodes.equals("")) {
