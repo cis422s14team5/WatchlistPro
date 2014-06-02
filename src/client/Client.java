@@ -12,7 +12,7 @@ import java.net.Socket;
 public class Client {
 
     // "localhost"; "hkhamm.com"; "128.223.4.21"; <- ix.cs.uoregon.edu
-    private static final String HOST = "hkhamm.com";
+    private static final String HOST = "localhost";
     private static final int PORT = 1981;
 
     private static final int FILM = 0;
@@ -22,6 +22,7 @@ public class Client {
     private static final int GETSAVES = 4;
     private static final int LOGIN = 5;
     private static final int LOGOUT = 6;
+    private static final int ADD = 7;
 
     private int state;
 
@@ -32,6 +33,7 @@ public class Client {
 
     private boolean isLoggedIn = false;
     private boolean connected = true;
+    private boolean accountCreated;
 
     /**
      * Constructor.
@@ -55,7 +57,6 @@ public class Client {
      * @throws InterruptedException
      */
     public Thread send(String command) throws IOException, InterruptedException {
-        //System.out.println("Client: " + command);
         String[] commands = command.split("-=-");
         switch (commands[0]) {
             case "film":
@@ -80,6 +81,9 @@ public class Client {
                 break;
             case "logout":
                 state = LOGOUT;
+                break;
+            case "add":
+                state = ADD;
                 break;
         }
         return new Thread(new ClientThread(this, state, socket, command), "thread");
@@ -151,6 +155,15 @@ public class Client {
 
     public boolean isConnected() {
         return connected;
+    }
+
+
+    public boolean isAccountCreated() {
+        return accountCreated;
+    }
+
+    public void setAccountCreated(boolean accountCreated) {
+        this.accountCreated = accountCreated;
     }
 
 

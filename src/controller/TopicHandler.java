@@ -276,8 +276,6 @@ public class TopicHandler {
             seasonList.add(new ArrayList<>());
         }
 
-        //System.out.println("seasonList size: " + seasonList.size());
-
         int episodeNumber = 1;
         for (String id : seasonIdList) {
             JSONObject seasonTopic = getTopic(id);
@@ -314,18 +312,8 @@ public class TopicHandler {
             }
 
             seasonList.set(Integer.parseInt(seasonNumber), episodeList);
-            //seasonList.add(episodeList);
             episodeNumber = 1;
         }
-
-//        System.out.println("Episodes");
-//        for (List<String> season : seasonList) {
-//            for (String episode : season) {
-//                System.out.println(episode);
-//            }
-//        }
-
-
         output.clear();
 
         // Index 0

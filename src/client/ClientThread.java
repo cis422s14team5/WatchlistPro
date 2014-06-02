@@ -5,6 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import util.FileIO;
+import view.DialogPane;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -25,6 +26,7 @@ public class ClientThread implements Runnable {
     private static final int GETSAVES = 4;
     private static final int LOGIN = 5;
     private static final int LOGOUT = 6;
+    private static final int ADD = 7;
 
     private int state;
     private Client client;
@@ -60,8 +62,6 @@ public class ClientThread implements Runnable {
         try {
             if ((input = in.readLine()) != null && !input.equals("Bye.")) {
                 String[] output = input.split("");
-
-                //System.out.println("Server: " + input);
 
                 // Handle input from server.
                 if (output[0].equals("{")) {
@@ -107,6 +107,12 @@ public class ClientThread implements Runnable {
                             client.setLoggedIn(false);
                             break;
                     }
+                }
+
+                if (input.equals("false") && state == ADD) {
+                    client.setAccountCreated(false);
+                } else {
+                    client.setAccountCreated(true);
                 }
 
                 if (command.equals("quit")) {

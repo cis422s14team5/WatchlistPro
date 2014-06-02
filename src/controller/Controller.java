@@ -18,7 +18,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTreeTableCell;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.*;
@@ -789,8 +788,6 @@ public class Controller implements Initializable {
             // user entered something in both userNameField and passwordField
             if (createPasswordField.getText() != null && !createPasswordField.getText().isEmpty()) {
                 password = createPasswordField.getText();
-//                System.out.printf("username: %s\n", username);
-//                System.out.printf("password: %s\n", password);
 
                 return true;
             }
@@ -807,11 +804,15 @@ public class Controller implements Initializable {
         // if user entered name & password try to create account
         if (getUserCredentials() && client.isConnected()) {
             try {
-                Thread account = client.send("add" + "-=-" + username + "-=-" + password);
+                Thread account = client.send("add");
+                Thread add = client.send(username + "-=-" + password);
                 Thread quit = client.send("quit");
 
                 account.start();
                 account.join();
+
+                add.start();
+                add.join();
 
                 // clear createUserNameField and createPasswordField
                 createUserNameField.clear();
@@ -825,6 +826,14 @@ public class Controller implements Initializable {
                 quit.start();
                 quit.join();
 
+                if (!client.isAccountCreated()) {
+                    DialogPane dialogPane = new DialogPane();
+                    dialogPane.createWarningDialog("Failed to create account", "The account name you enter is not valid.");
+                } else {
+                    userNameField.setText(username);
+                    passwordField.setText(password);
+                    loginToServer();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -1002,7 +1011,7 @@ public class Controller implements Initializable {
 
                 String[] saveArray = client.getSaveArray();
                 if (saveArray != null) {
-                    OptionalIsStupid optional = new OptionalIsStupid();
+                    EstStultus optional = new EstStultus();
                     List<String> arrayList = Arrays.asList(saveArray);
                     for (String string : arrayList) {
                         if (string.equals(saveFile.getName())) {
@@ -1553,9 +1562,6 @@ public class Controller implements Initializable {
         tvNumSeasonsTextField.setText(outputList.get(6));
         tvNumEpisodesTextField.setText(outputList.get(7));
         tvDescriptionTextField.setText(outputList.get(8));
-
-//        System.out.println(outputList.get(0) + " Episode List:");
-//        System.out.println();
 
         Type listType = new TypeToken<List<List<String>>>(){}.getType();
         List<List<String>> list = gson.fromJson(outputList.get(9), listType);

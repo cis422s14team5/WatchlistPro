@@ -63,7 +63,6 @@ public class Fetch extends Task {
     @Override
     protected void succeeded() {
         super.succeeded();
-        System.out.println("Fetch is done!");
         end();
     }
 
@@ -73,7 +72,6 @@ public class Fetch extends Task {
     @Override
     protected void cancelled() {
         super.cancelled();
-        System.out.println("Fetch was cancelled!");
         end();
     }
 

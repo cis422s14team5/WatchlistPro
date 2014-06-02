@@ -3,7 +3,7 @@ package model;
 import java.util.Optional;
 
 
-public class OptionalIsStupid {
+public class EstStultus {
     private Optional<String> optional;
 
     public String getOptional() {
@@ -13,5 +13,4 @@ public class OptionalIsStupid {
     public void setOptional(Optional<String> optional) {
         this.optional = optional;
     }
-
 }
