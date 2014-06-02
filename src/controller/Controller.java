@@ -541,26 +541,24 @@ public class Controller implements Initializable {
                         List<TreeItem<Episode>> list = tvEpisodeTable.getRoot().getChildren();
 
                         for (int i = 0; i < list.size(); i++) {
-                            seasonBoolList.add(tvEpisodeTable.getTreeItem(i).getValue().getWatched());
-                            for (int j = 0; j < tvEpisodeTable.getTreeItem(i).getChildren().size(); j++) {
-                                episodeBoolList.add(tvEpisodeTable.getTreeItem(i).getChildren().get(j).getValue().getWatched());
+                            seasonBoolList.add(list.get(i).getValue().getWatched());
+                            for (int j = 0; j < list.get(i).getChildren().size(); j++) {
+                                episodeBoolList.add(list.get(i).getChildren().get(j).getValue().getWatched());
                             }
                         }
 
                         ((TvShow) watchlist.get(mediaName)).getSeasonWatchedList().setAll(seasonBoolList);
 
-                        // TODO if done is pressed while a season list is expanded, it is as if all checkboxes below that point are checked, but only
-                        // in the view, if the page is save and loaded it loads with the correct checks
-
                         int count = 0;
+
                         for (int i = 0; i < list.size(); i++) {
-                            boolean seasonBool = tvEpisodeTable.getTreeItem(i).getValue().getWatched();
+                            boolean seasonBool = list.get(i).getValue().getWatched();
                             ((TvShow) watchlist.get(mediaName)).getSeasonWatchedList().set(i, seasonBool);
                             for (int j = 0; j < list.get(i).getChildren().size(); j++) {
                                 if (seasonBool) {
-                                    episodeList.get(i).get(j).setWatched(true);
+                                    list.get(i).getChildren().get(j).getValue().setWatched(true);
                                 } else {
-                                    episodeList.get(i).get(j).setWatched(episodeBoolList.get(count));
+                                    list.get(i).getChildren().get(j).getValue().setWatched(episodeBoolList.get(count));
                                 }
                                 count++;
                             }
