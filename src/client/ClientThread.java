@@ -96,23 +96,26 @@ public class ClientThread implements Runnable {
                     }
                 }
 
-                if (input.equals("true")) {
+                if (input.equals("true") || input.equals("false")) {
                     switch (state) {
                         case LOGIN:
-                            // disable login, enable logout, isLoggedIn = true
-                            client.setLoggedIn(true);
+                            if (input.equals("false")) {
+                                client.setLoggedIn(false);
+                            } else {
+                                client.setLoggedIn(true);
+                            }
                             break;
                         case LOGOUT:
-                            // enable login, disable logout, isLoggedIn = false
                             client.setLoggedIn(false);
                             break;
+                        case ADD:
+                            if (input.equals("false")) {
+                                client.setAccountCreated(false);
+                            } else {
+                                client.setAccountCreated(true);
+                            }
+                            break;
                     }
-                }
-
-                if (input.equals("false") && state == ADD) {
-                    client.setAccountCreated(false);
-                } else {
-                    client.setAccountCreated(true);
                 }
 
                 if (command.equals("quit")) {

@@ -35,7 +35,6 @@ import java.util.prefs.Preferences;
 
 // TODO doc comments for media and film
 // TODO move table to edit pane, only put checks on edit, put yes/no on display
-// TODO warn if you don't login
 // TODO saving to server, if user chooses a new name, reflect new name locally by creating a new save file with that name
 // TODO try to break everything
 
@@ -461,20 +460,6 @@ public class Controller implements Initializable {
             clearDisplayPane();
         }
     }
-
-//    /**
-//     * Toggles the type of media to be added.
-//     */
-//    @FXML
-//    public void toggleMedia() {
-//        if (mediaToggleButton.isSelected()){
-//            mediaToggleButton.setText("TV");
-//            mediaType = "tv";
-//        } else {
-//            mediaToggleButton.setText("Film");
-//            mediaType = "film";
-//        }
-//    }
 
     /**
      * Selects film as the media to be added.
@@ -920,6 +905,11 @@ public class Controller implements Initializable {
                     isLoggedIn = true;
                     loginMenuItem.setDisable(true);
                     logoutMenuItem.setDisable(false);
+                } else {
+                    DialogPane dialogPane = new DialogPane();
+                    dialogPane.createWarningDialog("Not logged in" , "You were not logged in to the server. " +
+                            "Check your username and password and try again.");
+                    switchToLoginPage();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
