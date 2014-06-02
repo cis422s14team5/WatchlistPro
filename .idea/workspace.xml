@@ -68,14 +68,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Controller.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Controller.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40456432" vertical-offset="16275" max-vertical-offset="24915">
-              <caret line="1100" column="26" selection-start-line="1100" selection-start-column="26" selection-end-line="1100" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="16275" max-vertical-offset="24915">
+              <caret line="1094" column="0" selection-start-line="1094" selection-start-column="0" selection-end-line="1094" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mac_os.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/aquafx_project/mac_os.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.27292112" vertical-offset="532" max-vertical-offset="54405">
+              <caret line="44" column="1" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -184,13 +194,13 @@
         <option value="$PROJECT_DIR$/src/model/TvShow.java" />
         <option value="$PROJECT_DIR$/src/util/FileIO.java" />
         <option value="$PROJECT_DIR$/src/view/WatchlistPro.css" />
-        <option value="$PROJECT_DIR$/src/com/aquafx_project/mac_os.css" />
         <option value="$PROJECT_DIR$/src/view/WarningDialog.java" />
         <option value="$PROJECT_DIR$/src/view/DialogPane.java" />
         <option value="$PROJECT_DIR$/src/controller/Fetch.java" />
         <option value="$PROJECT_DIR$/src/controller/TopicHandler.java" />
         <option value="$PROJECT_DIR$/src/controller/Controller.java" />
         <option value="$PROJECT_DIR$/src/model/MediaCollection.java" />
+        <option value="$PROJECT_DIR$/src/com/aquafx_project/mac_os.css" />
       </list>
     </option>
   </component>
@@ -1114,14 +1124,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/aquafx_project/mac_os.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="31680" max-vertical-offset="54405">
-          <caret line="2127" column="58" selection-start-line="2127" selection-start-column="58" selection-end-line="2127" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/WatchlistPro.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="600" max-vertical-offset="1005">
@@ -1172,11 +1174,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40456432" vertical-offset="16275" max-vertical-offset="24915">
-          <caret line="1100" column="26" selection-start-line="1100" selection-start-column="26" selection-end-line="1100" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="16275" max-vertical-offset="24915">
+          <caret line="1094" column="0" selection-start-line="1094" selection-start-column="0" selection-end-line="1094" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/aquafx_project/mac_os.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27292112" vertical-offset="532" max-vertical-offset="54405">
+          <caret line="44" column="1" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
