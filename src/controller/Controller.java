@@ -34,6 +34,10 @@ import java.util.*;
 import java.util.prefs.Preferences;
 
 // TODO doc comments for media and film
+// TODO move table to edit pane, only put checks on edit, put yes/no on display
+// TODO warn if you don't login
+// TODO saving to server, if user chooses a new name, reflect new name locally by creating a new save file with that name
+// TODO try to break everything
 
 /**
  * Controls the WatchlistPro view.
