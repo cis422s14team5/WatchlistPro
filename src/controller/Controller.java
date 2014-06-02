@@ -57,6 +57,7 @@ public class Controller implements Initializable {
     private String password;
     private Boolean isLoggedIn;
     private DialogPane dialogPane;
+    private int sortState;
 
     private TreeItem<Episode> masterRoot; // master root of dropdown menu
     private List<TreeItem<Episode>> seasonRootList; // list of season roots
@@ -239,6 +240,8 @@ public class Controller implements Initializable {
         preferences = Preferences.userRoot().node(this.getClass().getName());
         watchlist = new MediaCollection();
         gson = new Gson();
+
+        sortState = 0;
 
         mediaName = null;
         mediaIndex = -1;
@@ -1088,11 +1091,33 @@ public class Controller implements Initializable {
      * Updates the media list and facilitates filtering.
      */
     private void updateMediaList() {
+        MediaCollection temp = new MediaCollection();
+
         watchlist.update();
-        mediaList.setItems(watchlist.getList());
+        if (sortState == 0) {
+            temp = watchlist;
+            mediaList.setItems(temp.getList());
+        } else if (sortState == 1) {
+            temp.update();
+            for (Media media : watchlist.getList()) {
+                if (media instanceof Film) {
+                    temp.put(media.getTitle(), media);
+                }
+            }
+            mediaList.setItems(temp.getList());
+        } else if (sortState == 2) {
+            temp.update();
+            for (Media media : watchlist.getList()) {
+                if (media instanceof TvShow) {
+                    temp.put(media.getTitle(), media);
+                }
+            }
+            mediaList.setItems(temp.getList());
+        }
+
 
         // Wrap the ObservableList in a FilteredList (initially display all data).
-        FilteredList<Media> filteredData = new FilteredList<>(watchlist.getList(), p -> true);
+        FilteredList<Media> filteredData = new FilteredList<>(temp.getList(), p -> true);
 
         // Set the filter Predicate whenever the filter changes.
         filterField.textProperty().addListener((observable, oldValue, newValue) -> filteredData.setPredicate(Media -> {
@@ -1108,10 +1133,10 @@ public class Controller implements Initializable {
 
         mediaList.setItems(filteredData);
 
-        watchlist.sort();
+        temp.sort();
 
         // Reselect the correct media object in the media list.
-        if (!mediaList.equals(watchlist.getList())) {
+        if (!mediaList.equals(temp.getList())) {
             for (int i = 0; i < mediaList.getItems().size(); i++) {
                 if (mediaList.getItems().get(i) != null){
                     mediaList.getSelectionModel().select(i);
@@ -1120,6 +1145,7 @@ public class Controller implements Initializable {
 
         }
     }
+
 
     /**
      * Sets the index of the ListView to the last created or edited item.
@@ -1610,21 +1636,27 @@ public class Controller implements Initializable {
      * Set mediaList to display all films/tv shows
      */
     public void setSortToAll() {
+        sortState = 0;
         sortMenuButton.setText("View All");
+        updateMediaList();
     }
 
     /**
      * Set mediaList to display only films
      */
     public void setSortToFilmOnly() {
+        sortState = 1;
         sortMenuButton.setText("View Films Only");
+        updateMediaList();
     }
 
     /**
      * Set mediaList to display only tv shows
      */
     public void setSortToTvOnly() {
+        sortState = 2;
         sortMenuButton.setText("View TV Shows Only");
+        updateMediaList();
     }
 
 }
