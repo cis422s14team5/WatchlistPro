@@ -8,11 +8,12 @@ import org.controlsfx.dialog.Dialogs;
 public class DialogPane {
 
     public Action createConfirmDialog(String title, String message) {
-        return Dialogs.create()
+        Action response = Dialogs.create()
                 .title(title)
                 .style(DialogStyle.NATIVE)
                 .message(message)
                 .showConfirm();
+        return response;
     }
 
     public Action createWarningDialog(String title, String message) {
