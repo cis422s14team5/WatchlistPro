@@ -42,37 +42,36 @@ import java.util.prefs.Preferences;
  */
 public class Controller implements Initializable {
 
+    // Classes
     private MediaCollection watchlist;
     private MediaCreator mediaCreator;
     private FileIO io;
-    private Stage stage;
-    private LinkedList<String> recentList;
     private ByteArrayHandler byteArrayHandler;
-    private String username;
-    private String password;
-    private Boolean isLoggedIn;
     private DialogPane dialogPane;
-    private int sortState;
-
-    private TreeItem<Episode> masterRoot; // master root of dropdown menu
-    private List<TreeItem<Episode>> seasonRootList; // list of season roots
-
-    private String slash;
-    private File saveDir;
-    private File saveFile;
-
+    private Stage stage;
     private Gson gson;
     private Preferences preferences;
 
-    private ObservableList<List<Episode>> masterSeasonList;
-    private ListProperty<List<Episode>> episodeList;
-
-    // Control variables
+    // Variables
+    private Boolean isLoggedIn;
+    private File saveDir;
+    private File saveFile;
+    private int sortState;
     private int mediaIndex;
+    private int seasonNum;
+    private String username;
+    private String password;
+    private String slash;
     private String mediaName;
     private String mediaType;
     private String mediaEditType;
-    private int seasonNum; // loop counter for episodes table
+
+    // Data structures
+    private TreeItem<Episode> masterRoot; // master root of dropdown menu
+    private List<TreeItem<Episode>> seasonRootList; // list of season roots
+    private LinkedList<String> recentList;
+    private ObservableList<List<Episode>> masterSeasonList;
+    private ListProperty<List<Episode>> episodeList;
 
     // View components
     @FXML
