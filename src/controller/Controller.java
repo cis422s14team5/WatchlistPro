@@ -387,11 +387,44 @@ public class Controller implements Initializable {
             mediaName = newMediaTextField.getCharacters().toString();
 
             if (mediaType.equals("film")) {
-                Film film = mediaCreator.createFilm(mediaName);
-                watchlist.put(mediaName, film);
+                boolean sameTitle = false;
+                for (Media media : watchlist.getList()) {
+                    if (media.getTitle().equals(mediaName) && media instanceof TvShow) {
+                        sameTitle = true;
+                    }
+                }
+                if (!sameTitle) {
+                    Film film = mediaCreator.createFilm(mediaName);
+                    watchlist.put(mediaName, film);
+                } else {
+                    Action action = dialogPane.createConfirmDialog("Problem with that name", "Each item in your watchlist must have a unique name.\n" +
+                            "Adding this item will overwrite the film named: " + mediaName + "\n\n" +
+                            "Selecting No will open the TV show " + mediaName);
+                    if (action.toString().equals("YES")) {
+                        Film film = mediaCreator.createFilm(mediaName);
+                        watchlist.put(mediaName, film);
+                    }
+                }
             } else {
-                TvShow show = mediaCreator.createTvShow(mediaName);
-                watchlist.put(mediaName, show);
+                boolean sameTitle = false;
+                for (Media media : watchlist.getList()) {
+                    if (media.getTitle().equals(mediaName) && media instanceof Film) {
+                        sameTitle = true;
+                    }
+                }
+                if (!sameTitle) {
+                    TvShow show = mediaCreator.createTvShow(mediaName);
+                    watchlist.put(mediaName, show);
+                } else {
+                    Action action = dialogPane.createConfirmDialog("Problem with that name", "Each item in your watchlist must have a unique name.\n" +
+                            "Adding this item will overwrite the TV show named: " + mediaName + "\n\n" +
+                            "Selecting No will open the film " + mediaName);
+                    if (action.toString().equals("YES")) {
+                        TvShow show = mediaCreator.createTvShow(mediaName);
+                        watchlist.put(mediaName, show);
+                    }
+                }
+
             }
             newMediaTextField.clear();
             filterField.clear();
@@ -452,11 +485,9 @@ public class Controller implements Initializable {
     public void setMediaToFilm() {
         mediaType = "film";
         addButton.setText("Add Film");
-        addButton.setTextFill(Color.BLACK);
         newMediaTextField.setPromptText("Enter Name of Film to Add");
         filmSelectButton.setVisible(false);
         tvSelectButton.setVisible(true);
-        System.out.println(mediaType);
     }
 
     /**
@@ -469,7 +500,6 @@ public class Controller implements Initializable {
         newMediaTextField.setPromptText("Enter Name of TV Show to Add");
         tvSelectButton.setVisible(false);
         filmSelectButton.setVisible(true);
-        System.out.println(mediaType);
     }
 
     /**
@@ -1005,8 +1035,9 @@ public class Controller implements Initializable {
             for (String mediaName : recentList) {
                 if (selectedFile.equals(mediaName)) {
                     found = true;
-                    action = dialogPane.createConfirmDialog("Warning!", "Doing this will overwrite your WatchList with the same name. Continue?");
-                    if (action.equals("YES")) {
+                    action = dialogPane.createConfirmDialog("Warning!",
+                            "Doing this will overwrite your WatchList with the same name. Continue?");
+                    if (action.toString().equals("YES")) {
                         loadFromServer();
                         cancelLoadChoice();
 
@@ -1016,8 +1047,9 @@ public class Controller implements Initializable {
                 }
             }
         } else {
-            action = dialogPane.createConfirmDialog("Warning!", "Doing this will overwrite your WatchList with the same name. Continue?");
-            if (action.equals("YES")) {
+            action = dialogPane.createConfirmDialog("Warning!",
+                    "Doing this will overwrite your WatchList with the same name. Continue?");
+            if (action.toString().equals("YES")) {
                 loadFromServer();
                 cancelLoadChoice();
 
