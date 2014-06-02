@@ -34,13 +34,7 @@ import java.net.URL;
 import java.util.*;
 import java.util.prefs.Preferences;
 
-
-// TODO during save to server give user option to change save name, warn if overwrite will occur, use get saves
-// TODO notify the user if fetch does not find title
-// TODO notify user if not connected to the internet for all server based functions
 // TODO doc comments for media and film
-// TODO sort ListView into TV, Film, or All with dropdown
-// TODO encrypt username and password with RSA, first thing server sends is its public key
 
 /**
  * Controls the WatchlistPro view.
@@ -307,9 +301,6 @@ public class Controller implements Initializable {
 
         // Handle Media List selection changes.
         mediaList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-
-
-            // TODO warn user that it will not save if they dont press done after editing
             switchPane();
 
             if (newValue != null) {
@@ -747,7 +738,9 @@ public class Controller implements Initializable {
      */
     @FXML
     public void closeWindow() {
-        logoutFromServer();
+        if (isLoggedIn) {
+            logoutFromServer();
+        }
         saveList();
         preferences.remove("recentList");
         preferences.putByteArray("recentList", byteArrayHandler.writeByteArray(recentList));
@@ -806,9 +799,9 @@ public class Controller implements Initializable {
      */
     @FXML
     public void createAccount() {
+        Client client = new Client();
         // if user entered name & password try to create account
-        if (getUserCredentials()) {
-            Client client = new Client();
+        if (getUserCredentials() && client.isConnected()) {
             try {
                 Thread account = client.send("add" + "-=-" + username + "-=-" + password);
                 Thread quit = client.send("quit");
@@ -831,6 +824,8 @@ public class Controller implements Initializable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        } else {
+            cancelAccountCreation();
         }
     }
 
@@ -882,9 +877,8 @@ public class Controller implements Initializable {
     @FXML
     public void loginToServer() {
         // if user entered name & password try to login
-        if (getUserLogin()) {
-
-            Client client = new Client();
+        Client client = new Client();
+        if (getUserLogin() && client.isConnected()) {
             try {
                 Thread login = client.send("login" + "-=-" + username + "-=-" + password);
                 Thread quit = client.send("quit");
@@ -913,13 +907,15 @@ public class Controller implements Initializable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        } else {
+            cancelServerLogin();
         }
     }
 
     @FXML
     protected void logoutFromServer() {
-        if (isLoggedIn) {
-            Client client = new Client();
+        Client client = new Client();
+        if (isLoggedIn && client.isConnected()) {
             try {
                 Thread logout = client.send("logout" + "-=-" + username + "-=-" + password);
                 Thread quit = client.send("quit");
@@ -945,12 +941,12 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Get the list of saves from the server.
+     * Get the list of saves from the server for load from server.
      */
     @FXML
     public void getSaves() {
-        if (isLoggedIn) {
-            Client client = new Client();
+        Client client = new Client();
+        if (isLoggedIn && client.isConnected()) {
             try {
                 Thread saves = client.send("getsaves" + "-=-" + username);
                 Thread quit = client.send("quit");
@@ -971,49 +967,56 @@ public class Controller implements Initializable {
                 } else {
                     dialogPane.createWarningDialog("No server saves found",
                             "It looks like you've never saved to the server before.\n" +
-                            "Try saving to the server before loading from the server.");
+                                    "Try saving to the server before loading from the server.");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else {
+        } else if (!isLoggedIn && client.isConnected()) {
             switchToLoginPage();
+        } else {
+            cancelLoadChoice();
         }
     }
 
     /**
-     * Save the contents of the media map to the server.
+     * Checks the list of saves on the server to see if any of the names are the same as the currently opened save file.
      */
     @FXML
-    public void saveToServer() {
-        if (isLoggedIn) {
-            String saveName = saveFile.getName();
-
-            String data = "";
-            for (Map.Entry<String, Media> entry : watchlist.entrySet()) {
-                Media media = entry.getValue();
-                String jsonString = gson.toJson(media.getMap()); // JSONValue.toJSONString(media.getMap());
-                data += jsonString + "//";
-            }
-
-            Client client = new Client();
+    public void checkSaves() {
+        Client client = new Client();
+        if (isLoggedIn && client.isConnected()) {
             try {
-                Thread save = client.send("save" + "-=-" + username + "-=-" + saveName + "-=-" + data);
+                Thread saves = client.send("getsaves" + "-=-" + username);
                 Thread quit = client.send("quit");
 
-                save.start();
-                save.join();
+                saves.start();
+                saves.join();
 
                 quit.start();
                 quit.join();
-            } catch (IOException e) {
-                System.err.println("IOException");
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                System.err.println("Interrupted Exception");
+
+                String[] saveArray = client.getSaveArray();
+                if (saveArray != null) {
+                    OptionalIsStupid optional = new OptionalIsStupid();
+                    List<String> arrayList = Arrays.asList(saveArray);
+                    for (String string : arrayList) {
+                        if (string.equals(saveFile.getName())) {
+                            DialogPane dialogPane = new DialogPane();
+                            optional.setOptional(dialogPane.createInputDialog("Conflicting names",
+                                    "The server already has a file with the same name as your currently opened file.\n" +
+                                            "Not changing the name will overwrite your server file.",
+                                    "Enter a new name:", saveFile.getName()));
+                        }
+                    }
+
+                    String[] name = optional.getOptional().split(".wl");
+                    saveToServer(name[0] + ".wl");
+                }
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else {
+        } else if (!isLoggedIn && client.isConnected()) {
             switchToLoginPage();
         }
 
@@ -1069,8 +1072,8 @@ public class Controller implements Initializable {
      */
     @FXML
     protected void loadFromServer() {
-        if (isLoggedIn) {
-            Client client = new Client();
+        Client client = new Client();
+        if (isLoggedIn && client.isConnected()) {
             try {
                 saveFile = new File(saveDir + slash + loadList.getSelectionModel().getSelectedItem());
 
@@ -1106,8 +1109,10 @@ public class Controller implements Initializable {
                 System.err.println("Interrupted Exception");
                 e.printStackTrace();
             }
-        } else {
+        } else if (!isLoggedIn && client.isConnected()) {
             switchToLoginPage();
+        } else {
+            cancelLoadChoice();
         }
     }
 
@@ -1274,6 +1279,43 @@ public class Controller implements Initializable {
                 }
             }
         }
+    }
+
+    /**
+     * Save the contents of the media map to the server.
+     */
+    public void saveToServer(String saveName) {
+        Client client = new Client();
+        if (isLoggedIn && client.isConnected()) {
+
+            String data = "";
+            for (Map.Entry<String, Media> entry : watchlist.entrySet()) {
+                Media media = entry.getValue();
+                String jsonString = gson.toJson(media.getMap()); // JSONValue.toJSONString(media.getMap());
+                data += jsonString + "//";
+            }
+
+
+            try {
+                Thread save = client.send("save" + "-=-" + username + "-=-" + saveName + "-=-" + data);
+                Thread quit = client.send("quit");
+
+                save.start();
+                save.join();
+
+                quit.start();
+                quit.join();
+            } catch (IOException e) {
+                System.err.println("IOException");
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                System.err.println("Interrupted Exception");
+                e.printStackTrace();
+            }
+        } else if (!isLoggedIn && client.isConnected()) {
+            switchToLoginPage();
+        }
+
     }
 
     /**
