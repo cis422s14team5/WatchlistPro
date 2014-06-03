@@ -33,6 +33,7 @@ import java.util.*;
 import java.util.prefs.Preferences;
 
 // TODO try to break everything
+// TODO make table load on fetch
 
 /**
  * Controls the WatchlistPro view.
