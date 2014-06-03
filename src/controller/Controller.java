@@ -52,6 +52,7 @@ public class Controller implements Initializable {
     private Preferences preferences;
 
     // Variables
+    private Boolean isTvEditPane = false;
     private Boolean isLoggedIn;
     private File saveDir;
     private File saveFile;
@@ -199,6 +200,8 @@ public class Controller implements Initializable {
     private MenuItem logoutMenuItem;
     @FXML
     private VBox progressIndicatorPane;
+
+    // edit pane tree table
     @FXML
     private TreeTableView<Episode> tvEpisodeTable;
     @FXML
@@ -207,6 +210,17 @@ public class Controller implements Initializable {
     private TreeTableColumn<Episode, String> episodeCol;
     @FXML
     private TreeTableColumn<Episode, Boolean> watchedCol;
+
+    // display pane tree table
+    @FXML
+    private TreeTableView<Episode> tvEpisodeDisplayTable;
+    @FXML
+    private TreeTableColumn<Episode, String> seasonDisplayCol;
+    @FXML
+    private TreeTableColumn<Episode, String> episodeDisplayCol;
+    @FXML
+    private TreeTableColumn<Episode, Boolean> watchedDisplayCol;
+
     @FXML
     private MenuItem usernameMenuItem;
     @FXML
@@ -326,6 +340,9 @@ public class Controller implements Initializable {
 
         logoutMenuItem.setDisable(true);
 
+        /**
+         * edit pane
+         */
         //Cell factory for the data the season number column
         seasonCol.setCellValueFactory(
                 (TreeTableColumn.CellDataFeatures<Episode, String> param) ->
@@ -362,8 +379,47 @@ public class Controller implements Initializable {
         // populate the table with data
 
         seasonCol.prefWidthProperty().bind(tvEpisodeTable.widthProperty().multiply(0.20));
-        episodeCol.prefWidthProperty().bind(tvEpisodeTable.widthProperty().multiply(0.65));
+        episodeCol.prefWidthProperty().bind(tvEpisodeTable.widthProperty().multiply(0.64));
         watchedCol.prefWidthProperty().bind(tvEpisodeTable.widthProperty().multiply(0.15));
+
+        /**
+         * display pane
+         */
+        //Cell factory for the data the season number column
+        seasonDisplayCol.setCellValueFactory(
+                (TreeTableColumn.CellDataFeatures<Episode, String> param) ->
+                        param.getValue().getValue().seasonNumProperty()
+        );
+
+        //Cell factory for the data the episode column
+        episodeDisplayCol.setCellValueFactory(
+                (TreeTableColumn.CellDataFeatures<Episode, String> param) ->
+                        param.getValue().getValue().episodeNameProperty()
+        );
+
+        //Cell factory for the data in the watched column
+        watchedDisplayCol.setCellValueFactory(
+                (TreeTableColumn.CellDataFeatures<Episode, Boolean> param) ->
+                        param.getValue().getValue().watchedProperty()
+        );
+
+        // add master root to TreeTableView
+        tvEpisodeDisplayTable.setRoot(masterRoot);
+        // set root as expanded by default
+        masterRoot.setExpanded(true);
+        // hide master root
+        tvEpisodeDisplayTable.setShowRoot(false);
+        // set TreeTableView as editable
+        tvEpisodeDisplayTable.setEditable(true);
+        // set watched column as editable
+        watchedDisplayCol.setEditable(true);
+        // add columns to TreeTableView
+        tvEpisodeDisplayTable.getColumns().setAll(seasonDisplayCol, episodeDisplayCol, watchedDisplayCol);
+        // populate the table with data
+
+        seasonDisplayCol.prefWidthProperty().bind(tvEpisodeDisplayTable.widthProperty().multiply(0.20));
+        episodeDisplayCol.prefWidthProperty().bind(tvEpisodeDisplayTable.widthProperty().multiply(0.64));
+        watchedDisplayCol.prefWidthProperty().bind(tvEpisodeDisplayTable.widthProperty().multiply(0.15));
     }
 
     // Button and Field Methods
@@ -526,6 +582,8 @@ public class Controller implements Initializable {
                     watchlist.update();
                     updateMediaList();
                 } else if (mediaList.getSelectionModel().getSelectedItem() instanceof TvShow) {
+                    isTvEditPane = false;
+
                     if (tvTitleTextField.getText().equals("")) {
                         tvTitleTextField.setText(mediaName);
                     }
@@ -563,13 +621,15 @@ public class Controller implements Initializable {
                             }
                         }
 
+
+
                         ((TvShow) watchlist.get(mediaName)).getSeasonWatchedList().setAll(seasonBoolList);
 
                         int count = 0;
 
                         for (int i = 0; i < list.size(); i++) {
                             boolean seasonBool = list.get(i).getValue().getWatched();
-                            ((TvShow) watchlist.get(mediaName)).getSeasonWatchedList().set(i, seasonBool);
+                            ((TvShow) watchlist.get(mediaName)).setSeasonWatchedList(i, seasonBool);
                             for (int j = 0; j < list.get(i).getChildren().size(); j++) {
                                 if (seasonBool) {
                                     list.get(i).getChildren().get(j).getValue().setWatched(true);
@@ -580,7 +640,8 @@ public class Controller implements Initializable {
                             }
                         }
 
-                        addEpisodesToTable(episodeList);
+                        // tv show display pane table
+                        addEpisodesToTable(episodeList, tvEpisodeTable, seasonCol, episodeCol, watchedCol);
                     } else {
                         // A new media object needs to be created.
                         TvShow show = mediaCreator.createTvShow(tvTitleTextField.getText());
@@ -592,7 +653,14 @@ public class Controller implements Initializable {
                         show.setNumEpisodes(tvNumEpisodes);
                         show.setDescription(tvDescriptionTextField.getText());
                         show.setEpisodeList(episodeList);
-                        addEpisodesToTable(episodeList);
+                        // tv show display pane table
+                        addEpisodesToTable(episodeList, tvEpisodeTable, seasonCol, episodeCol, watchedCol);
+
+                        ObservableList<Boolean> tempList = new ObservableListWrapper<>(new ArrayList<>());
+                        for (int i = 0; i < episodeList.size(); i++) {
+                            tempList.add(false);
+                        }
+                        show.setSeasonWatchedList(tempList);
 
                         // Refresh the watchlist after creation.
                         watchlist.remove(mediaName);
@@ -603,6 +671,7 @@ public class Controller implements Initializable {
                 }
                 setListIndex();
             } else {
+                isTvEditPane = true;
                 filterField.setDisable(true);
             }
             switchPane();
@@ -1233,7 +1302,7 @@ public class Controller implements Initializable {
                 // select tv or film edit panel
                 switch (mediaEditType) {
                     case "tv":
-                        setTvEditPane();
+                        masterSeasonList = setTvEditPane();
                         // set tv edit pane visible
                         tvEditPane.setVisible(true);
                         tvEditPane.setDisable(false);
@@ -1265,7 +1334,6 @@ public class Controller implements Initializable {
                 switch (mediaEditType) {
                     case "tv":
                         // set tv display pane to display contents of tv edit pane
-
                         masterSeasonList = setTvDisplayPane();
                         // set tv display pane visible
                         tvDisplayPane.setVisible(true);
@@ -1427,6 +1495,7 @@ public class Controller implements Initializable {
         tvDescriptionLabel.setText("");
 
         tvEpisodeTable.getColumns().clear();
+        tvEpisodeDisplayTable.getColumns().clear();
     }
 
     /**
@@ -1447,7 +1516,7 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Populates the tv display pane based on values from the film edit pane. Called on start.
+     * Populates the tv display pane based on values from the model. Called on start.
      */
     private ObservableList<List<Episode>> setTvDisplayPane() {
         TvShow show = (TvShow) mediaList.getSelectionModel().getSelectedItem();
@@ -1466,20 +1535,30 @@ public class Controller implements Initializable {
         for (List<Episode> episodes : show.getEpisodeList()) {
             tempList.add(episodes);
         }
-        addEpisodesToTable(tempList);
+        // tv show display pane table
+        addEpisodesToTable(tempList, tvEpisodeDisplayTable, seasonDisplayCol, episodeDisplayCol, watchedDisplayCol);
 
         if (show.getWatched().equals("Yes")) {
             checkEveryEpisodeInShow();
         }
 
-        List<TreeItem<Episode>> list = tvEpisodeTable.getRoot().getChildren();
+        List<TreeItem<Episode>> list = tvEpisodeDisplayTable.getRoot().getChildren();
         for (int i = 0; i < list.size(); i++) {
+            boolean seasonWatched = false;
+            if (show.getSeasonWatchedList().get(i)) {
+                list.get(i).getValue().setWatched(true);
+                seasonWatched = true;
+            }
             boolean watched = true;
             for (int j = 0; j < list.get(i).getChildren().size(); j++) {
                 if (!list.get(i).getChildren().get(j).getValue().getWatched()) {
                     watched = false;
                 }
+                if (seasonWatched) {
+                    list.get(i).getChildren().get(j).getValue().setWatched(true);
+                }
             }
+
             if (watched && list.size() > 0) {
                 list.get(i).getValue().setWatched(true);
             }
@@ -1488,6 +1567,10 @@ public class Controller implements Initializable {
         episodeList.set(tempList);
 
         masterSeasonList = new ObservableListWrapper<>(new ArrayList<>());
+
+//        seasonDisplayCol.prefWidthProperty().bind(tvEpisodeDisplayTable.widthProperty().multiply(0.20));
+//        episodeDisplayCol.prefWidthProperty().bind(tvEpisodeDisplayTable.widthProperty().multiply(0.65));
+//        watchedDisplayCol.prefWidthProperty().bind(tvEpisodeDisplayTable.widthProperty().multiply(0.15));
 
         return tempList;
     }
@@ -1514,7 +1597,7 @@ public class Controller implements Initializable {
     /**
      * Populates the tv edit pane based on passed in arguments. Called on start.
      */
-    private void setTvEditPane() {
+    private ObservableList<List<Episode>> setTvEditPane() {
         TvShow show = (TvShow) mediaList.getSelectionModel().getSelectedItem();
 
         tvTitleTextField.setText(show.getTitle());
@@ -1528,6 +1611,36 @@ public class Controller implements Initializable {
         tvNumSeasonsTextField.setText(show.getNumSeasons());
         tvNumEpisodesTextField.setText(show.getNumEpisodes());
         tvDescriptionTextField.setText(show.getDescription());
+
+        ObservableList<List<Episode>> tempList = new ObservableListWrapper<>(new ArrayList<>());
+        for (List<Episode> episodes : show.getEpisodeList()) {
+            tempList.add(episodes);
+        }
+        // tv show edit pane table
+        addEpisodesToTable(tempList, tvEpisodeTable, seasonCol, episodeCol, watchedCol);
+
+        if (show.getWatched().equals("Yes")) {
+            checkEveryEpisodeInShow();
+        }
+
+        List<TreeItem<Episode>> list = tvEpisodeTable.getRoot().getChildren();
+        for (int i = 0; i < list.size(); i++) {
+            boolean watched = true;
+            for (int j = 0; j < list.get(i).getChildren().size(); j++) {
+                if (!list.get(i).getChildren().get(j).getValue().getWatched()) {
+                    watched = false;
+                }
+            }
+            if (watched && list.size() > 0) {
+                list.get(i).getValue().setWatched(true);
+            }
+        }
+
+        episodeList.set(tempList);
+
+        masterSeasonList = new ObservableListWrapper<>(new ArrayList<>());
+
+        return tempList;
 
     }
 
@@ -1633,8 +1746,13 @@ public class Controller implements Initializable {
     /**
      * Add all the episodes for each season of the TV show to the tree tables.
      * @param seasons is the TV show's season list.
+     * @param treeTable is episode table to be set
+     * @param seasCol is season column of table
+     * @param epCol is episode column of table
+     * @param watchCol is watched column of table
      */
-    public void addEpisodesToTable(ObservableList<List<Episode>> seasons) {
+    public void addEpisodesToTable(ObservableList<List<Episode>> seasons, TreeTableView<Episode> treeTable,
+                                   TreeTableColumn<Episode, String> seasCol, TreeTableColumn<Episode, String> epCol, TreeTableColumn<Episode, Boolean> watchCol) {
 
         episodeList = new SimpleListProperty<>();
         episodeList.set(seasons);
@@ -1642,45 +1760,47 @@ public class Controller implements Initializable {
         masterRoot = new TreeItem<>(new Episode("Master", "", false));
         seasonRootList = new ArrayList<>();
 
-        seasonCol = new TreeTableColumn<>();
-        episodeCol = new TreeTableColumn<>();
-        watchedCol = new TreeTableColumn<>();
+        seasCol = new TreeTableColumn<>();
+        epCol = new TreeTableColumn<>();
+        watchCol = new TreeTableColumn<>();
 
-        seasonCol.setText("Season");
-        episodeCol.setText("Episode");
-        watchedCol.setText("Watched");
+        seasCol.setText("Season");
+        epCol.setText("Episode");
+        watchCol.setText("Watched");
 
-        seasonCol.setCellValueFactory(
+        seasCol.setCellValueFactory(
                 (TreeTableColumn.CellDataFeatures<Episode, String> param) ->
                         param.getValue().getValue().seasonNumProperty()
         );
 
         //Cell factory for the data the episode column
-        episodeCol.setCellValueFactory(
+        epCol.setCellValueFactory(
                 (TreeTableColumn.CellDataFeatures<Episode, String> param) ->
                         param.getValue().getValue().episodeNameProperty()
         );
 
         //Cell factory for the data in the watched column
-        watchedCol.setCellValueFactory(
+        watchCol.setCellValueFactory(
                 (TreeTableColumn.CellDataFeatures<Episode, Boolean> param) ->
                         param.getValue().getValue().watchedProperty()
         );
 
-        // add checkboxes
-        watchedCol.setCellFactory(CheckBoxTreeTableCell.forTreeTableColumn(watchedCol));
+        if (isTvEditPane) {
+            // add checkboxes
+            watchCol.setCellFactory(CheckBoxTreeTableCell.forTreeTableColumn(watchCol));
+        }
 
-        tvEpisodeTable.setRoot(masterRoot);
+        treeTable.setRoot(masterRoot);
         // set root as expanded by default
         masterRoot.setExpanded(true);
         // hide master root
-        tvEpisodeTable.setShowRoot(false);
+        treeTable.setShowRoot(false);
         // set TreeTableView as editable
-        tvEpisodeTable.setEditable(true);
+        treeTable.setEditable(true);
         // set watched column as editable
-        watchedCol.setEditable(true);
+        watchCol.setEditable(true);
         // add columns to TreeTableView
-        tvEpisodeTable.getColumns().setAll(seasonCol, episodeCol, watchedCol);
+        treeTable.getColumns().setAll(seasCol, epCol, watchCol);
 
         for (seasonNum = 0; seasonNum < seasons.size(); seasonNum++) {
             // create season roots, save them to list
@@ -1693,9 +1813,9 @@ public class Controller implements Initializable {
             // add season roots to master root
             masterRoot.getChildren().add(seasonNum, seasonRootList.get(seasonNum));
         }
-        seasonCol.prefWidthProperty().bind(tvEpisodeTable.widthProperty().multiply(0.20));
-        episodeCol.prefWidthProperty().bind(tvEpisodeTable.widthProperty().multiply(0.65));
-        watchedCol.prefWidthProperty().bind(tvEpisodeTable.widthProperty().multiply(0.15));
+        seasCol.prefWidthProperty().bind(treeTable.widthProperty().multiply(0.20));
+        epCol.prefWidthProperty().bind(treeTable.widthProperty().multiply(0.64));
+        watchCol.prefWidthProperty().bind(treeTable.widthProperty().multiply(0.15));
     }
 
     /**

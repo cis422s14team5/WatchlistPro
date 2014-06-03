@@ -213,4 +213,9 @@ public class TvShow extends Media {
         this.seasonWatchedList.set(seasonWatchedList);
         getMap().put("seasonWatchedList", gson.toJson(seasonWatchedList));
     }
+
+    public void setSeasonWatchedList(int index, boolean bool) {
+        this.seasonWatchedList.set(index, bool);
+        getMap().put("seasonWatchedList", gson.toJson(seasonWatchedList));
+    }
 }

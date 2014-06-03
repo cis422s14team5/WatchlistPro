@@ -201,7 +201,7 @@
       <children>
                               <StackPane prefHeight="579.0" prefWidth="548.0" VBox.vgrow="ALWAYS">
       <children>
-                                    <VBox fx:id="filmDisplayPane" prefHeight="200.0" prefWidth="100.0" spacing="3.0" visible="false">
+                                    <VBox fx:id="filmDisplayPane" prefHeight="200.0" prefWidth="100.0" spacing="3.0">
       <children>
                                           <HBox prefHeight="25.0" prefWidth="80.0">
       <children>
@@ -368,7 +368,7 @@
       <Insets bottom="5.0" right="5.0" top="5.0" />
       </StackPane.margin>
       </VBox>
-      <VBox fx:id="tvDisplayPane" layoutX="10.0" layoutY="15.0" prefHeight="200.0" prefWidth="100.0" spacing="3.0">
+      <VBox fx:id="tvDisplayPane" layoutX="10.0" layoutY="15.0" prefHeight="200.0" prefWidth="100.0" spacing="3.0" visible="false">
       <children>
       <HBox prefHeight="25.0" prefWidth="80.0">
       <children>
@@ -435,12 +435,13 @@
                                                 </ScrollPane>
       </children>
       </HBox>
-          <TreeTableView fx:id="tvEpisodeTable" prefHeight="200.0" stylesheets="@WatchlistPro.css" VBox.vgrow="ALWAYS">
-              <columns>
-                  <TreeTableColumn fx:id="seasonCol" maxWidth="75.0" minWidth="-1.0" prefWidth="75.0" resizable="false" text="Season" />
-                  <TreeTableColumn fx:id="episodeCol" minWidth="-1.0" prefWidth="382.0" resizable="false" text="Episode" /><TreeTableColumn fx:id="watchedCol" maxWidth="75.0" minWidth="-1.0" prefWidth="75.0" resizable="false" text="Watched" />
-              </columns>
-          </TreeTableView>
+<TreeTableView fx:id="tvEpisodeDisplayTable" layoutX="20.0" layoutY="306.0" prefHeight="200.0" stylesheets="@WatchlistPro.css">
+<columns>
+<TreeTableColumn fx:id="seasonDisplayCol" maxWidth="-1.0" minWidth="108.0" prefWidth="75.0" text="Season" />
+<TreeTableColumn fx:id="episodeDisplayCol" maxWidth="-1.0" minWidth="320.0" prefWidth="-1.0" text="Episode" />
+<TreeTableColumn fx:id="watchedDisplayCol" maxWidth="75.0" minWidth="100.0" prefWidth="75.0" text="Watched" />
+</columns>
+</TreeTableView>
       </children>
       <padding>
       <Insets left="10.0" />
@@ -533,6 +534,12 @@
       <TextArea fx:id="tvDescriptionTextField" wrapText="true" HBox.hgrow="ALWAYS" />
       </children>
       </HBox>
+          <TreeTableView fx:id="tvEpisodeTable" prefHeight="200.0" stylesheets="@WatchlistPro.css" VBox.vgrow="ALWAYS">
+              <columns>
+                  <TreeTableColumn fx:id="seasonCol" maxWidth="-1.0" minWidth="108.0" prefWidth="75.0" text="Season" />
+                  <TreeTableColumn fx:id="episodeCol" maxWidth="-1.0" minWidth="320.0" prefWidth="-1.0" text="Episode" /><TreeTableColumn fx:id="watchedCol" maxWidth="75.0" minWidth="100.0" prefWidth="75.0" text="Watched" />
+              </columns>
+          </TreeTableView>
       </children>
       <padding>
       <Insets left="10.0" />
