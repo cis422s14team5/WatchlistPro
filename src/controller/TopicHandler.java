@@ -287,7 +287,8 @@ public class TopicHandler {
         }
 
         int episodeNumber = 1;
-        for (String id : seasonIdList) {
+        for (int i = 0; i < seasonIdList.size(); i++) {
+            String id = seasonIdList.get(i);
             JSONObject seasonTopic = getTopic(id);
 
             String seasonNumber;
@@ -297,6 +298,11 @@ public class TopicHandler {
             } catch (Exception e) {
                 seasonNumber = "0";
             }
+//            String tempNum = Integer.toString(seasonIdList.size() - 1);
+//            if (!seasonNumber.equals(tempNum)) {
+//                seasonNumber = tempNum;
+//            }
+
             JSONArray episodes;
             try {
                 episodes = JsonPath.read(seasonTopic, "$.property['/tv/tv_series_season/episodes'].values");
@@ -321,7 +327,10 @@ public class TopicHandler {
                 episodeNumber++;
             }
 
-            seasonList.set(Integer.parseInt(seasonNumber), episodeList);
+            if (i == Integer.parseInt(seasonNumber) - 1 || Integer.parseInt(seasonNumber) - 1 == -1) {
+                seasonList.set(Integer.parseInt(seasonNumber), episodeList);
+            }
+
             episodeNumber = 1;
         }
         output.clear();

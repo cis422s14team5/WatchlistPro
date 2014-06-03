@@ -1495,7 +1495,7 @@ public class Controller implements Initializable {
                     watched = false;
                 }
             }
-            if (watched && list.size() > 0) {
+            if (watched && list.get(i).getChildren().size() > 0) {
                 list.get(i).getValue().setWatched(true);
             }
         }
