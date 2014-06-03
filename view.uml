@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>view</OriginalElement>
+  <nodes>
+    <node x="313.99999999999994" y="188.0">controller.MediaCreator</node>
+    <node x="484.4305555555554" y="663.0">controller.Controller</node>
+    <node x="641.5141566265058" y="346.0">client.Client</node>
+    <node x="450.26388888888874" y="99.0">model.TvShow</node>
+    <node x="327.99999999999994" y="99.0">model.Film</node>
+    <node x="695.1391566265058" y="425.0">controller.TopicHandler</node>
+    <node x="344.19449464524746" y="0.0">model.Media</node>
+    <node x="503.01415662650584" y="188.0">controller.FileIO</node>
+    <node x="767.1391566265058" y="267.0">view.DialogPane</node>
+    <node x="0.0" y="514.0">controller.ByteArrayHandler</node>
+    <node x="756.4700970548854" y="0.0">model.Episode</node>
+    <node x="159.99999999999994" y="514.0">model.MediaCollection</node>
+    <node x="662.3194444444442" y="514.0">controller.Fetch</node>
+    <node x="425.37981927710763" y="514.0">view.AboutDialog</node>
+    <node x="601.8798192771077" y="267.0">client.ClientThread</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="controller.Controller" target="controller.MediaCreator">
+      <point x="-18.47222222222217" y="-14.5" />
+      <point x="513.4583333333333" y="593.0" />
+      <point x="394.4586010709504" y="593.0" />
+      <point x="394.4586010709504" y="242.0" />
+      <point x="342.74999999999994" y="242.0" />
+      <point x="-28.75" y="14.5" />
+    </edge>
+    <edge source="controller.Controller" target="view.DialogPane">
+      <point x="23.75" y="-14.5" />
+      <point x="555.6805555555554" y="603.0" />
+      <point x="852.0805555555553" y="603.0" />
+      <point x="852.0805555555553" y="321.0" />
+      <point x="838.5391566265058" y="321.0" />
+      <point x="20.400000000000006" y="14.5" />
+    </edge>
+    <edge source="controller.TopicHandler" target="client.Client">
+      <point x="-38.66666666666663" y="-14.5" />
+      <point x="714.4724899598392" y="400.0" />
+      <point x="701.8891566265058" y="400.0" />
+      <point x="25.875" y="14.5" />
+    </edge>
+    <edge source="controller.Fetch" target="model.Media">
+      <point x="-26.400000000000006" y="-14.5" />
+      <point x="668.9194444444443" y="494.0" />
+      <point x="591.3798192771077" y="494.0" />
+      <point x="591.3798192771077" y="49.0" />
+      <point x="406.2944946452475" y="49.0" />
+      <point x="27.600000000000023" y="14.5" />
+    </edge>
+    <edge source="controller.Fetch" target="view.DialogPane">
+      <point x="26.39999999999999" y="-14.5" />
+      <point x="721.7194444444442" y="494.0" />
+      <point x="830.4002677376169" y="494.0" />
+      <point x="830.4002677376169" y="321.0" />
+      <point x="818.1391566265058" y="321.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="controller.Controller" target="controller.FileIO">
+      <point x="2.638888888888914" y="-14.5" />
+      <point x="534.5694444444443" y="563.0" />
+      <point x="546.8798192771077" y="563.0" />
+      <point x="546.8798192771077" y="242.0" />
+      <point x="537.0141566265058" y="242.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="model.TvShow" target="model.Episode">
+      <point x="20.0" y="-14.5" />
+      <point x="510.26388888888874" y="59.0" />
+      <point x="763.2200970548854" y="59.0" />
+      <point x="-33.75" y="14.5" />
+    </edge>
+    <edge source="model.Film" target="model.Media">
+      <point x="0.0" y="-14.5" />
+      <point x="357.49999999999994" y="79.0" />
+      <point x="378.69449464524746" y="79.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="controller.MediaCreator" target="model.Film">
+      <point x="-28.75" y="-14.5" />
+      <point x="-14.75" y="14.5" />
+    </edge>
+    <edge source="controller.Controller" target="client.Client">
+      <point x="7.9166666666667425" y="-14.5" />
+      <point x="539.8472222222222" y="573.0" />
+      <point x="570.5141566265058" y="573.0" />
+      <point x="570.5141566265058" y="400.0" />
+      <point x="650.1391566265058" y="400.0" />
+      <point x="-25.875" y="14.5" />
+    </edge>
+    <edge source="controller.TopicHandler" target="view.DialogPane">
+      <point x="38.666666666666686" y="-14.5" />
+      <point x="791.8058232931725" y="400.0" />
+      <point x="802.809119812584" y="400.0" />
+      <point x="802.809119812584" y="321.0" />
+      <point x="797.7391566265057" y="321.0" />
+      <point x="-20.400000000000006" y="14.5" />
+    </edge>
+    <edge source="client.Client" target="client.ClientThread">
+      <point x="-23.0" y="-14.5" />
+      <point x="653.0141566265058" y="321.0" />
+      <point x="629.8798192771077" y="321.0" />
+      <point x="-28.0" y="14.5" />
+    </edge>
+    <edge source="controller.Controller" target="controller.ByteArrayHandler">
+      <point x="-44.861111111111086" y="-14.5" />
+      <point x="487.0694444444443" y="643.0" />
+      <point x="35.0" y="643.0" />
+      <point x="-35.0" y="14.5" />
+    </edge>
+    <edge source="controller.Controller" target="model.Episode">
+      <point x="39.58333333333326" y="-14.5" />
+      <point x="571.5138888888887" y="633.0" />
+      <point x="884.9169344042834" y="633.0" />
+      <point x="884.9169344042834" y="69.0" />
+      <point x="817.2200970548854" y="69.0" />
+      <point x="20.25" y="14.5" />
+    </edge>
+    <edge source="controller.MediaCreator" target="model.TvShow">
+      <point x="28.75" y="-14.5" />
+      <point x="400.24999999999994" y="168.0" />
+      <point x="470.26388888888874" y="168.0" />
+      <point x="-20.0" y="14.5" />
+    </edge>
+    <edge source="controller.Controller" target="model.Media">
+      <point x="-23.75" y="-14.5" />
+      <point x="508.1805555555554" y="603.0" />
+      <point x="303.49999999999994" y="603.0" />
+      <point x="303.49999999999994" y="69.0" />
+      <point x="364.89449464524745" y="69.0" />
+      <point x="-13.800000000000011" y="14.5" />
+    </edge>
+    <edge source="controller.Fetch" target="controller.Controller">
+      <point x="16.5" y="14.5" />
+      <point x="711.8194444444442" y="593.0" />
+      <point x="550.4027777777776" y="593.0" />
+      <point x="18.47222222222217" y="-14.5" />
+    </edge>
+    <edge source="model.MediaCollection" target="model.Media">
+      <point x="0.0" y="-14.5" />
+      <point x="226.49999999999994" y="59.0" />
+      <point x="351.09449464524744" y="59.0" />
+      <point x="-27.600000000000023" y="14.5" />
+    </edge>
+    <edge source="controller.Fetch" target="controller.TopicHandler">
+      <point x="13.2" y="-14.5" />
+      <point x="708.5194444444443" y="484.0" />
+      <point x="753.1391566265058" y="484.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="controller.TopicHandler" target="model.Episode">
+      <point x="0.0" y="-14.5" />
+      <point x="753.1391566265058" y="400.0" />
+      <point x="756.6391566265058" y="400.0" />
+      <point x="756.6391566265058" y="79.0" />
+      <point x="790.2200970548854" y="79.0" />
+      <point x="-6.75" y="14.5" />
+    </edge>
+    <edge source="client.Client" target="view.DialogPane">
+      <point x="23.0" y="-14.5" />
+      <point x="699.0141566265058" y="321.0" />
+      <point x="777.3391566265059" y="321.0" />
+      <point x="-40.8" y="14.5" />
+    </edge>
+    <edge source="controller.FileIO" target="model.Episode">
+      <point x="22.66666666666663" y="-14.5" />
+      <point x="559.6808232931725" y="168.0" />
+      <point x="565.0974899598391" y="168.0" />
+      <point x="565.0974899598391" y="69.0" />
+      <point x="776.7200970548854" y="69.0" />
+      <point x="-20.25" y="14.5" />
+    </edge>
+    <edge source="controller.Controller" target="controller.Fetch">
+      <point x="13.194444444444343" y="-14.5" />
+      <point x="545.1249999999998" y="583.0" />
+      <point x="678.8194444444442" y="583.0" />
+      <point x="-16.5" y="14.5" />
+    </edge>
+    <edge source="client.ClientThread" target="controller.FileIO">
+      <point x="0.0" y="-14.5" />
+      <point x="657.8798192771077" y="242.0" />
+      <point x="559.6808232931725" y="242.0" />
+      <point x="22.66666666666663" y="14.5" />
+    </edge>
+    <edge source="controller.Controller" target="view.AboutDialog">
+      <point x="-2.638888888888914" y="-14.5" />
+      <point x="529.2916666666665" y="563.0" />
+      <point x="480.87981927710763" y="563.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="controller.Controller" target="model.MediaCollection">
+      <point x="-29.02777777777783" y="-14.5" />
+      <point x="502.90277777777754" y="613.0" />
+      <point x="259.74999999999994" y="613.0" />
+      <point x="33.25" y="14.5" />
+    </edge>
+    <edge source="controller.FileIO" target="model.TvShow">
+      <point x="0.0" y="-14.5" />
+      <point x="537.0141566265058" y="148.0" />
+      <point x="510.26388888888874" y="148.0" />
+      <point x="20.0" y="14.5" />
+    </edge>
+    <edge source="controller.Fetch" target="client.Client">
+      <point x="0.0" y="-14.5" />
+      <point x="695.3194444444442" y="474.0" />
+      <point x="684.6391566265058" y="474.0" />
+      <point x="8.625" y="14.5" />
+    </edge>
+    <edge source="controller.FileIO" target="model.Film">
+      <point x="-22.666666666666686" y="-14.5" />
+      <point x="514.3474899598391" y="158.0" />
+      <point x="372.24999999999994" y="158.0" />
+      <point x="14.75" y="14.5" />
+    </edge>
+    <edge source="model.TvShow" target="model.Media">
+      <point x="-20.0" y="-14.5" />
+      <point x="470.26388888888874" y="79.0" />
+      <point x="392.4944946452474" y="79.0" />
+      <point x="13.799999999999955" y="14.5" />
+    </edge>
+    <edge source="client.ClientThread" target="client.Client">
+      <point x="28.0" y="14.5" />
+      <point x="685.8798192771077" y="321.0" />
+      <point x="676.0141566265058" y="321.0" />
+      <point x="0.0" y="-14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="495.5" y="368.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
