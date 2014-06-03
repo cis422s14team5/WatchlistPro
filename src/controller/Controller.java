@@ -33,7 +33,6 @@ import java.util.*;
 import java.util.prefs.Preferences;
 
 // TODO move table to edit pane, only put checks on edit, put yes/no on display
-// TODO saving to server, if user chooses a new name, reflect new name locally by creating a new save file with that name
 // TODO try to break everything
 
 /**
@@ -252,7 +251,7 @@ public class Controller implements Initializable {
 
         dialogPane = new DialogPane();
 
-        preferences.remove("recentList");
+        //preferences.remove("recentList");
         // Setup Open Recent List
         recentList = byteArrayHandler.readByteArray(preferences.getByteArray("recentList", "".getBytes()));
         if (!recentList.isEmpty()) {
@@ -987,7 +986,8 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Checks the list of saves on the server to see if any of the names are the same as the currently opened save file.
+     * Checks the list of saves on the server to see if any of the names are the same as the currently opened
+     * save file. Used during save to server.
      */
     @FXML
     public void checkSaves() {
@@ -1005,20 +1005,34 @@ public class Controller implements Initializable {
 
                 String[] saveArray = client.getSaveArray();
                 if (saveArray != null) {
-                    EstStultus optional = new EstStultus();
+                    Optional<String> optional = Optional.of("");
                     List<String> arrayList = Arrays.asList(saveArray);
+                    boolean isSame = false;
                     for (String string : arrayList) {
                         if (string.equals(saveFile.getName())) {
+                            isSame = true;
                             DialogPane dialogPane = new DialogPane();
-                            optional.setOptional(dialogPane.createInputDialog("Conflicting names",
+                            optional = dialogPane.createInputDialog("Conflicting names",
                                     "The server already has a file with the same name as your currently opened file.\n" +
                                             "Not changing the name will overwrite your server file.",
-                                    "Enter a new name:", saveFile.getName()));
+                                    "Enter a new name:", saveFile.getName());
                         }
                     }
-
-                    String[] name = optional.getOptional().split(".wl");
-                    saveToServer(name[0] + ".wl");
+                    if (isSame && optional.isPresent()) {
+                        String[] nameArray = new String[2];
+                        nameArray = optional.get().split(".wl");
+                        String name = nameArray[0];
+                        if (nameArray[0] == null) {
+                            name = "";
+                        }
+                        saveToServer(name + ".wl");
+                        saveFile = new File(name + ".wl");
+                        stage.setTitle("WatchlistPro - " + saveFile.getName());
+                        saveList();
+                        updateRecentMenu(saveFile.getName());
+                    } else if (!isSame) {
+                        saveToServer(saveFile.getName());
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -1040,7 +1054,7 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Sends the load choice to the server..
+     * Sends the load choice to the server.
      */
     @FXML
     public void sendLoadChoice() {
@@ -1115,6 +1129,7 @@ public class Controller implements Initializable {
                 io.load(watchlist.getMap(), saveFile);
 
                 updateMediaList();
+                mediaList.getSelectionModel().select(0);
             } catch (IOException e) {
                 System.err.println("IOException");
                 e.printStackTrace();
@@ -1303,8 +1318,12 @@ public class Controller implements Initializable {
             String data = "";
             for (Map.Entry<String, Media> entry : watchlist.entrySet()) {
                 Media media = entry.getValue();
-                String jsonString = gson.toJson(media.getMap()); // JSONValue.toJSONString(media.getMap());
+                String jsonString = gson.toJson(media.getMap());
                 data += jsonString + "//";
+            }
+
+            if (data.equals("")) {
+                data = "{}";
             }
 
             try {
@@ -1316,11 +1335,7 @@ public class Controller implements Initializable {
 
                 quit.start();
                 quit.join();
-            } catch (IOException e) {
-                System.err.println("IOException");
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                System.err.println("Interrupted Exception");
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         } else if (!isLoggedIn && client.isConnected()) {

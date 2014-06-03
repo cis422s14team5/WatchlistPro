@@ -81,6 +81,9 @@ public class FileIO {
     private ObservableMap<String, Media> setProperties(ObservableMap<String, Media> mediaMap, List<String> list) {
         Type mapType = new TypeToken<HashMap<String, String>>(){}.getType();
 
+        if (!list.isEmpty() && list.get(0).equals("{}")) {
+            list = new ArrayList<>();
+        }
         for (String string : list) {
             Map<String, String> map = gson.fromJson(string, mapType);
 
@@ -169,14 +172,14 @@ public class FileIO {
      * @param list is the array list where each element will become a line in the file.
      * @param file the file to write to.
      */
-    public void write(List<String> list, File file) {
+    private void write(List<String> list, File file) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
             for (String string: list) {
                 writer.write(string + "\n");
             }
             writer.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -186,7 +189,7 @@ public class FileIO {
      * @param file the file to read from.
      * @return a list where each element is a line of the file.
      */
-    public List<String> read(File file) {
+    private List<String> read(File file) {
         ArrayList<String> list = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -195,8 +198,8 @@ public class FileIO {
                 list.add(line);
             }
             reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            write(list, file);
         }
         return list;
     }
