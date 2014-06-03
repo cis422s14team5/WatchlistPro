@@ -33,7 +33,6 @@ import java.util.*;
 import java.util.prefs.Preferences;
 
 // TODO try to break everything
-// TODO make table load on fetch
 
 /**
  * Controls the WatchlistPro view.
@@ -219,15 +218,8 @@ public class Controller implements Initializable {
     private TreeTableColumn<Episode, String> episodeDisplayCol;
     @FXML
     private TreeTableColumn<Episode, Boolean> watchedDisplayCol;
-
     @FXML
     private MenuItem usernameMenuItem;
-    @FXML
-    private MenuItem sortAllMenuItem;
-    @FXML
-    private MenuItem sortFilmMenuItem;
-    @FXML
-    private MenuItem sortTvMenuItem;
     @FXML
     private MenuButton sortMenuButton;
 
@@ -264,8 +256,7 @@ public class Controller implements Initializable {
         File defaultFile = new File(saveDir + slash + "watchlist.wl");
 
         dialogPane = new DialogPane();
-
-        //preferences.remove("recentList");
+        
         // Setup Open Recent List
         recentList = byteArrayHandler.readByteArray(preferences.getByteArray("recentList", "".getBytes()));
         if (!recentList.isEmpty()) {
@@ -1443,7 +1434,6 @@ public class Controller implements Initializable {
             for (int i = recentList.size() - 1; i >= 0; i--) {
                 addRecent(recentList.get(i));
             }
-            //recentList.forEach(this::addRecent);
         } else {
             openRecentMenuItem.setDisable(true);
         }
@@ -1581,10 +1571,6 @@ public class Controller implements Initializable {
         episodeList.set(tempList);
 
         masterSeasonList = new ObservableListWrapper<>(new ArrayList<>());
-
-//        seasonDisplayCol.prefWidthProperty().bind(tvEpisodeDisplayTable.widthProperty().multiply(0.20));
-//        episodeDisplayCol.prefWidthProperty().bind(tvEpisodeDisplayTable.widthProperty().multiply(0.65));
-//        watchedDisplayCol.prefWidthProperty().bind(tvEpisodeDisplayTable.widthProperty().multiply(0.15));
 
         return tempList;
     }
@@ -1774,10 +1760,6 @@ public class Controller implements Initializable {
 
         masterRoot = new TreeItem<>(new Episode("Master", "", false));
         seasonRootList = new ArrayList<>();
-
-//        seasCol = new TreeTableColumn<>();
-//        epCol = new TreeTableColumn<>();
-//        watchCol = new TreeTableColumn<>();
 
         seasCol.setText("Season");
         epCol.setText("Episode");
