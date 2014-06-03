@@ -846,6 +846,9 @@ public class Controller implements Initializable {
     public void createAccount() {
         Client client = new Client();
         // if user entered name & password try to create account
+        if (isLoggedIn) {
+            logoutFromServer();
+        }
         if (getUserCredentials() && client.isConnected()) {
             try {
                 Thread account = client.send("add");
@@ -874,6 +877,7 @@ public class Controller implements Initializable {
                     DialogPane dialogPane = new DialogPane();
                     dialogPane.createWarningDialog("Failed to create account", "The account name you enter is not valid.");
                 } else {
+
                     userNameField.setText(username);
                     passwordField.setText(password);
                     loginToServer();
@@ -935,6 +939,7 @@ public class Controller implements Initializable {
     public void loginToServer() {
         // if user entered name & password try to login
         Client client = new Client();
+
         if (getUserLogin() && client.isConnected()) {
             try {
                 Thread login = client.send("login" + "-=-" + username + "-=-" + password);
