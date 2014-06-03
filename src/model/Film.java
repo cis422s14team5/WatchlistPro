@@ -35,53 +35,101 @@ public class Film extends Media {
         getMap().put("description", description.get());
     }
 
+    /**
+     * Get the director field.
+     * @return the director.
+     */
     public String getDirector() {
         return director.get();
     }
 
+    /**
+     * Get the director property.
+     * @return the director property.
+     */
     public StringProperty directorProperty() {
         return director;
     }
 
+    /**
+     * Set the director field.
+     * @param director is the value to set.
+     */
     public void setDirector(String director) {
         this.director.set(director);
         getMap().put("director", director);
     }
 
+    /**
+     * Get the rating field.
+     * @return the rating.
+     */
     public String getRating() {
         return rating.get();
     }
 
+    /**
+     * Get the rating property.
+     * @return the rating property.
+     */
     public StringProperty ratingProperty() {
         return rating;
     }
 
+    /**
+     * Set the rating field.
+     * @param rating is the value to set.
+     */
     public void setRating(String rating) {
         this.rating.set(rating);
         getMap().put("rating", rating);
     }
 
+    /**
+     * Get the producer field.
+     * @return the producer.
+     */
     public String getProducer() {
         return producer.get();
     }
 
+    /**
+     * Get the producer property.
+     * @return the producer property.
+     */
     public StringProperty producerProperty() {
         return producer;
     }
 
+    /**
+     * Set the producer field.
+     * @param producer is the value to set.
+     */
     public void setProducer(String producer) {
         this.producer.set(producer);
         getMap().put("producer", producer);
     }
 
+    /**
+     * Get the writer field.
+     * @return the writer.
+     */
     public String getWriter() {
         return writer.get();
     }
 
+    /**
+     * Get the writer property.
+     * @return the writer property.
+     */
     public StringProperty writerProperty() {
         return writer;
     }
 
+    /**
+     * Set the writer field.
+     * @param writer is the value to set.
+     */
     public void setWriter(String writer) {
         this.writer.set(writer);
         getMap().put("writer", writer);
