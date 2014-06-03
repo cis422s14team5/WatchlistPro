@@ -1705,7 +1705,8 @@ public class Controller implements Initializable {
             }
             seasonList.add(episodeList);
         }
-        //addEpisodesToTable(Integer.parseInt(outputList.get(6)), seasonList);
+
+        addEpisodesToTable(seasonList, tvEpisodeTable, seasonCol, episodeCol, watchedCol);
 
         masterSeasonList = new ObservableListWrapper<>(new ArrayList<>());
 
