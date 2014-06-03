@@ -68,47 +68,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Controller.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Controller.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="10185" max-vertical-offset="25770">
-              <caret line="39" column="57" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.053262316" vertical-offset="18875" max-vertical-offset="26010">
+              <caret line="1291" column="110" selection-start-line="1291" selection-start-column="17" selection-end-line="1291" selection-end-column="17" />
               <folding>
-                <element signature="e#40093#40094#0" expanded="true" />
-                <element signature="e#40126#40127#0" expanded="true" />
-                <element signature="e#56965#56966#0" expanded="true" />
-                <element signature="e#56999#57000#0" expanded="true" />
-                <element signature="e#57112#57113#0" expanded="true" />
-                <element signature="e#57143#57144#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Media.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/model/Media.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8646209" vertical-offset="1801" max-vertical-offset="2475">
-              <caret line="159" column="46" selection-start-line="159" selection-start-column="46" selection-end-line="159" selection-end-column="46" />
-              <folding>
-                <element signature="e#1301#1302#0" expanded="true" />
-                <element signature="e#1329#1330#0" expanded="true" />
-                <element signature="e#1624#1625#0" expanded="true" />
-                <element signature="e#1660#1661#0" expanded="true" />
-                <element signature="e#1793#1794#0" expanded="true" />
-                <element signature="e#1823#1824#0" expanded="true" />
-                <element signature="e#2132#2133#0" expanded="true" />
-                <element signature="e#2166#2167#0" expanded="true" />
-                <element signature="e#2293#2294#0" expanded="true" />
-                <element signature="e#2321#2322#0" expanded="true" />
-                <element signature="e#2614#2615#0" expanded="true" />
-                <element signature="e#2650#2651#0" expanded="true" />
-                <element signature="e#2783#2784#0" expanded="true" />
-                <element signature="e#2813#2814#0" expanded="true" />
-                <element signature="e#3152#3153#0" expanded="true" />
-                <element signature="e#3192#3193#0" expanded="true" />
-                <element signature="e#3337#3338#0" expanded="true" />
-                <element signature="e#3371#3372#0" expanded="true" />
+                <element signature="e#40133#40134#0" expanded="true" />
+                <element signature="e#40166#40167#0" expanded="true" />
+                <element signature="e#57021#57022#0" expanded="true" />
+                <element signature="e#57055#57056#0" expanded="true" />
+                <element signature="e#57168#57169#0" expanded="true" />
+                <element signature="e#57199#57200#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -124,7 +95,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/aquafx/com/aquafx_project/controls/skin/AquaChoiceBoxSkin.java" />
         <option value="$PROJECT_DIR$/src/aquafx/com/aquafx_project/controls/skin/AquaColorPickerSkin.java" />
         <option value="$PROJECT_DIR$/src/aquafx/com/aquafx_project/controls/skin/AquaComboBoxListViewSkin.java" />
         <option value="$PROJECT_DIR$/src/aquafx/com/aquafx_project/controls/skin/AquaMenuButtonSkin.java" />
@@ -148,7 +118,6 @@
         <option value="$PROJECT_DIR$/src/controller/ByteArrayHandler.java" />
         <option value="$PROJECT_DIR$/watchlist.wl" />
         <option value="$PROJECT_DIR$/src/controller/FileIO.java" />
-        <option value="$PROJECT_DIR$/src/WatchlistPro.java" />
         <option value="$PROJECT_DIR$/src/view/WatchlistPro.fxml" />
         <option value="$PROJECT_DIR$/LICENSE.txt" />
         <option value="$PROJECT_DIR$/src/view/AboutDialog.java" />
@@ -170,11 +139,13 @@
         <option value="$PROJECT_DIR$/src/client/Client.java" />
         <option value="$PROJECT_DIR$/src/client/ClientThread.java" />
         <option value="$PROJECT_DIR$/src/controller/TopicHandler.java" />
-        <option value="$PROJECT_DIR$/src/controller/Controller.java" />
         <option value="$PROJECT_DIR$/src/model/EstStultus.java" />
         <option value="$PROJECT_DIR$/src/view/DialogPane.java" />
         <option value="$PROJECT_DIR$/src/model/Film.java" />
         <option value="$PROJECT_DIR$/src/model/Media.java" />
+        <option value="$PROJECT_DIR$/src/model/CheckBoxCellFactory.java" />
+        <option value="$PROJECT_DIR$/src/WatchlistPro.java" />
+        <option value="$PROJECT_DIR$/src/controller/Controller.java" />
       </list>
     </option>
   </component>
@@ -331,24 +302,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WatchlistPro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WatchlistPro" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aquafx_project" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -674,7 +627,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15763889" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27701864" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27701864" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -766,12 +719,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="18717">
           <caret line="281" column="34" selection-start-line="281" selection-start-column="34" selection-end-line="281" selection-end-column="34" />
           <folding>
-            <element signature="e#40093#40094#0" expanded="true" />
-            <element signature="e#40126#40127#0" expanded="true" />
-            <element signature="e#56965#56966#0" expanded="true" />
-            <element signature="e#56999#57000#0" expanded="true" />
-            <element signature="e#57112#57113#0" expanded="true" />
-            <element signature="e#57143#57144#0" expanded="true" />
+            <element signature="e#40133#40134#0" expanded="true" />
+            <element signature="e#40166#40167#0" expanded="true" />
+            <element signature="e#57021#57022#0" expanded="true" />
+            <element signature="e#57055#57056#0" expanded="true" />
+            <element signature="e#57168#57169#0" expanded="true" />
+            <element signature="e#57199#57200#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -804,12 +757,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2754" max-vertical-offset="17935">
           <caret line="215" column="0" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
           <folding>
-            <element signature="e#40093#40094#0" expanded="true" />
-            <element signature="e#40126#40127#0" expanded="true" />
-            <element signature="e#56965#56966#0" expanded="true" />
-            <element signature="e#56999#57000#0" expanded="true" />
-            <element signature="e#57112#57113#0" expanded="true" />
-            <element signature="e#57143#57144#0" expanded="true" />
+            <element signature="e#40133#40134#0" expanded="true" />
+            <element signature="e#40166#40167#0" expanded="true" />
+            <element signature="e#57021#57022#0" expanded="true" />
+            <element signature="e#57055#57056#0" expanded="true" />
+            <element signature="e#57168#57169#0" expanded="true" />
+            <element signature="e#57199#57200#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -835,12 +788,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2754" max-vertical-offset="17935">
           <caret line="210" column="51" selection-start-line="210" selection-start-column="51" selection-end-line="210" selection-end-column="51" />
           <folding>
-            <element signature="e#40093#40094#0" expanded="true" />
-            <element signature="e#40126#40127#0" expanded="true" />
-            <element signature="e#56965#56966#0" expanded="true" />
-            <element signature="e#56999#57000#0" expanded="true" />
-            <element signature="e#57112#57113#0" expanded="true" />
-            <element signature="e#57143#57144#0" expanded="true" />
+            <element signature="e#40133#40134#0" expanded="true" />
+            <element signature="e#40166#40167#0" expanded="true" />
+            <element signature="e#57021#57022#0" expanded="true" />
+            <element signature="e#57055#57056#0" expanded="true" />
+            <element signature="e#57168#57169#0" expanded="true" />
+            <element signature="e#57199#57200#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -866,12 +819,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2754" max-vertical-offset="17935">
           <caret line="200" column="0" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
           <folding>
-            <element signature="e#40093#40094#0" expanded="true" />
-            <element signature="e#40126#40127#0" expanded="true" />
-            <element signature="e#56965#56966#0" expanded="true" />
-            <element signature="e#56999#57000#0" expanded="true" />
-            <element signature="e#57112#57113#0" expanded="true" />
-            <element signature="e#57143#57144#0" expanded="true" />
+            <element signature="e#40133#40134#0" expanded="true" />
+            <element signature="e#40166#40167#0" expanded="true" />
+            <element signature="e#57021#57022#0" expanded="true" />
+            <element signature="e#57055#57056#0" expanded="true" />
+            <element signature="e#57168#57169#0" expanded="true" />
+            <element signature="e#57199#57200#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -905,12 +858,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="3135" max-vertical-offset="15480">
           <caret line="218" column="26" selection-start-line="218" selection-start-column="16" selection-end-line="218" selection-end-column="26" />
           <folding>
-            <element signature="e#40093#40094#0" expanded="true" />
-            <element signature="e#40126#40127#0" expanded="true" />
-            <element signature="e#56965#56966#0" expanded="true" />
-            <element signature="e#56999#57000#0" expanded="true" />
-            <element signature="e#57112#57113#0" expanded="true" />
-            <element signature="e#57143#57144#0" expanded="true" />
+            <element signature="e#40133#40134#0" expanded="true" />
+            <element signature="e#40166#40167#0" expanded="true" />
+            <element signature="e#57021#57022#0" expanded="true" />
+            <element signature="e#57055#57056#0" expanded="true" />
+            <element signature="e#57168#57169#0" expanded="true" />
+            <element signature="e#57199#57200#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -986,13 +939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ByteArrayHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.083333336" vertical-offset="150" max-vertical-offset="795">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/commons-lang-2.6.jar!/org/apache/commons/lang/Validate.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3503326" vertical-offset="142" max-vertical-offset="825">
@@ -1022,64 +968,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/AboutDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0599571" vertical-offset="0" max-vertical-offset="1185">
-          <caret line="73" column="36" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WatchlistPro.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
-          <caret line="37" column="40" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Episode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8248472" vertical-offset="915" max-vertical-offset="1545">
-          <caret line="103" column="69" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/TvShow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3240" max-vertical-offset="3330">
-          <caret line="216" column="0" selection-start-line="216" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/FileIO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2415" max-vertical-offset="3135">
-          <caret line="161" column="96" selection-start-line="161" selection-start-column="9" selection-end-line="161" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/MediaCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0275229" vertical-offset="715" max-vertical-offset="1410">
-          <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/WatchlistPro.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="600" max-vertical-offset="1005">
           <caret line="40" column="36" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/MediaCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1168" max-vertical-offset="1650">
-          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1091,63 +983,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/EstStultus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48736462" vertical-offset="0" max-vertical-offset="554">
-          <caret line="18" column="42" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="e#289#290#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
-            <element signature="e#472#473#0" expanded="true" />
-            <element signature="e#512#513#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/TopicHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="9.314079" vertical-offset="0" max-vertical-offset="6270">
-          <caret line="358" column="28" selection-start-line="358" selection-start-column="28" selection-end-line="358" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/Fetch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5361011" vertical-offset="693" max-vertical-offset="1575">
-          <caret line="72" column="85" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.16245487" vertical-offset="765" max-vertical-offset="2385">
-          <caret line="49" column="92" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
-          <folding>
-            <element signature="e#3939#3940#0" expanded="true" />
-            <element signature="e#3983#3984#0" expanded="true" />
-            <element signature="e#4019#4020#0" expanded="true" />
-            <element signature="e#4051#4052#0" expanded="true" />
-            <element signature="e#4093#4094#0" expanded="true" />
-            <element signature="e#4130#4131#0" expanded="true" />
-            <element signature="e#4191#4192#0" expanded="true" />
-            <element signature="e#4243#4244#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/ClientThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.2202165" vertical-offset="0" max-vertical-offset="1890">
-          <caret line="93" column="57" selection-start-line="93" selection-start-column="34" selection-end-line="93" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/DialogPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.299639" vertical-offset="0" max-vertical-offset="990">
+        <state vertical-scroll-proportion="0.94584835" vertical-offset="196" max-vertical-offset="990">
           <caret line="48" column="55" selection-start-line="48" selection-start-column="55" selection-end-line="48" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1155,43 +993,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Film.java">
+    <entry file="file://$PROJECT_DIR$/src/view/AboutDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.330325" vertical-offset="0" max-vertical-offset="2160">
-          <caret line="123" column="51" selection-start-line="123" selection-start-column="7" selection-end-line="123" selection-end-column="7" />
-          <folding>
-            <element signature="e#1349#1350#0" expanded="true" />
-            <element signature="e#1386#1387#0" expanded="true" />
-            <element signature="e#1522#1523#0" expanded="true" />
-            <element signature="e#1553#1554#0" expanded="true" />
-            <element signature="e#1884#1885#0" expanded="true" />
-            <element signature="e#1919#1920#0" expanded="true" />
-            <element signature="e#2049#2050#0" expanded="true" />
-            <element signature="e#2078#2079#0" expanded="true" />
-            <element signature="e#2399#2400#0" expanded="true" />
-            <element signature="e#2436#2437#0" expanded="true" />
-            <element signature="e#2572#2573#0" expanded="true" />
-            <element signature="e#2603#2604#0" expanded="true" />
-            <element signature="e#2934#2935#0" expanded="true" />
-            <element signature="e#2969#2970#0" expanded="true" />
-            <element signature="e#3099#3100#0" expanded="true" />
-            <element signature="e#3128#3129#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.94584835" vertical-offset="466" max-vertical-offset="1155">
+          <caret line="73" column="36" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/model/TvShow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="25770">
-          <caret line="39" column="57" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="3" />
-          <folding>
-            <element signature="e#40093#40094#0" expanded="true" />
-            <element signature="e#40126#40127#0" expanded="true" />
-            <element signature="e#56965#56966#0" expanded="true" />
-            <element signature="e#56999#57000#0" expanded="true" />
-            <element signature="e#57112#57113#0" expanded="true" />
-            <element signature="e#57143#57144#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-1.1101083" vertical-offset="720" max-vertical-offset="2805">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/MediaCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.5722022" vertical-offset="1096" max-vertical-offset="1650">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Film.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.94584835" vertical-offset="1111" max-vertical-offset="1920">
+          <caret line="123" column="51" selection-start-line="123" selection-start-column="7" selection-end-line="123" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1218,6 +1048,101 @@
             <element signature="e#3192#3193#0" expanded="true" />
             <element signature="e#3337#3338#0" expanded="true" />
             <element signature="e#3371#3372#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/EstStultus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.433213" vertical-offset="0" max-vertical-offset="554">
+          <caret line="18" column="42" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Episode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7310469" vertical-offset="915" max-vertical-offset="1545">
+          <caret line="103" column="69" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/TopicHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="9.314079" vertical-offset="0" max-vertical-offset="6270">
+          <caret line="358" column="28" selection-start-line="358" selection-start-column="28" selection-end-line="358" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/MediaCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1371841" vertical-offset="645" max-vertical-offset="1410">
+          <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/FileIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.027075812" vertical-offset="2100" max-vertical-offset="2835">
+          <caret line="161" column="96" selection-start-line="161" selection-start-column="9" selection-end-line="161" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/Fetch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5361011" vertical-offset="693" max-vertical-offset="1575">
+          <caret line="72" column="85" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ByteArrayHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.08122744" vertical-offset="150" max-vertical-offset="795">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/ClientThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.9205776" vertical-offset="166" max-vertical-offset="1890">
+          <caret line="93" column="57" selection-start-line="93" selection-start-column="34" selection-end-line="93" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.78519857" vertical-offset="240" max-vertical-offset="2265">
+          <caret line="49" column="92" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WatchlistPro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24368231" vertical-offset="0" max-vertical-offset="660">
+          <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.053262316" vertical-offset="18875" max-vertical-offset="26010">
+          <caret line="1291" column="110" selection-start-line="1291" selection-start-column="17" selection-end-line="1291" selection-end-column="17" />
+          <folding>
+            <element signature="e#40133#40134#0" expanded="true" />
+            <element signature="e#40166#40167#0" expanded="true" />
+            <element signature="e#57021#57022#0" expanded="true" />
+            <element signature="e#57055#57056#0" expanded="true" />
+            <element signature="e#57168#57169#0" expanded="true" />
+            <element signature="e#57199#57200#0" expanded="true" />
           </folding>
         </state>
       </provider>

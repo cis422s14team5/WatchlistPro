@@ -17,7 +17,12 @@ import java.awt.*;
  * Launches the WatchlistPro view.
  */
 public class WatchlistPro extends Application {
-    
+
+    /**
+     * Start to application.
+     * @param stage is the application stage.
+     * @throws Exception
+     */
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/WatchlistPro.fxml"));
@@ -35,8 +40,6 @@ public class WatchlistPro extends Application {
         String file = controller.getSaveFile().getName();
         stage.setTitle("WatchlistPro - " + file);
         stage.show();
-
-        // controller.initializeAccelerators();
 
     }
 

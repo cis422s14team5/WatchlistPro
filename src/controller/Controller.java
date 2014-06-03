@@ -32,7 +32,6 @@ import java.net.URL;
 import java.util.*;
 import java.util.prefs.Preferences;
 
-// TODO doc comments for media and film
 // TODO move table to edit pane, only put checks on edit, put yes/no on display
 // TODO saving to server, if user chooses a new name, reflect new name locally by creating a new save file with that name
 // TODO try to break everything
@@ -581,7 +580,7 @@ public class Controller implements Initializable {
                             }
                         }
 
-                        addEpisodesToTable(Integer.parseInt(tvNumEpisodes), episodeList);
+                        addEpisodesToTable(episodeList);
                     } else {
                         // A new media object needs to be created.
                         TvShow show = mediaCreator.createTvShow(tvTitleTextField.getText());
@@ -593,7 +592,7 @@ public class Controller implements Initializable {
                         show.setNumEpisodes(tvNumEpisodes);
                         show.setDescription(tvDescriptionTextField.getText());
                         show.setEpisodeList(episodeList);
-                        addEpisodesToTable(Integer.parseInt(tvNumEpisodesTextField.getText()), episodeList);
+                        addEpisodesToTable(episodeList);
 
                         // Refresh the watchlist after creation.
                         watchlist.remove(mediaName);
@@ -917,6 +916,9 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * Logs the user out of the server.
+     */
     @FXML
     protected void logoutFromServer() {
         Client client = new Client();
@@ -1027,6 +1029,9 @@ public class Controller implements Initializable {
 
     }
 
+    /**
+     * Cancels the load choice.
+     */
     @FXML
     protected void cancelLoadChoice() {
         loadFromServerPane.setVisible(false);
@@ -1034,6 +1039,9 @@ public class Controller implements Initializable {
         root.setVisible(true);
     }
 
+    /**
+     * Sends the load choice to the server..
+     */
     @FXML
     public void sendLoadChoice() {
         String selectedFile = loadList.getSelectionModel().getSelectedItem();
@@ -1292,14 +1300,12 @@ public class Controller implements Initializable {
     public void saveToServer(String saveName) {
         Client client = new Client();
         if (isLoggedIn && client.isConnected()) {
-
             String data = "";
             for (Map.Entry<String, Media> entry : watchlist.entrySet()) {
                 Media media = entry.getValue();
                 String jsonString = gson.toJson(media.getMap()); // JSONValue.toJSONString(media.getMap());
                 data += jsonString + "//";
             }
-
 
             try {
                 Thread save = client.send("save" + "-=-" + username + "-=-" + saveName + "-=-" + data);
@@ -1384,6 +1390,9 @@ public class Controller implements Initializable {
         openRecentMenuItem.getItems().add(0, item);
     }
 
+    /**
+     * Check the size of the recent list.
+     */
     private void checkRecentSize() {
         if (recentList.size() > 10) {
             // Remove the last item.
@@ -1457,7 +1466,7 @@ public class Controller implements Initializable {
         for (List<Episode> episodes : show.getEpisodeList()) {
             tempList.add(episodes);
         }
-        addEpisodesToTable(Integer.parseInt(show.getNumSeasons()), tempList);
+        addEpisodesToTable(tempList);
 
         if (show.getWatched().equals("Yes")) {
             checkEveryEpisodeInShow();
@@ -1621,7 +1630,11 @@ public class Controller implements Initializable {
         progressIndicatorPane.setVisible(false);
     }
 
-    public void addEpisodesToTable(int numSeasons, ObservableList<List<Episode>> seasons) {
+    /**
+     * Add all the episodes for each season of the TV show to the tree tables.
+     * @param seasons is the TV show's season list.
+     */
+    public void addEpisodesToTable(ObservableList<List<Episode>> seasons) {
 
         episodeList = new SimpleListProperty<>();
         episodeList.set(seasons);
@@ -1685,6 +1698,9 @@ public class Controller implements Initializable {
         watchedCol.prefWidthProperty().bind(tvEpisodeTable.widthProperty().multiply(0.15));
     }
 
+    /**
+     * Sets all episodes in a show to watched if the main check box is checked.
+     */
     private void checkEveryEpisodeInShow () {
 
         List<TreeItem<Episode>> list = tvEpisodeTable.getRoot().getChildren();
