@@ -256,7 +256,7 @@ public class Controller implements Initializable {
         File defaultFile = new File(saveDir + slash + "watchlist.wl");
 
         dialogPane = new DialogPane();
-        
+
         // Setup Open Recent List
         recentList = byteArrayHandler.readByteArray(preferences.getByteArray("recentList", "".getBytes()));
         if (!recentList.isEmpty()) {
