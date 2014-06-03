@@ -327,10 +327,10 @@ public class TopicHandler {
                 episodeNumber++;
             }
 
-            if (i == Integer.parseInt(seasonNumber) - 1 || Integer.parseInt(seasonNumber) - 1 == -1) {
-                seasonList.set(Integer.parseInt(seasonNumber), episodeList);
-            }
-
+//            if (i == Integer.parseInt(seasonNumber) - 1 || Integer.parseInt(seasonNumber) - 1 == -1) {
+//                seasonList.set(Integer.parseInt(seasonNumber), episodeList);
+//            }
+            seasonList.set(Integer.parseInt(seasonNumber), episodeList);
             episodeNumber = 1;
         }
         output.clear();
