@@ -30,7 +30,7 @@ public class TopicHandler {
     public List<String> handleFilmOutput(JSONObject topic) {
         List<String> output = new ArrayList<>();
 
-        checkTopic(topic.toJSONString());
+        checkTopic(topic);
 
         String title;
         try {
@@ -182,7 +182,7 @@ public class TopicHandler {
         List<String> output = new ArrayList<>();
         Gson gson = new Gson();
 
-        checkTopic(topic.toJSONString());
+        checkTopic(topic);
 
         String title;
         try {
@@ -429,13 +429,14 @@ public class TopicHandler {
 
         JSONObject topic = client.getTopic();
 
-        checkTopic(topic.toJSONString());
+        checkTopic(topic);
 
         return topic;
     }
 
-    private void checkTopic(String topic) {
-        if (topic.equals("{}")) {
+    private void checkTopic(JSONObject topic) {
+        JSONObject jsonObject = new JSONObject();
+        if (topic == jsonObject) {
             DialogPane dialogPane = new DialogPane();
             dialogPane.createWarningDialog("Failed to fetch!", "Failed to fetch the title you entered.\n" +
                     "Please try a different title.");
