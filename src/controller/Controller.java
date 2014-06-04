@@ -33,7 +33,6 @@ import java.util.*;
 import java.util.prefs.Preferences;
 
 // TODO try to break everything
-// TODO make table load on fetch
 
 /**
  * Controls the WatchlistPro view.
@@ -219,15 +218,8 @@ public class Controller implements Initializable {
     private TreeTableColumn<Episode, String> episodeDisplayCol;
     @FXML
     private TreeTableColumn<Episode, Boolean> watchedDisplayCol;
-
     @FXML
     private MenuItem usernameMenuItem;
-    @FXML
-    private MenuItem sortAllMenuItem;
-    @FXML
-    private MenuItem sortFilmMenuItem;
-    @FXML
-    private MenuItem sortTvMenuItem;
     @FXML
     private MenuButton sortMenuButton;
 
@@ -265,7 +257,6 @@ public class Controller implements Initializable {
 
         dialogPane = new DialogPane();
 
-        //preferences.remove("recentList");
         // Setup Open Recent List
         recentList = byteArrayHandler.readByteArray(preferences.getByteArray("recentList", "".getBytes()));
         if (!recentList.isEmpty()) {
@@ -855,6 +846,9 @@ public class Controller implements Initializable {
     public void createAccount() {
         Client client = new Client();
         // if user entered name & password try to create account
+        if (isLoggedIn) {
+            logoutFromServer();
+        }
         if (getUserCredentials() && client.isConnected()) {
             try {
                 Thread account = client.send("add");
@@ -883,6 +877,7 @@ public class Controller implements Initializable {
                     DialogPane dialogPane = new DialogPane();
                     dialogPane.createWarningDialog("Failed to create account", "The account name you enter is not valid.");
                 } else {
+
                     userNameField.setText(username);
                     passwordField.setText(password);
                     loginToServer();
@@ -944,6 +939,7 @@ public class Controller implements Initializable {
     public void loginToServer() {
         // if user entered name & password try to login
         Client client = new Client();
+
         if (getUserLogin() && client.isConnected()) {
             try {
                 Thread login = client.send("login" + "-=-" + username + "-=-" + password);
@@ -1443,7 +1439,6 @@ public class Controller implements Initializable {
             for (int i = recentList.size() - 1; i >= 0; i--) {
                 addRecent(recentList.get(i));
             }
-            //recentList.forEach(this::addRecent);
         } else {
             openRecentMenuItem.setDisable(true);
         }
@@ -1582,10 +1577,6 @@ public class Controller implements Initializable {
 
         masterSeasonList = new ObservableListWrapper<>(new ArrayList<>());
 
-//        seasonDisplayCol.prefWidthProperty().bind(tvEpisodeDisplayTable.widthProperty().multiply(0.20));
-//        episodeDisplayCol.prefWidthProperty().bind(tvEpisodeDisplayTable.widthProperty().multiply(0.65));
-//        watchedDisplayCol.prefWidthProperty().bind(tvEpisodeDisplayTable.widthProperty().multiply(0.15));
-
         return tempList;
     }
 
@@ -1705,7 +1696,8 @@ public class Controller implements Initializable {
             }
             seasonList.add(episodeList);
         }
-        //addEpisodesToTable(Integer.parseInt(outputList.get(6)), seasonList);
+
+        addEpisodesToTable(seasonList, tvEpisodeTable, seasonCol, episodeCol, watchedCol);
 
         masterSeasonList = new ObservableListWrapper<>(new ArrayList<>());
 
@@ -1773,10 +1765,6 @@ public class Controller implements Initializable {
 
         masterRoot = new TreeItem<>(new Episode("Master", "", false));
         seasonRootList = new ArrayList<>();
-
-//        seasCol = new TreeTableColumn<>();
-//        epCol = new TreeTableColumn<>();
-//        watchCol = new TreeTableColumn<>();
 
         seasCol.setText("Season");
         epCol.setText("Episode");
