@@ -813,6 +813,8 @@ public class Controller implements Initializable {
     @FXML
     public void switchToAccountCreatePage() {
         // displays account creation pane
+        cancelServerLogin();
+        cancelLoadChoice();
         Platform.runLater(createUserNameField::requestFocus);
         createAccountPane.setVisible(true);
         createAccountPane.setDisable(false);
@@ -825,7 +827,6 @@ public class Controller implements Initializable {
      */
     @FXML
     protected boolean getUserCredentials() {
-
         // user entered something in userNameField
         if (createUserNameField.getText() != null && !createUserNameField.getText().isEmpty()) {
             username = createUserNameField.getText();
@@ -907,6 +908,8 @@ public class Controller implements Initializable {
     protected void switchToLoginPage() {
         // displays account login pane
 
+        cancelAccountCreation();
+        cancelLoadChoice();
 
         Platform.runLater(userNameField::requestFocus);
         userLoginPane.setVisible(true);
@@ -1028,7 +1031,8 @@ public class Controller implements Initializable {
                 quit.join();
 
                 String[] saveArray = client.getSaveArray();
-                if (saveArray != null) {
+                if (!saveArray[0].isEmpty()) {
+                    System.out.println();
                     List<String> arrayList = Arrays.asList(saveArray);
                     ObservableList<String> list = new ObservableListWrapper<>(arrayList);
                     loadList.setItems(list);
@@ -1163,6 +1167,8 @@ public class Controller implements Initializable {
      */
     @FXML
     protected void loadFromServer() {
+        cancelServerLogin();
+        cancelAccountCreation();
         Client client = new Client();
         if (isLoggedIn && client.isConnected()) {
             try {
@@ -1727,6 +1733,8 @@ public class Controller implements Initializable {
     private void switchToLoadChoice() {
         // displays account login pane
         //Platform.runLater(userNameField::requestFocus);
+        cancelServerLogin();
+        cancelAccountCreation();
         loadFromServerPane.setVisible(true);
         loadFromServerPane.setDisable(false);
         root.setVisible(false);
