@@ -71,246 +71,9 @@
       <file leaf-file-name="Controller.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="735" max-vertical-offset="27930">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1185" max-vertical-offset="28470">
               <caret line="79" column="9" selection-start-line="79" selection-start-column="9" selection-end-line="79" selection-end-column="9" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JAVA/view" pinned="false" current="true" current-in-tab="true">
-        <entry file="uml://JAVA/view">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>JAVA</ID>
-              <OriginalElement>view</OriginalElement>
-              <nodes>
-                <node x="170.875" y="178.0">controller.MediaCreator</node>
-                <node x="517.7781531531532" y="327.0">controller.Controller</node>
-                <node x="746.3773487773489" y="178.0">client.Client</node>
-                <node x="561.1114864864865" y="89.0">model.TvShow</node>
-                <node x="175.1114864864865" y="89.0">model.Film</node>
-                <node x="837.1392535392536" y="327.0">controller.TopicHandler</node>
-                <node x="139.00222007722004" y="0.0">model.Media</node>
-                <node x="596.875" y="178.0">controller.FileIO</node>
-                <node x="" y="">view.DialogPane</node>
-                <node x="436.875" y="178.0">controller.ByteArrayHandler</node>
-                <node x="659.9335987773488" y="0.0">model.Episode</node>
-                <node x="10.5" y="178.0">model.MediaCollection</node>
-                <node x="758.9250281531531" y="426.0">controller.Fetch</node>
-                <node x="305.875" y="178.0">view.AboutDialog</node>
-                <node x="694.7106821106822" y="327.0">client.ClientThread</node>
-              </nodes>
-              <notes />
-              <edges>
-                <edge source="controller.Controller" target="controller.MediaCreator">
-                  <point x="-26.71875" y="-14.5" />
-                  <point x="538.5594031531532" y="277.0" />
-                  <point x="199.625" y="277.0" />
-                  <point x="-28.75" y="14.5" />
-                </edge>
-                <edge source="controller.Controller" target="view.DialogPane">
-                  <point x="38.59375" y="-14.5" />
-                  <point x="603.8719031531532" y="287.0" />
-                  <point x="718.3893138674389" y="287.0" />
-                  <point x="718.3893138674389" y="148.0" />
-                  <point x="790.0977839446589" y="148.0" />
-                  <point x="-20.399999999999977" y="14.5" />
-                </edge>
-                <edge source="controller.TopicHandler" target="client.Client">
-                  <point x="-38.66666666666663" y="-14.5" />
-                  <point x="856.472586872587" y="277.0" />
-                  <point x="809.6273487773489" y="277.0" />
-                  <point x="28.75" y="14.5" />
-                </edge>
-                <edge source="controller.Fetch" target="model.Media">
-                  <point x="-28.285714285714334" y="-14.5" />
-                  <point x="763.6393138674389" y="406.0" />
-                  <point x="0.0" y="406.0" />
-                  <point x="0.0" y="49.0" />
-                  <point x="145.90222007722002" y="49.0" />
-                  <point x="-27.600000000000023" y="14.5" />
-                </edge>
-                <edge source="controller.Fetch" target="view.DialogPane">
-                  <point x="28.285714285714334" y="-14.5" />
-                  <point x="820.2107424388676" y="406.0" />
-                  <point x="963.6392535392536" y="406.0" />
-                  <point x="963.6392535392536" y="148.0" />
-                  <point x="851.2977839446589" y="148.0" />
-                  <point x="40.799999999999955" y="14.5" />
-                </edge>
-                <edge source="controller.Controller" target="controller.FileIO">
-                  <point x="8.90625" y="-14.5" />
-                  <point x="574.1844031531532" y="237.0" />
-                  <point x="630.875" y="237.0" />
-                  <point x="0.0" y="14.5" />
-                </edge>
-                <edge source="model.Film" target="model.Media">
-                  <point x="0.0" y="-14.5" />
-                  <point x="204.6114864864865" y="69.0" />
-                  <point x="187.30222007722006" y="69.0" />
-                  <point x="13.800000000000011" y="14.5" />
-                </edge>
-                <edge source="model.TvShow" target="model.Episode">
-                  <point x="19.999999999999943" y="-14.5" />
-                  <point x="621.1114864864865" y="69.0" />
-                  <point x="666.6835987773488" y="69.0" />
-                  <point x="-33.75" y="14.5" />
-                </edge>
-                <edge source="controller.MediaCreator" target="model.Film">
-                  <point x="-28.75" y="-14.5" />
-                  <point x="199.625" y="158.0" />
-                  <point x="189.8614864864865" y="158.0" />
-                  <point x="-14.75" y="14.5" />
-                </edge>
-                <edge source="controller.Controller" target="client.Client">
-                  <point x="44.53125" y="-14.5" />
-                  <point x="609.8094031531532" y="297.0" />
-                  <point x="752.1273487773489" y="297.0" />
-                  <point x="-28.75" y="14.5" />
-                </edge>
-                <edge source="controller.TopicHandler" target="view.DialogPane">
-                  <point x="0.0" y="-14.5" />
-                  <point x="895.1392535392536" y="158.0" />
-                  <point x="830.8977839446588" y="158.0" />
-                  <point x="20.399999999999977" y="14.5" />
-                </edge>
-                <edge source="client.Client" target="client.ClientThread">
-                  <point x="-5.75" y="14.5" />
-                  <point x="775.1273487773489" y="307.0" />
-                  <point x="788.0440154440155" y="307.0" />
-                  <point x="37.33333333333337" y="-14.5" />
-                </edge>
-                <edge source="controller.Controller" target="controller.ByteArrayHandler">
-                  <point x="-8.90625" y="-14.5" />
-                  <point x="556.3719031531532" y="247.0" />
-                  <point x="471.875" y="247.0" />
-                  <point x="-35.0" y="14.5" />
-                </edge>
-                <edge source="controller.Controller" target="model.Episode">
-                  <point x="20.78125" y="-14.5" />
-                  <point x="586.0594031531532" y="257.0" />
-                  <point x="693.1955638674389" y="257.0" />
-                  <point x="693.1955638674389" y="59.0" />
-                  <point x="707.1835987773488" y="59.0" />
-                  <point x="6.75" y="14.5" />
-                </edge>
-                <edge source="controller.MediaCreator" target="model.TvShow">
-                  <point x="28.75" y="-14.5" />
-                  <point x="257.125" y="158.0" />
-                  <point x="581.1114864864865" y="158.0" />
-                  <point x="-20.0" y="14.5" />
-                </edge>
-                <edge source="controller.Controller" target="model.Media">
-                  <point x="-32.65625" y="-14.5" />
-                  <point x="532.6219031531532" y="287.0" />
-                  <point x="154.0" y="287.0" />
-                  <point x="154.0" y="69.0" />
-                  <point x="173.50222007722004" y="69.0" />
-                  <point x="0.0" y="14.5" />
-                </edge>
-                <edge source="controller.Fetch" target="controller.Controller">
-                  <point x="-18.85714285714289" y="-14.5" />
-                  <point x="773.0678852960102" y="396.0" />
-                  <point x="541.5281531531532" y="396.0" />
-                  <point x="-23.75" y="14.5" />
-                </edge>
-                <edge source="model.MediaCollection" target="model.Media">
-                  <point x="0.0" y="-14.5" />
-                  <point x="77.0" y="59.0" />
-                  <point x="159.70222007722003" y="59.0" />
-                  <point x="-13.800000000000011" y="14.5" />
-                </edge>
-                <edge source="controller.Fetch" target="controller.TopicHandler">
-                  <point x="18.85714285714289" y="-14.5" />
-                  <point x="810.782171010296" y="396.0" />
-                  <point x="895.1392535392536" y="396.0" />
-                  <point x="0.0" y="14.5" />
-                </edge>
-                <edge source="controller.TopicHandler" target="model.Episode">
-                  <point x="38.66666666666663" y="-14.5" />
-                  <point x="933.8059202059203" y="307.0" />
-                  <point x="906.1392535392536" y="307.0" />
-                  <point x="906.1392535392536" y="69.0" />
-                  <point x="734.1835987773488" y="69.0" />
-                  <point x="33.75" y="14.5" />
-                </edge>
-                <edge source="client.Client" target="view.DialogPane">
-                  <point x="0.0" y="-14.5" />
-                  <point x="780.8773487773489" y="158.0" />
-                  <point x="810.497783944659" y="158.0" />
-                  <point x="0.0" y="14.5" />
-                </edge>
-                <edge source="controller.FileIO" target="model.Episode">
-                  <point x="22.66666666666663" y="-14.5" />
-                  <point x="653.5416666666666" y="158.0" />
-                  <point x="674.7580638674389" y="158.0" />
-                  <point x="674.7580638674389" y="69.0" />
-                  <point x="680.1835987773488" y="69.0" />
-                  <point x="-20.25" y="14.5" />
-                </edge>
-                <edge source="client.ClientThread" target="controller.FileIO">
-                  <point x="-37.33333333333337" y="-14.5" />
-                  <point x="713.3773487773487" y="237.0" />
-                  <point x="653.5416666666666" y="237.0" />
-                  <point x="22.66666666666663" y="14.5" />
-                </edge>
-                <edge source="controller.Controller" target="controller.Fetch">
-                  <point x="23.75" y="14.5" />
-                  <point x="589.0281531531532" y="386.0" />
-                  <point x="782.4964567245818" y="386.0" />
-                  <point x="-9.428571428571445" y="-14.5" />
-                </edge>
-                <edge source="controller.Controller" target="view.AboutDialog">
-                  <point x="-14.84375" y="-14.5" />
-                  <point x="550.4344031531532" y="257.0" />
-                  <point x="361.375" y="257.0" />
-                  <point x="0.0" y="14.5" />
-                </edge>
-                <edge source="controller.Controller" target="model.MediaCollection">
-                  <point x="-44.53125" y="-14.5" />
-                  <point x="520.7469031531532" y="307.0" />
-                  <point x="43.75" y="307.0" />
-                  <point x="-33.25" y="14.5" />
-                </edge>
-                <edge source="controller.FileIO" target="model.TvShow">
-                  <point x="0.0" y="-14.5" />
-                  <point x="630.875" y="158.0" />
-                  <point x="621.1114864864865" y="158.0" />
-                  <point x="20.0" y="14.5" />
-                </edge>
-                <edge source="controller.FileIO" target="model.Film">
-                  <point x="-22.66666666666663" y="-14.5" />
-                  <point x="608.2083333333334" y="148.0" />
-                  <point x="219.3614864864865" y="148.0" />
-                  <point x="14.75" y="14.5" />
-                </edge>
-                <edge source="controller.Fetch" target="client.Client">
-                  <point x="0.0" y="-14.5" />
-                  <point x="791.9250281531531" y="376.0" />
-                  <point x="817.2106821106822" y="376.0" />
-                  <point x="817.2106821106822" y="297.0" />
-                  <point x="786.6273487773489" y="297.0" />
-                  <point x="5.75" y="14.5" />
-                </edge>
-                <edge source="model.TvShow" target="model.Media">
-                  <point x="-20.000000000000057" y="-14.5" />
-                  <point x="581.1114864864865" y="59.0" />
-                  <point x="201.10222007722007" y="59.0" />
-                  <point x="27.600000000000023" y="14.5" />
-                </edge>
-                <edge source="client.ClientThread" target="client.Client">
-                  <point x="0.0" y="-14.5" />
-                  <point x="750.7106821106822" y="307.0" />
-                  <point x="763.6273487773489" y="307.0" />
-                  <point x="-17.25" y="14.5" />
-                </edge>
-              </edges>
-              <settings layout="Hierarchic Group" zoom="1.0" x="495.5" y="368.0" />
-              <SelectedNodes />
-              <Categories />
-              <SCOPE>All</SCOPE>
-              <VISIBILITY>private</VISIBILITY>
             </state>
           </provider>
         </entry>
@@ -328,8 +91,18 @@
       <file leaf-file-name="TvShow.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/TvShow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3255" max-vertical-offset="3405">
-              <caret line="217" column="0" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1023" max-vertical-offset="2880">
+              <caret line="183" column="168" selection-start-line="183" selection-start-column="5" selection-end-line="183" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Client.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/client/Client.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.14" vertical-offset="0" max-vertical-offset="2280">
+              <caret line="43" column="79" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -385,7 +158,6 @@
         <option value="$PROJECT_DIR$/src/model/OptionalIsStupid.java" />
         <option value="$PROJECT_DIR$/src/model/StultusEst.java" />
         <option value="$PROJECT_DIR$/src/controller/Fetch.java" />
-        <option value="$PROJECT_DIR$/src/client/Client.java" />
         <option value="$PROJECT_DIR$/src/client/ClientThread.java" />
         <option value="$PROJECT_DIR$/src/controller/TopicHandler.java" />
         <option value="$PROJECT_DIR$/src/model/EstStultus.java" />
@@ -396,13 +168,14 @@
         <option value="$PROJECT_DIR$/src/WatchlistPro.java" />
         <option value="$PROJECT_DIR$/src/model/TvShow.java" />
         <option value="$PROJECT_DIR$/src/controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/client/Client.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="1920" />
-    <option name="height" value="1054" />
+    <option name="width" value="1440" />
+    <option name="height" value="874" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -466,7 +239,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -574,6 +346,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -660,14 +433,25 @@
       <option name="PROGRAM_PARAMETERS" />
       <method />
     </configuration>
-    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
-      <setting name="vmparams" value="" />
-      <setting name="cmdLine" value="run-app" />
-      <setting name="depsClasspath" value="false" />
-      <setting name="passParentEnv" value="true" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <setting name="launchBrowser" value="false" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -676,9 +460,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -722,6 +503,21 @@
       <listeners />
       <method />
     </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -741,110 +537,6 @@
       </option>
       <envs />
       <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
-      <option name="BCName" value="" />
-      <option name="IOSSimulatorSdkPath" value="" />
-      <option name="adlOptions" value="" />
-      <option name="airProgramParameters" value="" />
-      <option name="appDescriptorForEmulator" value="Android" />
-      <option name="debugTransport" value="USB" />
-      <option name="debuggerSdkRaw" value="BC SDK" />
-      <option name="emulator" value="NexusOne" />
-      <option name="emulatorAdlOptions" value="" />
-      <option name="fastPackaging" value="true" />
-      <option name="fullScreenHeight" value="0" />
-      <option name="fullScreenWidth" value="0" />
-      <option name="launchUrl" value="false" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="mobileRunTarget" value="Emulator" />
-      <option name="moduleName" value="" />
-      <option name="overriddenMainClass" value="" />
-      <option name="overriddenOutputFileName" value="" />
-      <option name="overrideMainClass" value="false" />
-      <option name="runTrusted" value="true" />
-      <option name="screenDpi" value="0" />
-      <option name="screenHeight" value="0" />
-      <option name="screenWidth" value="0" />
-      <option name="url" value="http://" />
-      <option name="usbDebugPort" value="7936" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
-      <option name="BCName" value="" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="moduleName" value="" />
-      <option name="trusted" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" />
-      <option name="GLUE" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -937,7 +629,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1920" height="1054" extended-state="6" />
+    <frame x="0" y="22" width="1440" height="874" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -945,30 +637,30 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32551318" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20372671" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31180125" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328934" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1046875" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34409937" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20208333" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34409937" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32994923" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31180125" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32551318" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="JSON Formatter" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328934" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1031,6 +723,38 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/model/TvShow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1578" max-vertical-offset="2880">
+          <caret line="183" column="168" selection-start-line="183" selection-start-column="5" selection-end-line="183" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="28470">
+          <caret line="79" column="9" selection-start-line="79" selection-start-column="9" selection-end-line="79" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/FileIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2415" max-vertical-offset="3180">
+          <caret line="161" column="96" selection-start-line="161" selection-start-column="96" selection-end-line="161" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/TvShow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3255" max-vertical-offset="3405">
+          <caret line="217" column="0" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="153">
@@ -1130,7 +854,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="840">
           <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1146,7 +869,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
           <caret line="31" column="61" selection-start-line="31" selection-start-column="44" selection-end-line="32" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1281,7 +1003,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.94584835" vertical-offset="1111" max-vertical-offset="1920">
           <caret line="123" column="51" selection-start-line="123" selection-start-column="7" selection-end-line="123" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1289,26 +1010,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8646209" vertical-offset="1801" max-vertical-offset="2475">
           <caret line="159" column="46" selection-start-line="159" selection-start-column="46" selection-end-line="159" selection-end-column="46" />
-          <folding>
-            <element signature="e#1301#1302#0" expanded="false" />
-            <element signature="e#1329#1330#0" expanded="false" />
-            <element signature="e#1624#1625#0" expanded="false" />
-            <element signature="e#1660#1661#0" expanded="false" />
-            <element signature="e#1793#1794#0" expanded="false" />
-            <element signature="e#1823#1824#0" expanded="false" />
-            <element signature="e#2132#2133#0" expanded="false" />
-            <element signature="e#2166#2167#0" expanded="false" />
-            <element signature="e#2293#2294#0" expanded="false" />
-            <element signature="e#2321#2322#0" expanded="false" />
-            <element signature="e#2614#2615#0" expanded="false" />
-            <element signature="e#2650#2651#0" expanded="false" />
-            <element signature="e#2783#2784#0" expanded="false" />
-            <element signature="e#2813#2814#0" expanded="false" />
-            <element signature="e#3152#3153#0" expanded="false" />
-            <element signature="e#3192#3193#0" expanded="false" />
-            <element signature="e#3337#3338#0" expanded="false" />
-            <element signature="e#3371#3372#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1316,7 +1017,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7310469" vertical-offset="915" max-vertical-offset="1545">
           <caret line="103" column="69" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1356,18 +1056,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.78519857" vertical-offset="240" max-vertical-offset="2265">
-          <caret line="49" column="92" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/WatchlistPro.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24368231" vertical-offset="0" max-vertical-offset="660">
           <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1380,8 +1072,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/TvShow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2366" max-vertical-offset="2880">
-          <caret line="217" column="0" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1023" max-vertical-offset="2880">
+          <caret line="183" column="168" selection-start-line="183" selection-start-column="5" selection-end-line="183" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1394,64 +1086,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="uml://JAVA/">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement />
-          <nodes>
-            <node x="" y="">resources</node>
-            <node x="" y="">model</node>
-            <node x="" y="">com</node>
-            <node x="" y="">templates</node>
-            <node x="" y="">client</node>
-            <node x="" y="">impl</node>
-            <node x="" y="">netscape</node>
-            <node x="" y="">junit</node>
-            <node x="" y="">org</node>
-            <node x="" y="">oracle</node>
-            <node x="" y="">net</node>
-            <node x="" y="">HTMLConverter</node>
-            <node x="" y="">META-INF</node>
-            <node x="" y="">javafx</node>
-            <node x="" y="">sun</node>
-            <node x="" y="">javax</node>
-            <node x="" y="">apple</node>
-            <node x="" y="">WatchlistPro</node>
-            <node x="" y="">jdk</node>
-            <node x="" y="">toolbarButtonGraphics</node>
-            <node x="" y="">java</node>
-            <node x="" y="">controller</node>
-            <node x="" y="">view</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="267.5" y="260.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/controller.Controller">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>controller.Controller</OriginalElement>
-          <nodes>
-            <node x="" y="">controller.Controller</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="52.5" y="54.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>Project Files</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="735" max-vertical-offset="27930">
@@ -1460,268 +1094,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="uml://JAVA/controller">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>controller</OriginalElement>
-          <nodes>
-            <node x="" y="">controller.MediaCreator</node>
-            <node x="" y="">controller.Controller</node>
-            <node x="" y="">client.Client</node>
-            <node x="" y="">model.Film</node>
-            <node x="" y="">model.TvShow</node>
-            <node x="" y="">controller.TopicHandler</node>
-            <node x="" y="">model.Media</node>
-            <node x="" y="">controller.FileIO</node>
-            <node x="" y="">controller.ByteArrayHandler</node>
-            <node x="" y="">model.Episode</node>
-            <node x="" y="">model.MediaCollection</node>
-            <node x="" y="">controller.Fetch</node>
-            <node x="" y="">client.ClientThread</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="127.5" y="125.5" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/view">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>view</OriginalElement>
-          <nodes>
-            <node x="170.875" y="178.0">controller.MediaCreator</node>
-            <node x="517.7781531531532" y="327.0">controller.Controller</node>
-            <node x="746.3773487773489" y="178.0">client.Client</node>
-            <node x="561.1114864864865" y="89.0">model.TvShow</node>
-            <node x="175.1114864864865" y="89.0">model.Film</node>
-            <node x="837.1392535392536" y="327.0">controller.TopicHandler</node>
-            <node x="139.00222007722004" y="0.0">model.Media</node>
-            <node x="596.875" y="178.0">controller.FileIO</node>
-            <node x="" y="">view.DialogPane</node>
-            <node x="436.875" y="178.0">controller.ByteArrayHandler</node>
-            <node x="659.9335987773488" y="0.0">model.Episode</node>
-            <node x="10.5" y="178.0">model.MediaCollection</node>
-            <node x="758.9250281531531" y="426.0">controller.Fetch</node>
-            <node x="305.875" y="178.0">view.AboutDialog</node>
-            <node x="694.7106821106822" y="327.0">client.ClientThread</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="controller.Controller" target="controller.MediaCreator">
-              <point x="-26.71875" y="-14.5" />
-              <point x="538.5594031531532" y="277.0" />
-              <point x="199.625" y="277.0" />
-              <point x="-28.75" y="14.5" />
-            </edge>
-            <edge source="controller.Controller" target="view.DialogPane">
-              <point x="38.59375" y="-14.5" />
-              <point x="603.8719031531532" y="287.0" />
-              <point x="718.3893138674389" y="287.0" />
-              <point x="718.3893138674389" y="148.0" />
-              <point x="790.0977839446589" y="148.0" />
-              <point x="-20.399999999999977" y="14.5" />
-            </edge>
-            <edge source="controller.TopicHandler" target="client.Client">
-              <point x="-38.66666666666663" y="-14.5" />
-              <point x="856.472586872587" y="277.0" />
-              <point x="809.6273487773489" y="277.0" />
-              <point x="28.75" y="14.5" />
-            </edge>
-            <edge source="controller.Fetch" target="model.Media">
-              <point x="-28.285714285714334" y="-14.5" />
-              <point x="763.6393138674389" y="406.0" />
-              <point x="0.0" y="406.0" />
-              <point x="0.0" y="49.0" />
-              <point x="145.90222007722002" y="49.0" />
-              <point x="-27.600000000000023" y="14.5" />
-            </edge>
-            <edge source="controller.Fetch" target="view.DialogPane">
-              <point x="28.285714285714334" y="-14.5" />
-              <point x="820.2107424388676" y="406.0" />
-              <point x="963.6392535392536" y="406.0" />
-              <point x="963.6392535392536" y="148.0" />
-              <point x="851.2977839446589" y="148.0" />
-              <point x="40.799999999999955" y="14.5" />
-            </edge>
-            <edge source="controller.Controller" target="controller.FileIO">
-              <point x="8.90625" y="-14.5" />
-              <point x="574.1844031531532" y="237.0" />
-              <point x="630.875" y="237.0" />
-              <point x="0.0" y="14.5" />
-            </edge>
-            <edge source="model.Film" target="model.Media">
-              <point x="0.0" y="-14.5" />
-              <point x="204.6114864864865" y="69.0" />
-              <point x="187.30222007722006" y="69.0" />
-              <point x="13.800000000000011" y="14.5" />
-            </edge>
-            <edge source="model.TvShow" target="model.Episode">
-              <point x="19.999999999999943" y="-14.5" />
-              <point x="621.1114864864865" y="69.0" />
-              <point x="666.6835987773488" y="69.0" />
-              <point x="-33.75" y="14.5" />
-            </edge>
-            <edge source="controller.MediaCreator" target="model.Film">
-              <point x="-28.75" y="-14.5" />
-              <point x="199.625" y="158.0" />
-              <point x="189.8614864864865" y="158.0" />
-              <point x="-14.75" y="14.5" />
-            </edge>
-            <edge source="controller.Controller" target="client.Client">
-              <point x="44.53125" y="-14.5" />
-              <point x="609.8094031531532" y="297.0" />
-              <point x="752.1273487773489" y="297.0" />
-              <point x="-28.75" y="14.5" />
-            </edge>
-            <edge source="controller.TopicHandler" target="view.DialogPane">
-              <point x="0.0" y="-14.5" />
-              <point x="895.1392535392536" y="158.0" />
-              <point x="830.8977839446588" y="158.0" />
-              <point x="20.399999999999977" y="14.5" />
-            </edge>
-            <edge source="client.Client" target="client.ClientThread">
-              <point x="-5.75" y="14.5" />
-              <point x="775.1273487773489" y="307.0" />
-              <point x="788.0440154440155" y="307.0" />
-              <point x="37.33333333333337" y="-14.5" />
-            </edge>
-            <edge source="controller.Controller" target="controller.ByteArrayHandler">
-              <point x="-8.90625" y="-14.5" />
-              <point x="556.3719031531532" y="247.0" />
-              <point x="471.875" y="247.0" />
-              <point x="-35.0" y="14.5" />
-            </edge>
-            <edge source="controller.Controller" target="model.Episode">
-              <point x="20.78125" y="-14.5" />
-              <point x="586.0594031531532" y="257.0" />
-              <point x="693.1955638674389" y="257.0" />
-              <point x="693.1955638674389" y="59.0" />
-              <point x="707.1835987773488" y="59.0" />
-              <point x="6.75" y="14.5" />
-            </edge>
-            <edge source="controller.MediaCreator" target="model.TvShow">
-              <point x="28.75" y="-14.5" />
-              <point x="257.125" y="158.0" />
-              <point x="581.1114864864865" y="158.0" />
-              <point x="-20.0" y="14.5" />
-            </edge>
-            <edge source="controller.Controller" target="model.Media">
-              <point x="-32.65625" y="-14.5" />
-              <point x="532.6219031531532" y="287.0" />
-              <point x="154.0" y="287.0" />
-              <point x="154.0" y="69.0" />
-              <point x="173.50222007722004" y="69.0" />
-              <point x="0.0" y="14.5" />
-            </edge>
-            <edge source="controller.Fetch" target="controller.Controller">
-              <point x="-18.85714285714289" y="-14.5" />
-              <point x="773.0678852960102" y="396.0" />
-              <point x="541.5281531531532" y="396.0" />
-              <point x="-23.75" y="14.5" />
-            </edge>
-            <edge source="model.MediaCollection" target="model.Media">
-              <point x="0.0" y="-14.5" />
-              <point x="77.0" y="59.0" />
-              <point x="159.70222007722003" y="59.0" />
-              <point x="-13.800000000000011" y="14.5" />
-            </edge>
-            <edge source="controller.Fetch" target="controller.TopicHandler">
-              <point x="18.85714285714289" y="-14.5" />
-              <point x="810.782171010296" y="396.0" />
-              <point x="895.1392535392536" y="396.0" />
-              <point x="0.0" y="14.5" />
-            </edge>
-            <edge source="controller.TopicHandler" target="model.Episode">
-              <point x="38.66666666666663" y="-14.5" />
-              <point x="933.8059202059203" y="307.0" />
-              <point x="906.1392535392536" y="307.0" />
-              <point x="906.1392535392536" y="69.0" />
-              <point x="734.1835987773488" y="69.0" />
-              <point x="33.75" y="14.5" />
-            </edge>
-            <edge source="client.Client" target="view.DialogPane">
-              <point x="0.0" y="-14.5" />
-              <point x="780.8773487773489" y="158.0" />
-              <point x="810.497783944659" y="158.0" />
-              <point x="0.0" y="14.5" />
-            </edge>
-            <edge source="controller.FileIO" target="model.Episode">
-              <point x="22.66666666666663" y="-14.5" />
-              <point x="653.5416666666666" y="158.0" />
-              <point x="674.7580638674389" y="158.0" />
-              <point x="674.7580638674389" y="69.0" />
-              <point x="680.1835987773488" y="69.0" />
-              <point x="-20.25" y="14.5" />
-            </edge>
-            <edge source="client.ClientThread" target="controller.FileIO">
-              <point x="-37.33333333333337" y="-14.5" />
-              <point x="713.3773487773487" y="237.0" />
-              <point x="653.5416666666666" y="237.0" />
-              <point x="22.66666666666663" y="14.5" />
-            </edge>
-            <edge source="controller.Controller" target="controller.Fetch">
-              <point x="23.75" y="14.5" />
-              <point x="589.0281531531532" y="386.0" />
-              <point x="782.4964567245818" y="386.0" />
-              <point x="-9.428571428571445" y="-14.5" />
-            </edge>
-            <edge source="controller.Controller" target="view.AboutDialog">
-              <point x="-14.84375" y="-14.5" />
-              <point x="550.4344031531532" y="257.0" />
-              <point x="361.375" y="257.0" />
-              <point x="0.0" y="14.5" />
-            </edge>
-            <edge source="controller.Controller" target="model.MediaCollection">
-              <point x="-44.53125" y="-14.5" />
-              <point x="520.7469031531532" y="307.0" />
-              <point x="43.75" y="307.0" />
-              <point x="-33.25" y="14.5" />
-            </edge>
-            <edge source="controller.FileIO" target="model.TvShow">
-              <point x="0.0" y="-14.5" />
-              <point x="630.875" y="158.0" />
-              <point x="621.1114864864865" y="158.0" />
-              <point x="20.0" y="14.5" />
-            </edge>
-            <edge source="controller.FileIO" target="model.Film">
-              <point x="-22.66666666666663" y="-14.5" />
-              <point x="608.2083333333334" y="148.0" />
-              <point x="219.3614864864865" y="148.0" />
-              <point x="14.75" y="14.5" />
-            </edge>
-            <edge source="controller.Fetch" target="client.Client">
-              <point x="0.0" y="-14.5" />
-              <point x="791.9250281531531" y="376.0" />
-              <point x="817.2106821106822" y="376.0" />
-              <point x="817.2106821106822" y="297.0" />
-              <point x="786.6273487773489" y="297.0" />
-              <point x="5.75" y="14.5" />
-            </edge>
-            <edge source="model.TvShow" target="model.Media">
-              <point x="-20.000000000000057" y="-14.5" />
-              <point x="581.1114864864865" y="59.0" />
-              <point x="201.10222007722007" y="59.0" />
-              <point x="27.600000000000023" y="14.5" />
-            </edge>
-            <edge source="client.ClientThread" target="client.Client">
-              <point x="0.0" y="-14.5" />
-              <point x="750.7106821106822" y="307.0" />
-              <point x="763.6273487773489" y="307.0" />
-              <point x="-17.25" y="14.5" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="495.5" y="368.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
+    <entry file="file://$PROJECT_DIR$/src/client/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.14" vertical-offset="0" max-vertical-offset="2280">
+          <caret line="43" column="79" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>

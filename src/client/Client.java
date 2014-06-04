@@ -4,6 +4,7 @@ import org.json.simple.JSONObject;
 import view.DialogPane;
 
 import java.io.*;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 
 /**
@@ -40,7 +41,8 @@ public class Client {
      */
     public Client() {
         try {
-            socket = new Socket(HOST, PORT);
+            socket = new Socket();
+            socket.connect(new InetSocketAddress(HOST, PORT), 3000);
         } catch (Exception e) {
             DialogPane dialogPane = new DialogPane();
             dialogPane.createWarningDialog("Cannot connect to server", "Sorry, but for some reason you cannot connect to the server.\n" +
