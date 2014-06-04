@@ -8,8 +8,8 @@ WatchListPro was designed by the team The Dragons. WatchListPro is a program tha
 
 Installation
 ------------
-The program is designed to run on a machine that has Java 8. If you don't have Java 8 click here to download.
-Once you have Java, you can download the WatchListPro .jar file by clicking here.
+The program is designed to run on a machine that has Java 8.
+Once you have Java, you can download the WatchListPro .jar file.
 
 Opening the program
 -------------------
