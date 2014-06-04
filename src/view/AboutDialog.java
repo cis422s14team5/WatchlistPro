@@ -30,7 +30,7 @@ public class AboutDialog implements WindowFocusListener {
         dialog.addWindowFocusListener(this);
         //dialog.setUndecorated(true);
         Container container = new Container();
-        JLabel line      = new JLabel(" •.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.• ");
+        JLabel line      = new JLabel(" •.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.• ", JLabel.CENTER);
         JLabel creators1 = new JLabel("      Created by The Dragons (Team 5): Keith Hamm, Noah Hasson,");
         JLabel creators2 = new JLabel("            Jason Keller, Wenbo Zhang, John Beck, David Chapman");
         container.add(creators1);
