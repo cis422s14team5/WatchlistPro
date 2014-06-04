@@ -1776,6 +1776,10 @@ public class Controller implements Initializable {
         masterRoot = new TreeItem<>(new Episode("Master", "", false));
         seasonRootList = new ArrayList<>();
 
+        seasCol = new TreeTableColumn<>();
+        epCol = new TreeTableColumn<>();
+        watchCol = new TreeTableColumn<>();
+
         seasCol.setText("Season");
         epCol.setText("Episode");
         watchCol.setText("Watched");
