@@ -28,7 +28,7 @@ public class AboutDialog implements WindowFocusListener {
     private void createAndShow() {
         dialog = new JDialog();
         dialog.addWindowFocusListener(this);
-        dialog.setUndecorated(true);
+        //dialog.setUndecorated(true);
         Container container = new Container();
         JLabel line      = new JLabel(" •.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.•¨¨•.¸¸¸.• ");
         JLabel creators1 = new JLabel("      Created by The Dragons (Team 5): Keith Hamm, Noah Hasson,");

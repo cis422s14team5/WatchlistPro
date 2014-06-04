@@ -844,6 +844,8 @@ public class Controller implements Initializable {
      */
     @FXML
     public void createAccount() {
+        cancelAccountCreation();
+        cancelLoadChoice();
         Client client = new Client();
         // if user entered name & password try to create account
         if (isLoggedIn) {
