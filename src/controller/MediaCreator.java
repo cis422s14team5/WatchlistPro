@@ -27,7 +27,7 @@ public class MediaCreator {
         title.set(titleString);
 
         StringProperty watched = new SimpleStringProperty();
-        watched.set("No");
+        watched.set("false");
 
         StringProperty genre = new SimpleStringProperty();
         genre.set("");
@@ -63,7 +63,7 @@ public class MediaCreator {
         title.set(titleString);
 
         StringProperty watched = new SimpleStringProperty();
-        watched.set("No");
+        watched.set("false");
 
         StringProperty genre = new SimpleStringProperty();
         genre.set("");

@@ -687,9 +687,9 @@ public class Controller implements Initializable {
     public void setWatched() {
         Media media = mediaList.getSelectionModel().getSelectedItem();
         if (filmWatchedCheckBox.isSelected() || tvWatchedCheckBox.isSelected()) {
-            media.setWatched("Yes");
+            media.setWatched("true");
         } else {
-            media.setWatched("No");
+            media.setWatched("false");
         }
     }
 
@@ -1547,7 +1547,7 @@ public class Controller implements Initializable {
         // tv show display pane table
         addEpisodesToTable(tempList, tvEpisodeDisplayTable, seasonDisplayCol, episodeDisplayCol, watchedDisplayCol);
 
-        if (show.getWatched().equals("Yes")) {
+        if (show.getWatched().equals("true")) {
             checkEveryEpisodeInShow();
         }
 
@@ -1587,7 +1587,7 @@ public class Controller implements Initializable {
         Film film = (Film) mediaList.getSelectionModel().getSelectedItem();
 
         filmTitleTextField.setText(film.getTitle());
-        if (film.getWatched().equals("Yes")) {
+        if (film.getWatched().equals("true")) {
             filmWatchedCheckBox.setSelected(true);
         }
         filmGenreTextField.setText(film.getGenre());
@@ -1606,7 +1606,7 @@ public class Controller implements Initializable {
         TvShow show = (TvShow) mediaList.getSelectionModel().getSelectedItem();
 
         tvTitleTextField.setText(show.getTitle());
-        if (show.getWatched().equals("Yes")) {
+        if (show.getWatched().equals("true")) {
             tvWatchedCheckBox.setSelected(true);
         }
         tvGenreTextField.setText(show.getGenre());
@@ -1624,7 +1624,7 @@ public class Controller implements Initializable {
         // tv show edit pane table
         addEpisodesToTable(tempList, tvEpisodeTable, seasonCol, episodeCol, watchedCol);
 
-        if (show.getWatched().equals("Yes")) {
+        if (show.getWatched().equals("true")) {
             checkEveryEpisodeInShow();
         }
 
@@ -1654,7 +1654,7 @@ public class Controller implements Initializable {
      */
     protected void setFilmEditPane(List<String> outputList) {
         filmTitleTextField.setText(outputList.get(0));
-        if (outputList.get(1).equals("Yes")) {
+        if (outputList.get(1).equals("true")) {
             filmWatchedCheckBox.setSelected(true);
         }
         filmGenreTextField.setText(outputList.get(2));
@@ -1671,7 +1671,7 @@ public class Controller implements Initializable {
      */
     protected void setTvEditPane(List<String> outputList) {
         tvTitleTextField.setText(outputList.get(0));
-        if (outputList.get(1).equals("Yes")) {
+        if (outputList.get(1).equals("true")) {
             tvWatchedCheckBox.setSelected(true);
         }
         tvGenreTextField.setText(outputList.get(2));
